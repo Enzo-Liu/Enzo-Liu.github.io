@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "GlobalDay of CodeRetreat"
-description: ""
-category: ""
-tags: []
+description: "codeRetreat"
+category: "code"
+tags: [codeRetreat,practise]
 ---
 {% include JB/setup %}
 
