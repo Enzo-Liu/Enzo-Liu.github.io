@@ -17,16 +17,20 @@ tags: [rails]
 * js，css等文件，同时依赖多次会存在问题。具体原因还没有搞清。js的依赖全部写在了application.js中，css的依赖一样。无须在html人工导入
 * font文件的依赖，config/application.rb中添加如下代码:
 
-		config.assets.paths << Rails.root.join("app", "assets", "fonts")
-    	config.assets.precompile << Proc.new { |path|
-      	if path =~ /\.(eot|svg|ttf|woff)\z/
-        	true
-      	end
-    	}
-    
-    scss中通过font-url使用即可。
-    
-    	font-url('glyphicons-halflings-regular.eot');	
+{% highlight js %}
+config.assets.paths << Rails.root.join("app", "assets", "fonts")
+config.assets.precompile << Proc.new { |path|
+  if path =~ /\.(eot|svg|ttf|woff)\z/
+    true
+  end
+}
+{% endhighlight %}
+
+scss中通过font-url使用即可。
+
+{% highlight js %}
+font-url('glyphicons-halflings-regular.eot');	
+{% endhighlight %}
     
 * coffeeScript与scss的语法首次接触，对js，css本身的了解也不够，上手起来很是痛苦
 
