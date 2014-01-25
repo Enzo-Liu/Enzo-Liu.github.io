@@ -935,6 +935,11 @@ pre {
 .the-footer h4 {
   margin-top: 0;
 }
+img
+{
+    max-width:767px; 
+    width:expression(document.body.clientWidth>767px? "767px": "auto" ); 
+}
 /*
  	IE
 */
