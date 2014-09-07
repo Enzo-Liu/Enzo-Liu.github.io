@@ -118,6 +118,7 @@ TODO 再仔细看一看
 构造冲突的命题
 
 1. 构造一类程序用于判断程序是否会崩溃
+
 canCrash--->canCrashWired--->crashOnSelf--->antiCrashOnSelf
 
 |          | canCrash | canCrashWired | crashOnSelf | antiCrashOnSelf |
