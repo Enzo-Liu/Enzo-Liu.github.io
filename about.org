@@ -2,7 +2,6 @@
 #+AUTHOR: enzo liu
 #+EMAIL:  liuenze6516@gmail.com
 #+DATE: 2016-01-11
-#+URI:         /about/
 #+OPTIONS:   H:2 toc:t num:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
 #+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
 #+EXPORT_SELECT_TAGS: export
