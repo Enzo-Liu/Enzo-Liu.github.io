@@ -1,0 +1,92 @@
+#+TITLE: 优惠/活动规则整理
+#+AUTHOR: 刘恩泽
+#+EMAIL:  enze.liu@ipiaoniu.com
+#+DATE: 2016-01-11
+#+OPTIONS:   H:2 toc:t num:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+startup: beamer
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [presentation, bigger]
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+#+BEAMER_THEME: metropolis
+#+BIND: org-beamer-outline-frame-title "目录"
+
+
+* 活动分析
+
+** 活动形态
+
+1. 特价商品
+2. 商品折扣/促销
+3. 用户优惠券 (一种形式的用户运营活动)
+4. 买一送一
+5. 第二单半价
+6. 满减
+7. ...
+
+** 针对对象
+
+#+BEGIN_QUOTE
+~商品~ , ~用户~ , ~交易行为~ , ~订单金额~, ~下单时间~ 等。 作为活动门槛的一部分，应该可以灵活指定规则, 从而方便进行运营活动。
+#+END_QUOTE
+
+*** 比如
+
+1. _指定商品_ 39元
+2. _新用户_ 8折
+3. _第二件_ 半价
+4. _满100_ 减20
+5. _下单_ 送红包
+6. _晚上10点以后_ 立减10元
+
+** 优惠形式
+#+BEGIN_QUOTE
+相对固定，一般为 ~折扣~ , ~立减~ , ~减至~ , ~送券~ , ~送实物~
+#+END_QUOTE
+
+*** 比如
+
+1. 第二单 _8折_
+2. 下单立 _减30_ 元
+3. 首单 _59元_ 购买
+
+** 补贴方
+
+- 卖家补贴  :: 预定义活动，卖家申请参与, 成本由卖家承担
+- 平台补贴 :: 成本平台承担
+
+** 优惠共享方式
+
+- 可与其他优惠同享
+- 不可与其他优惠同享
+- 不可与某些优惠同享
+
+*** 如:
+#+BEGIN_QUOTE
+优惠券间不可以共享（只能用一个）, 但是可以和立减一起用。 如果用了特卖的优惠，就什么也不能用。
+#+END_QUOTE
+
+* 现状
+** 活动列表
+
+- 39元活动
+  - _指定商品集合的首次下单_
+  - _39元购买_
+- 红包活动
+  - _每月前三单支付成功的订单_
+  - _送红包_
+- 新用户活动
+  - _首单_
+  - _立减30_
+- 赖** 88折
+  - _指定商品6张以内_
+  - _享受88折优惠_
+
+* 逻辑总结
+
+** 活动触发的维度
+
+
+* 系统逻辑设计

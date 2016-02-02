@@ -1,0 +1,42 @@
+#+TITLE: 如何吸引用户
+#+AUTHOR: 刘恩泽
+#+EMAIL:  enze.liu@ipiaoniu.com
+#+DATE: 2015-11-26
+#+OPTIONS:   H:2 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+startup: beamer
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [presentation, bigger]
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+#+BEAMER_THEME: m
+#+BIND: org-beamer-outline-frame-title "目录"
+
+
+* 场景
+** 搜索广告
+
+** 公众号
+
+** 朋友推荐
+
+** app内浏览
+
+** 促销活动
+
+** 品牌
+#+BEGIN_QUOTE
+听说过，来看看
+#+END_QUOTE
+
+* 功能性需求
+** 买的到 (售前)
+
+** 买的放心 (售前)
+
+** 买的简单 (售中)
+
+** 售后
+
+* 社会性需求

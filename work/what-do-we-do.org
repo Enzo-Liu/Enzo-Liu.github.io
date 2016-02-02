@@ -1,0 +1,91 @@
+#+TITLE: 我们在做什么
+#+AUTHOR: 刘恩泽
+#+EMAIL:  enze.liu@ipiaoniu.com
+#+DATE: 2015-11-23
+#+OPTIONS:   H:2 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+startup: beamer
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [presentation, bigger]
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+#+BEAMER_THEME: metropolis
+
+* 现状
+** 热门演出购票难
+*** 定价
+
+价格本身不能体现出真实市场价值, 需要中间商进行炒作
+
+比如限量放票抢票，黄牛屯票
+
+*** 供需
+#+BEGIN_QUOTE
+无法预知真实的消费规模。从而无法提前决策，不办，或者多办两场。(猜测)
+#+END_QUOTE
+流通的票务资源供不应求
+
+*** 流通
+
+票价值周期短，流通成本高
+
+
+** 常规剧目市场冷淡？
+
+#+BEGIN_QUOTE
+不是特别了解这里面存在的问题
+#+END_QUOTE
+
+* 我们要干什么 (yy)
+
+** 核心目标
+
+在票务市场领域分一杯羹
+
+** 可以做什么I
+
+*** 进入市场(当前)
+在不触碰别人利益的情况下参与到游戏中去
+
+*** 解决定价问题
+#+BEGIN_QUOTE
+设定交易模型，集中货源交易，降低交易/流通成本, 提高平台信任度
+#+END_QUOTE
+拍卖，预售等成交信息相对透明的线上交易方式
+
+** 可以做什么II
+*** 提前预测需求，优化供给
+- 将交易过程提前
+- 分析历史模型
+- 众筹加演 (收定金，一定规模加场次)
+
+*** 降低流通成本
+- 控制部分票源，提前进行预售 --- 增加票务在市场上的流通时间
+- 票务交易信息透明---减少决策成本
+- 发放虚拟的交易凭证---减少传输成本
+
+** 核心价值
+
+*** 市场化, 信息透明，相对公平
+提高票务市场整体效率。优化公平买卖的体验，等等
+
+*** 市场规模
+效率提升的基础上，规模也相对扩大
+
+*** 票务市场的信息化，减少交易成本，降低观演门槛
+提高人们精神文化生活...
+
+* 在做什么
+** 我们
+*** 常规票务交易
+*** 运营活动等
+
+** 竞争对手
+当前大部分做的比较大的都是B to C。
+*** 格瓦拉
+    http://www.chinaz.com/start/2015/1030/464426.shtml
+*** 大麦
+*** 玩票
+*** 牛魔王
+    这个和我们的C to C 定位很像，如果都单纯做常规交易，拼的大部分是渠道和运营。这方面的优势很难说。

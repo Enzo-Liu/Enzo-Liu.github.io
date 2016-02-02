@@ -1,0 +1,88 @@
+#+TITLE: 39元抢购活动
+#+AUTHOR: 刘恩泽
+#+EMAIL:  enze.liu@ipiaoniu.com
+#+DATE: 2015-11-23
+#+OPTIONS:   H:2 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+startup: beamer
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [presentation, bigger]
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+#+BEAMER_THEME: m
+#+CATEGORIES: working
+#+BIND: org-beamer-outline-frame-title "目录"
+
+* 概念定义
+** 活动对象
+*** 新用户下单
+    注册用户的首次下单称为新用户下单
+
+** 商品
+*** 活动商品
+    仅在活动页显示，与正常商品不共享库存，无法在正常列表页看见
+
+* 主线场景
+** 正常流程
+#+begin_src dot :file images/graph.png :cmdline -Tpng
+digraph {
+  // graph from left to right
+  rankdir=LR;
+  splines=true;
+  node [shape=box];
+
+  id [label="banner"]
+  conf [label="活动列表页"]
+  dot [label="下单支付"]
+
+  id -> conf
+  conf -> dot
+  dot -> "无库存明天再试" [style=dotted]
+  dot -> "购买成功分享"
+  }
+#+end_src
+
+#+RESULTS:
+[[file:images/graph.png]]
+
+
+** 新用户注册后购买
+#+BEGIN_QUOTE
+1. 点击banner
+2. 查看列表，点击购买
+3. 弹出登陆注册页
+4. 注册成功
+5. 弹出订单页
+6. 支付成功
+7. 分享
+#+END_QUOTE
+
+** 新用户登陆后购买
+#+BEGIN_QUOTE
+1. 点击banner
+2. 查看列表，点击购买
+3. 弹出登陆页
+4. 登陆成功
+5. 弹出订单页
+6. 支付成功
+7. 分享
+#+END_QUOTE
+
+** 老用户登陆后不能购买
+#+BEGIN_QUOTE
+1. 点击banner
+2. 查看列表，点击购买
+3. 弹出登陆页
+4. 登陆成功
+5. 弹出老用户不能下单
+#+END_QUOTE
+
+* 异常场景
+** 用户进入列表页已无库存
+
+页面按钮变成售罄
+
+** 用户登陆后下单失败（无库存）
+
+提示明天再试

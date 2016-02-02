@@ -1,0 +1,162 @@
+#+TITLE: 后台流程梳理
+#+AUTHOR: 刘恩泽
+#+EMAIL:  enze.liu@ipiaoniu.com
+#+DATE: 2015-12-26
+#+OPTIONS:   H:2 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+startup: beamer
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [presentation, bigger]
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+#+BEAMER_THEME: m
+#+BIND: org-beamer-outline-frame-title "目录"
+
+* 订单流程
+** 发货流程
+下单->支付->出库->发货->用户收货->完成
+#+begin_src plantuml :file deliver.png
+  title 订单流程
+  note right: 发货流程
+  (*)-> "用户下单支付"
+  -> === 检查库存 ===
+  note bottom: 库存检查
+  if "有库存?" then
+    -> [无] "标记该商品缺货"
+    -> "采购"
+    -> "入库"
+    --> === 检查库存 ===
+  else
+    --> [有] "出库"
+  endif
+  -> "发货"
+  note right: 消耗库存, 发发货通知短信
+  --> "用户确认收货"
+  --> (*)
+#+end_src
+
+#+RESULTS:
+[[file:deliver.png]]
+
+** 自取流程
+下单->支付->确认库存->备票待取->用户取货->完成
+#+begin_src plantuml :file self-get.png
+  title 订单流程
+  note right: 自取流程
+  (*)-> "用户下单支付"
+  -> === 检查库存 ===
+  note bottom: 库存检查
+  if "有库存?" then
+    -> [无] "标记该商品缺货"
+    -> "采购"
+    -> "入库"
+    --> === 检查库存 ===
+  else
+    --> [有] "出库"
+  endif
+  -> "准备待取"
+  note right: 消耗库存, 发自取短信, 将货物单独放置待取
+  --> 用户取货
+  --> (*)
+#+end_src
+
+#+RESULTS:
+[[file:self-get.png]]
+
+** 现场自取流程
+下单->支付->确认库存->备票待取->用户取货->完成
+#+begin_src plantuml :file onsite-get.png
+  title 订单流程
+  note right: 自取流程
+  (*)-> "用户下单支付"
+  -> === 检查库存 ===
+  note bottom: 库存检查
+  if "有库存?" then
+    -> [无] "标记该商品缺货"
+    -> "采购"
+    -> "入库"
+    --> === 检查库存 ===
+  else
+    --> [有] "出库"
+  endif
+  -> "准备票现场取"
+  note right: 消耗库存, 发通知短信, 将货物单独放置待取
+  --> 用户取货
+  --> (*)
+#+end_src
+
+#+RESULTS:
+[[file:onsite-get.png]]
+
+** 订单流程总结
+*** 整体流程
+
+下单->支付->确认库存->准备库存->用户确认->完成
+
+#+BEGIN_QUOTE
+准备库存阶段根据发货方式的差异提供不同的短信通知, 选择发货或者单独放置处理
+#+END_QUOTE
+
+*** 现在需要做的功能
+
+1. 标记出一个订单是自取/发货/现场自取
+2. 发货单人工发货，自取单人工留出自取单据。现场自取的将自取单据汇总待现场取
+
+
+* 出入库流程
+** 出库场景
+
+*** 订单自动出库
+*** 人工出库 （比如活动库存）
+
+** 入库场景
+
+*** 缺货采购进行入库
+*** 提前采购入库
+
+** 出入库流程
+
+*** 到货
+找到指定的活动场次票档和买家, 做入库操作
+
+*** 出货
+1. 人工出库
+2. 系统出库（当执行了  ~发货~ / ~自取准备完成~ / ~现场自取准备完成~ 后自动操作）
+
+* 采购流程
+
+** 采购场景
+
+*** 提前采购
+采购 -> 到货 -> 给仓库 -> 人工入库
+
+*** 缺货采购
+
+查看缺货商品 -> 采购 -> 到货 -> 给仓库 -> 入库
+
+** 当前问题
+
+1. 从采购到入库的过程线下跟踪，入库操作繁琐
+2. 缺货商品无法有效体现出待采购的任务
+3. 采购单据基于商家, 现需要人工区分哪些要主动采购，哪些等商家发货过来
+
+** 系统可以做什么
+
+1. 人工创建采购单据，针对某一个卖家+商品
+2. 系统根据当前缺货商品和采购单据，列出待采购商品
+3. 系统标记采购单据完成或者失败
+4. 系统根据采购单据自动核销缺货商品, 完成的采购单据自动入库
+
+* 系统功能
+
+** 新增功能和优化
+
+*** 新增功能
+
+- 采购单据的创建和跟踪
+- 采购单据与库存的自动核销
+
+*** 优化
+
+- 订单上区分自取/发货等信息, 针对不同类型发放定制的短信信息
