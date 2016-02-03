@@ -6,7 +6,7 @@
 #+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
-#+TAGS: common-lisp sicp exercise
+#+TAGS: common-lisp,sicp,exercise
 
 #+BEGIN_SRC lisp
     ;;; ch1.lisp ---
@@ -18,9 +18,9 @@
     ;; Created: Sat Nov 29 17:30:04 2014 (+0800)
     ;; Version:
     ;; Package-Requires: ()
-    ;; Last-Updated: Wed Feb  3 15:01:26 2016 (+0800)
+    ;; Last-Updated: Wed Feb  3 15:23:10 2016 (+0800)
     ;;           By: Liu Enze
-    ;;     Update #: 29
+    ;;     Update #: 30
     ;; URL:
     ;; Doc URL:
     ;; Keywords:

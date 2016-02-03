@@ -6,7 +6,7 @@
 #+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
-#+TAGS: common-lisp sicp exercise
+#+TAGS: common-lisp,sicp,exercise
 
 通过Common Lisp，模拟assembler machine的运行。
 
@@ -24,9 +24,9 @@
     ;; Created: Thu Dec 11 14:39:16 2014 (+0800)
     ;; Version:
     ;; Package-Requires: ()
-    ;; Last-Updated: Wed Feb  3 15:01:10 2016 (+0800)
+    ;; Last-Updated: Wed Feb  3 15:23:35 2016 (+0800)
     ;;           By: Liu Enze
-    ;;     Update #: 53
+    ;;     Update #: 54
     ;; URL:
     ;; Doc URL:
     ;; Keywords:
