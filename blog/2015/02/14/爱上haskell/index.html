@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>爱上haskell - enzo&#39;s note book</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="enzo liu" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+  </head>
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">enzo&#39;s note book</a></h1>
+        <p>sketch for random ideas</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/history/">History</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="blog.enzotech.in">
+        </form>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>爱上haskell</h1>
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">简介</h2>
+<div class="outline-text-2" id="text-orgheadline1">
+<p>
+最近有些爱上了haskell，在体验这个纯粹的函数式语言中，确实发现了一些不一样的=美感=。
+</p>
+
+<p>
+话拙，直接看代码。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2">示例</h2>
+<div class="outline-text-2" id="text-orgheadline2">
+<p>
+一句话，表现力上，的确很强。 ### 快排
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-haskell">qs :: (Ord a) =&gt; [a] -&gt; [a]
+qs [] = []
+qs (x:xs) = qs [gt | gt &lt;- xs, gt&gt;=x] ++ [x] ++ qs [lt | lt &lt;-xs , lt&lt;x]
+</pre>
+</div>
+
+<blockquote>
+<p>
+快排就是将哨兵两边的数据都排好序后再拼接起来。
+</p>
+</blockquote>
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3">斐波那契数列</h3>
+<div class="outline-text-3" id="text-orgheadline3">
+<p>
+这个是最最 <b><code>惊艳</code></b> 到我的！！！
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-haskell">fibs :: [Int]
+fibs = 0 : 1 : [ a + b | (a, b) &lt;- zip fibs (tail fibs)]
+</pre>
+</div>
+
+<blockquote>
+<p>
+翻译成中文就是，f(n) = f(n-1) + f(n-2), f(0) = 0 , f(1) = 1. 哈哈
+</p>
+</blockquote>
+
+<p>
+看过SICP的兄弟可能会知道，里面讲过一个延时计算的无限的流，递归的定义数据结构本身.
+用commonLisp实现的话，首先要定义一个延时的流。然后基于其上可以来定义斐波的流。大概如下，可以对比一下haskell的实现。
+</p>
+
+<p>
+(当然，这样的算法本质都是一样，只是表现形式上有些微的差异,
+不过，haskell的，看上去，有一种奇特的帅~）
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-lisp">(defparameter *fib*
+  (cons-stream 0
+               (cons-stream 1
+                            (add-streams (cdr-stream *fib*)
+                                         *fib*))))
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4">实践</h2>
+<div class="outline-text-2" id="text-orgheadline4">
+<p>
+上面的都有些偏理论，那看看稍微偏使用中的代码是什么样的。
+</p>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5">project euler</h3>
+<div class="outline-text-3" id="text-orgheadline5">
+<p>
+<a href="http://projecteuler.net/problems">参考地址</a>
+</p>
+
+<p>
+话不多说，直接看代码
+</p>
+
+<blockquote>
+<p>
+学习=haskell=两天, 可能代码不是很符合专家的美感 :)
+</p>
+</blockquote>
+</div>
+
+<div id="outline-container-orgheadline6" class="outline-4">
+<h4 id="orgheadline6"><a href="https://projecteuler.net/problem=206">euler 206</a></h4>
+<div class="outline-text-4" id="text-orgheadline6">
+<div class="org-src-container">
+
+<pre class="src src-haskell">import Data.Char (intToDigit)
+
+alternates (x:y:zs) = x : alternates zs
+alternates (x:_)    = [x]
+alternates _        = []
+
+target = (map intToDigit [1..9]) ++ "0"
+
+passes i = (alternates . show $ i^2) == target
+
+solution = head . filter passes $ [1010101010, 1010101020 ..]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-4">
+<h4 id="orgheadline7"><a href="https://projecteuler.net/problem=55">euler 55</a></h4>
+<div class="outline-text-4" id="text-orgheadline7">
+<div class="org-src-container">
+
+<pre class="src src-haskell">import Data.Char
+palindromicNumber :: Integer -&gt; Bool
+palindromicNumber a = a == reverseNumber a
+
+digits :: Integer -&gt; [Int]
+digits = map (read . (:[])) . show
+
+reverseNumber :: Integer -&gt; Integer
+reverseNumber a = read (map intToDigit $ reverse . digits $ a) :: Integer
+
+next :: Integer -&gt; Integer
+next a = a + (reverseNumber a)
+
+isLychrel :: Integer -&gt; Int -&gt; Int
+isLychrel number times
+  | times &gt;= 50 = times + 1
+  | palindromicNumber $ next number = times + 1
+  | otherwise = isLychrel (next number) $ times + 1
+
+lychrel :: Integer -&gt; Maybe Int
+lychrel a =
+  if times &gt; 50 then Nothing else Just times
+  where times = isLychrel a 0
+
+main :: IO()
+main = print $ length $ filter (== Nothing) $ map lychrel [1..10000]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-4">
+<h4 id="orgheadline8"><a href="https://projecteuler.net/problem=56">euler 56</a></h4>
+<div class="outline-text-4" id="text-orgheadline8">
+<div class="org-src-container">
+
+<pre class="src src-haskell">digits :: Integer -&gt; [Int]
+digits = map (read . (:[])) . show
+
+powerSum :: (Integer ,Integer) -&gt; Int
+powerSum (x,y) = sum $ digits (x^y)
+
+main :: IO()
+main = print $ maximum $ map powerSum [(x,y) | x &lt;- [1..100], y &lt;-[1..100]]
+</pre>
+</div>
+
+<p>
+从后面的论坛里看到一个更帅的 :)
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-haskell">import Data.Char ( digitToInt )
+
+main = print $ maximum [sum $ map digitToInt $ show $ a^b | a &lt;- [1..99], b &lt;- [1..99]]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline9" class="outline-4">
+<h4 id="orgheadline9"><a href="https://projecteuler.net/problem=56">euler 57</a></h4>
+<div class="outline-text-4" id="text-orgheadline9">
+<div class="org-src-container">
+
+<pre class="src src-haskell">pairs :: [(Integer,Integer)]
+pairs = pairsFrom (1,1)
+
+pairsFrom :: (Integer,Integer) -&gt; [(Integer,Integer)]
+pairsFrom (a,b) = (a,b):pairsFrom (a+2*b , a+b)
+
+--In love with haskell, 这个和上面的pairs定义的效果是一样的
+pairs' :: [(Integer,Integer)]
+pairs' = (1,1):(map (\(x,y) -&gt; (x+2*y,x+y)) pairs')
+
+digits :: Integer -&gt; [Int]
+digits = map (read . (:[])) . show
+
+numberLen :: Integer -&gt; Int
+numberLen = length . digits
+
+longer :: (Integer,Integer) -&gt; Bool
+longer (x,y) =  numberLen x &gt; numberLen y
+
+main ::IO()
+main = print $ (length . filter longer . take 1000) pairs
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline10" class="outline-2">
+<h2 id="orgheadline10">总结</h2>
+<div class="outline-text-2" id="text-orgheadline10">
+<p>
+尝试了使用，情难自禁，强力推荐。有机会体验一下，应该会不虚此行。
+</p>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2015-02-14</span>
+        <span title="last modification date" class="post-info">2016-02-03</span>
+        <span title="tags" class="post-info"><a href="/tags/haskell/">haskell</a></span>
+        <span title="author" class="post-info">enzo liu</span>
+      </div>
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/blog/2015/02/14/爱上haskell/";
+          var disqus_url = "http://blog.enzotech.in/blog/2015/02/14/爱上haskell/";
+          var disqus_shortname = 'enzo-liu';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="/media/js/main.js"></script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
+        <p>
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>

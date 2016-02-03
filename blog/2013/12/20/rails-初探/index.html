@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>Rails 初探 - enzo&#39;s note book</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="enzo liu" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+  </head>
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">enzo&#39;s note book</a></h1>
+        <p>sketch for random ideas</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/history/">History</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="blog.enzotech.in">
+        </form>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>Rails 初探</h1>
+<p>
+<b>首次系统的接触WEB+前端内容，好好学习一下，做一下问题的记录。</b>
+</p>
+
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4">依赖</h2>
+<div class="outline-text-2" id="text-orgheadline4">
+</div><div id="outline-container-orgheadline1" class="outline-3">
+<h3 id="orgheadline1">assetPipeLine</h3>
+<div class="outline-text-3" id="text-orgheadline1">
+<ul class="org-ul">
+<li>js，css等文件，同时依赖多次会存在问题。具体原因还没有搞清。js的依赖全部写在了application.js中，css的依赖一样。无须在html人工导入</li>
+<li>font文件的依赖，config/application.rb中添加如下代码:</li>
+</ul>
+
+<p>
+{% highlight js %} config.assets.paths &lt;&lt; Rails.root.join("app",
+"assets", "fonts") config.assets.precompile &lt;&lt; Proc.new { |path| if path
+=~ <i>.(eot|svg|ttf|woff)\z</i> true end } {% endhighlight %}
+</p>
+
+<p>
+scss中通过font-url使用即可。
+</p>
+
+<p>
+{% highlight js %} font-url('glyphicons-halflings-regular.eot');<br  />
+{% endhighlight %}
+</p>
+
+<ul class="org-ul">
+<li>coffeeScript与scss的语法首次接触，对js，css本身的了解也不够，上手起来很是痛苦</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="orgheadline2">View</h3>
+<div class="outline-text-3" id="text-orgheadline2">
+<p>
+*BootStrap*果然超级好用。暂时还没有什么研究，不过拷贝过来立刻可以见到成效，感觉很好。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3">Route</h3>
+<div class="outline-text-3" id="text-orgheadline3">
+<p>
+工程的路由规则完全由config/Route.rb中内容觉得。当前只是配置了映射关系，和struts的action配置感觉没什么区别。
+</p>
+
+<p>
+返回的信息类别可由调用时决定，比如welcome/index.json，即表明要获取json类型的数据。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-2">
+<h2 id="orgheadline5">AJAX</h2>
+<div class="outline-text-2" id="text-orgheadline5">
+<p>
+之所以拿出来单独说，是这个让我搞的的确很痛苦。
+</p>
+
+<p>
+当然可以直接使用js(jQuery)来从页面到回调什么的完全搞定，不过有违我学习Rails的初衷，就还是按部就班的按照Rails的help上一步步尝试，各种问题。
+</p>
+</div>
+
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6">TAG</h3>
+<div class="outline-text-3" id="text-orgheadline6">
+<p>
+在html.erb文件中，rails推荐的写法是使用helper提供的各种tag来进行描述。
+</p>
+
+<p>
+想要触发ajax请求很容易，只需要正确的用对tag就可以了。比如：
+</p>
+
+<pre class="example">
+&lt;%= form_tag("/welcome/test.json",:id =&gt; "viper", remote: true)  do%&gt;
+&lt;%= text_area_tag 'str', @res%&gt;
+&lt;%= submit_tag 'Save' %&gt;
+&lt;% end %&gt;
+</pre>
+
+<p>
+现在的发现是，各种输入，在rails中都有对应的tgp来使用。在手写input的情况下，表单提交会带入不了数据，暂时还不知道是为什么。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7">CoffeeScript</h3>
+<div class="outline-text-3" id="text-orgheadline7">
+<p>
+Ajax回调的触发如下，在controller对应的js.coffee文件内，写下
+</p>
+
+<pre class="example">
+$(document).ready -&gt;
+$("#viper").on "ajax:success", (e, data, status, xhr) -&gt;
+console.log($("#users").toArray());
+console.log(data);
+</pre>
+
+<p>
+类似的代码即可。我的悲剧在于html.erb文件的底部由于拷贝Bootstrap的模板还引用了JQuery，结果这个回调一直没有调通。在某次网不好的情况下，突然成功的打出了log。于是才发现是这个问题，删除之后就OK了。
+</p>
+
+<p>
+一共花费了大约4+个小时来调通ajax，其中大部分都是不了解吃的亏，好疼。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-2">
+<h2 id="orgheadline8"><span class="todo TODO">TODO</span> </h2>
+<div class="outline-text-2" id="text-orgheadline8">
+<ol class="org-ol">
+<li>将AJAX的机制再好好了解一下，用Ajax在Rails上做出一个完整的Game Of Life
+网页小动画处来。</li>
+<li>学习Bootstrap做一个漂亮的首页讨好一下老婆</li>
+<li>多了解Rails的convention，学习其中的精华，比如看到的remote:true的配置(Unobtrusive
+JavaScript)的理念，完全可以在日常中想办法借鉴一下使用的。</li>
+<li>业余多了解js，css等前端相关技术</li>
+</ol>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2013-12-20</span>
+        <span title="last modification date" class="post-info">2016-02-03</span>
+        <span title="tags" class="post-info"><a href="/tags/org-page-blog-emacs-org-mode/">org-page blog emacs org-mode</a></span>
+        <span title="author" class="post-info">enzo liu</span>
+      </div>
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/blog/2013/12/20/rails-初探/";
+          var disqus_url = "http://blog.enzotech.in/blog/2013/12/20/rails-初探/";
+          var disqus_shortname = 'enzo-liu';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="/media/js/main.js"></script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
+        <p>
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>
