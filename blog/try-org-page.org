@@ -1,0 +1,33 @@
+#+TITLE: 用org-page尝试写点东西
+#+AUTHOR: enzo liu
+#+EMAIL:  liuenze6516@gmail.com
+#+DATE: 2016-01-11
+#+OPTIONS:   H:3 toc:nil num:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+TAGS: org-page blog emacs org-mode
+
+* 背景
+
+近段时间一直喜欢自己用 ~org-mode~ 写点东西。业务上的文档，个人的笔记等。
+
+没有深入的了解过 _publish_ 在 ~org-mode~ 中怎么使用，正巧遇到了 [[https://github.com/kelvinh/org-page][~org-page~]], 上手很容易，就准备把自己之前的小blog给推了，用它来记录点东西。
+
+* 安装
+
+如文档上所说，使用 ~melpa~ 可以很容易就安装成功。 略微配置一下文件夹地址，哪些文件夹不要发布到网站上，使用的 =branch= 的名称即可。
+
+* 迁移
+
+虽然过去的 =blog= 写的很幼稚， 但是还有有一点 +历史+ 意义的。
+
+使用 =haskell= 写的 ~pandoc~ 就是文档转换界的一把金光闪闪的瑞士军刀。
+
+#+BEGIN_SRC bash
+find . -name \*.md -type f -exec pandoc  -f markdown -t org -o {}.org {} \;
+#+END_SRC
+
+一行搞定, 然后手动加一些 ~org-page~ 需要的 ~header~ 就可以了。
+
+* github pages

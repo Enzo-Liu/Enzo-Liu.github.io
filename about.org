@@ -1,4 +1,4 @@
-#+TITLE: 测试
+#+TITLE: 关于我
 #+AUTHOR: enzo liu
 #+EMAIL:  liuenze6516@gmail.com
 #+DATE: 2016-01-11
@@ -16,4 +16,4 @@
 #+TAGS: test
 #+CATEGORIES: personal
 
-* sdfsdf
+*

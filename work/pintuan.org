@@ -1,7 +1,7 @@
 #+TITLE: 拼团活动技术方案
 #+AUTHOR: 刘恩泽
 #+EMAIL:  enze.liu@ipiaoniu.com
-#+DATE: \today
+#+DATE: 2016-02-02
 #+OPTIONS:   H:2 toc:t num:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
 #+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
 #+EXPORT_SELECT_TAGS: export

@@ -10,9 +10,9 @@
 #+LaTeX_CLASS: beamer
 #+LaTeX_CLASS_OPTIONS: [presentation, bigger]
 #+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
-#+BEAMER_THEME: m
-#+CATEGORIES: working
+#+BEAMER_THEME: metropolis
 #+BIND: org-beamer-outline-frame-title "目录"
+#+URI:         /work/test/
 
 * 概念定义
 ** 活动对象
