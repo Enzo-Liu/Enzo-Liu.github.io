@@ -78,6 +78,33 @@
 
 <div id="outline-container-orgheadline4" class="outline-2">
 <h2 id="orgheadline4">github pages</h2>
+<div class="outline-text-2" id="text-orgheadline4">
+<p>
+原先就是使用 <code>jekyll</code> 托管在 <code>github page</code> 上， 现在只需要把 <code>master</code> 分支的文件替换成 <code>org-page</code> 生成的文件就可以了。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-bash">git checkout master
+find . -name \* | grep -v ".git" | xargs rm -rf
+git add . &amp;&amp; git commit -m “clear all"
+git checkout source
+</pre>
+</div>
+
+<p>
+然后在 <code>emacs</code> 里执行
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(op/do-publication 'y 'n 'n 'n)
+</pre>
+</div>
+
+<p>
+That's done.
+</p>
+</div>
 </div>
 
 </div>
