@@ -43,7 +43,7 @@ git checkout source
 
 然后在 ~emacs~ 里执行
 #+BEGIN_SRC emacs-lisp
-(op/do-publication 'y 'n 'n 'n)
+(op/do-publication t nil nil t)
 #+END_SRC
 
 That's done.
