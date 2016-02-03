@@ -31,3 +31,19 @@ find . -name \*.md -type f -exec pandoc  -f markdown -t org -o {}.org {} \;
 一行搞定, 然后手动加一些 ~org-page~ 需要的 ~header~ 就可以了。
 
 * github pages
+
+原先就是使用 ~jekyll~ 托管在 ~github page~ 上， 现在只需要把 ~master~ 分支的文件替换成 ~org-page~ 生成的文件就可以了。
+
+#+BEGIN_SRC bash
+git checkout master
+find . -name \* | grep -v ".git" | xargs rm -rf
+git add . && git commit -m “clear all"
+git checkout source
+#+END_SRC
+
+然后在 ~emacs~ 里执行
+#+BEGIN_SRC emacs-lisp
+(op/do-publication 'y 'n 'n 'n)
+#+END_SRC
+
+That's done.
