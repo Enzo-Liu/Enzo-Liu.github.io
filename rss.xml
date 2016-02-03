@@ -4,89 +4,247 @@
     <title>enzo&#39;s note book</title>
     <link>http://blog.enzotech.in/</link>
     <description>sketch for random ideas</description>
-    <pubDate>Wed, 03 Feb 2016 15:35:03 HKT</pubDate>
-    <lastBuildDate>Wed, 03 Feb 2016 15:35:03 HKT</lastBuildDate>
+    <pubDate>Wed, 03 Feb 2016 15:37:23 HKT</pubDate>
+    <lastBuildDate>Wed, 03 Feb 2016 15:37:23 HKT</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
     <item>
       <title>用org-page尝试写点东西</title>
       <link>http://blog.enzotech.in/blog/2016/01/11/用org-page尝试写点东西/</link>
+      <description><![CDATA[]]></description>
+      <pubDate>2016-02-03</pubDate>
+      <guid>http://blog.enzotech.in/blog/2016/01/11/用org-page尝试写点东西/</guid>
+    </item>
+    <item>
+      <title>Global Day Of Code Retreat</title>
+      <link>http://blog.enzotech.in/blog/2013/12/17/global-day-of-code-retreat/</link>
       <description><![CDATA[<div>
 <div class="post">
-<h1>用org-page尝试写点东西</h1>
+<h1>Global Day Of Code Retreat</h1>
+
 
 <div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1">背景</h2>
+<h2 id="orgheadline1">主题</h2>
 <div class="outline-text-2" id="text-orgheadline1">
 <p>
-近段时间一直喜欢自己用 <code>org-mode</code> 写点东西。业务上的文档，个人的笔记等。
+重复的做一个简单的任务，<a href="http://en.wikipedia.org/wiki/Conway's_Game_of_Life">“Conway's
+Game Of Life”</a>。
 </p>
 
 <p>
-没有深入的了解过 <span class="underline">publish</span> 在 <code>org-mode</code> 中怎么使用，正巧遇到了 <a href="https://github.com/kelvinh/org-page"><code>org-page</code></a>, 上手很容易，就准备把自己之前的小blog给推了，用它来记录点东西。
+全天共有六个session，每个session包含40分钟左右，以及一个或者多个的限制。每个session的目的不在于完成，目的仅仅是实践。
+</p>
+
+<p>
+其余更多介绍可以参考InfoQ上<a href="http://www.infoq.com/news/2011/11/global_day_of_code_retreat">Global
+Day Of Code Retreat</a>的介绍。
 </p>
 </div>
 </div>
 
 <div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2">安装</h2>
+<h2 id="orgheadline2">活动</h2>
 <div class="outline-text-2" id="text-orgheadline2">
 <p>
-如文档上所说，使用 <code>melpa</code> 可以很容易就安装成功。 略微配置一下文件夹地址，哪些文件夹不要发布到网站上，使用的 <code>branch</code> 的名称即可。
+早上9点开始，上午3个session，而后午休+交流。下午3个session，6点结束。
+</p>
+
+<p>
+<i>每次活动2人pair，必须找一个不同的人。</i>
+</p>
+
+<p>
+<b>session结束后将本次代码封存/删除。</b>
+</p>
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3">session 1</h3>
+<div class="outline-text-3" id="text-orgheadline3">
+<p>
+<b>constraint: 没有限制，用任意喜好的语言，实现这个小功能</b>
+</p>
+
+<p>
+这个session的主要目的是了解整个任务是神马，要实现的大体功能是神马。
+</p>
+
+<p>
+这里也简单介绍一下，这是一个0-player的游戏，给定输入，就看着这个世界如何演进就OK了。
+</p>
+
+<p>
+总体在描述一个世界，有一群孤独又怕挤的神奇的小细胞们，生存条件如下:
+</p>
+
+<ul class="org-ul">
+<li>活细胞周围的活细胞个数小于2个时，下一次演进会死去</li>
+<li>活细胞周围的活细胞个数大于3个时，下一次演进会死去</li>
+<li>活细胞周围的活细胞个数等于2/3个时，下一次演进会活着</li>
+<li>死细胞周围的活细胞个数等于3个时，下一次会复活</li>
+</ul>
+
+<p>
+<i>总的来说，周围活细胞个数为3时，该细胞活着。个数为2个时，活细胞依然活着。其余情况，细胞死去。</i>
+</p>
+
+<p>
+没写完。
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="orgheadline3">迁移</h2>
-<div class="outline-text-2" id="text-orgheadline3">
+<div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="orgheadline4">session 2</h3>
+<div class="outline-text-3" id="text-orgheadline4">
 <p>
-虽然过去的 <code>blog</code> 写的很幼稚， 但是还有有一点 <del>历史</del> 意义的。
+<b>constraint: 使用TDD开发</b>
 </p>
 
 <p>
-使用 <code>haskell</code> 写的 <code>pandoc</code> 就是文档转换界的一把金光闪闪的瑞士军刀。
+该环节要求每一行代码嵌入前，必须有相关失败的用例驱使，包括类的新建，方法的新建，逻辑的新建/更新等等。
 </p>
 
-<div class="org-src-container">
-
-<pre class="src src-bash">find . -name \*.md -type f -exec pandoc  -f markdown -t org -o {}.org {} \;
-</pre>
-</div>
+<p>
+这时基本上已经熟悉了整体功能，从用例开始写起也还算顺手。
+</p>
 
 <p>
-一行搞定, 然后手动加一些 <code>org-page</code> 需要的 <code>header</code> 就可以了。
+设计就是一个叫做Block的世界初始化，打印，加上一个叫做LifeScanner的神来决定每个细胞下一次的死活。
+</p>
+
+<p>
+结束的时候依然没写完。
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-2">
-<h2 id="orgheadline4">github pages</h2>
-<div class="outline-text-2" id="text-orgheadline4">
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5">session 3</h3>
+<div class="outline-text-3" id="text-orgheadline5">
 <p>
-原先就是使用 <code>jekyll</code> 托管在 <code>github page</code> 上， 现在只需要把 <code>master</code> 分支的文件替换成 <code>org-page</code> 生成的文件就可以了。
+<b>constraint: 不允许使用2维数据来保存细胞(类似使用2个List的同样不允许)</b>
 </p>
 
-<div class="org-src-container">
-
-<pre class="src src-bash">git checkout master
-find . -name \* | grep -v ".git" | xargs rm -rf
-git add . &amp;&amp; git commit -m “clear all"
-git checkout source
-</pre>
-</div>
-
 <p>
-然后在 <code>emacs</code> 里执行
+听到这个条件的时候大家第一次震惊了，80%的人都在用2维数组，逻辑的一大部分是在判断数组越界。
 </p>
-<div class="org-src-container">
-
-<pre class="src src-emacs-lisp">(op/do-publication t nil nil t)
-</pre>
-</div>
 
 <p>
-That's done.
+采用的改动方式是用List保存所有存活的细胞的位置,根据位置找到周围的8个邻居，看其是否存活即可。没有边界的问题，死活完全由自身状态+周边活的邻居个数决定。
+</p>
+
+<p>
+第一次写完了。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6">Lunch Break</h3>
+<div class="outline-text-3" id="text-orgheadline6">
+<p>
+<b>自由交流</b>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7">session 4</h3>
+<div class="outline-text-3" id="text-orgheadline7">
+<p>
+<b>constraint:
+java语言任何方法的代码行数不超过7,ruby、scala、js等语言代码行数不超过5</b>
+</p>
+
+<p>
+思路基本没变，只是不停的拆分具体的功能块。比如:
+</p>
+
+<ol class="org-ol">
+<li>地图的状态取决于每个细胞的状态</li>
+<li>每个细胞的状态取决于当前状态+活的邻居个数</li>
+<li>活的邻居个数取决于每个邻居+其状态</li>
+<li>邻居取决于自己位置</li>
+</ol>
+
+<p>
+好处就是代码更内聚更单纯。
+</p>
+
+<p>
+依然没做完。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8">session 5</h3>
+<div class="outline-text-3" id="text-orgheadline8">
+<p>
+<b>constraint: 不允许使用if，三目运算等任何形式的条件语句</b>
+</p>
+
+<p>
+参考思路:
+</p>
+
+<ol class="org-ol">
+<li>某些情况下，直接使用表达式的值。</li>
+<li>将状态和行为通过Map关联起来</li>
+<li>使用多态</li>
+</ol>
+
+<p>
+等等
+</p>
+
+<p>
+部分取巧的方式
+</p>
+
+<ol class="org-ol">
+<li>边界等异常的判断改用try-catch，丑但是Work</li>
+<li>if改用while，for等形式来表达，略赖皮。</li>
+</ol>
+
+<p>
+好处在于降低复杂度。个人觉得有时会增加一些代码本身的复杂性。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="orgheadline9">session 6</h3>
+<div class="outline-text-3" id="text-orgheadline9">
+<p>
+<b>constraint: 不允许使用循环</b>
+</p>
+
+<p>
+参考思路: <b>使用递归</b>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline10" class="outline-2">
+<h2 id="orgheadline10">收获</h2>
+<div class="outline-text-2" id="text-orgheadline10">
+<p>
+一整天的活动参加下来，很有乐趣。
+</p>
+
+<p>
+单纯coding all day本身也是一件乐事。
+</p>
+
+<p>
+认识了一些别的小伙伴。技术翻译，行政，开发，产品，各种风格的人都有出现。和各个不同风格，思想的人碰撞，交流的感触颇多。
+</p>
+
+<p>
+技术上的收获也有一些，具体还是有待实践中继续积累。
 </p>
 </div>
 </div>
@@ -94,19 +252,150 @@ That's done.
 </div>
 </div>]]></description>
       <pubDate>2016-02-03</pubDate>
-      <guid>http://blog.enzotech.in/blog/2016/01/11/用org-page尝试写点东西/</guid>
-    </item>
-    <item>
-      <title>Global Day Of Code Retreat</title>
-      <link>http://blog.enzotech.in/blog/2013/12/17/global-day-of-code-retreat/</link>
-      <description><![CDATA[]]></description>
-      <pubDate>2016-02-03</pubDate>
       <guid>http://blog.enzotech.in/blog/2013/12/17/global-day-of-code-retreat/</guid>
     </item>
     <item>
       <title>Rails 初探</title>
       <link>http://blog.enzotech.in/blog/2013/12/20/rails-初探/</link>
-      <description><![CDATA[]]></description>
+      <description><![CDATA[<div>
+<div class="post">
+<h1>Rails 初探</h1>
+<p>
+<b>首次系统的接触WEB+前端内容，好好学习一下，做一下问题的记录。</b>
+</p>
+
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4">依赖</h2>
+<div class="outline-text-2" id="text-orgheadline4">
+</div><div id="outline-container-orgheadline1" class="outline-3">
+<h3 id="orgheadline1">assetPipeLine</h3>
+<div class="outline-text-3" id="text-orgheadline1">
+<ul class="org-ul">
+<li>js，css等文件，同时依赖多次会存在问题。具体原因还没有搞清。js的依赖全部写在了application.js中，css的依赖一样。无须在html人工导入</li>
+<li>font文件的依赖，config/application.rb中添加如下代码:</li>
+</ul>
+
+<p>
+{% highlight js %} config.assets.paths &lt;&lt; Rails.root.join("app",
+"assets", "fonts") config.assets.precompile &lt;&lt; Proc.new { |path| if path
+=~ <i>.(eot|svg|ttf|woff)\z</i> true end } {% endhighlight %}
+</p>
+
+<p>
+scss中通过font-url使用即可。
+</p>
+
+<p>
+{% highlight js %} font-url('glyphicons-halflings-regular.eot');<br  />
+{% endhighlight %}
+</p>
+
+<ul class="org-ul">
+<li>coffeeScript与scss的语法首次接触，对js，css本身的了解也不够，上手起来很是痛苦</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="orgheadline2">View</h3>
+<div class="outline-text-3" id="text-orgheadline2">
+<p>
+*BootStrap*果然超级好用。暂时还没有什么研究，不过拷贝过来立刻可以见到成效，感觉很好。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3">Route</h3>
+<div class="outline-text-3" id="text-orgheadline3">
+<p>
+工程的路由规则完全由config/Route.rb中内容觉得。当前只是配置了映射关系，和struts的action配置感觉没什么区别。
+</p>
+
+<p>
+返回的信息类别可由调用时决定，比如welcome/index.json，即表明要获取json类型的数据。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-2">
+<h2 id="orgheadline5">AJAX</h2>
+<div class="outline-text-2" id="text-orgheadline5">
+<p>
+之所以拿出来单独说，是这个让我搞的的确很痛苦。
+</p>
+
+<p>
+当然可以直接使用js(jQuery)来从页面到回调什么的完全搞定，不过有违我学习Rails的初衷，就还是按部就班的按照Rails的help上一步步尝试，各种问题。
+</p>
+</div>
+
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6">TAG</h3>
+<div class="outline-text-3" id="text-orgheadline6">
+<p>
+在html.erb文件中，rails推荐的写法是使用helper提供的各种tag来进行描述。
+</p>
+
+<p>
+想要触发ajax请求很容易，只需要正确的用对tag就可以了。比如：
+</p>
+
+<pre class="example">
+&lt;%= form_tag("/welcome/test.json",:id =&gt; "viper", remote: true)  do%&gt;
+&lt;%= text_area_tag 'str', @res%&gt;
+&lt;%= submit_tag 'Save' %&gt;
+&lt;% end %&gt;
+</pre>
+
+<p>
+现在的发现是，各种输入，在rails中都有对应的tgp来使用。在手写input的情况下，表单提交会带入不了数据，暂时还不知道是为什么。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7">CoffeeScript</h3>
+<div class="outline-text-3" id="text-orgheadline7">
+<p>
+Ajax回调的触发如下，在controller对应的js.coffee文件内，写下
+</p>
+
+<pre class="example">
+$(document).ready -&gt;
+$("#viper").on "ajax:success", (e, data, status, xhr) -&gt;
+console.log($("#users").toArray());
+console.log(data);
+</pre>
+
+<p>
+类似的代码即可。我的悲剧在于html.erb文件的底部由于拷贝Bootstrap的模板还引用了JQuery，结果这个回调一直没有调通。在某次网不好的情况下，突然成功的打出了log。于是才发现是这个问题，删除之后就OK了。
+</p>
+
+<p>
+一共花费了大约4+个小时来调通ajax，其中大部分都是不了解吃的亏，好疼。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-2">
+<h2 id="orgheadline8"><span class="todo TODO">TODO</span> </h2>
+<div class="outline-text-2" id="text-orgheadline8">
+<ol class="org-ol">
+<li>将AJAX的机制再好好了解一下，用Ajax在Rails上做出一个完整的Game Of Life
+网页小动画处来。</li>
+<li>学习Bootstrap做一个漂亮的首页讨好一下老婆</li>
+<li>多了解Rails的convention，学习其中的精华，比如看到的remote:true的配置(Unobtrusive
+JavaScript)的理念，完全可以在日常中想办法借鉴一下使用的。</li>
+<li>业余多了解js，css等前端相关技术</li>
+</ol>
+</div>
+</div>
+
+</div>
+</div>]]></description>
       <pubDate>2016-02-03</pubDate>
       <guid>http://blog.enzotech.in/blog/2013/12/20/rails-初探/</guid>
     </item>
