@@ -14,7 +14,7 @@
 
 ** machine.lisp
 
-#+BEGIN_SRC lisp
+#+BEGIN_SRC common-lisp
     ;;; machine.lisp ---
     ;;
     ;; Filename: machine.lisp
@@ -24,9 +24,9 @@
     ;; Created: Thu Dec 11 14:39:16 2014 (+0800)
     ;; Version:
     ;; Package-Requires: ()
-    ;; Last-Updated: Wed Feb  3 15:23:35 2016 (+0800)
+    ;; Last-Updated: Wed Feb  3 19:03:37 2016 (+0800)
     ;;           By: Liu Enze
-    ;;     Update #: 54
+    ;;     Update #: 55
     ;; URL:
     ;; Doc URL:
     ;; Keywords:
@@ -394,7 +394,7 @@
 
 ** Usage
 
-#+BEGIN_SRC lisp
+#+BEGIN_SRC common-lisp
     (load "./machine.lisp")
 
     (defun expt-machine ()
