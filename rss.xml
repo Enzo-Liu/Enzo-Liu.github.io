@@ -4,10 +4,897 @@
     <title>enzo&#39;s note book</title>
     <link>http://blog.enzotech.in/</link>
     <description>M-x (sketch for random ideas)</description>
-    <pubDate>Wed, 03 Feb 2016 15:56:15 HKT</pubDate>
-    <lastBuildDate>Wed, 03 Feb 2016 15:56:15 HKT</lastBuildDate>
+    <pubDate>Mon, 08 Feb 2016 21:54:34 HKT</pubDate>
+    <lastBuildDate>Mon, 08 Feb 2016 21:54:34 HKT</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>2015新年总结</title>
+      <link>http://blog.enzotech.in/blog/2016/02/08/2015新年总结</link>
+      <description><![CDATA[2015 年度总结]]></description>
+      <pubDate>2016-02-08</pubDate>
+      <guid>http://blog.enzotech.in/blog/2016/02/08/2015新年总结</guid>
+    </item>
+    <item>
+      <title>sicp 第一章习题</title>
+      <link>http://blog.enzotech.in/blog/2014/11/30/sicp-第一章习题/</link>
+      <description><![CDATA[<div>
+<div class="post">
+<h1>sicp 第一章习题</h1>
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">习题</h2>
+<div class="outline-text-2" id="text-orgheadline1">
+<div class="org-src-container">
+
+<pre class="src src-common-lisp">;;; ch1.lisp ---
+;;
+;; Filename: ch1.lisp
+;; Description:
+;; Author: Liu Enze
+;; Maintainer:
+;; Created: Sat Nov 29 17:30:04 2014 (+0800)
+;; Version:
+;; Package-Requires: ()
+;; Last-Updated: Sat Feb  6 08:15:56 2016 (+0800)
+;;           By: Liu Enze
+;;     Update #: 37
+;; URL:
+;; Doc URL:
+;; Keywords:
+;; Compatibility:
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;; Commentary:
+;;  For all the exercises in SICP Charpter1 .
+;;  Using Common Lisp (SBCL v 1.2.2)
+;;  Based on SICP 2nd version
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;; Change Log:
+;;
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; This program is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or (at
+;; your option) any later version.
+;;
+;; This program is distributed in the hope that it will be useful, but
+;; WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+;; General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;; Code:
+
+;;Utility
+(defun id (x) x)
+
+;;Ex1
+
+10 ;;10
+(+ 5 3 4) ;;12
+(- 9 1) ;;8
+(/ 6 2) ;;3
+(+ (* 2 4) (- 4 6)) ;;6
+(defvar a 4) ;;a
+(defvar b (+ a 1)) ;;b
+(+ a b (* a b)) ;;29
+(= a b) ;;nil
+(if (and (&gt; b a) (&lt; b (* a b)))
+    b
+    a) ;;5
+(cond ((= a 4) 6)
+      ((= b 4) (+ 6 7 a))
+      (t 25)) ;;6
+(+ 2 (if (&gt; b a) b a)) ;;7
+(* (cond ((&gt; a b) a)
+         ((&lt; a b) b)
+         (t -1))
+   (+ a 1)) ;;25
+
+;;Ex2
+(/ (+ 5 4 (- 2 (- 3 (+ 6 (/ 4 5)))))
+   (* 3 (- 6 2) (- 2 7))) ;;-37/150
+
+;;Ex3
+(defun sum-of-largest-two (a b c)
+  (let ((min (min a b c)))
+    (- (+ a b c) min)))
+
+;;Ex4
+(defun a-plus-abs-b (a b)
+  "Return a plus b if b is positive, else return a minus b.
+So, according to b, choose the fit function between + and -, then apply this
+function to (a b). "
+  (funcall (if (&gt; b 0) #'+ #'-) a b))
+
+;;Ex5
+"1. 0 2. infinite loop"
+
+;;Ex6
+"Infinite loop. Since before calling new-if, all the params will be evaluted, so the sprt function will always be called.
+"
+
+;;Ex7
+(defun my-sqrt (n)
+  "don't work for 0..."
+  (labels ((good-enough (guess last)
+             (&lt; (/ (abs  (- guess last)) last) 0.000001))
+           (improve (guess)
+             (/ (+ guess (/ n guess)) 2))
+           (sqrt-iter (guess last)
+             (if (good-enough guess last)
+                 guess
+                 (sqrt-iter (improve guess) guess))))
+    (sqrt-iter 2 1)))
+
+;;Ex8
+(defun my-cube-root (n)
+  "don't work for 0..."
+  (labels ((good-enough (guess last)
+             (&lt; (/ (abs  (- guess last)) last) 0.000001))
+           (improve (guess)
+             (/ (+ (/ n (* guess guess )) (* 2 guess)) 3))
+           (cube-iter (guess last)
+             (if (good-enough guess last)
+                 guess
+                 (cube-iter (improve guess) guess))))
+    (cube-iter 2 1)))
+
+;;Ex9
+(defun my-+-1 (a b)
+  "recursive calculation. (+ 4 5) ==&gt; (1+ (+ 3 5)) ==&gt; (1+ (1+ (+ 2 5))) ..."
+  (if (= a 0)
+      b
+      (1+ (+ (1- a) b))))
+
+(defun my-+-2 (a b)
+  "iterate calculation. (+ 4 5) ==&gt; (+ 3 6) ==&gt; (+ 2 7) ..."
+  (if (= a 0)
+      b
+      (+ (1- a) (1+ b))))
+
+;;Ex10
+(defun A (x y)
+  (cond ((= y 0) 0)
+        ((= x 0 ) (* 2 y))
+        ((= y 1 ) 2)
+        (t (A (1- x) (A x (1- y))))))
+
+(A 1 10) ;; 1024
+(A 2 4) ;; 65536
+(A 3 3) ;; 65536
+
+(defun f (n) (A 0 n)) ; ==&gt; f(n)=2n
+(defun g (n) (A 1 n)) ; ==&gt; g(n)=2^n (n&gt;0);g(n)=0 (n=0); infinite loop (n&lt;0)
+(defun h (n) (A 2 n)) ; ==&gt; h(n)=2^(2^n) (n&gt;0);h(n)=0;infinite loop (n&lt;0)
+
+;;Ex11
+(defun f-r (n)
+  "recurise version of f"
+  (if (&lt; n 3)
+      n
+      (+ (f-r (- n 1)) (* 2 (f-r (- n 2))) (* 3 (f-r (- n 3))))))
+(defun f-i (n)
+  "iterate version of f"
+  (labels
+      ((func (a b c)
+         (+ a (* 2 b) (* 3 c)))
+       (f-iter (n a b c)
+         (if (= n 0)
+             (func a b c)
+             (f-iter (1- n) (func a b c) a b))))
+    (if (&lt; n 3)
+        n
+        (f-iter (- n 3) 2 1 0))))
+
+(dotimes (i 10) (format t "recu: ~d, iter: ~d~%" (f-r i) (f-i i)))
+
+;;Ex 12
+(defun tri (n m)
+  "calculate the yanghui triangle, the n column and the m row."
+  (cond ((= m 0) 1)
+        ((= (1- n) m) 1)
+        (t (+ (tri (1- n) (1- m)) (tri (1- n) m)))))
+(dotimes (i 7) (dotimes (j i) (format t "~d " (tri i j))) (format t "~%"))
+
+;;Ex13
+
+;;Ex16
+(defun my-exp (b n)
+  "calculate b^n.  In exp-iter , a is a state"
+  (labels ((exp-iter (a b n)
+             (cond ((= n 0) a)
+                   ((= (mod n 2) 0) (exp-iter a (* b b) (/ n 2)))
+                   (t (exp-iter (* a b) (* b b) (/ (1- n) 2))))))
+    (exp-iter 1 b n)))
+
+;;Ex17 Ex18
+(defun my-multi (b n)
+  "calculate b*n. "
+  (labels ((multi-iter (a b n)
+             (cond ((= n 0) a)
+                   ((= (mod n 2) 0) (multi-iter a (+ b b) (/ n 2)))
+                   (t (multi-iter (+ a b) (+ b b) (/ (1- n) 2))))))
+    (multi-iter 0 b n)))
+
+;;Ex19
+(defun my-fast-fib (n)
+  "T is (p q | q p+q) (a b) is (0 1), T^2 makes p1=p^2+q^2,q1=pq+q(p+q)"
+  (labels ((fib-iter (a b p q n)
+             (cond ((= n 0) a)
+                   ((evenp n) (fib-iter a b
+                                        (+ (* p p) (* q q))
+                                        (+ (* q q) (* 2 p q))
+                                        (/ n 2)))
+                   (t (fib-iter
+                       (+ (* a p) (* b q))
+                       (+ (* a q) (* b q) (* b p))
+                       p q
+                       (1- n) )))))
+    (fib-iter 0 1 0 1 n)))
+(dotimes (i 10) (print (my-fast-fib i)))
+
+;;Ex21
+(defun smallest-divisor (n)
+  (loop for i from 2 to n
+     when (= 0 (mod n i)) return i))
+
+(mapcar #'smallest-divisor '(199 1999 19999)) ; ==&gt; (199 1999 7)
+
+;;Ex22,23
+(defun next-odd (n) (if (evenp n ) (1+ n) (+ n 2)))
+(defun smallest-divisor-1 (n)
+  (do ((i 2 (next-odd i)))
+      ((= 0 (mod n i)) i)))
+(defun my-primep (n)
+  (if (= (smallest-divisor-1 n) n) t nil))
+(defun next-prime (n)
+  (do ((i n (next-odd i)))
+      ((my-primep i) i)))
+
+(defun smallest-primes (start num)
+  (do* ((sp (next-prime start) (next-prime (1+ sp)))
+        (i 1 (1+ i))
+        (res (list sp) (append res (list sp))))
+       ((= i num) res)))
+
+(time (smallest-primes 1000 3))
+(time (smallest-primes 10000 3))
+(time (smallest-primes 100000 3))
+
+;;Ex24-28
+;;...
+
+;;Ex29
+(defun simpson (fn n a b)
+  (let ((h (/ (- b a) n)))
+    (do* ((i 0 (1+ i))
+          (y (funcall fn (+ a (* i h))) (funcall fn (+ a (* i h))))
+          (sum y (+ sum (* y (cond ((= i n) 1)
+                                   ((evenp (- i n)) 2)
+                                   (t 4))))))
+         ((= i n) (/ (* h sum) 3)))))
+(defun my-cube (x) (* x x x))
+(simpson #'my-cube 100 0 1) ;; ==&gt; 1/4
+(simpson #'my-cube 10000 0 1) ;; ==&gt; 1/4
+
+;;Ex30
+(defun sum (term a next b)
+  "Original recusive version."
+  (if (&gt; a b)
+      0
+      (+ (funcall term a)
+         (sum term (funcall next a) next b))))
+(defun my-sum (term a next b)
+  "Iterate version."
+  (labels ((sum-iter (cur res)
+             (if (&gt; cur b)
+                 res
+                 (sum-iter (funcall next cur) (+ (funcall term cur) res)))))
+    (sum-iter a 0)))
+
+
+;;Ex31
+(defun my-product (term a next b)
+  "Iterate version."
+  (labels ((product-iter (cur res)
+             (if (&gt; cur b)
+                 res
+                 (product-iter (funcall next cur) (* (funcall term cur) res)))))
+    (product-iter a 1)))
+
+(defun my-product-1 (term a next b)
+  "Recursive version."
+  (if (&gt; a b)
+      1
+      (* (funcall term a)
+         (my-product-1 term (funcall next a) next b))))
+
+(defun factorial (n)
+  (my-product #'(lambda (x) x) 1 #'1+ n))
+
+(factorial 8);; ==&gt; 40320
+
+(defun square (x) (* x x))
+(defun cal-pi (n)
+  (* (/ 8 (* 2 (1+ n)))
+     (my-product #'(lambda (x) (square (/ (* 2 (1+ x)) (+ 1 (* 2 x)))))
+                 1
+                 #'1+
+                 n)))
+
+(float (cal-pi 1000)) ;; ==&gt; 3.1423774
+
+;;Ex32
+(defun accumulate (combiner base term a next b)
+  (labels ((iter (cur res)
+             (if (&gt; cur b)
+                 res
+                 (iter (funcall next cur)
+                       (funcall combiner res (funcall term cur))))))
+    (iter a base)))
+(defun a-sum (term a next b) (accumulate #'+ 0 term a next b))
+(defun a-product (term a next b) (accumulate #'* 1 term a next b))
+
+(a-product #'(lambda (x) x) 1 #'1+ 10 );; ==&gt;3628800
+
+;;Ex33
+(defun filter-accumulate (combiner filter base term a next b)
+  (labels ((iter (cur res)
+             (if (&gt; cur b)
+                 res
+                 (iter (funcall next cur)
+                       (if (funcall filter cur)
+                           (funcall combiner res (funcall term cur))
+                           res)))))
+    (iter a base)))
+(defun sum-prime (a b)
+  (filter-accumulate #'+ #'my-primep 0 #'id a #'1+ b)) ;; (sum-prime 2 5) ==&gt; 10
+(defun product-relatively-prime-less-than-n (n)
+  (filter-accumulate #'* #'(lambda (x) (= 1 (gcd x n))) 1 #'id 1 #'1+ n)) ;;(product-relatively-prime-less-than-n 5) ==&gt; 24
+
+;;Ex34
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; (ex34-f #'ex34-f)
+;; 2 fell through ETYPECAñSE expression.
+;; Wanted one of (SYMBOL FUNCTION).
+;;[Condition of type SB-KERNEL:CASE-FAILURE]
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defun ex34-f (g)
+  (funcall g 2))
+
+;;Ex35
+(defparameter *tolerance* 0.0000001)
+(defun fix-point (f guess)
+  (labels ((closep (v1 v2)
+             (&lt; (abs (-  v1 v2)) *tolerance*))
+           (try (guess)
+             (let ((next (funcall f guess)))
+               (if (closep next guess)
+                   next
+                   (try next)))))
+    (try guess)))
+(defun gold-radio-gen (x) (+ 1 (/ 1 x)))
+(fix-point #'gold-radio-gen 1)
+
+;;Ex36
+(defun fix-point-print (f guess)
+  (labels ((closep (v1 v2)
+             (&lt; (abs (-  v1 v2)) *tolerance*))
+           (try (guess)
+             (let ((next (funcall f guess)))
+               (print guess)
+               (if (closep next guess)
+                   next
+                   (try next)))))
+    (try guess)))
+
+;;Ex37-40 ...
+
+;;Ex41
+(defun my-double (f)
+  (lambda (x) (funcall f (funcall f x))))
+
+(funcall (funcall (my-double (my-double #'my-double)) #'1+) 5)
+
+;;Ex42
+(defun compose (f g)
+  (lambda (x) (funcall f (funcall g x))))
+
+(funcall (compose #'square #'1+) 6 ) ;;==&gt; 49
+
+;;Ex43
+(defun repeated (f n)
+  (if (= n 1)
+      f
+      (compose f (repeated f (1- n)))))
+
+(funcall (repeated #'square 2) 5) ;==&gt; 625
+
+;;Ex44
+(defparameter *dx* 0.0001)
+(defun smooth (f)
+  (lambda (x) (/ (+ (funcall f (+ x *dx*))
+               (funcall f (- x *dx*))
+               (funcall f x))
+            3)))
+
+(defun smooth-n (f n)
+  (funcall (repeated #'smooth n) f)
+
+;;Ex45-46...
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; ch1.lisp ends here
+</pre>
+</div>
+</div>
+</div>
+
+</div>
+</div>]]></description>
+      <pubDate>2016-02-08</pubDate>
+      <guid>http://blog.enzotech.in/blog/2014/11/30/sicp-第一章习题/</guid>
+    </item>
+    <item>
+      <title>Lisp 模拟 Assembler</title>
+      <link>http://blog.enzotech.in/blog/2014/12/25/lisp-模拟-assembler/</link>
+      <description><![CDATA[<div>
+<div class="post">
+<h1>Lisp 模拟 Assembler</h1>
+<p>
+通过Common Lisp，模拟assembler machine的运行。
+</p>
+
+<p>
+参考SICP charpter5.
+</p>
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">machine.lisp</h2>
+<div class="outline-text-2" id="text-orgheadline1">
+<div class="org-src-container">
+
+<pre class="src src-common-lisp">;;; machine.lisp ---
+;;
+;; Filename: machine.lisp
+;; Description:
+;; Author: Liu Enze
+;; Maintainer:
+;; Created: Thu Dec 11 14:39:16 2014 (+0800)
+;; Version:
+;; Package-Requires: ()
+;; Last-Updated: Wed Feb  3 19:03:37 2016 (+0800)
+;;           By: Liu Enze
+;;     Update #: 55
+;; URL:
+;; Doc URL:
+;; Keywords:
+;; Compatibility:
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;; Commentary:
+;;
+;;
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;; Change Log:
+;;
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; This program is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or (at
+;; your option) any later version.
+;;
+;; This program is distributed in the hope that it will be useful, but
+;; WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+;; General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;; Code:
+
+(defun make-machine (registers ops controller-text)
+  (let ((machine (make-new-machine)))
+    (mapcar #'(lambda (register-name)
+                (funcall
+                 (funcall machine 'allocate-register) register-name))
+            registers)
+    (funcall (funcall machine 'install-operations) ops)
+    (funcall (funcall machine 'install-instruction-sequence)
+             (e_assemble controller-text machine))
+    machine))
+
+(defun make-register (name)
+  (let ((contents '*unassigned*))
+    (lambda (message)
+      (cond ((eq message 'get) contents)
+            ((eq message 'set)
+             (lambda (value) (setf contents value)))
+            (t (error "~S :Unknown request -- REGISTER ~S" message name))))))
+
+(defun get-contents (register)
+  (funcall register 'get))
+
+(defun set-contents (register value)
+  (funcall (funcall register 'set) value))
+
+(defun make-stack ()
+  (let ((s '()))
+    (flet ((push-stack (x) (setf s (cons x s)))
+           (pop-stack ()
+             (if (null s)
+                 (error "Empty stack --- POP")
+                 (let ((top (car s)))
+                   (setf s (cdr s))
+                   top)))
+           (initialize () (setf s '()) 'done))
+      (lambda (message)
+        (cond ((eq message 'push) #'push-stack)
+              ((eq message 'pop) (pop-stack))
+              ((eq message 'initialize) (initialize))
+              (t (error "~S :Unknown request --STACK" message)))))))
+
+(defun pop-stack (stack)
+  (funcall stack 'pop))
+
+(defun push-stack (stack value)
+  (funcall  (funcall stack 'push) value))
+
+(defun instruction-execution-proc (inst)
+  (cdr inst))
+
+(defun make-new-machine ()
+  (let ((pc (make-register 'pc))
+        (flag (make-register 'flag))
+        (stack (make-stack))
+        (the-instruction-sequence '()))
+    (let ((the-ops
+           (list (list 'initialize-stack
+                       (lambda () (funcall stack 'initialize)))))
+          (register-table
+           (list (cons 'pc pc) (cons 'flag flag))))
+      (labels ((allocate-register (name)
+                 (if (assoc name register-table)
+                     (error "Multiply defined register: ~S" name)
+                     (setf register-table
+                           (cons (cons name (make-register name))
+                                 register-table)))
+                 'register-allocated)
+               (lookup-register (name)
+                 (let ((val (assoc name register-table)))
+                   (if val (cdr val) (error "Unknown register: ~S~%~S"
+                                            name
+                                            register-table))))
+               (execute ()
+                 (let ((insts (get-contents pc)))
+                   (if (null insts)
+                       'done
+                       (progn
+                         (funcall (instruction-execution-proc (car insts)))
+                         (execute))))))
+        (lambda (message)
+          (cond
+            ((eq message 'instructions) the-instruction-sequence)
+            ((eq message 'start)
+             (set-contents pc the-instruction-sequence)
+             (execute))
+            ((eq message 'install-instruction-sequence)
+             (lambda (seq) (setf the-instruction-sequence seq)))
+            ((eq message 'allocate-register) #'allocate-register)
+            ((eq message 'get-register) #'lookup-register)
+            ((eq message 'install-operations)
+             (lambda (ops) (setf the-ops (append the-ops ops))))
+            ((eq message 'stack) stack)
+            ((eq message 'operations) the-ops)
+            (t (error "Unknown request -- MACHINE: ~S" message))))))))
+
+(defun start (machine)
+  (funcall machine 'start))
+
+(defun get-register (machine register-name)
+  (funcall (funcall machine 'get-register) register-name))
+
+(defun get-register-contents (machine register-name)
+  (get-contents (get-register machine register-name)))
+
+(defun set-register-contents (machine register-name value)
+  (set-contents (get-register machine register-name) value)
+  'done)
+
+(defun install-instruction (machine instructions)
+  (funcall (funcall machine 'install-instruction-sequence) instructions))
+
+(defun e_assemble (controller-text machine)
+  (extract-labels controller-text
+                  (lambda (insts labels)
+                    (update-insts! insts labels machine))))
+
+(defun extract-labels (text receive)
+  (if (null text)
+      (funcall receive '() '())
+      (extract-labels (cdr text)
+                      (lambda (insts labels)
+                        (let ((next-inst (car text)))
+                          (if (symbolp next-inst)
+                              (funcall receive insts
+                                       (cons (make-label-entry
+                                              next-inst
+                                              insts)
+                                             labels))
+                              (funcall receive (cons
+                                                (make-instruction
+                                                 next-inst)
+                                                insts)
+                                       labels)))))))
+
+(defun update-insts! (insts labels machine)
+  (let ((pc (get-register machine 'pc))
+        (flag (get-register machine 'flag))
+        (stack (funcall machine 'stack))
+        (ops (funcall machine 'operations)))
+    (loop for inst in insts collect (set-instruction-execution-proc!
+                                     inst
+                                     (make-execution-procedure
+                                      (instruction-text inst) labels machine
+                                      pc flag stack ops)))))
+
+(defun make-instruction (text)
+  (cons text '()))
+
+(defun instruction-text (inst)
+  (car inst))
+
+(defun set-instruction-execution-proc! (inst proc)
+  (setf (cdr inst) proc)
+  inst)
+
+(defun make-label-entry (label-name insts)
+  (cons label-name insts))
+
+(defun lookup-label (all-labels label-name)
+  (let ((val (assoc label-name all-labels)))
+    (if val
+        (cdr val)
+        (error "Undefined label -- ASSEMBLE: ~S" label-name))))
+
+(defun make-execution-procedure (inst labels machine
+                                 pc flag stacks ops)
+  (cond ((eq (car inst) 'assign)
+         (make-assign inst machine labels ops pc))
+        ((eq (car inst) 'test)
+         (make-test inst machine labels ops flag pc))
+        ((eq (car inst) 'branch)
+         (make-branch inst machine labels flag pc))
+        ((eq (car inst) 'goto)
+         (make-goto inst machine labels pc))
+        ((eq (car inst) 'save)
+         (make-save inst machine stacks pc))
+        ((eq (car inst) 'restore)
+         (make-restore inst machine stacks pc))
+        ((eq (car inst) 'perform)
+         (make-perform inst machine labels ops pc))
+        (t (error "Unknown instruction type -- ASSEMBLE : ~S" inst))))
+
+(defun make-assign (inst machine labels operations pc)
+  (let ((target (get-register machine (assign-reg-name inst)))
+        (value-exp (assign-value-exp inst)))
+    (let ((value-proc
+           (if (operation-exp value-exp)
+               (make-operation-exp
+                value-exp machine labels operations)
+               (make-primitive-exp
+                (car value-exp) machine labels))))
+      (lambda ()
+        (set-contents target (funcall value-proc))
+        (advance-pc pc)))))
+
+(defun assign-reg-name (assign-instruction)
+  (cadr assign-instruction))
+
+(defun assign-value-exp (assign-instruction)
+  (cddr assign-instruction))
+
+(defun advance-pc (pc)
+  (set-contents pc (cdr (get-contents pc))))
+
+(defun make-test (inst machine labels operations flag pc)
+  (let ((condition (test-condition inst)))
+    (if (operation-exp condition)
+        (let ((condition-proc
+               (make-operation-exp
+                condition machine labels operations)))
+          (lambda ()
+            (set-contents flag (funcall condition-proc))
+            (advance-pc pc)))
+        (error "Bad Test instruction -- ASSEMBLE: ~S" inst))))
+
+(defun test-condition (test-instruction)
+  (cdr test-instruction))
+
+(defun make-branch (inst machine labels flag pc)
+  (let ((dest (branch-dest inst)))
+    (if (label-exp dest)
+        (let ((insts (lookup-label labels (label-exp-label dest))))
+          (lambda ()
+            (if (get-contents flag)
+                (set-contents pc insts)
+                (advance-pc pc))))
+        (error "Bad Branch instruction --ASSEMBLE: ~S" inst))))
+
+(defun branch-dest (branch-instruction)
+  (cadr branch-instruction))
+
+(defun make-goto (inst machine labels pc)
+  (let ((dest (goto-dest inst)))
+    (cond ((label-exp dest)
+           (let ((insts (lookup-label labels
+                                      (label-exp-label dest))))
+             (lambda ()
+               (set-contents pc insts))))
+          ((register-exp dest)
+           (let ((reg
+                  (get-register machine (register-exp-reg dest))))
+             (lambda () (set-contents pc (get-contents reg)))))
+          (t (error "BAD GOTO instruction -- ASSEMBLE : ~S" inst)))))
+
+(defun goto-dest (goto-instruction)
+  (cadr goto-instruction))
+
+(defun make-save (inst machine stack pc)
+  (let ((reg (get-register machine
+                           (stack-inst-reg-name inst))))
+    (lambda ()
+      (push-stack stack (get-contents reg))
+      (advance-pc pc))))
+
+(defun make-restore (inst machine stack pc)
+  (let ((reg (get-register machine
+                           (stack-inst-reg-name inst))))
+    (lambda ()
+      (set-contents reg (pop-stack stack))
+      (advance-pc pc))))
+
+(defun stack-inst-reg-name (stack-instruction)
+  (cadr stack-instruction))
+
+(defun make-perform (inst machine labels operations pc)
+  (let ((action (perform-action inst)))
+    (if (operation-exp action)
+        (let ((action-proc (make-operation-exp
+                            action machine labels operations)))
+          (lambda ()
+            (funcall action-proc)
+            (advance-pc pc))
+          )
+        (error "Bad PERFORM instruction -- ASSEMBLE: ~S" inst))))
+
+(defun perform-action (inst) (cdr inst))
+
+(defun make-primitive-exp (exp machine labels)
+  (cond ((constant-exp exp)
+         (let ((c (constant-exp-value exp)))
+           (lambda () c)))
+        ((label-exp exp)
+         (let ((insts (lookup-label labels
+                                    (label-exp-label exp))))
+           (lambda () insts)))
+        ((register-exp exp)
+         (let ((r (get-register machine (register-exp-reg exp))))
+           (lambda () (get-contents r))))
+        (t (error "Unknown expression type -- ASSEMBLE: ~S" exp))))
+
+(defun register-exp (exp) (tagged-list exp 'reg))
+
+(defun tagged-list (exp prefix)
+  (eq (car exp) prefix))
+
+(defun register-exp-reg (exp) (cadr exp))
+
+(defun constant-exp (exp) (tagged-list exp 'const))
+
+(defun constant-exp-value (exp) (cadr exp))
+
+(defun label-exp (exp) (tagged-list exp 'label))
+
+(defun label-exp-label (exp) (cadr exp))
+
+(defun make-operation-exp (exp machine labels operations)
+  (let ((op (lookup-prim (operation-exp-op exp) operations))
+        (aprocs (mapcar (lambda (e) (make-primitive-exp e machine labels))
+                        (operation-exp-operands exp))))
+    (lambda () (apply op (mapcar (lambda (p) (funcall p)) aprocs)))))
+
+(defun operation-exp (exp)
+  (and (consp exp) (tagged-list (car exp) 'op)))
+
+(defun operation-exp-op (operation-exp)
+  (cadr (car operation-exp)))
+
+(defun operation-exp-operands (operation-exp)
+  (cdr operation-exp))
+
+(defun lookup-prim (symbol operations)
+  (let ((val (assoc symbol operations)))
+    (if val
+        (cadr val)
+        (error "Unknown operation -- ASSEMBLE: ~S" symbol))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; machine.lisp ends here
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2">Usage</h2>
+<div class="outline-text-2" id="text-orgheadline2">
+<div class="org-src-container">
+
+<pre class="src src-common-lisp">(load "./machine.lisp")
+
+(defun expt-machine ()
+  (make-machine
+   '(b n val continue)
+   `((= ,#'=) (- ,#'-) (* ,#'*))
+   '(controller
+     (assign continue (label done))
+     expt-loop
+     (test (op =) (reg n) (const 0))
+     (branch (label answer))
+     (save continue)
+     (assign continue (label after-expt-n-1))
+     (save n)
+     (assign n (op -) (reg n) (const 1))
+     (goto (label expt-loop))
+     after-expt-n-1
+     (restore n)
+     (restore continue)
+     (assign val (op *) (reg val) (reg b))
+     (goto (reg continue))
+     answer
+     (assign val (const 1))
+     (goto (reg continue))
+     done)))
+
+(defparameter *m* (expt-machine))
+
+(set-register-contents *m* 'b 2)
+;;DONE
+(set-register-contents *m* 'n 2)
+;;DONE
+(start *m*)
+;;DONE
+(get-register-contents *m* 'val)
+;;4
+</pre>
+</div>
+</div>
+</div>
+
+</div>
+</div>]]></description>
+      <pubDate>2016-02-08</pubDate>
+      <guid>http://blog.enzotech.in/blog/2014/12/25/lisp-模拟-assembler/</guid>
+    </item>
     <item>
       <title>用org-page尝试写点东西</title>
       <link>http://blog.enzotech.in/blog/2016/01/11/用org-page尝试写点东西/</link>
@@ -1368,880 +2255,6 @@ Lisp的代码的表示形式，S表达式本身就是Lisp可以方便操作的�
       <guid>http://blog.enzotech.in/blog/2014/11/05/common-lisp-分享笔记/</guid>
     </item>
     <item>
-      <title>sicp 第一章习题</title>
-      <link>http://blog.enzotech.in/blog/2014/11/30/sicp-第一章习题/</link>
-      <description><![CDATA[<div>
-<div class="post">
-<h1>sicp 第一章习题</h1>
-<div class="org-src-container">
-
-<pre class="src src-lisp">;;; ch1.lisp ---
-;;
-;; Filename: ch1.lisp
-;; Description:
-;; Author: Liu Enze
-;; Maintainer:
-;; Created: Sat Nov 29 17:30:04 2014 (+0800)
-;; Version:
-;; Package-Requires: ()
-;; Last-Updated: Wed Feb  3 15:23:10 2016 (+0800)
-;;           By: Liu Enze
-;;     Update #: 30
-;; URL:
-;; Doc URL:
-;; Keywords:
-;; Compatibility:
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;; Commentary:
-;;  For all the exercises in SICP Charpter1 .
-;;  Using Common Lisp (SBCL v 1.2.2)
-;;  Based on SICP 2nd version
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;; Change Log:
-;;
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;; This program is free software: you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation, either version 3 of the License, or (at
-;; your option) any later version.
-;;
-;; This program is distributed in the hope that it will be useful, but
-;; WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-;; General Public License for more details.
-;;
-;; You should have received a copy of the GNU General Public License
-;; along with GNU Emacs.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;; Code:
-
-;;Utility
-(defun id (x) x)
-
-;;Ex1
-
-10 ;;10
-(+ 5 3 4) ;;12
-(- 9 1) ;;8
-(/ 6 2) ;;3
-(+ (* 2 4) (- 4 6)) ;;6
-(defvar a 4) ;;a
-(defvar b (+ a 1)) ;;b
-(+ a b (* a b)) ;;29
-(= a b) ;;nil
-(if (and (&gt; b a) (&lt; b (* a b)))
-    b
-    a) ;;5
-(cond ((= a 4) 6)
-      ((= b 4) (+ 6 7 a))
-      (t 25)) ;;6
-(+ 2 (if (&gt; b a) b a)) ;;7
-(* (cond ((&gt; a b) a)
-         ((&lt; a b) b)
-         (t -1))
-   (+ a 1)) ;;25
-
-;;Ex2
-(/ (+ 5 4 (- 2 (- 3 (+ 6 (/ 4 5)))))
-   (* 3 (- 6 2) (- 2 7))) ;;-37/150
-
-;;Ex3
-(defun sum-of-largest-two (a b c)
-  (let ((min (min a b c)))
-    (- (+ a b c) min)))
-
-;;Ex4
-(defun a-plus-abs-b (a b)
-  "Return a plus b if b is positive, else return a minus b.
-So, according to b, choose the fit function between + and -, then apply this
-function to (a b). "
-  (funcall (if (&gt; b 0) #'+ #'-) a b))
-
-;;Ex5
-"1. 0 2. infinite loop"
-
-;;Ex6
-"Infinite loop. Since before calling new-if, all the params will be evaluted, so the sprt function will always be called.
-"
-
-;;Ex7
-(defun my-sqrt (n)
-  "don't work for 0..."
-  (labels ((good-enough (guess last)
-             (&lt; (/ (abs  (- guess last)) last) 0.000001))
-           (improve (guess)
-             (/ (+ guess (/ n guess)) 2))
-           (sqrt-iter (guess last)
-             (if (good-enough guess last)
-                 guess
-                 (sqrt-iter (improve guess) guess))))
-    (sqrt-iter 2 1)))
-
-;;Ex8
-(defun my-cube-root (n)
-  "don't work for 0..."
-  (labels ((good-enough (guess last)
-             (&lt; (/ (abs  (- guess last)) last) 0.000001))
-           (improve (guess)
-             (/ (+ (/ n (* guess guess )) (* 2 guess)) 3))
-           (cube-iter (guess last)
-             (if (good-enough guess last)
-                 guess
-                 (cube-iter (improve guess) guess))))
-    (cube-iter 2 1)))
-
-;;Ex9
-(defun my-+-1 (a b)
-  "recursive calculation. (+ 4 5) ==&gt; (1+ (+ 3 5)) ==&gt; (1+ (1+ (+ 2 5))) ..."
-  (if (= a 0)
-      b
-      (1+ (+ (1- a) b))))
-
-(defun my-+-2 (a b)
-  "iterate calculation. (+ 4 5) ==&gt; (+ 3 6) ==&gt; (+ 2 7) ..."
-  (if (= a 0)
-      b
-      (+ (1- a) (1+ b))))
-
-;;Ex10
-(defun A (x y)
-  (cond ((= y 0) 0)
-        ((= x 0 ) (* 2 y))
-        ((= y 1 ) 2)
-        (t (A (1- x) (A x (1- y))))))
-
-(A 1 10) ;; 1024
-(A 2 4) ;; 65536
-(A 3 3) ;; 65536
-
-(defun f (n) (A 0 n)) ; ==&gt; f(n)=2n
-(defun g (n) (A 1 n)) ; ==&gt; g(n)=2^n (n&gt;0);g(n)=0 (n=0); infinite loop (n&lt;0)
-(defun h (n) (A 2 n)) ; ==&gt; h(n)=2^(2^n) (n&gt;0);h(n)=0;infinite loop (n&lt;0)
-
-;;Ex11
-(defun f-r (n)
-  "recurise version of f"
-  (if (&lt; n 3)
-      n
-      (+ (f-r (- n 1)) (* 2 (f-r (- n 2))) (* 3 (f-r (- n 3))))))
-(defun f-i (n)
-  "iterate version of f"
-  (labels
-      ((func (a b c)
-         (+ a (* 2 b) (* 3 c)))
-       (f-iter (n a b c)
-         (if (= n 0)
-             (func a b c)
-             (f-iter (1- n) (func a b c) a b))))
-    (if (&lt; n 3)
-        n
-        (f-iter (- n 3) 2 1 0))))
-
-(dotimes (i 10) (format t "recu: ~d, iter: ~d~%" (f-r i) (f-i i)))
-
-;;Ex 12
-(defun tri (n m)
-  "calculate the yanghui triangle, the n column and the m row."
-  (cond ((= m 0) 1)
-        ((= (1- n) m) 1)
-        (t (+ (tri (1- n) (1- m)) (tri (1- n) m)))))
-(dotimes (i 7) (dotimes (j i) (format t "~d " (tri i j))) (format t "~%"))
-
-;;Ex13
-
-;;Ex16
-(defun my-exp (b n)
-  "calculate b^n.  In exp-iter , a is a state"
-  (labels ((exp-iter (a b n)
-             (cond ((= n 0) a)
-                   ((= (mod n 2) 0) (exp-iter a (* b b) (/ n 2)))
-                   (t (exp-iter (* a b) (* b b) (/ (1- n) 2))))))
-    (exp-iter 1 b n)))
-
-;;Ex17 Ex18
-(defun my-multi (b n)
-  "calculate b*n. "
-  (labels ((multi-iter (a b n)
-             (cond ((= n 0) a)
-                   ((= (mod n 2) 0) (multi-iter a (+ b b) (/ n 2)))
-                   (t (multi-iter (+ a b) (+ b b) (/ (1- n) 2))))))
-    (multi-iter 0 b n)))
-
-;;Ex19
-(defun my-fast-fib (n)
-  "T is (p q | q p+q) (a b) is (0 1), T^2 makes p1=p^2+q^2,q1=pq+q(p+q)"
-  (labels ((fib-iter (a b p q n)
-             (cond ((= n 0) a)
-                   ((evenp n) (fib-iter a b
-                                        (+ (* p p) (* q q))
-                                        (+ (* q q) (* 2 p q))
-                                        (/ n 2)))
-                   (t (fib-iter
-                       (+ (* a p) (* b q))
-                       (+ (* a q) (* b q) (* b p))
-                       p q
-                       (1- n) )))))
-    (fib-iter 0 1 0 1 n)))
-(dotimes (i 10) (print (my-fast-fib i)))
-
-;;Ex21
-(defun smallest-divisor (n)
-  (loop for i from 2 to n
-     when (= 0 (mod n i)) return i))
-
-(mapcar #'smallest-divisor '(199 1999 19999)) ; ==&gt; (199 1999 7)
-
-;;Ex22,23
-(defun next-odd (n) (if (evenp n ) (1+ n) (+ n 2)))
-(defun smallest-divisor-1 (n)
-  (do ((i 2 (next-odd i)))
-      ((= 0 (mod n i)) i)))
-(defun my-primep (n)
-  (if (= (smallest-divisor-1 n) n) t nil))
-(defun next-prime (n)
-  (do ((i n (next-odd i)))
-      ((my-primep i) i)))
-
-(defun smallest-primes (start num)
-  (do* ((sp (next-prime start) (next-prime (1+ sp)))
-        (i 1 (1+ i))
-        (res (list sp) (append res (list sp))))
-       ((= i num) res)))
-
-(time (smallest-primes 1000 3))
-(time (smallest-primes 10000 3))
-(time (smallest-primes 100000 3))
-
-;;Ex24-28
-;;...
-
-;;Ex29
-(defun simpson (fn n a b)
-  (let ((h (/ (- b a) n)))
-    (do* ((i 0 (1+ i))
-          (y (funcall fn (+ a (* i h))) (funcall fn (+ a (* i h))))
-          (sum y (+ sum (* y (cond ((= i n) 1)
-                                   ((evenp (- i n)) 2)
-                                   (t 4))))))
-         ((= i n) (/ (* h sum) 3)))))
-(defun my-cube (x) (* x x x))
-(simpson #'my-cube 100 0 1) ;; ==&gt; 1/4
-(simpson #'my-cube 10000 0 1) ;; ==&gt; 1/4
-
-;;Ex30
-(defun sum (term a next b)
-  "Original recusive version."
-  (if (&gt; a b)
-      0
-      (+ (funcall term a)
-         (sum term (funcall next a) next b))))
-(defun my-sum (term a next b)
-  "Iterate version."
-  (labels ((sum-iter (cur res)
-             (if (&gt; cur b)
-                 res
-                 (sum-iter (funcall next cur) (+ (funcall term cur) res)))))
-    (sum-iter a 0)))
-
-
-;;Ex31
-(defun my-product (term a next b)
-  "Iterate version."
-  (labels ((product-iter (cur res)
-             (if (&gt; cur b)
-                 res
-                 (product-iter (funcall next cur) (* (funcall term cur) res)))))
-    (product-iter a 1)))
-
-(defun my-product-1 (term a next b)
-  "Recursive version."
-  (if (&gt; a b)
-      1
-      (* (funcall term a)
-         (my-product-1 term (funcall next a) next b))))
-
-(defun factorial (n)
-  (my-product #'(lambda (x) x) 1 #'1+ n))
-
-(factorial 8);; ==&gt; 40320
-
-(defun square (x) (* x x))
-(defun cal-pi (n)
-  (* (/ 8 (* 2 (1+ n)))
-     (my-product #'(lambda (x) (square (/ (* 2 (1+ x)) (+ 1 (* 2 x)))))
-                 1
-                 #'1+
-                 n)))
-
-(float (cal-pi 1000)) ;; ==&gt; 3.1423774
-
-;;Ex32
-(defun accumulate (combiner base term a next b)
-  (labels ((iter (cur res)
-             (if (&gt; cur b)
-                 res
-                 (iter (funcall next cur)
-                       (funcall combiner res (funcall term cur))))))
-    (iter a base)))
-(defun a-sum (term a next b) (accumulate #'+ 0 term a next b))
-(defun a-product (term a next b) (accumulate #'* 1 term a next b))
-
-(a-product #'(lambda (x) x) 1 #'1+ 10 );; ==&gt;3628800
-
-;;Ex33
-(defun filter-accumulate (combiner filter base term a next b)
-  (labels ((iter (cur res)
-             (if (&gt; cur b)
-                 res
-                 (iter (funcall next cur)
-                       (if (funcall filter cur)
-                           (funcall combiner res (funcall term cur))
-                           res)))))
-    (iter a base)))
-(defun sum-prime (a b)
-  (filter-accumulate #'+ #'my-primep 0 #'id a #'1+ b)) ;; (sum-prime 2 5) ==&gt; 10
-(defun product-relatively-prime-less-than-n (n)
-  (filter-accumulate #'* #'(lambda (x) (= 1 (gcd x n))) 1 #'id 1 #'1+ n)) ;;(product-relatively-prime-less-than-n 5) ==&gt; 24
-
-;;Ex34
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; (ex34-f #'ex34-f)
-;; 2 fell through ETYPECAñSE expression.
-;; Wanted one of (SYMBOL FUNCTION).
-;;[Condition of type SB-KERNEL:CASE-FAILURE]
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defun ex34-f (g)
-  (funcall g 2))
-
-;;Ex35
-(defparameter *tolerance* 0.0000001)
-(defun fix-point (f guess)
-  (labels ((closep (v1 v2)
-             (&lt; (abs (-  v1 v2)) *tolerance*))
-           (try (guess)
-             (let ((next (funcall f guess)))
-               (if (closep next guess)
-                   next
-                   (try next)))))
-    (try guess)))
-(defun gold-radio-gen (x) (+ 1 (/ 1 x)))
-(fix-point #'gold-radio-gen 1)
-
-;;Ex36
-(defun fix-point-print (f guess)
-  (labels ((closep (v1 v2)
-             (&lt; (abs (-  v1 v2)) *tolerance*))
-           (try (guess)
-             (let ((next (funcall f guess)))
-               (print guess)
-               (if (closep next guess)
-                   next
-                   (try next)))))
-    (try guess)))
-
-;;Ex37-40 ...
-
-;;Ex41
-(defun my-double (f)
-  (lambda (x) (funcall f (funcall f x))))
-
-(funcall (funcall (my-double (my-double #'my-double)) #'1+) 5)
-
-;;Ex42
-(defun compose (f g)
-  (lambda (x) (funcall f (funcall g x))))
-
-(funcall (compose #'square #'1+) 6 ) ;;==&gt; 49
-
-;;Ex43
-(defun repeated (f n)
-  (if (= n 1)
-      f
-      (compose f (repeated f (1- n)))))
-
-(funcall (repeated #'square 2) 5) ;==&gt; 625
-
-;;Ex44
-(defparameter *dx* 0.0001)
-(defun smooth (f)
-  (lambda (x) (/ (+ (funcall f (+ x *dx*))
-               (funcall f (- x *dx*))
-               (funcall f x))
-            3)))
-
-(defun smooth-n (f n)
-  (funcall (repeated #'smooth n) f)
-
-;;Ex45-46...
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; ch1.lisp ends here
-</pre>
-</div>
-
-</div>
-</div>]]></description>
-      <pubDate>2016-02-03</pubDate>
-      <guid>http://blog.enzotech.in/blog/2014/11/30/sicp-第一章习题/</guid>
-    </item>
-    <item>
-      <title>Lisp 模拟 Assembler</title>
-      <link>http://blog.enzotech.in/blog/2014/12/25/lisp-模拟-assembler/</link>
-      <description><![CDATA[<div>
-<div class="post">
-<h1>Lisp 模拟 Assembler</h1>
-<p>
-通过Common Lisp，模拟assembler machine的运行。
-</p>
-
-<p>
-参考SICP charpter5.
-</p>
-
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1">machine.lisp</h2>
-<div class="outline-text-2" id="text-orgheadline1">
-<div class="org-src-container">
-
-<pre class="src src-lisp">;;; machine.lisp ---
-;;
-;; Filename: machine.lisp
-;; Description:
-;; Author: Liu Enze
-;; Maintainer:
-;; Created: Thu Dec 11 14:39:16 2014 (+0800)
-;; Version:
-;; Package-Requires: ()
-;; Last-Updated: Wed Feb  3 15:23:35 2016 (+0800)
-;;           By: Liu Enze
-;;     Update #: 54
-;; URL:
-;; Doc URL:
-;; Keywords:
-;; Compatibility:
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;; Commentary:
-;;
-;;
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;; Change Log:
-;;
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;; This program is free software: you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation, either version 3 of the License, or (at
-;; your option) any later version.
-;;
-;; This program is distributed in the hope that it will be useful, but
-;; WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-;; General Public License for more details.
-;;
-;; You should have received a copy of the GNU General Public License
-;; along with GNU Emacs.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;; Code:
-
-(defun make-machine (registers ops controller-text)
-  (let ((machine (make-new-machine)))
-    (mapcar #'(lambda (register-name)
-                (funcall
-                 (funcall machine 'allocate-register) register-name))
-            registers)
-    (funcall (funcall machine 'install-operations) ops)
-    (funcall (funcall machine 'install-instruction-sequence)
-             (e_assemble controller-text machine))
-    machine))
-
-(defun make-register (name)
-  (let ((contents '*unassigned*))
-    (lambda (message)
-      (cond ((eq message 'get) contents)
-            ((eq message 'set)
-             (lambda (value) (setf contents value)))
-            (t (error "~S :Unknown request -- REGISTER ~S" message name))))))
-
-(defun get-contents (register)
-  (funcall register 'get))
-
-(defun set-contents (register value)
-  (funcall (funcall register 'set) value))
-
-(defun make-stack ()
-  (let ((s '()))
-    (flet ((push-stack (x) (setf s (cons x s)))
-           (pop-stack ()
-             (if (null s)
-                 (error "Empty stack --- POP")
-                 (let ((top (car s)))
-                   (setf s (cdr s))
-                   top)))
-           (initialize () (setf s '()) 'done))
-      (lambda (message)
-        (cond ((eq message 'push) #'push-stack)
-              ((eq message 'pop) (pop-stack))
-              ((eq message 'initialize) (initialize))
-              (t (error "~S :Unknown request --STACK" message)))))))
-
-(defun pop-stack (stack)
-  (funcall stack 'pop))
-
-(defun push-stack (stack value)
-  (funcall  (funcall stack 'push) value))
-
-(defun instruction-execution-proc (inst)
-  (cdr inst))
-
-(defun make-new-machine ()
-  (let ((pc (make-register 'pc))
-        (flag (make-register 'flag))
-        (stack (make-stack))
-        (the-instruction-sequence '()))
-    (let ((the-ops
-           (list (list 'initialize-stack
-                       (lambda () (funcall stack 'initialize)))))
-          (register-table
-           (list (cons 'pc pc) (cons 'flag flag))))
-      (labels ((allocate-register (name)
-                 (if (assoc name register-table)
-                     (error "Multiply defined register: ~S" name)
-                     (setf register-table
-                           (cons (cons name (make-register name))
-                                 register-table)))
-                 'register-allocated)
-               (lookup-register (name)
-                 (let ((val (assoc name register-table)))
-                   (if val (cdr val) (error "Unknown register: ~S~%~S"
-                                            name
-                                            register-table))))
-               (execute ()
-                 (let ((insts (get-contents pc)))
-                   (if (null insts)
-                       'done
-                       (progn
-                         (funcall (instruction-execution-proc (car insts)))
-                         (execute))))))
-        (lambda (message)
-          (cond
-            ((eq message 'instructions) the-instruction-sequence)
-            ((eq message 'start)
-             (set-contents pc the-instruction-sequence)
-             (execute))
-            ((eq message 'install-instruction-sequence)
-             (lambda (seq) (setf the-instruction-sequence seq)))
-            ((eq message 'allocate-register) #'allocate-register)
-            ((eq message 'get-register) #'lookup-register)
-            ((eq message 'install-operations)
-             (lambda (ops) (setf the-ops (append the-ops ops))))
-            ((eq message 'stack) stack)
-            ((eq message 'operations) the-ops)
-            (t (error "Unknown request -- MACHINE: ~S" message))))))))
-
-(defun start (machine)
-  (funcall machine 'start))
-
-(defun get-register (machine register-name)
-  (funcall (funcall machine 'get-register) register-name))
-
-(defun get-register-contents (machine register-name)
-  (get-contents (get-register machine register-name)))
-
-(defun set-register-contents (machine register-name value)
-  (set-contents (get-register machine register-name) value)
-  'done)
-
-(defun install-instruction (machine instructions)
-  (funcall (funcall machine 'install-instruction-sequence) instructions))
-
-(defun e_assemble (controller-text machine)
-  (extract-labels controller-text
-                  (lambda (insts labels)
-                    (update-insts! insts labels machine))))
-
-(defun extract-labels (text receive)
-  (if (null text)
-      (funcall receive '() '())
-      (extract-labels (cdr text)
-                      (lambda (insts labels)
-                        (let ((next-inst (car text)))
-                          (if (symbolp next-inst)
-                              (funcall receive insts
-                                       (cons (make-label-entry
-                                              next-inst
-                                              insts)
-                                             labels))
-                              (funcall receive (cons
-                                                (make-instruction
-                                                 next-inst)
-                                                insts)
-                                       labels)))))))
-
-(defun update-insts! (insts labels machine)
-  (let ((pc (get-register machine 'pc))
-        (flag (get-register machine 'flag))
-        (stack (funcall machine 'stack))
-        (ops (funcall machine 'operations)))
-    (loop for inst in insts collect (set-instruction-execution-proc!
-                                     inst
-                                     (make-execution-procedure
-                                      (instruction-text inst) labels machine
-                                      pc flag stack ops)))))
-
-(defun make-instruction (text)
-  (cons text '()))
-
-(defun instruction-text (inst)
-  (car inst))
-
-(defun set-instruction-execution-proc! (inst proc)
-  (setf (cdr inst) proc)
-  inst)
-
-(defun make-label-entry (label-name insts)
-  (cons label-name insts))
-
-(defun lookup-label (all-labels label-name)
-  (let ((val (assoc label-name all-labels)))
-    (if val
-        (cdr val)
-        (error "Undefined label -- ASSEMBLE: ~S" label-name))))
-
-(defun make-execution-procedure (inst labels machine
-                                 pc flag stacks ops)
-  (cond ((eq (car inst) 'assign)
-         (make-assign inst machine labels ops pc))
-        ((eq (car inst) 'test)
-         (make-test inst machine labels ops flag pc))
-        ((eq (car inst) 'branch)
-         (make-branch inst machine labels flag pc))
-        ((eq (car inst) 'goto)
-         (make-goto inst machine labels pc))
-        ((eq (car inst) 'save)
-         (make-save inst machine stacks pc))
-        ((eq (car inst) 'restore)
-         (make-restore inst machine stacks pc))
-        ((eq (car inst) 'perform)
-         (make-perform inst machine labels ops pc))
-        (t (error "Unknown instruction type -- ASSEMBLE : ~S" inst))))
-
-(defun make-assign (inst machine labels operations pc)
-  (let ((target (get-register machine (assign-reg-name inst)))
-        (value-exp (assign-value-exp inst)))
-    (let ((value-proc
-           (if (operation-exp value-exp)
-               (make-operation-exp
-                value-exp machine labels operations)
-               (make-primitive-exp
-                (car value-exp) machine labels))))
-      (lambda ()
-        (set-contents target (funcall value-proc))
-        (advance-pc pc)))))
-
-(defun assign-reg-name (assign-instruction)
-  (cadr assign-instruction))
-
-(defun assign-value-exp (assign-instruction)
-  (cddr assign-instruction))
-
-(defun advance-pc (pc)
-  (set-contents pc (cdr (get-contents pc))))
-
-(defun make-test (inst machine labels operations flag pc)
-  (let ((condition (test-condition inst)))
-    (if (operation-exp condition)
-        (let ((condition-proc
-               (make-operation-exp
-                condition machine labels operations)))
-          (lambda ()
-            (set-contents flag (funcall condition-proc))
-            (advance-pc pc)))
-        (error "Bad Test instruction -- ASSEMBLE: ~S" inst))))
-
-(defun test-condition (test-instruction)
-  (cdr test-instruction))
-
-(defun make-branch (inst machine labels flag pc)
-  (let ((dest (branch-dest inst)))
-    (if (label-exp dest)
-        (let ((insts (lookup-label labels (label-exp-label dest))))
-          (lambda ()
-            (if (get-contents flag)
-                (set-contents pc insts)
-                (advance-pc pc))))
-        (error "Bad Branch instruction --ASSEMBLE: ~S" inst))))
-
-(defun branch-dest (branch-instruction)
-  (cadr branch-instruction))
-
-(defun make-goto (inst machine labels pc)
-  (let ((dest (goto-dest inst)))
-    (cond ((label-exp dest)
-           (let ((insts (lookup-label labels
-                                      (label-exp-label dest))))
-             (lambda ()
-               (set-contents pc insts))))
-          ((register-exp dest)
-           (let ((reg
-                  (get-register machine (register-exp-reg dest))))
-             (lambda () (set-contents pc (get-contents reg)))))
-          (t (error "BAD GOTO instruction -- ASSEMBLE : ~S" inst)))))
-
-(defun goto-dest (goto-instruction)
-  (cadr goto-instruction))
-
-(defun make-save (inst machine stack pc)
-  (let ((reg (get-register machine
-                           (stack-inst-reg-name inst))))
-    (lambda ()
-      (push-stack stack (get-contents reg))
-      (advance-pc pc))))
-
-(defun make-restore (inst machine stack pc)
-  (let ((reg (get-register machine
-                           (stack-inst-reg-name inst))))
-    (lambda ()
-      (set-contents reg (pop-stack stack))
-      (advance-pc pc))))
-
-(defun stack-inst-reg-name (stack-instruction)
-  (cadr stack-instruction))
-
-(defun make-perform (inst machine labels operations pc)
-  (let ((action (perform-action inst)))
-    (if (operation-exp action)
-        (let ((action-proc (make-operation-exp
-                            action machine labels operations)))
-          (lambda ()
-            (funcall action-proc)
-            (advance-pc pc))
-          )
-        (error "Bad PERFORM instruction -- ASSEMBLE: ~S" inst))))
-
-(defun perform-action (inst) (cdr inst))
-
-(defun make-primitive-exp (exp machine labels)
-  (cond ((constant-exp exp)
-         (let ((c (constant-exp-value exp)))
-           (lambda () c)))
-        ((label-exp exp)
-         (let ((insts (lookup-label labels
-                                    (label-exp-label exp))))
-           (lambda () insts)))
-        ((register-exp exp)
-         (let ((r (get-register machine (register-exp-reg exp))))
-           (lambda () (get-contents r))))
-        (t (error "Unknown expression type -- ASSEMBLE: ~S" exp))))
-
-(defun register-exp (exp) (tagged-list exp 'reg))
-
-(defun tagged-list (exp prefix)
-  (eq (car exp) prefix))
-
-(defun register-exp-reg (exp) (cadr exp))
-
-(defun constant-exp (exp) (tagged-list exp 'const))
-
-(defun constant-exp-value (exp) (cadr exp))
-
-(defun label-exp (exp) (tagged-list exp 'label))
-
-(defun label-exp-label (exp) (cadr exp))
-
-(defun make-operation-exp (exp machine labels operations)
-  (let ((op (lookup-prim (operation-exp-op exp) operations))
-        (aprocs (mapcar (lambda (e) (make-primitive-exp e machine labels))
-                        (operation-exp-operands exp))))
-    (lambda () (apply op (mapcar (lambda (p) (funcall p)) aprocs)))))
-
-(defun operation-exp (exp)
-  (and (consp exp) (tagged-list (car exp) 'op)))
-
-(defun operation-exp-op (operation-exp)
-  (cadr (car operation-exp)))
-
-(defun operation-exp-operands (operation-exp)
-  (cdr operation-exp))
-
-(defun lookup-prim (symbol operations)
-  (let ((val (assoc symbol operations)))
-    (if val
-        (cadr val)
-        (error "Unknown operation -- ASSEMBLE: ~S" symbol))))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; machine.lisp ends here
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2">Usage</h2>
-<div class="outline-text-2" id="text-orgheadline2">
-<div class="org-src-container">
-
-<pre class="src src-lisp">(load "./machine.lisp")
-
-(defun expt-machine ()
-  (make-machine
-   '(b n val continue)
-   `((= ,#'=) (- ,#'-) (* ,#'*))
-   '(controller
-     (assign continue (label done))
-     expt-loop
-     (test (op =) (reg n) (const 0))
-     (branch (label answer))
-     (save continue)
-     (assign continue (label after-expt-n-1))
-     (save n)
-     (assign n (op -) (reg n) (const 1))
-     (goto (label expt-loop))
-     after-expt-n-1
-     (restore n)
-     (restore continue)
-     (assign val (op *) (reg val) (reg b))
-     (goto (reg continue))
-     answer
-     (assign val (const 1))
-     (goto (reg continue))
-     done)))
-
-(defparameter *m* (expt-machine))
-
-(set-register-contents *m* 'b 2)
-;;DONE
-(set-register-contents *m* 'n 2)
-;;DONE
-(start *m*)
-;;DONE
-(get-register-contents *m* 'val)
-;;4
-</pre>
-</div>
-</div>
-</div>
-
-</div>
-</div>]]></description>
-      <pubDate>2016-02-03</pubDate>
-      <guid>http://blog.enzotech.in/blog/2014/12/25/lisp-模拟-assembler/</guid>
-    </item>
-    <item>
       <title>爱上haskell</title>
       <link>http://blog.enzotech.in/blog/2015/02/14/爱上haskell/</link>
       <description><![CDATA[<div>
@@ -2485,395 +2498,6 @@ main = print $ (length . filter longer . take 1000) pairs
 </div>]]></description>
       <pubDate>2016-02-03</pubDate>
       <guid>http://blog.enzotech.in/blog/2015/02/14/爱上haskell/</guid>
-    </item>
-    <item>
-      <title>尝试理解Y-combinator</title>
-      <link>http://blog.enzotech.in/blog/2015/03/20/尝试理解y-combinator/</link>
-      <description><![CDATA[<div>
-<div class="post">
-<h1>尝试理解Y-combinator</h1>
-
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1">简介</h2>
-<div class="outline-text-2" id="text-orgheadline1">
-<p>
-在一个纯粹的函数式语言环境中，只有一种元素，就是一个单参函数
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-lisp">;; id function
-(lambda (x) x)
-</pre>
-</div>
-
-<div class="org-src-container">
-
-<pre class="src src-haskell">-- id function in haskll
-\x -&gt; x
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2">问题</h2>
-<div class="outline-text-2" id="text-orgheadline2">
-<p>
-比如需要求解一个列表的长度，该如何实现。
-</p>
-
-<p>
-算法规则很简单： &gt; 1. 空列表长度为0 &gt; 2. 列表长度等于 1 +
-列表除了头部元素以外的部分
-</p>
-
-<p>
-常规的算法实现如下:
-</p>
-</div>
-
-<div id="outline-container-orgheadline3" class="outline-3">
-<h3 id="orgheadline3">common lisp</h3>
-<div class="outline-text-3" id="text-orgheadline3">
-<div class="org-src-container">
-
-<pre class="src src-lisp">;; in common lisp
-(defun len (ls)
-  (if (null ls)
-      0
-      (1+ (len (cdr ls)))))
-</pre>
-</div>
-
-<pre class="example">
-CL-USER&gt; (len '(1 2 3))
-3
-CL-USER&gt; (len '())
-0
-</pre>
-</div>
-</div>
-
-<div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="orgheadline4">haskell</h3>
-<div class="outline-text-3" id="text-orgheadline4">
-<div class="org-src-container">
-
-<pre class="src src-haskell">len1 :: (Num b ) =&gt; [a] -&gt; b
-len1 [] = 0
-len1 (_:xs) = 1 + len1 xs
-</pre>
-</div>
-
-<pre class="example">
-λ&gt; len1 []
-0
-λ&gt; len1 [1,2,3]
-3
-</pre>
-
-<p>
-但是，如何基于纯粹的lambda表达式实现呢？
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgheadline5" class="outline-2">
-<h2 id="orgheadline5">第一次尝试</h2>
-<div class="outline-text-2" id="text-orgheadline5">
-<p>
-尝试翻译之前写过的实现
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-lisp">(lambda (ls)
-  (if (null ls)
-      0
-      (1+ (?? (cdr ls)))))
-</pre>
-</div>
-
-<p>
-*怎么办*，=?= 部分无法填充。因为现在这个匿名函数木有名字
-</p>
-</div>
-
-<div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="orgheadline6">神来一笔</h3>
-<div class="outline-text-3" id="text-orgheadline6">
-<p>
-假如有一个len的实现，不就可以了么！！！！
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-lisp">(lambda (perfectLenFunc)
-  (lambda (ls)
-    (if (null ls)
-        0
-        (1+ (perfectLenFunc (cdr ls))))))
-</pre>
-</div>
-
-<p>
-哇擦，要是有=perfectLenFunc=(后续简写为=plf=&#x2026;),还在这里浪费时间干神马。
-</p>
-
-<p>
-*咳咳*，不急
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-lisp">;; change to scheme, due to the function namespace
-(define len1
-    ((lambda (plf)
-    (lambda (ls)
-        (if (null? ls)
-            0
-            (1+ (plf (cdr ls))))))
-    (lambda (ls)
-    (if (null? ls)
-        0
-        (1+ (error (cdr ls)))))))
-</pre>
-</div>
-
-<pre class="example">
-scheme@(guile-user)&gt; (len1 '())
-$3 = 0
-scheme@(guile-user)&gt; (len1 '(a))
-$4 = 1
-scheme@(guile-user)&gt; (len1 '(a b))
-ERROR: In procedure scm-error:
-ERROR: ()
-</pre>
-
-<p>
-咦，这样就可以支持长度为0的列表和长度为1的列表咧。
-</p>
-
-<p>
-整体优化一下重复代码
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-lisp">(define mk-len
-  (lambda (plf)
-    (lambda (ls)
-        (if (null? ls)
-            0
-        (1+ (plf (cdr ls)))))))
-(define len0 (mk-len error))
-(define len1 (mk-len len0))
-(define len2 (mk-len len1))
-;; output
-scheme@(guile-user)&gt;
-(define len0 (mk-len error))
-(define len1 (mk-len len0))
-(define len2 (mk-len len1))
-scheme@(guile-user)&gt; (len2 '(1 2))
-$6 = 2
-</pre>
-</div>
-
-<p>
-看来,功夫不负有心人，只要足够努力,
-不管多长的列表，都能写出对应的函数算出来！ &gt; 太天真了少年 （画外音）
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="orgheadline7">神又来一笔</h3>
-<div class="outline-text-3" id="text-orgheadline7">
-<p>
-时间过去了一年，少年终于写出了可以计算长度
-=14239823586=以内的列表的长度！
-</p>
-
-<p>
-突然一个霹雳从天而降 &gt; 你个XX，想写到死啊！！！！ (画外音again)
-</p>
-
-<p>
-咦，注意 <code>(define len0 (mk-len error))</code>,
-=error=耶，岂不是说不管提供神马函数,都 不影响么
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-lisp">(define len2 (mk-len (mk-len (mk-len mk-len))))
-;; output
-scheme@(guile-user)&gt;
-(define len2 (mk-len (mk-len (mk-len mk-len))))
-scheme@(guile-user)&gt; (len2 '(1 2))
-$8 = 2
-</pre>
-</div>
-
-<p>
-<b>哇，那岂不是可以这样！！！</b>
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-lisp">(define real-len
-  ((lambda (mk-len)
-     (mk-len mk-len))
-   (lambda (mk-len)
-     (lambda (l)
-       (if (null? l) 0
-         (1+ ((mk-len mk-len) (cdr l))))))))
-scheme@(guile-user)&gt; (real-len '(1 2 3 a b d c s))
-$9 = 8
-</pre>
-</div>
-
-<p>
-好棒！好陶醉！好满足！！！
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgheadline8" class="outline-3">
-<h3 id="orgheadline8">神又来一笔!</h3>
-<div class="outline-text-3" id="text-orgheadline8">
-<p>
-不过，写出来的程序看着好奇怪。好多=mk-len=,=（mk-len mk-len）=,
-<b>看不懂啊</b>. 只有
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-lisp">(lambda (l)
-  (if (null? l) 0
-    (1+ (?? (cdr l))))))))
-</pre>
-</div>
-
-<p>
-这个才是我想要的呢&#x2026; 那就想办法把=(mklen mklen)=
-搞出去，做参数传进来好了👌
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-lisp">((lambda (mk-len)
-   (mk-len mk-len))
- (lambda (mk-len)
-   ((lambda (len)
-      (lambda (l)
-        (if (null? l) 0
-          (1+ (len (cdr l))))))
-    (lambda (x) ((mk-len mk-len) x)))))
-</pre>
-</div>
-
-<p>
-哇，中间的代码看起来，有点像那么一回事了。想办法挪挪结构，更好看一点。
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-lisp">((lambda (len')
-   ((lambda (mk-len) (mk-len mk-len))
-    (lambda (mk-len) (len' (lambda (x) ((mk-len mk-len) x))))))
- (lambda (len)
-   (lambda (l)
-     (if (null? l) 0
-       (1+ (len (cdr l)))))))
-</pre>
-</div>
-
-<p>
-<b>BINGO</b> !!
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgheadline9" class="outline-2">
-<h2 id="orgheadline9">the ultimate Y-Combinator</h2>
-<div class="outline-text-2" id="text-orgheadline9">
-<div class="org-src-container">
-
-<pre class="src src-lisp">(define Y
-  (lambda (targetFunction)
-    ((lambda (f) (f f))
-     (lambda (f) (targetFunction (lambda (x) ((f f) x)))))))
-
-(define len
-  ( Y (lambda (len')
-        (lambda (l)
-          (if (null? l) 0
-            (1+ (len' (cdr l))))))))
-;; output
-scheme@(guile-user)&gt; (len '(a b d c dd s sf ad f))
-$10 = 9
-</pre>
-</div>
-
-<p>
-<b>炫酷爆棚了!</b> 有没有
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgheadline10" class="outline-2">
-<h2 id="orgheadline10">实践</h2>
-<div class="outline-text-2" id="text-orgheadline10">
-<p>
-in haskell
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-haskell">-- here is where miracle begins
-newtype Rec a = In { out :: Rec a -&gt; a } -- for type deduction
-
-y :: (a -&gt; a) -&gt; a
-y tf = (\f -&gt; out f f) $In (\f -&gt; tf (out f f))
-
-
-ylen :: (Num b) =&gt; [a]-&gt;b
-ylen = y (\len' ls -&gt; if null ls then 0 else (len'.tail$ls)+1)
-
-ysum :: (Num a) =&gt; [a] -&gt; a
-ysum = y (\sum' ls -&gt; if null ls then 0 else head ls + (sum'.tail $ ls))
--- output
-λ&gt; ylen [1,2,3,4]
-4
-λ&gt; ysum [1,2,3,4]
-10
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgheadline11" class="outline-2">
-<h2 id="orgheadline11">external links</h2>
-<div class="outline-text-2" id="text-orgheadline11">
-<p>
-<a href="http://en.wikipedia.org/wiki/Fixed-point_combinator#Y_combinator">y-combinator
-in wikipedia</a>
-</p>
-
-<p>
-<a href="http://mitpress.mit.edu/books/little-schemer">the litter scheme -
-chapter 8</a>
-</p>
-</div>
-</div>
-
-</div>
-</div>]]></description>
-      <pubDate>2016-02-03</pubDate>
-      <guid>http://blog.enzotech.in/blog/2015/03/20/尝试理解y-combinator/</guid>
     </item>
   </channel>
 </rss>
