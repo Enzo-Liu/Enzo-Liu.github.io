@@ -99,6 +99,6 @@
 ** 个人提升目标
 - maching learning :: *by* _Andrew Ng_
 - game development :: 已经想了很久，但是一直没有做出来过。希望今年可以实施。连同 *UI* 的开发一起学习完成。
-- one formal ~side project~
+- side project :: practise makes perfect
 
 ** (*maybe*) 生子
