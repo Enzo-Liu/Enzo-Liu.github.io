@@ -1,0 +1,147 @@
+% Created 2016-02-14 Sun 10:50
+\documentclass[presentation, bigger]{beamer}
+\usepackage[no-math]{fontspec}
+\usepackage[BoldFont,SlantFont,AutoFakeBold=true,AutoFakeSlant=true]{xeCJK}
+\setCJKmainfont[BoldFont=FandolSong-Bold.otf,ItalicFont=FandolKai-Regular.otf]{FandolSong-Regular.otf}
+\setCJKsansfont[BoldFont=FandolHei-Bold.otf]{FandolHei-Regular.otf}
+\setCJKmonofont{FandolFang-Regular.otf}
+\usefonttheme[stillsansseriflarge,stillsansserifsmall]{serif}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\defaultfontfeatures{Mapping=tex-text}
+\usepackage{geometry}
+\usepackage{verbatim}
+\usepackage{fixltx2e}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\usetheme{metropolis}
+\author{刘恩泽}
+\date{2016-02-02}
+\title{拼团活动技术方案}
+\hypersetup{
+ pdfauthor={刘恩泽},
+ pdftitle={拼团活动技术方案},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 24.5.1 (Org mode 8.3.3)},
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\begin{frame}{目录}
+\tableofcontents
+\end{frame}
+
+
+
+\section{活动分析}
+\label{sec:orgheadline2}
+
+\begin{frame}[label={sec:orgheadline1}]{活动分析}
+\begin{enumerate}
+\item 针对活动演出，提供两个商品，一个原价商品，一个团购商品
+\item 对于团购商品的购买，订单支付之后，需要延迟发货相关的流程。
+\item 团购商品的订单，支付后，可以获取分享的团购标识.
+\item 在时效范围内且参团人数未满，都可以参加该团购的购买
+\item 一次开团成功后，所有相关订单开始备货发货流程
+\item 一次开团失败后，所有相关订单走退款流程
+\end{enumerate}
+\end{frame}
+
+
+\section{功能列表}
+\label{sec:orgheadline5}
+
+\begin{frame}[label={sec:orgheadline3}]{接口交互}
+\begin{enumerate}
+\item 活动演出列表
+\item 活动演出详情
+\item 参团详情
+\item 获取团购标识
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}[label={sec:orgheadline4}]{后台逻辑}
+\begin{enumerate}
+\item 标记特卖商品 (普通售卖不可见)
+\item 配置团购商品的汇总关系 (列表页数据)
+\item 购买时根据团购商品区分不同的发货
+\item 根据团购订单生成开团标识
+\item 定期根据团购标识处理发货或者退款
+\end{enumerate}
+\end{frame}
+
+
+\section{后台接口列表}
+\label{sec:orgheadline6}
+\begin{enumerate}
+\item 根据活动ID拿商品列表
+\item 根据商品拿详情
+\item 根据用户和商品获取拼团信息
+\item 参加/发起一个拼团
+\end{enumerate}
+
+\section{生命周期}
+\label{sec:orgheadline13}
+
+\begin{frame}[label={sec:orgheadline7}]{创建}
+\begin{itemize}
+\item 创建团
+\item 加入团
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgheadline8}]{支付}
+\begin{itemize}
+\item 加入团成功
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgheadline9}]{订单关闭}
+\begin{itemize}
+\item 加入团失败
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgheadline10}]{订单退款}
+\begin{itemize}
+\item 加入团失败
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgheadline11}]{团成功}
+\end{frame}
+
+\begin{frame}[label={sec:orgheadline12}]{团失败}
+\end{frame}
+
+
+\section{场景}
+\label{sec:orgheadline15}
+\begin{frame}[label={sec:orgheadline14}]{页面入口的场景}
+\begin{center}
+\begin{tabular}{lllll}
+人 & 团 & 团状态 & 操作 & 提示\\
+\hline
+参加过团A & B &  & 不能做任何事 & 已参加过一个团\\
+参加过团A & A & 未结束 & 只能分享 & \\
+参加过团A & A & 成功 & 不能做任何事 & \\
+参加过团A & A & 失败 & 创建新的团 & \\
+未参加过 & / & / & 创建新的团 & \\
+未参加过 & A & 进行中 & 参加该团 & \\
+未参加过 & A & 结束（成功、失败） & 创建新的团 & \\
+\end{tabular}
+\end{center}
+\end{frame}
+\end{document}
