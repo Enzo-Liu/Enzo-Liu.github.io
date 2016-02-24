@@ -1,0 +1,64 @@
+#+TITLE:       334.Increasing Triplet Subsequence
+#+AUTHOR:      enzo liu
+#+EMAIL:       liuenze6516@gmail.com
+#+DATE:        2016-02-25 Thu
+#+URI:         /leetcode/334
+#+KEYWORDS:    leetcode, ruby
+#+TAGS:        leetcode, ruby
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: leetcode
+
+* 题目
+
+[[链接][https://leetcode.com/problems/increasing-triplet-subsequence/]]
+
+#+BEGIN_QUOTE
+Given an unsorted array return whether an increasing subsequence of length 3 exists or not in the array.
+
+Formally the function should:
+  Return true if there exists i, j, k
+  such that arr[i] < arr[j] < arr[k] given 0 ≤ i < j < k ≤ n-1 else return false.
+  Your algorithm should run in O(n) time complexity and O(1) space complexity.
+
+Examples:
+Given [1, 2, 3, 4, 5],
+return true.
+
+Given [5, 4, 3, 2, 1],
+return false.
+#+END_QUOTE
+
+* 思路
+
+问题等价为
+#+BEGIN_QUOTE
+寻找对应的m,n,满足a[m]<a[m+1], a[n]<a[n+1], a[m]<a[n] || a[m]<a[n+1] (0<=m<n<=n-1)
+#+END_QUOTE
+
+** 长度为2
+
+假设不存在长度为2的子列，则 =a[i]>=a[i+1]=, 是一个递减数列。
+
+即只要存在 =a[i]<a[i+1]=, 则存在长度为2的子列。
+
+** 长度为3
+- 假设存在长度为3
+  1. 一定存在长度为2的增长数列, 所以一定存在 =a[i]<a[i+1]=
+  2. 对于 a[i]<a[j]<a[k] (i<=j<=k) , 一定存在 a[m]<a[m+1], a[n]<a[n+1], a[m+1]<a[n+1] || a[m]<a[n] (i<=m<n<=k)
+
+- 假设存在 a[m]<a[m+1], a[n]<a[n+1], a[m+1]<a[n+1] || a[m]<a[n] (0<=m<n<=n-1)
+  则存在长度为3的递增子列
+
+
+* 代码
+
+#+BEGIN_SRC ruby
+  # @param {Integer[]} nums
+  # @return {Boolean}
+  def increasing_triplet(nums)
+    nums.each{|n|}
+      .each_cons(2).select{|e| e[1]>e[0]}
+      .each_cons(2).select{|e| e[1][0]>e[0][0] || e[1][1]>e[0][1]}.size >0
+  end
+#+END_SRC
