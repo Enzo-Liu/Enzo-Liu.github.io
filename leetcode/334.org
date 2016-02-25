@@ -11,7 +11,7 @@
 
 * 题目
 
-[[链接][https://leetcode.com/problems/increasing-triplet-subsequence/]]
+[[https://leetcode.com/problems/increasing-triplet-subsequence/][链接]]
 
 #+BEGIN_QUOTE
 Given an unsorted array return whether an increasing subsequence of length 3 exists or not in the array.
