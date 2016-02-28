@@ -21,9 +21,9 @@ Implement pow(x, n).
 
 将加法运算(*)变成乘法运算(^)。 比如:
 
-#+BEGIN_SRC
+#+BEGIN_QUOTE
 2^9 = 2* (2^(2^2))
-#+END_SRC
+#+END_QUOTE
 
 * 代码
 
