@@ -1,0 +1,36 @@
+#+TITLE:       179. Largest Number
+#+AUTHOR:      enzo
+#+EMAIL:       liuenze6516@gmail.com
+#+DATE:        2016-02-25 Thu
+#+URI:         /leetcode/179
+#+KEYWORDS:    leetcode, ruby
+#+TAGS:        leetcode, ruby
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: leetcode
+
+* 题目
+
+[[https://leetcode.com/problems/largest-number/][链接]]
+
+#+BEGIN_QUOTE
+Given a list of non negative integers, arrange them such that they form the largest number.
+
+For example, given [3, 30, 34, 5, 9], the largest formed number is 9534330.
+
+Note: The result may be very large, so you need to return a string instead of an integer.
+#+END_QUOTE
+
+* 思路
+
+
+
+* 代码
+
+#+BEGIN_SRC ruby
+# @param {Integer[]} nums
+# @return {String}
+def largest_number(nums)
+
+end
+#+END_SRC
