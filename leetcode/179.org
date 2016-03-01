@@ -23,14 +23,40 @@ Note: The result may be very large, so you need to return a string instead of an
 
 * 思路
 
+两个数字a,b, 假设 ab >= ba (例如9，98， 998>989)
 
+1. 对于任意c， abc >= bac && cab >= cba
+2. 对于任意c,  需要证明 如果ac>=ca, bc<=cb 则 acb >= bca
+
+   x 为 a 的长度 , y 为 b 的长度， z 为 c 的长度
+
+   已知 a*10^y + b >= b*10^x + a, b*10^z + c <= c * 10^y+b, c > 0 , x >= 1
+
+   \begin{equation}
+   \begin{split}
+     a*10^y*10^z + c * 10^y + b - (b*10^x*10^z + c*10^x + a) \\
+   = a*(10^{(y+z)} -1) + c * (10^y - 10^x) + b*(1-10^{(x+z)}) \\
+   >= b*(10^x-1)*10^z + a - a + c * (10^y - 10^x) + b*(1-10^(x+z)) \\
+   >= b*(10^{(x+z)}-10^z+1-10^{(x+z)}) + c * (10^y-10^x) \\
+   >= b*(1-10^z) + c * (10^y-10^x) \\
+   >= b - (c*10^y+b-c) + c *10^y - c * 10^x \\
+   >= c*(1-10^x) \\
+   >= 0
+   \end{split}
+   \end{equation}
+
+从而问题转化为排序问题。只要 ab>=ba , a就大于b
 
 * 代码
 
 #+BEGIN_SRC ruby
-# @param {Integer[]} nums
-# @return {String}
-def largest_number(nums)
-
-end
+  # @param {Integer[]} nums
+  # @return {String}
+  def largest_number(nums)
+    res = nums
+          .sort {|b,a| a.to_s+b.to_s <=> b.to_s+a.to_s}
+          .drop_while{|x| x==0 }
+          .join
+    if res == "" then "0" else res end
+  end
 #+END_SRC
