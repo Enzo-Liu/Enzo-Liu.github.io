@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>用org-page尝试写点东西 - enzo&#39;s note book</title>
+    <title>179. Largest Number - enzo&#39;s note book</title>
     <meta charset="utf-8" />
-    <meta name="author" content="enzo liu" />
+    <meta name="author" content="enzo" />
+    <meta name="description" content="leetcode" />
+    <meta name="keywords" content="leetcode, ruby" />
     <link rel="stylesheet" href="/media/css/main.css" type="text/css">
     <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
   </head>
@@ -30,81 +32,88 @@
 
 <div>
 <div class="post">
-<h1>用org-page尝试写点东西</h1>
+<h1>179. Largest Number</h1>
 
 <div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1">背景</h2>
+<h2 id="orgheadline1">题目</h2>
 <div class="outline-text-2" id="text-orgheadline1">
 <p>
-近段时间一直喜欢自己用 <code>org-mode</code> 写点东西。业务上的文档，个人的笔记等。
+<a href="https://leetcode.com/problems/largest-number/">链接</a>
+</p>
+
+<blockquote>
+<p>
+Given a list of non negative integers, arrange them such that they form the largest number.
 </p>
 
 <p>
-没有深入的了解过 <span class="underline">publish</span> 在 <code>org-mode</code> 中怎么使用，正巧遇到了 <a href="https://github.com/kelvinh/org-page"><code>org-page</code></a>, 上手很容易，就准备把自己之前的小blog给推了，用它来记录点东西。
+For example, given [3, 30, 34, 5, 9], the largest formed number is 9534330.
 </p>
+
+<p>
+Note: The result may be very large, so you need to return a string instead of an integer.
+</p>
+</blockquote>
 </div>
 </div>
 
 <div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2">安装</h2>
+<h2 id="orgheadline2">思路</h2>
 <div class="outline-text-2" id="text-orgheadline2">
 <p>
-如文档上所说，使用 <code>melpa</code> 可以很容易就安装成功。 略微配置一下文件夹地址，哪些文件夹不要发布到网站上，使用的 <code>branch</code> 的名称即可。
+两个数字a,b, 假设 ab &gt;= ba (例如9，98， 998&gt;989)
+</p>
+
+<ol class="org-ol">
+<li>对于任意c， abc &gt;= bac &amp;&amp; cab &gt;= cba</li>
+<li><p>
+对于任意c,  需要证明 如果ac&gt;=ca, bc&lt;=cb 则 acb &gt;= bca
+</p>
+
+<p>
+x 为 a 的长度 , y 为 b 的长度， z 为 c 的长度
+</p>
+
+<p>
+已知 a*10^y + b &gt;= b*10^x + a, b*10^z + c &lt;= c * 10^y+b, c &gt; 0 , x &gt;= 1
+</p>
+
+\begin{equation}
+\begin{split}
+  a*10^y*10^z + c * 10^y + b - (b*10^x*10^z + c*10^x + a) \\
+= a*(10^{(y+z)} -1) + c * (10^y - 10^x) + b*(1-10^{(x+z)}) \\
+>= b*(10^x-1)*10^z + a - a + c * (10^y - 10^x) + b*(1-10^(x+z)) \\
+>= b*(10^{(x+z)}-10^z+1-10^{(x+z)}) + c * (10^y-10^x) \\
+>= b*(1-10^z) + c * (10^y-10^x) \\
+>= b - (c*10^y+b-c) + c *10^y - c * 10^x \\
+>= c*(1-10^x) \\
+>= 0
+\end{split}
+\end{equation}</li>
+</ol>
+
+<p>
+从而问题转化为排序问题。只要 ab&gt;=ba , a就大于b
 </p>
 </div>
 </div>
 
 <div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="orgheadline3">迁移</h2>
+<h2 id="orgheadline3">代码</h2>
 <div class="outline-text-2" id="text-orgheadline3">
-<p>
-虽然过去的 <code>blog</code> 写的很幼稚， 但是还有有一点 <del>历史</del> 意义的。
-</p>
-
-<p>
-使用 <code>haskell</code> 写的 <code>pandoc</code> 就是文档转换界的一把金光闪闪的瑞士军刀。
-</p>
-
 <div class="org-src-container">
 
-<pre class="src src-bash">find . -name \*.md -type f -exec pandoc  -f markdown -t org -o {}.org {} \;
+<pre class="src src-ruby"># @param {Integer[]} nums
+# @return {String}
+def largest_number(nums)
+  res = nums
+        .sort {|b,a| a.to_s+b.to_s &lt;=&gt; b.to_s+a.to_s}
+        .drop_while{|x| x==0 }
+        .join
+  if res == "" then "0" else res end
+end
 </pre>
 </div>
-
-<p>
-一行搞定, 然后手动加一些 <code>org-page</code> 需要的 <code>header</code> 就可以了。
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgheadline4" class="outline-2">
-<h2 id="orgheadline4">github pages</h2>
-<div class="outline-text-2" id="text-orgheadline4">
-<p>
-原先就是使用 <code>jekyll</code> 托管在 <code>github page</code> 上， 现在只需要把 <code>master</code> 分支的文件替换成 <code>org-page</code> 生成的文件就可以了。
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-bash">git checkout master
-find . -name \* | grep -v ".git" | xargs rm -rf
-git add . &amp;&amp; git commit -m “clear all"
-git checkout source
-</pre>
-</div>
-
-<p>
-然后在 <code>emacs</code> 里执行
-</p>
-<div class="org-src-container">
-
-<pre class="src src-emacs-lisp">(op/do-publication t nil nil t)
-</pre>
-</div>
-
-<p>
-That's done.
-</p>
 </div>
 </div>
 
@@ -112,18 +121,18 @@ That's done.
 </div>
     <div>
       <div class="post-meta">
-        <span title="post date" class="post-info">2016-01-11</span>
-        <span title="last modification date" class="post-info">2016-02-03</span>
-        <span title="tags" class="post-info"><a href="/tags/org-page/">org-page</a>, <a href="/tags/blog/">blog</a>, <a href="/tags/emacs/">emacs</a>, <a href="/tags/org-mode/">org-mode</a></span>
-        <span title="author" class="post-info">enzo liu</span>
+        <span title="post date" class="post-info">2016-02-25</span>
+        <span title="last modification date" class="post-info">2016-03-01</span>
+        <span title="tags" class="post-info"><a href="/tags/leetcode/">leetcode</a>, <a href="/tags/ruby/">ruby</a></span>
+        <span title="author" class="post-info">enzo</span>
       </div>
       <section>
         <h1>Comments</h1>
         <div id="disqus_thread"></div>
         <script type="text/javascript">
           //var disqus_developer = 1;
-          var disqus_identifier = "/blog/2016/01/11/用org-page尝试写点东西/";
-          var disqus_url = "http://blog.enzotech.in/blog/2016/01/11/用org-page尝试写点东西/";
+          var disqus_identifier = "/leetcode/179";
+          var disqus_url = "http://blog.enzotech.in/leetcode/179";
           var disqus_shortname = 'enzo-liu';
           /* * * DON'T EDIT BELOW THIS LINE * * */
           (function() {
@@ -142,7 +151,7 @@ That's done.
       <div class="footer">
         <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.x (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
         <p>
-          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo</a>
           &nbsp;&nbsp;-&nbsp;&nbsp;
           Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
           <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
