@@ -1,0 +1,58 @@
+#+TITLE:       38. Count and Say
+#+AUTHOR:      enzo liu
+#+EMAIL:       liuenze6516@gmail.com
+#+DATE:        2016-03-09 Tue
+#+URI:         /leetcode/38
+#+KEYWORDS:    leetcode, ruby
+#+TAGS:        leetcode, ruby
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: leetcode
+
+* 题目
+
+[[https://leetcode.com/problems/count-and-say/][链接]]
+
+#+BEGIN_VERSE
+The count-and-say sequence is the sequence of integers beginning as follows:
+1, 11, 21, 1211, 111221, ...
+
+1 is read off as "one 1" or 11.
+11 is read off as "two 1s" or 21.
+21 is read off as "one 2, then one 1" or 1211.
+Given an integer n, generate the nth sequence.
+
+Note: The sequence of integers will be represented as a string.
+#+END_VERSE
+
+* 思路
+
+#+BEGIN_QUOTE
+一轮一轮reduce过去, 数一下个数写进去
+#+END_QUOTE
+
+* 代码
+
+#+BEGIN_SRC ruby
+  # @param {Integer} n
+  # @return {String}
+  def count_and_say(n)
+    (1..n-1).inject("1") do |res,_index|
+      to_next(res)
+    end
+  end
+
+  def to_next (str, num = 0, cur = nil, res=[])
+    str.each_char do |c|
+      if cur == c
+        num = num + 1
+      else
+        res.push(num.to_s, cur) if cur != nil
+        cur = c
+        num = 1
+      end
+    end
+    res.push(num.to_s,cur) if cur != nil and num != 0
+    res.join
+  end
+#+END_SRC
