@@ -4,79 +4,79 @@
     <title>enzo&#39;s note book</title>
     <link>http://blog.enzotech.in/</link>
     <description>M-x (sketch for random ideas)</description>
-    <pubDate>Wed, 09 Mar 2016 14:27:19 CST</pubDate>
-    <lastBuildDate>Wed, 09 Mar 2016 14:27:19 CST</lastBuildDate>
+    <pubDate>Fri, 18 Mar 2016 12:05:13 HKT</pubDate>
+    <lastBuildDate>Fri, 18 Mar 2016 12:05:13 HKT</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
     <item>
-      <title>128. Longest Consecutive Sequence</title>
-      <link>http://blog.enzotech.in/leetcode/128</link>
-      <description><![CDATA[leetcode]]></description>
-      <pubDate>2016-03-09</pubDate>
-      <guid>http://blog.enzotech.in/leetcode/128</guid>
-    </item>
-    <item>
-      <title>38. Count and Say</title>
-      <link>http://blog.enzotech.in/leetcode/38</link>
-      <description><![CDATA[leetcode]]></description>
-      <pubDate>2016-03-09</pubDate>
-      <guid>http://blog.enzotech.in/leetcode/38</guid>
-    </item>
-    <item>
-      <title>179. Largest Number</title>
-      <link>http://blog.enzotech.in/leetcode/179</link>
-      <description><![CDATA[]]></description>
-      <pubDate>2016-03-01</pubDate>
-      <guid>http://blog.enzotech.in/leetcode/179</guid>
-    </item>
-    <item>
-      <title>26. Remove Duplicates from Sorted Array</title>
-      <link>http://blog.enzotech.in/leetcode/26</link>
-      <description><![CDATA[]]></description>
-      <pubDate>2016-03-01</pubDate>
-      <guid>http://blog.enzotech.in/leetcode/26</guid>
-    </item>
-    <item>
-      <title>226. Invert Binary Tree My Submissions Question</title>
-      <link>http://blog.enzotech.in/leetcode/226</link>
-      <description><![CDATA[]]></description>
-      <pubDate>2016-02-29</pubDate>
-      <guid>http://blog.enzotech.in/leetcode/226</guid>
-    </item>
-    <item>
-      <title>50. Pow(x, n)</title>
-      <link>http://blog.enzotech.in/leetcode/50</link>
-      <description><![CDATA[]]></description>
-      <pubDate>2016-02-28</pubDate>
-      <guid>http://blog.enzotech.in/leetcode/50</guid>
-    </item>
-    <item>
-      <title>334.Increasing Triplet Subsequence</title>
-      <link>http://blog.enzotech.in/leetcode/334</link>
-      <description><![CDATA[]]></description>
-      <pubDate>2016-02-25</pubDate>
-      <guid>http://blog.enzotech.in/leetcode/334</guid>
+      <title>防火墙！防火墙！</title>
+      <link>http://blog.enzotech.in/blog/2016/03/18/firewall-iptables</link>
+      <description><![CDATA[iptables的防火墙配置]]></description>
+      <pubDate>2016-03-18</pubDate>
+      <guid>http://blog.enzotech.in/blog/2016/03/18/firewall-iptables</guid>
     </item>
     <item>
       <title>2015新年总结</title>
       <link>http://blog.enzotech.in/blog/2016/02/08/2015新年总结</link>
       <description><![CDATA[]]></description>
-      <pubDate>2016-02-14</pubDate>
+      <pubDate>2016-03-17</pubDate>
       <guid>http://blog.enzotech.in/blog/2016/02/08/2015新年总结</guid>
+    </item>
+    <item>
+      <title>用org-page尝试写点东西</title>
+      <link>http://blog.enzotech.in/blog/2016/01/11/用org-page尝试写点东西/</link>
+      <description><![CDATA[]]></description>
+      <pubDate>2016-03-17</pubDate>
+      <guid>http://blog.enzotech.in/blog/2016/01/11/用org-page尝试写点东西/</guid>
+    </item>
+    <item>
+      <title>Global Day Of Code Retreat</title>
+      <link>http://blog.enzotech.in/blog/2013/12/17/global-day-of-code-retreat/</link>
+      <description><![CDATA[]]></description>
+      <pubDate>2016-03-17</pubDate>
+      <guid>http://blog.enzotech.in/blog/2013/12/17/global-day-of-code-retreat/</guid>
+    </item>
+    <item>
+      <title>Rails 初探</title>
+      <link>http://blog.enzotech.in/blog/2013/12/20/rails-初探/</link>
+      <description><![CDATA[]]></description>
+      <pubDate>2016-03-17</pubDate>
+      <guid>http://blog.enzotech.in/blog/2013/12/20/rails-初探/</guid>
     </item>
     <item>
       <title>ruby的http请求小脚本</title>
       <link>http://blog.enzotech.in/blog/2013/12/31/ruby的http请求小脚本/</link>
       <description><![CDATA[]]></description>
-      <pubDate>2016-02-14</pubDate>
+      <pubDate>2016-03-17</pubDate>
       <guid>http://blog.enzotech.in/blog/2013/12/31/ruby的http请求小脚本/</guid>
+    </item>
+    <item>
+      <title>&lt;改变未来的算法&gt; 笔记</title>
+      <link>http://blog.enzotech.in/blog/2014/09/07/&lt;改变未来的算法&gt;-笔记/</link>
+      <description><![CDATA[]]></description>
+      <pubDate>2016-03-17</pubDate>
+      <guid>http://blog.enzotech.in/blog/2014/09/07/&lt;改变未来的算法&gt;-笔记/</guid>
+    </item>
+    <item>
+      <title>common-lisp 分享笔记</title>
+      <link>http://blog.enzotech.in/blog/2014/11/05/common-lisp-分享笔记/</link>
+      <description><![CDATA[]]></description>
+      <pubDate>2016-03-17</pubDate>
+      <guid>http://blog.enzotech.in/blog/2014/11/05/common-lisp-分享笔记/</guid>
     </item>
     <item>
       <title>sicp 第一章习题</title>
       <link>http://blog.enzotech.in/blog/2014/11/30/sicp-第一章习题/</link>
       <description><![CDATA[]]></description>
-      <pubDate>2016-02-08</pubDate>
+      <pubDate>2016-03-17</pubDate>
       <guid>http://blog.enzotech.in/blog/2014/11/30/sicp-第一章习题/</guid>
+    </item>
+    <item>
+      <title>Lisp 模拟 Assembler</title>
+      <link>http://blog.enzotech.in/blog/2014/12/25/lisp-模拟-assembler/</link>
+      <description><![CDATA[]]></description>
+      <pubDate>2016-03-17</pubDate>
+      <guid>http://blog.enzotech.in/blog/2014/12/25/lisp-模拟-assembler/</guid>
     </item>
   </channel>
 </rss>
