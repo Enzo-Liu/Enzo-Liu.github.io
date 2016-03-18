@@ -1,0 +1,103 @@
+#+TITLE:       防火墙！防火墙！
+#+AUTHOR:      enzo liu
+#+EMAIL:       liuenze6516@gmail.com
+#+DATE:        2016-03-18 Thu
+#+URI:         /blog/%y/%m/%d/firewall-iptables
+#+KEYWORDS:    iptables, firewall, linux, tcp
+#+TAGS:        linux, firewall, iptables
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: iptables的防火墙配置
+
+长话短说，发现了一堆扫描和嗅探，所以需要一定的防御。
+
+机器同时有两个网卡，分别属于内网和外网。
+
+攻击都是来自于外网，所以希望能够关闭外网的入网访问，但是保留对于外网的访问权限。
+
+* 目标
+
+1. 关闭大部分机器的外网入网流量
+2. 跳板机仅开放ssh访问
+3. 对于开放外网访问的跳板机，保留公司网络访问的能力, 用于远程调试，数据库连接
+4. 内网间的访问不受影响
+5. 不响应ping请求，提高扫描的门槛
+
+* 方案
+
+前段时间玩了会 [[https://github.com/RMerl/asuswrt-merlin][~merlin固件~]], 使用的是[[https://github.com/koolshare][国内修饰过的版本]]， 加了一些 `安全上网`, `离线下载`等功能。看了一下里面对于路由规则的实现，基本都是基于 `iptables` 来完成。比如内网转外网，阻止外网请求，对指定网卡开放指定端口。对于指定ip的请求走不同的端口等。
+
+目标其实也很类似，就用 `iptables` 来尝试完成好了。
+
+* 实施
+
+** 简介
+
+由于只是配置防火墙，了解下面的简单用法就基本足够了。
+
+PS: iptables的规则先后顺序很重要!
+
+- iptables -F :: 清除自定义规则
+- iptables -A <filter> [match rules] -j <target> :: 在指定filter上添加规则
+- iptables -D <filter> [match rules] -j <target> :: 在指定filter上删除规则
+
+*** 匹配的规则
+
+- -i <eth0> :: 指定网卡
+- -s <ip> :: 指定来源ip
+- -dport <port> :: 指定目标端口
+
+
+** 仅阻止外网的流入请求
+
+- 不接受外网的tcp握手请求
+
+  这里不能拒绝所有的tcp流量，否则机器也访问不了外部网络。（所有流入的tcp流量都被丢弃了）
+
+#+BEGIN_SRC sh
+  iptables -A INPUT -i <eth> -p tcp --syn -j DROP
+#+END_SRC
+
+- 不接受所有进入的udp流量
+
+#+BEGIN_SRC sh
+  iptables -A INPUT -i <eth> -p udp -j DROP
+#+END_SRC
+
+** 保留跳板机ssh的端口
+
+#+BEGIN_SRC sh
+  iptables -A INPUT -i <eth> -p tcp -m multiport --dports ssh -j ACCEPT
+#+END_SRC
+
+** 不响应ping
+
+#+BEGIN_SRC sh
+  iptables -A INPUT -i <eth> -p icmp --icmp-type echo-request -j DROP
+#+END_SRC
+
+** 允许指定<ip>的tcp流量
+
+#+BEGIN_SRC sh
+  iptables -A INPUT -i <eth> -p tcp -s <ip> -j ACCEPT
+#+END_SRC
+
+* 最终脚本
+
+** 跳板机器
+
+#+BEGIN_SRC sh
+  iptables -A INPUT -i <eth> -p tcp -m multiport --dports ssh -j ACCEPT
+  iptables -A INPUT -i <eth> -p tcp -s <ip> -j ACCEPT
+  iptables -A INPUT -i <eth> -p tcp --syn -j DROP
+  iptables -A INPUT -i <eth> -p udp -j DROP
+  iptables -A INPUT -i <eth> -p icmp --icmp-type echo-request -j DROP
+#+END_SRC
+
+** 内部机器
+
+#+BEGIN_SRC sh
+  iptables -A INPUT -i <eth> -p tcp --syn -j DROP
+  iptables -A INPUT -i <eth> -p udp -j DROP
+  iptables -A INPUT -i <eth> -p icmp --icmp-type echo-request -j DROP
+#+END_SRC
