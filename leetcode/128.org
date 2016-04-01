@@ -24,18 +24,35 @@ Your algorithm should run in O(n) complexity.
 #+END_VERSE
 
 * 思路
-** 初步想法
 
 排序之后，数连续个数即可。由于不知道数的范围（太大）, 最优的效率也只是 $O(n\log n)$
 
-** 优化
+如果能对每个数以及相邻数以 $O(1)$ 进行快速查找, 就可以在 $O(n)$ 知道每个连续分区的长度，从而知道最长的。
 
-问题实质就是给数组做分类。 9,7,8
-
+所以考虑用hash来存储做查找即可。
 
 
 * 代码
 
 #+BEGIN_SRC ruby
+  # @param {Integer[]} nums
+  # @return {Integer}
+  def longest_consecutive(nums)
+    set = Hash[*nums.map{ |p| [p, true]}.flatten]
+    m = 0
+    until set.empty?
+      i, _ = set.shift
+      size = 1 + findForward(set,i-1,0) + findBackward(set, i+1,0)
+      m = size if m < size
+    end
+    m
+  end
 
+  def findForward(set, c, num)
+    set.delete(c) ? findForward(set,c-1,num+1) : num
+  end
+
+  def findBackward(set, c, num)
+    set.delete(c) ? findBackward(set,c+1,num+1) : num
+  end
 #+END_SRC
