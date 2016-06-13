@@ -1,0 +1,57 @@
+#+TITLE:       什么是Monad
+#+AUTHOR:      enzo liu
+#+EMAIL:       liuenze6516@gmail.com
+#+DATE:        2016-06-08 Wed
+#+URI:         /blog/%y/%m/%d/到底什么是monad
+#+KEYWORDS:    haskell, functional programming, monad, functor, applicative functor
+#+TAGS:        haskell, functional programming
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: 整理一下自己对于monad这种函数式的抽象block的理解
+
+* 定义
+
+** 学术定义
+
+#+BEGIN_QUOTE
+   [[https://slides.com/julientournay/a-monad-is-just-a-monoid-in-the-category-of-endofunctors-what-s-the-problem/fullscreen#/][A monad is just a monoid in the category of endofunctors, what's the problem?]]
+#+END_QUOTE
+
+** haskell中的定义
+
+#+BEGIN_SRC haskell
+  class Monad m where
+    return :: a -> m a
+    bind :: m a -> (a -> m b) -> m b
+#+End_SRC
+
+直观上看，可以把一个值打包成monad，可以把monad内的值拿出来做链式的操作.
+
+* 具体场景
+
+** 非确定性计算
+
+   用一个列表来表示可能出现的值。比如 ~[1,2,3]~
+   当存在一个从值到非确定行的值的运算时，如何去运用。比如 ~[*3, +1, -2]~
+   从非确定的角度来说，任意一种组合都有可能，亦即可能的结果是 ~[3,6,9,2,3,4,-1,0,1]~
+
+*** 对应的monad实现
+
+#+BEGIN_SRC haskell
+  instance Monad [] where
+    return = (:[])
+    bind [] f = []
+    bind (a:as) f = map f a ++ map f as
+
+  underminstic :: Int -> [Int]
+  underminstic a = map ($ a) [(* 3),(+ 1),substract 2]
+
+  [1,2,3] >>= underminstic -- [3,3,0,6,4,1,9,5,2]
+#+End_SRC
+
+
+** 带状态的计算
+
+** IO
+
+** 函数
