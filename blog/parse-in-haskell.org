@@ -1,0 +1,170 @@
+#+TITLE:       parser in haskell
+#+AUTHOR:      enzo liu
+#+EMAIL:       liuenze6516@gmail.com
+#+DATE:        2016-06-08 Wed
+#+URI:         /blog/%y/%m/%d/parser-in-haskell
+#+KEYWORDS:    haskell, functional programming, functor, applicative functor
+#+TAGS:        haskell
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+
+#+BEGIN_QUOTE
+声明: 素材来源于 [[https://www.seas.upenn.edu/~cis194/lectures.html][cis194的课后习题]]
+#+END_QUOTE
+
+手写一个解析 ~s-expression~ 的 ~parser~
+
+** 结构定义
+
+~parser~ 就是一个接受一个 ~String~, 返回一个解析后的结果的函数。
+
+返回的结果可能是
+
+1. 解析错误
+2. 解析出的结果以及剩下的字符串
+
+#+NAME: parser-def
+#+BEGIN_SRC haskell :exports code :eval no
+import           Control.Applicative
+import           Data.Char
+
+newtype Parser a = Parser { runParser :: String -> Maybe (a, String) }
+#+End_SRC
+
+** 结果
+
+- ~parseAtom~ : 一个数字或者开头为字目的字符串的 ~parser~
+- ~parseSExpr~ : (一个原子表达式或者一个S表达式的列表)的 ~parser~
+
+#+NAME: parser-def
+#+BEGIN_SRC haskell :exports code :eval no
+-- An "identifier" is represented as just a String; however, only
+-- those Strings consisting of a letter followed by any number of
+-- letters and digits are valid identifiers.
+type Ident = String
+
+-- An "atom" is either an integer value or an identifier.
+data Atom = N Integer | I Ident
+  deriving Show
+
+-- An S-expression is either an atom, or a list of S-expressions.
+data SExpr = A Atom | Comb [SExpr] deriving Show
+
+parseAtom :: Parser Atom
+parseAtom = (N <$> posInt) <|> (I <$> ident)
+
+parseSExpr :: Parser SExpr
+--           周围可能是空格  (  原子     或者  S表达式的列表 )
+parseSExpr = withSpaces      $  parseA   <|>   parseC
+--              构造Atom       (作用在parser的结果上)     atom的parser
+  where parseA = A             <$>                        parseAtom
+--              构造列表    (同上)    (空格         (至少一个S表达式的parser))
+        parseC = Comb       <$>       (inBrackets $ oneOrMore parseSExpr)
+--                     消耗掉 '('             消耗掉 ')'
+        inBrackets p = char '(' *>     p      <* char ')'
+--                     消耗掉空格             消耗掉空格
+        withSpaces p = spaces *>       p      <* spaces
+#+END_SRC
+
+** 基本的抽象
+
+#+NAME: parser-instance
+#+BEGIN_SRC haskell  :exports code :eval no
+first :: (a -> b) -> (a,c) -> (b,c)
+first f  (a,c) = (f a , c)
+
+doubleLift ::(Applicative f, Applicative g) => (a->b) -> f (g a) -> f (g b)
+doubleLift f a= fmap (fmap f) a
+
+instance Functor Parser where
+  fmap f (Parser a) = Parser $ doubleLift (first f)  a
+  (<$>) = fmap
+
+instance Applicative Parser where
+  pure a = Parser (\s -> Just (a,s))
+  (Parser mf) <*> a = Parser f
+    where f s = case mf s of
+            Nothing -> Nothing
+            Just (g, s') -> runParser (g <$> a) s'
+
+instance Alternative Parser where
+  empty = Parser (\_->Nothing)
+  Parser f1 <|> Parser f2 = Parser $ liftA2 (<|>) f1 f2
+#+END_SRC
+
+** 一些帮助函数
+#+NAME: parser-utilities
+#+BEGIN_SRC haskell :exports code :eval no
+-- For example, 'satisfy' takes a predicate on Char, and constructs a
+-- parser which succeeds only if it sees a Char that satisfies the
+-- predicate (which it then returns).  If it encounters a Char that
+-- does not satisfy the predicate (or an empty input), it fails.
+satisfy :: (Char -> Bool) -> Parser Char
+satisfy p = Parser f
+  where
+    f [] = Nothing    -- fail on the empty input
+    f (x:xs)          -- check if x satisfies the predicate
+                        -- if so, return x along with the remainder
+                        -- of the input (that is, xs)
+        | p x       = Just (x, xs)
+        | otherwise = Nothing  -- otherwise, fail
+
+zeroOrMore :: Parser a -> Parser [a]
+zeroOrMore p = oneOrMore p <|> pure []
+
+oneOrMore :: Parser a -> Parser [a]
+oneOrMore p = (:) <$> p <*> zeroOrMore p
+-- oneOrMore  = some
+
+spaces :: Parser String
+spaces = zeroOrMore $ satisfy isSpace
+
+ident :: Parser String
+ident = (:) <$> satisfy isAlpha <*> (zeroOrMore $ satisfy isAlphaNum)
+
+#+END_SRC
+
+** 应用
+#+BEGIN_SRC haskell
+runParser parseSExpr "(1 2 3)"
+-- Just (Comb [A (N 1),A (N 2),A (N 3)],"")
+
+runParser parseSExpr "(1 2 3"
+-- Nothing
+
+runParser parseSExpr "1 2 3"
+-- Just (A (N 1),"2 3")
+
+runParser parseSExpr " (1 2 (3) ab) 3"
+-- Just (Comb [A (N 1),A (N 2),Comb [A (N 3)],A (I "ab")],"3")
+#+END_SRC
+
+** 分析
+
+1. 好读, 代码整体就是一篇说明，从底层的定义开始, 一点点构建到上层
+2. 关键还是对于领域的理解，按照这个思路，在 ~java~ 里也是可以写出近似的结构.
+
+** functor
+
+#+BEGIN_QUOTE
+对于(控制)结构的抽象, 用于处理容器内部的值，容器控制调用方式，次数等
+#+END_QUOTE
+
+- List :: 一个可以迭代的结构
+
+- Maybe :: 一个内容可能有空的结构
+
+- function :: 不知道怎么形象的类比，这个结构是一个映射关系。引用一段别人的定义：
+     #+BEGIN_QUOTE
+     As a container, (e -> a) represents a (possibly infinite) set of values of a, indexed by values of e. Alternatively, and more usefully, ((->) e) can be thought of as a context in which a value of type e is available to be consulted in a read-only fashion. [[https://wiki.haskell.org/Typeclassopedia#Instances][原文]]
+     #+END_QUOTE
+
+  - (+2) equals \ x -> x + 2
+  - (*3) equals \ x -> x * 3
+  - fmap (+2) (*3) equals \ x -> (+2) (x*3)
+
+*** haskell的定义
+
+#+BEGIN_SRC haskell
+fmap :: (a -> b) -> f a -> f b
+#+END_SRC
