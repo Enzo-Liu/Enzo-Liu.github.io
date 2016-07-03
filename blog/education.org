@@ -1,0 +1,14 @@
+#+TITLE:       致孩子
+#+AUTHOR:      enzo liu
+#+EMAIL:       liuenze6516@gmail.com
+#+DATE:        2016-07-03 Sun
+#+URI:         /blog/%y/%m/%d/for-children
+#+KEYWORDS:    education
+#+TAGS:        <TODO: insert your tags here>
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: <TODO: insert your description here>
+
+* 责任心
+
+* 热情
