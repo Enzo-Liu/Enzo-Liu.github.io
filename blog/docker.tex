@@ -1,0 +1,146 @@
+% Created 2016-07-15 Fri 11:39
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\setCJKmainfont[BoldFont=FandolSong-Bold.otf,ItalicFont=FandolKai-Regular.otf]{FandolSong-Regular.otf}
+\setCJKsansfont[BoldFont=FandolHei-Bold.otf]{FandolHei-Regular.otf}
+\setCJKmonofont{FandolFang-Regular.otf}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\defaultfontfeatures{Mapping=tex-text}
+\usepackage{geometry}
+\usepackage{verbatim}
+\usepackage{fixltx2e}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{parskip}
+\setlength{\parindent}{15pt}
+\usepackage{indentfirst}
+\geometry{a4paper, textwidth=6.5in, textheight=10in,
+            marginparsep=7pt, marginparwidth=.6in}
+\tolerance=1000
+\pagestyle{empty}
+\author{enzo liu}
+\date{2016-06-30 Thu}
+\title{docker的使用}
+\hypersetup{
+  pdfkeywords={<TODO: insert your keywords here>},
+  pdfsubject={<TODO: insert your description here>},
+  pdfcreator={Emacs 25.0.94.1 (Org mode 8.2.10)}}
+\begin{document}
+
+\maketitle
+前段时间，公司意外断电，导致内网服务器硬盘数据损坏, 之前纯手工打造的内网环境全跪了。欲哭无泪，于是就不哭了，借这个机会体验一把 \verb~docker~, 这里记录一下使用中遇到的一些状况。
+
+\section*{环境介绍}
+\label{sec-1}
+
+原来的内网环境中，包含了
+
+\begin{quote}
+
+
+\begin{description}
+\item[{jenkins}] 用于 \verb~CI~
+\item[{artifactory}] 用于内网 \verb~maven~ 仓库的托管
+\item[{gitlab}] 内网 `git` 仓库
+\item[{\href{https://github.com/code4craft/blackhole}{blackhole}}] \verb~亿华~ 出品，用于内网dns劫持
+\item[{nginx}] 内网各种web服务的汇总代理, 偶尔用于劫持外部网页，做些自动化的小后门
+\end{description}
+
+以及内网的文件服务器，上传服务器等
+\end{quote}
+
+去年8月份，公司刚成立，一个人瞎倒腾了3-4天才大致搞定了这些。
+
+\section*{docker搭建的过程}
+\label{sec-2}
+
+\begin{itemize}
+\item 用 \verb~docker pull~ \verb~docker run~
+\end{itemize}
+
+以 \verb~jenkins~ 为例，找了一个 \verb~docker image~
+\lstset{frame=single,backgroundcolor=\color[gray]{0.95},identifierstyle=\ttfamily,keywordstyle=\color[rgb]{0,0,1},commentstyle=\color[rgb]{0.133,0.545,0.133},stringstyle=\color[rgb]{0.627,0.126,0.941},basicstyle=\scriptsize,extendedchars=true,breaklines=true,prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},columns=fixed,keepspaces=true,showstringspaces=false,numbers=left,xleftmargin=.25in,xrightmargin=.25in,numberstyle=\tiny,language=shell,label= ,caption= }
+\begin{lstlisting}
+docker pull jenkins
+docker run -d -p 49001:8080 -v $PWD/jenkins:/var/jenkins_home -t jenkins
+\end{lstlisting}
+
+done!
+
+\begin{itemize}
+\item 用　\textasciitilde{}docker-compose\textasciitilde{}
+\end{itemize}
+
+我使用的是这种方式 \sout{因为搜索到的第一个介绍是这样用的} , 示例的 compose file 如下：
+
+\lstset{frame=single,backgroundcolor=\color[gray]{0.95},identifierstyle=\ttfamily,keywordstyle=\color[rgb]{0,0,1},commentstyle=\color[rgb]{0.133,0.545,0.133},stringstyle=\color[rgb]{0.627,0.126,0.941},basicstyle=\scriptsize,extendedchars=true,breaklines=true,prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},columns=fixed,keepspaces=true,showstringspaces=false,numbers=left,xleftmargin=.25in,xrightmargin=.25in,numberstyle=\tiny,language=docker-compose,label= ,caption= }
+\begin{lstlisting}
+version: '2'
+
+services:
+  oss:
+    restart: always
+    image: jfrog-docker-reg2.bintray.io/jfrog/artifactory-oss:latest
+    volumes:
+      - /var/opt/jfrog/artifactory/backup:/var/opt/jfrog/artifactory/backup:Z
+      - /var/opt/jfrog/artifactory/logs:/var/opt/jfrog/artifactory/logs:Z
+      - /var/opt/jfrog/artifactory/data:/var/opt/jfrog/artifactory/data:Z
+      - /var/opt/jfrog/artifactory/etc:/var/opt/jfrog/artifactory/etc:Z
+    ports:
+      - "10081:8081"
+\end{lstlisting}
+
+一共花了 \textbf{半天} 时间，完成了 \verb~gitlab~, \verb~gitlab-runner~, \verb~spark~, \verb~artifactory~ 的搭建, 主要的时间还是花在了下载　\textasciitilde{}docker image\textasciitilde{} 的过程中。
+
+
+\section*{遇到的问题}
+\label{sec-3}
+
+\begin{itemize}
+\item 没有 \verb~image~ 和 \verb~container~ 的概念
+
+第一次接触，对于其中的概念没有理解清楚就开始用，直接导致了后面的问题。
+
+\begin{itemize}
+\item 容器的数据没有持久化
+
+部署的容器完全以搜索到的介绍为准，让我 \verb~mount~ 数据目录的，我就操作。没让我 \verb~mount~ 的，我就直接启动。于是，在一次重启之后， \verb~artifactory~ 内下载下来的所有 \verb~jar~ 包都丢了。
+\end{itemize}
+
+\item 权限
+
+\verb~mount~ 进去的数据文件的权限默认是 \verb~root~ (\texttt{其实和使用的image相关，看它是怎么设置目录权限的，如果没有管你mount进去的文件，就默认为root}), 如果想手工调整，看该镜像是否提供了 \verb~entry point~ 用于修改。或者自己可以基于该 \verb~image~ 重编一个符合自己需求的镜像。
+
+\item 环境变量
+
+在安装完成 \verb~gitlab-runner~ (类似于 \verb~jenkins~ 的一个 \verb~ci~ 工具), 我希望以我指定的 \verb~java~ 和 \verb~maven~ 来执行打包等操作。于是将这些文件 \verb~mount~ 进去之后， 需要设定一下环境变量来使用指定路径下的软件。 \verb~compose file~ 中有一个 \verb~directive~ 叫 \verb~environments~ 可以完成。
+
+\item 指定host的解析
+
+由于我们的mvn, ci都是在内网，并且手动绑定host来指定到某个ip, 所以也需要手工设置容器内的host。通过 \verb~compose file~ 中的 \verb~extra_hosts~ 即可制定。
+\end{itemize}
+
+\section*{题外话}
+\label{sec-4}
+
+遇到的磁盘坏了的坑，于是搭了 \verb~raid-1~, 脚本每天备份，备份数据文件夹以及对应的 \verb~docker compose file~ 。以后 \sout{服务器跪了} 再重新搭建应该更快了.
+
+\section*{总结}
+\label{sec-5}
+
+搭建，部署，启动 \verb~docker~ 真的都是 \verb~好快~ , \verb~好快~ , \verb~好快~  ...
+
+\textbf{科技改变生活}
+% Emacs 25.0.94.1 (Org mode 8.2.10)
+\end{document}

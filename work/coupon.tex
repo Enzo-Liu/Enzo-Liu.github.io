@@ -1,0 +1,150 @@
+% Created 2016-06-20 Mon 17:23
+\documentclass[presentation, bigger]{beamer}
+\usepackage[no-math]{fontspec}
+\usepackage[BoldFont,SlantFont,AutoFakeBold=true,AutoFakeSlant=true]{xeCJK}
+\setCJKmainfont[BoldFont=FandolSong-Bold.otf,ItalicFont=FandolKai-Regular.otf]{FandolSong-Regular.otf}
+\setCJKsansfont[BoldFont=FandolHei-Bold.otf]{FandolHei-Regular.otf}
+\setCJKmonofont{FandolFang-Regular.otf}
+\usefonttheme[stillsansseriflarge,stillsansserifsmall]{serif}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\defaultfontfeatures{Mapping=tex-text}
+\usepackage{geometry}
+\usepackage{verbatim}
+\usepackage{fixltx2e}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\usetheme{metropolis}
+\author{刘恩泽}
+\date{2016-01-11}
+\title{优惠/活动规则整理}
+\hypersetup{
+ pdfauthor={刘恩泽},
+ pdftitle={优惠/活动规则整理},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 24.5.1 (Org mode 8.3.4)},
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\begin{frame}{目录}
+\tableofcontents
+\end{frame}
+
+
+
+\section{活动分析}
+\label{sec:orgheadline6}
+
+\begin{frame}[label={sec:orgheadline1}]{活动形态}
+\begin{enumerate}
+\item 特价商品
+\item 商品折扣/促销
+\item 用户优惠券 (一种形式的用户运营活动)
+\item 买一送一
+\item 第二单半价
+\item 满减
+\item \ldots{}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile,label={sec:orgheadline2}]{针对对象}
+ \begin{quote}
+\texttt{商品} , \texttt{用户} , \texttt{交易行为} , \texttt{订单金额}, \texttt{下单时间} 等。 作为活动门槛的一部分，应该可以灵活指定规则, 从而方便进行运营活动。
+\end{quote}
+
+\begin{block}{比如}
+\begin{enumerate}
+\item \uline{指定商品} 39元
+\item \uline{新用户} 8折
+\item \uline{第二件} 半价
+\item \uline{满100} 减20
+\item \uline{下单} 送红包
+\item \uline{晚上10点以后} 立减10元
+\end{enumerate}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile,label={sec:orgheadline3}]{优惠形式}
+ \begin{quote}
+相对固定，一般为 \texttt{折扣} , \texttt{立减} , \texttt{减至} , \texttt{送券} , \texttt{送实物}
+\end{quote}
+
+\begin{block}{比如}
+\begin{enumerate}
+\item 第二单 \uline{8折}
+\item 下单立 \uline{减30} 元
+\item 首单 \uline{59元} 购买
+\end{enumerate}
+\end{block}
+\end{frame}
+
+\begin{frame}[label={sec:orgheadline4}]{补贴方}
+\begin{description}
+\item[{卖家补贴 }] 预定义活动，卖家申请参与, 成本由卖家承担
+\item[{平台补贴}] 成本平台承担
+\end{description}
+\end{frame}
+
+\begin{frame}[label={sec:orgheadline5}]{优惠共享方式}
+\begin{itemize}
+\item 可与其他优惠同享
+\item 不可与其他优惠同享
+\item 不可与某些优惠同享
+\end{itemize}
+
+\begin{block}{如:}
+\begin{quote}
+优惠券间不可以共享（只能用一个）, 但是可以和立减一起用。 如果用了特卖的优惠，就什么也不能用。
+\end{quote}
+\end{block}
+\end{frame}
+
+\section{现状}
+\label{sec:orgheadline8}
+\begin{frame}[label={sec:orgheadline7}]{活动列表}
+\begin{itemize}
+\item 39元活动
+\begin{itemize}
+\item \uline{指定商品集合的首次下单}
+\item \uline{39元购买}
+\end{itemize}
+\item 红包活动
+\begin{itemize}
+\item \uline{每月前三单支付成功的订单}
+\item \uline{送红包}
+\end{itemize}
+\item 新用户活动
+\begin{itemize}
+\item \uline{首单}
+\item \uline{立减30}
+\end{itemize}
+\item 赖** 88折
+\begin{itemize}
+\item \uline{指定商品6张以内}
+\item \uline{享受88折优惠}
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{逻辑总结}
+\label{sec:orgheadline10}
+
+\begin{frame}[label={sec:orgheadline9}]{活动触发的维度}
+\end{frame}
+
+
+\section{系统逻辑设计}
+\label{sec:orgheadline11}
+\end{document}

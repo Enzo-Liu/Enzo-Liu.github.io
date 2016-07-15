@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>docker的使用 - enzo&#39;s note book</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="enzo liu" />
+    <meta name="description" content="&lt;TODO: insert your description here&gt;" />
+    <meta name="keywords" content="&lt;TODO: insert your keywords here&gt;" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+  </head>
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">enzo&#39;s note book</a></h1>
+        <p>M-x (sketch for random ideas)</p>
+        <ul>
+          <li><a href="/auto/">Auto</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/history/">History</a></li>
+          <li><a href="/leetcode/">Leetcode</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="blog.enzo.cc">
+        </form>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>docker的使用</h1>
+<p>
+前段时间，公司意外断电，导致内网服务器硬盘数据损坏, 之前纯手工打造的内网环境全跪了。欲哭无泪，于是就不哭了，借这个机会体验一把 <code>docker</code>, 这里记录一下使用中遇到的一些状况。
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">环境介绍</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+原来的内网环境中，包含了
+</p>
+
+<blockquote>
+<p>
+
+</p>
+
+<dl class="org-dl">
+<dt> jenkins </dt><dd>用于 <code>CI</code>
+</dd>
+<dt> artifactory </dt><dd>用于内网 <code>maven</code> 仓库的托管
+</dd>
+<dt> gitlab </dt><dd>内网 `git` 仓库
+</dd>
+<dt> <a href="https://github.com/code4craft/blackhole">blackhole</a> </dt><dd><code>亿华</code> 出品，用于内网dns解析 <del>劫持</del>
+</dd>
+<dt> nginx </dt><dd>内网各种web服务的汇总代理, 偶尔用于劫持外部网页，做些自动化的小后门
+</dd>
+</dl>
+
+<p>
+以及内网的文件服务器，上传服务器等
+</p>
+</blockquote>
+
+<p>
+去年8月份，公司刚成立，一个人瞎倒腾了3-4天才大致搞定了这些。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">docker搭建的过程</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>用 <code>docker pull</code> <code>docker run</code>
+</li>
+</ul>
+
+<p>
+以 <code>jenkins</code> 为例，找了一个 <code>docker image</code>
+</p>
+<div class="org-src-container">
+
+<pre class="src src-shell">docker pull jenkins
+docker run -d -p 49001:8080 -v $PWD/jenkins:/var/jenkins_home -t jenkins
+</pre>
+</div>
+
+<p>
+done!
+</p>
+
+<ul class="org-ul">
+<li>用 <code>docker-compose</code>
+</li>
+</ul>
+
+<p>
+我使用的是这种方式 <del>因为搜索到的第一个介绍是这样用的</del> , 示例的 compose file 如下：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-docker-compose">version: '2'
+
+services:
+  oss:
+    restart: always
+    image: jfrog-docker-reg2.bintray.io/jfrog/artifactory-oss:latest
+    volumes:
+      - /var/opt/jfrog/artifactory/backup:/var/opt/jfrog/artifactory/backup:Z
+      - /var/opt/jfrog/artifactory/logs:/var/opt/jfrog/artifactory/logs:Z
+      - /var/opt/jfrog/artifactory/data:/var/opt/jfrog/artifactory/data:Z
+      - /var/opt/jfrog/artifactory/etc:/var/opt/jfrog/artifactory/etc:Z
+    ports:
+      - "10081:8081"
+</pre>
+</div>
+
+<p>
+一共花了 <b>半天</b> 时间，完成了 <code>gitlab</code>, <code>gitlab-runner</code>, <code>spark</code>, <code>artifactory</code> 的搭建, 主要的时间还是花在了下载 <code>docker image</code> 的过程中。
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">遇到的问题</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li>没有 <code>image</code> 和 <code>container</code> 的概念
+
+<p>
+第一次接触，对于其中的概念没有理解清楚就开始用，直接导致了后面的问题。
+</p>
+
+<ul class="org-ul">
+<li>容器的数据没有持久化
+
+<p>
+部署的容器完全以搜索到的介绍为准，让我 <code>mount</code> 数据目录的，我就操作。没让我 <code>mount</code> 的，我就直接启动。于是，在一次重启之后， <code>artifactory</code> 内下载下来的所有 <code>jar</code> 包都丢了。
+</p>
+</li>
+</ul>
+</li>
+
+<li>权限
+
+<p>
+<code>mount</code> 进去的数据文件的权限默认是 <code>root</code> (<code>其实和使用的image相关，看它是怎么设置目录权限的，如果没有管你mount进去的文件，就默认为root</code>), 如果想手工调整，看该镜像是否提供了 <code>entry point</code> 用于修改。或者自己可以基于该 <code>image</code> 重编一个符合自己需求的镜像。
+</p>
+</li>
+
+<li>环境变量
+
+<p>
+在安装完成 <code>gitlab-runner</code> (类似于 <code>jenkins</code> 的一个 <code>ci</code> 工具), 我希望以我指定的 <code>java</code> 和 <code>maven</code> 来执行打包等操作。于是将这些文件 <code>mount</code> 进去之后， 需要设定一下环境变量来使用指定路径下的软件。 <code>compose file</code> 中有一个 <code>directive</code> 叫 <code>environments</code> 可以完成。
+</p>
+</li>
+
+<li>指定host的解析
+
+<p>
+由于我们的mvn, ci都是在内网，并且手动绑定host来指定到某个ip, 所以也需要手工设置容器内的host。通过 <code>compose file</code> 中的 <code>extra_hosts</code> 即可制定。
+</p>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">题外话</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+遇到的磁盘坏了的坑，于是搭了 <code>raid-1</code>, 脚本每天备份，备份数据文件夹以及对应的 <code>docker compose file</code> 。以后 <del>服务器跪了</del> 再重新搭建应该更快了.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">总结</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+搭建，部署，启动 <code>docker</code> 真的都是 <code>好快</code> , <code>好快</code> , <code>好快</code>  ...
+</p>
+
+<p>
+<b>科技改变生活</b>
+</p>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2016-06-30</span>
+        <span title="last modification date" class="post-info">2016-07-15</span>
+        <span title="tags" class="post-info"><a href="/tags/&lt;todo/">&lt;TODO</a>, <a href="/tags/insert-your-tags-here&gt;/">insert your tags here&gt;</a></span>
+        <span title="author" class="post-info">enzo liu</span>
+      </div>
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/blog/2016/06/30/docker";
+          var disqus_url = "https://blog.enzo.cc/blog/2016/06/30/docker";
+          var disqus_shortname = 'enzo-liu';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="/media/js/main.js"></script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
+        <p>
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>

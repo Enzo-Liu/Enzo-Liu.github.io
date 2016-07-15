@@ -1,0 +1,99 @@
+% Created 2016-06-29 Wed 18:46
+\documentclass[presentation]{beamer}
+\usepackage[no-math]{fontspec}
+\usepackage[BoldFont,SlantFont,AutoFakeBold=true,AutoFakeSlant=true]{xeCJK}
+\setCJKmainfont[BoldFont=FandolSong-Bold.otf,ItalicFont=FandolKai-Regular.otf]{FandolSong-Regular.otf}
+\setCJKsansfont[BoldFont=FandolHei-Bold.otf]{FandolHei-Regular.otf}
+\setCJKmonofont{FandolFang-Regular.otf}
+\usefonttheme[stillsansseriflarge,stillsansserifsmall]{serif}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\defaultfontfeatures{Mapping=tex-text}
+\usepackage{geometry}
+\usepackage{verbatim}
+\usepackage{fixltx2e}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\setlength{\parindent}{0in}
+\tolerance=1000
+\usetheme{default}
+\author{enzo liu}
+\date{2016-01-11}
+\title{用org-page尝试写点东西}
+\hypersetup{
+ pdfauthor={enzo liu},
+ pdftitle={用org-page尝试写点东西},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 25.0.94.1 (Org mode 8.3.4)},
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+
+\section*{背景}
+\label{sec:orgheadline1}
+
+近段时间一直喜欢自己用 \texttt{org-mode} 写点东西。业务上的文档，个人的笔记等。
+
+没有深入的了解过 \uline{publish} 在 \texttt{org-mode} 中怎么使用，正巧遇到了 \href{https://github.com/kelvinh/org-page}{\texttt{org-page}}, 上手很容易，就准备把自己之前的小blog给推了，用它来记录点东西。
+
+\subsection*{test}
+\label{sec:orgheadline1}
+
+testse
+
+\section*{安装}
+\label{sec:orgheadline1}
+
+如文档上所说，使用 \texttt{melpa} 可以很容易就安装成功。 略微配置一下文件夹地址，哪些文件夹不要发布到网站上，使用的 \texttt{branch} 的名称即可。
+
+\section*{迁移}
+\label{sec:orgheadline1}
+
+虽然过去的 \texttt{blog} 写的很幼稚， 但是还有有一点 \sout{历史} 意义的。
+
+使用 \texttt{haskell} 写的 \texttt{pandoc} 就是文档转换界的一把金光闪闪的瑞士军刀。
+
+\lstset{frame=single,backgroundcolor=\color[gray]{0.95},identifierstyle=\ttfamily,keywordstyle=\color[rgb]{0,0,1},commentstyle=\color[rgb]{0.133,0.545,0.133},stringstyle=\color[rgb]{0.627,0.126,0.941},basicstyle=\scriptsize,extendedchars=true,breaklines=true,prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},columns=fixed,keepspaces=true,showstringspaces=false,numbers=left,numberstyle=\tiny,language=bash,label= ,caption= ,captionpos=b}
+\begin{lstlisting}
+find . -name \*.md -type f -exec pandoc  -f markdown -t org -o {}.org {} \;
+\end{lstlisting}
+
+一行搞定, 然后手动加一些 \texttt{org-page} 需要的 \texttt{header} 就可以了。
+
+\section*{github pages}
+\label{sec:orgheadline3}
+
+\subsection*{test}
+\label{sec:orgheadline2}
+\begin{frame}[fragile,label={sec:orgheadline1}]{test}
+ 原先就是使用 \texttt{jekyll} 托管在 \texttt{github page} 上， 现在只需要把 \texttt{master} 分支的文件替换成 \texttt{org-page} 生成的文件就可以了。
+
+\lstset{frame=single,backgroundcolor=\color[gray]{0.95},identifierstyle=\ttfamily,keywordstyle=\color[rgb]{0,0,1},commentstyle=\color[rgb]{0.133,0.545,0.133},stringstyle=\color[rgb]{0.627,0.126,0.941},basicstyle=\scriptsize,extendedchars=true,breaklines=true,prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},columns=fixed,keepspaces=true,showstringspaces=false,numbers=left,numberstyle=\tiny,language=bash,label= ,caption= ,captionpos=b}
+\begin{lstlisting}
+git checkout master
+find . -name \* | grep -v ".git" | xargs rm -rf
+git add . && git commit -m “clear all"
+git checkout source
+\end{lstlisting}
+
+然后在 \texttt{emacs} 里执行
+
+\lstset{frame=single,backgroundcolor=\color[gray]{0.95},identifierstyle=\ttfamily,keywordstyle=\color[rgb]{0,0,1},commentstyle=\color[rgb]{0.133,0.545,0.133},stringstyle=\color[rgb]{0.627,0.126,0.941},basicstyle=\scriptsize,extendedchars=true,breaklines=true,prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},columns=fixed,keepspaces=true,showstringspaces=false,numbers=left,numberstyle=\tiny,language=Lisp,label= ,caption= ,captionpos=b}
+\begin{lstlisting}
+(op/do-publication t nil nil t)
+\end{lstlisting}
+
+That's done.
+\end{frame}
+\end{document}
