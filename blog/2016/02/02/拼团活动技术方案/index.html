@@ -23,7 +23,7 @@
         </ul>
         <form method="get" id="searchform" action="//www.google.com/search">
           <input type="text" class="field" name="q" id="s" placeholder="Search">
-          <input type="hidden" name="as_sitesearch" value="blog.enzotech.in">
+          <input type="hidden" name="as_sitesearch" value="blog.enzo.cc">
         </form>
       </header>
     </div>
@@ -35,31 +35,31 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline2">1. 活动分析</a>
+<li><a href="#sec-1">1. 活动分析</a>
 <ul>
-<li><a href="#orgheadline1">1.1. 活动分析</a></li>
+<li><a href="#sec-1-1">1.1. 活动分析</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline5">2. 功能列表</a>
+<li><a href="#sec-2">2. 功能列表</a>
 <ul>
-<li><a href="#orgheadline3">2.1. 接口交互</a></li>
-<li><a href="#orgheadline4">2.2. 后台逻辑</a></li>
+<li><a href="#sec-2-1">2.1. 接口交互</a></li>
+<li><a href="#sec-2-2">2.2. 后台逻辑</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline6">3. 后台接口列表</a></li>
-<li><a href="#orgheadline13">4. 生命周期</a>
+<li><a href="#sec-3">3. 后台接口列表</a></li>
+<li><a href="#sec-4">4. 生命周期</a>
 <ul>
-<li><a href="#orgheadline7">4.1. 创建</a></li>
-<li><a href="#orgheadline8">4.2. 支付</a></li>
-<li><a href="#orgheadline9">4.3. 订单关闭</a></li>
-<li><a href="#orgheadline10">4.4. 订单退款</a></li>
-<li><a href="#orgheadline11">4.5. 团成功</a></li>
-<li><a href="#orgheadline12">4.6. 团失败</a></li>
+<li><a href="#sec-4-1">4.1. 创建</a></li>
+<li><a href="#sec-4-2">4.2. 支付</a></li>
+<li><a href="#sec-4-3">4.3. 订单关闭</a></li>
+<li><a href="#sec-4-4">4.4. 订单退款</a></li>
+<li><a href="#sec-4-5">4.5. 团成功</a></li>
+<li><a href="#sec-4-6">4.6. 团失败</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline15">5. 场景</a>
+<li><a href="#sec-5">5. 场景</a>
 <ul>
-<li><a href="#orgheadline14">5.1. 页面入口的场景</a></li>
+<li><a href="#sec-5-1">5.1. 页面入口的场景</a></li>
 </ul>
 </li>
 </ul>
@@ -67,202 +67,226 @@
 </div>
 
 
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2"><span class="section-number-2">1</span> 活动分析</h2>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 活动分析</h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="outline-container-orgheadline1" class="outline-3">
-<h3 id="orgheadline1"><span class="section-number-3">1.1</span> 活动分析</h3>
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 活动分析</h3>
 <div class="outline-text-3" id="text-1-1">
 <ol class="org-ol">
-<li>针对活动演出，提供两个商品，一个原价商品，一个团购商品</li>
-<li>对于团购商品的购买，订单支付之后，需要延迟发货相关的流程。</li>
-<li>团购商品的订单，支付后，可以获取分享的团购标识.</li>
-<li>在时效范围内且参团人数未满，都可以参加该团购的购买</li>
-<li>一次开团成功后，所有相关订单开始备货发货流程</li>
-<li>一次开团失败后，所有相关订单走退款流程</li>
+<li>针对活动演出，提供两个商品，一个原价商品，一个团购商品
+</li>
+<li>对于团购商品的购买，订单支付之后，需要延迟发货相关的流程。
+</li>
+<li>团购商品的订单，支付后，可以获取分享的团购标识.
+</li>
+<li>在时效范围内且参团人数未满，都可以参加该团购的购买
+</li>
+<li>一次开团成功后，所有相关订单开始备货发货流程
+</li>
+<li>一次开团失败后，所有相关订单走退款流程
+</li>
 </ol>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline5" class="outline-2">
-<h2 id="orgheadline5"><span class="section-number-2">2</span> 功能列表</h2>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> 功能列表</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-orgheadline3" class="outline-3">
-<h3 id="orgheadline3"><span class="section-number-3">2.1</span> 接口交互</h3>
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> 接口交互</h3>
 <div class="outline-text-3" id="text-2-1">
 <ol class="org-ol">
-<li>活动演出列表</li>
-<li>活动演出详情</li>
-<li>参团详情</li>
-<li>获取团购标识</li>
+<li>活动演出列表
+</li>
+<li>活动演出详情
+</li>
+<li>参团详情
+</li>
+<li>获取团购标识
+</li>
 </ol>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="orgheadline4"><span class="section-number-3">2.2</span> 后台逻辑</h3>
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> 后台逻辑</h3>
 <div class="outline-text-3" id="text-2-2">
 <ol class="org-ol">
-<li>标记特卖商品 (普通售卖不可见)</li>
-<li>配置团购商品的汇总关系 (列表页数据)</li>
-<li>购买时根据团购商品区分不同的发货</li>
-<li>根据团购订单生成开团标识</li>
-<li>定期根据团购标识处理发货或者退款</li>
+<li>标记特卖商品 (普通售卖不可见)
+</li>
+<li>配置团购商品的汇总关系 (列表页数据)
+</li>
+<li>购买时根据团购商品区分不同的发货
+</li>
+<li>根据团购订单生成开团标识
+</li>
+<li>定期根据团购标识处理发货或者退款
+</li>
 </ol>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline6" class="outline-2">
-<h2 id="orgheadline6"><span class="section-number-2">3</span> 后台接口列表</h2>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> 后台接口列表</h2>
 <div class="outline-text-2" id="text-3">
 <ol class="org-ol">
-<li>根据活动ID拿商品列表</li>
-<li>根据商品拿详情</li>
-<li>根据用户和商品获取拼团信息</li>
-<li>参加/发起一个拼团</li>
+<li>根据活动ID拿商品列表
+</li>
+<li>根据商品拿详情
+</li>
+<li>根据用户和商品获取拼团信息
+</li>
+<li>参加/发起一个拼团
+</li>
 </ol>
 </div>
 </div>
 
-<div id="outline-container-orgheadline13" class="outline-2">
-<h2 id="orgheadline13"><span class="section-number-2">4</span> 生命周期</h2>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> 生命周期</h2>
 <div class="outline-text-2" id="text-4">
-</div><div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="orgheadline7"><span class="section-number-3">4.1</span> 创建</h3>
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> 创建</h3>
 <div class="outline-text-3" id="text-4-1">
 <ul class="org-ul">
-<li>创建团</li>
-<li>加入团</li>
+<li>创建团
+</li>
+<li>加入团
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-3">
-<h3 id="orgheadline8"><span class="section-number-3">4.2</span> 支付</h3>
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> 支付</h3>
 <div class="outline-text-3" id="text-4-2">
 <ul class="org-ul">
-<li>加入团成功</li>
+<li>加入团成功
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline9" class="outline-3">
-<h3 id="orgheadline9"><span class="section-number-3">4.3</span> 订单关闭</h3>
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> 订单关闭</h3>
 <div class="outline-text-3" id="text-4-3">
 <ul class="org-ul">
-<li>加入团失败</li>
+<li>加入团失败
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="orgheadline10"><span class="section-number-3">4.4</span> 订单退款</h3>
+<div id="outline-container-sec-4-4" class="outline-3">
+<h3 id="sec-4-4"><span class="section-number-3">4.4</span> 订单退款</h3>
 <div class="outline-text-3" id="text-4-4">
 <ul class="org-ul">
-<li>加入团失败</li>
+<li>加入团失败
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline11" class="outline-3">
-<h3 id="orgheadline11"><span class="section-number-3">4.5</span> 团成功</h3>
+<div id="outline-container-sec-4-5" class="outline-3">
+<h3 id="sec-4-5"><span class="section-number-3">4.5</span> 团成功</h3>
 </div>
 
-<div id="outline-container-orgheadline12" class="outline-3">
-<h3 id="orgheadline12"><span class="section-number-3">4.6</span> 团失败</h3>
+<div id="outline-container-sec-4-6" class="outline-3">
+<h3 id="sec-4-6"><span class="section-number-3">4.6</span> 团失败</h3>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline15" class="outline-2">
-<h2 id="orgheadline15"><span class="section-number-2">5</span> 场景</h2>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> 场景</h2>
 <div class="outline-text-2" id="text-5">
-</div><div id="outline-container-orgheadline14" class="outline-3">
-<h3 id="orgheadline14"><span class="section-number-3">5.1</span> 页面入口的场景</h3>
+</div><div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> 页面入口的场景</h3>
 <div class="outline-text-3" id="text-5-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
-<col  class="org-left" />
+<col  class="left" />
 
-<col  class="org-left" />
+<col  class="left" />
 
-<col  class="org-left" />
+<col  class="left" />
 
-<col  class="org-left" />
+<col  class="left" />
 
-<col  class="org-left" />
+<col  class="left" />
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">人</th>
-<th scope="col" class="org-left">团</th>
-<th scope="col" class="org-left">团状态</th>
-<th scope="col" class="org-left">操作</th>
-<th scope="col" class="org-left">提示</th>
+<th scope="col" class="left">人</th>
+<th scope="col" class="left">团</th>
+<th scope="col" class="left">团状态</th>
+<th scope="col" class="left">操作</th>
+<th scope="col" class="left">提示</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="org-left">参加过团A</td>
-<td class="org-left">B</td>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">不能做任何事</td>
-<td class="org-left">已参加过一个团</td>
+<td class="left">参加过团A</td>
+<td class="left">B</td>
+<td class="left">&#xa0;</td>
+<td class="left">不能做任何事</td>
+<td class="left">已参加过一个团</td>
 </tr>
 
 <tr>
-<td class="org-left">参加过团A</td>
-<td class="org-left">A</td>
-<td class="org-left">未结束</td>
-<td class="org-left">只能分享</td>
-<td class="org-left">&#xa0;</td>
+<td class="left">参加过团A</td>
+<td class="left">A</td>
+<td class="left">未结束</td>
+<td class="left">只能分享</td>
+<td class="left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left">参加过团A</td>
-<td class="org-left">A</td>
-<td class="org-left">成功</td>
-<td class="org-left">不能做任何事</td>
-<td class="org-left">&#xa0;</td>
+<td class="left">参加过团A</td>
+<td class="left">A</td>
+<td class="left">成功</td>
+<td class="left">不能做任何事</td>
+<td class="left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left">参加过团A</td>
-<td class="org-left">A</td>
-<td class="org-left">失败</td>
-<td class="org-left">创建新的团</td>
-<td class="org-left">&#xa0;</td>
+<td class="left">参加过团A</td>
+<td class="left">A</td>
+<td class="left">失败</td>
+<td class="left">创建新的团</td>
+<td class="left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left">未参加过</td>
-<td class="org-left">/</td>
-<td class="org-left">/</td>
-<td class="org-left">创建新的团</td>
-<td class="org-left">&#xa0;</td>
+<td class="left">未参加过</td>
+<td class="left">/</td>
+<td class="left">/</td>
+<td class="left">创建新的团</td>
+<td class="left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left">未参加过</td>
-<td class="org-left">A</td>
-<td class="org-left">进行中</td>
-<td class="org-left">参加该团</td>
-<td class="org-left">&#xa0;</td>
+<td class="left">未参加过</td>
+<td class="left">A</td>
+<td class="left">进行中</td>
+<td class="left">参加该团</td>
+<td class="left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left">未参加过</td>
-<td class="org-left">A</td>
-<td class="org-left">结束（成功、失败）</td>
-<td class="org-left">创建新的团</td>
-<td class="org-left">&#xa0;</td>
+<td class="left">未参加过</td>
+<td class="left">A</td>
+<td class="left">结束（成功、失败）</td>
+<td class="left">创建新的团</td>
+<td class="left">&#xa0;</td>
 </tr>
 </tbody>
 </table>
@@ -275,7 +299,7 @@
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2016-02-02</span>
-        <span title="last modification date" class="post-info">2016-04-01</span>
+        <span title="last modification date" class="post-info">2016-02-03</span>
         <span title="tags" class="post-info">N/A</span>
         <span title="author" class="post-info">刘恩泽</span>
       </div>
@@ -285,7 +309,7 @@
         <script type="text/javascript">
           //var disqus_developer = 1;
           var disqus_identifier = "/blog/2016/02/02/拼团活动技术方案/";
-          var disqus_url = "http://blog.enzotech.in/blog/2016/02/02/拼团活动技术方案/";
+          var disqus_url = "https://blog.enzo.cc/blog/2016/02/02/拼团活动技术方案/";
           var disqus_shortname = 'enzo-liu';
           /* * * DON'T EDIT BELOW THIS LINE * * */
           (function() {
@@ -302,7 +326,7 @@
       <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="/media/js/main.js"></script>
       <div class="footer">
-        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.x (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
         <p>
           Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:enze &lt;dot&gt; liu &lt;at&gt; ipiaoniu &lt;dot&gt; com">刘恩泽</a>
           &nbsp;&nbsp;-&nbsp;&nbsp;

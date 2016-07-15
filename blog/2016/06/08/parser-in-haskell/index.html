@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>parser in haskell - enzo&#39;s note book</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="enzo liu" />
+    <meta name="keywords" content="haskell, functional programming, functor, applicative functor" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+  </head>
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">enzo&#39;s note book</a></h1>
+        <p>M-x (sketch for random ideas)</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/history/">History</a></li>
+          <li><a href="/leetcode/">Leetcode</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="blog.enzo.cc">
+        </form>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>parser in haskell</h1>
+<blockquote>
+<p>
+声明: 素材来源于 <a href="https://www.seas.upenn.edu/~cis194/lectures.html">cis194的课后习题</a>
+</p>
+</blockquote>
+
+<p>
+手写一个解析 <code>s-expression</code> 的 <code>parser</code>
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">结构定义</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+<code>parser</code> 就是一个接受一个 <code>String</code>, 返回一个解析后的结果的函数。
+</p>
+
+<p>
+返回的结果可能是
+</p>
+
+<ol class="org-ol">
+<li>解析错误
+</li>
+<li>解析出的结果以及剩下的字符串
+</li>
+</ol>
+
+<div class="org-src-container">
+
+<pre class="src src-haskell" id="parser-def">import           Control.Applicative
+import           Data.Char
+
+newtype Parser a = Parser { runParser :: String -&gt; Maybe (a, String) }
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">结果</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li><code>parseAtom</code> : 一个数字或者开头为字目的字符串的 <code>parser</code>
+</li>
+<li><code>parseSExpr</code> : (一个原子表达式或者一个S表达式的列表)的 <code>parser</code>
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-haskell" id="parser-def">-- An "identifier" is represented as just a String; however, only
+-- those Strings consisting of a letter followed by any number of
+-- letters and digits are valid identifiers.
+type Ident = String
+
+-- An "atom" is either an integer value or an identifier.
+data Atom = N Integer | I Ident
+  deriving Show
+
+-- An S-expression is either an atom, or a list of S-expressions.
+data SExpr = A Atom | Comb [SExpr] deriving Show
+
+parseAtom :: Parser Atom
+parseAtom = (N &lt;$&gt; posInt) &lt;|&gt; (I &lt;$&gt; ident)
+
+parseSExpr :: Parser SExpr
+--           周围可能是空格  (  原子     或者  S表达式的列表 )
+parseSExpr = withSpaces      $  parseA   &lt;|&gt;   parseC
+--              构造Atom       (作用在parser的结果上)     atom的parser
+  where parseA = A             &lt;$&gt;                        parseAtom
+--              构造列表    (同上)    (空格         (至少一个S表达式的parser))
+        parseC = Comb       &lt;$&gt;       (inBrackets $ oneOrMore parseSExpr)
+--                     消耗掉 '('             消耗掉 ')'
+        inBrackets p = char '(' *&gt;     p      &lt;* char ')'
+--                     消耗掉空格             消耗掉空格
+        withSpaces p = spaces *&gt;       p      &lt;* spaces
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">基本的抽象</h2>
+<div class="outline-text-2" id="text-3">
+<div class="org-src-container">
+
+<pre class="src src-haskell" id="parser-instance">first :: (a -&gt; b) -&gt; (a,c) -&gt; (b,c)
+first f  (a,c) = (f a , c)
+
+doubleLift ::(Applicative f, Applicative g) =&gt; (a-&gt;b) -&gt; f (g a) -&gt; f (g b)
+doubleLift f a= fmap (fmap f) a
+
+instance Functor Parser where
+  fmap f (Parser a) = Parser $ doubleLift (first f)  a
+  (&lt;$&gt;) = fmap
+
+instance Applicative Parser where
+  pure a = Parser (\s -&gt; Just (a,s))
+  (Parser mf) &lt;*&gt; a = Parser f
+    where f s = case mf s of
+            Nothing -&gt; Nothing
+            Just (g, s') -&gt; runParser (g &lt;$&gt; a) s'
+
+instance Alternative Parser where
+  empty = Parser (\_-&gt;Nothing)
+  Parser f1 &lt;|&gt; Parser f2 = Parser $ liftA2 (&lt;|&gt;) f1 f2
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">一些帮助函数</h2>
+<div class="outline-text-2" id="text-4">
+<div class="org-src-container">
+
+<pre class="src src-haskell" id="parser-utilities">-- For example, 'satisfy' takes a predicate on Char, and constructs a
+-- parser which succeeds only if it sees a Char that satisfies the
+-- predicate (which it then returns).  If it encounters a Char that
+-- does not satisfy the predicate (or an empty input), it fails.
+satisfy :: (Char -&gt; Bool) -&gt; Parser Char
+satisfy p = Parser f
+  where
+    f [] = Nothing    -- fail on the empty input
+    f (x:xs)          -- check if x satisfies the predicate
+                        -- if so, return x along with the remainder
+                        -- of the input (that is, xs)
+        | p x       = Just (x, xs)
+        | otherwise = Nothing  -- otherwise, fail
+
+zeroOrMore :: Parser a -&gt; Parser [a]
+zeroOrMore p = oneOrMore p &lt;|&gt; pure []
+
+oneOrMore :: Parser a -&gt; Parser [a]
+oneOrMore p = (:) &lt;$&gt; p &lt;*&gt; zeroOrMore p
+-- oneOrMore  = some
+
+spaces :: Parser String
+spaces = zeroOrMore $ satisfy isSpace
+
+ident :: Parser String
+ident = (:) &lt;$&gt; satisfy isAlpha &lt;*&gt; (zeroOrMore $ satisfy isAlphaNum)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">应用</h2>
+<div class="outline-text-2" id="text-5">
+<div class="org-src-container">
+
+<pre class="src src-haskell">runParser parseSExpr "(1 2 3)"
+-- Just (Comb [A (N 1),A (N 2),A (N 3)],"")
+
+runParser parseSExpr "(1 2 3"
+-- Nothing
+
+runParser parseSExpr "1 2 3"
+-- Just (A (N 1),"2 3")
+
+runParser parseSExpr " (1 2 (3) ab) 3"
+-- Just (Comb [A (N 1),A (N 2),Comb [A (N 3)],A (I "ab")],"3")
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">分析</h2>
+<div class="outline-text-2" id="text-6">
+<ol class="org-ol">
+<li>好读, 代码整体就是一篇说明，从底层的定义开始, 一点点构建到上层
+</li>
+<li>关键还是对于领域的理解，按照这个思路，在 <code>java</code> 里也是可以写出近似的结构.
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7">functor</h2>
+<div class="outline-text-2" id="text-7">
+<blockquote>
+<p>
+对于(控制)结构的抽象, 用于处理容器内部的值，容器控制调用方式，次数等
+</p>
+</blockquote>
+
+<dl class="org-dl">
+<dt> List </dt><dd>一个可以迭代的结构
+</dd>
+
+<dt> Maybe </dt><dd>一个内容可能有空的结构
+</dd>
+
+<dt> function </dt><dd>不知道怎么形象的类比，这个结构是一个映射关系。引用一段别人的定义：
+<blockquote>
+<p>
+As a container, (e -&gt; a) represents a (possibly infinite) set of values of a, indexed by values of e. Alternatively, and more usefully, ((-&gt;) e) can be thought of as a context in which a value of type e is available to be consulted in a read-only fashion. <a href="https://wiki.haskell.org/Typeclassopedia#Instances">原文</a>
+</p>
+</blockquote>
+
+<ul class="org-ul">
+<li>(+2) equals \ x -&gt; x + 2
+</li>
+<li>(*3) equals \ x -&gt; x * 3
+</li>
+<li>fmap (+2) (*3) equals \ x -&gt; (+2) (x*3)
+</li>
+</ul>
+</dd>
+</dl>
+</div>
+
+<div id="outline-container-sec-7-1" class="outline-3">
+<h3 id="sec-7-1">haskell的定义</h3>
+<div class="outline-text-3" id="text-7-1">
+<div class="org-src-container">
+
+<pre class="src src-haskell">fmap :: (a -&gt; b) -&gt; f a -&gt; f b
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2016-06-08</span>
+        <span title="last modification date" class="post-info">2016-07-15</span>
+        <span title="tags" class="post-info"><a href="/tags/haskell/">haskell</a></span>
+        <span title="author" class="post-info">enzo liu</span>
+      </div>
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/blog/2016/06/08/parser-in-haskell";
+          var disqus_url = "https://blog.enzo.cc/blog/2016/06/08/parser-in-haskell";
+          var disqus_shortname = 'enzo-liu';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="/media/js/main.js"></script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
+        <p>
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -23,7 +23,7 @@
         </ul>
         <form method="get" id="searchform" action="//www.google.com/search">
           <input type="text" class="field" name="q" id="s" placeholder="Search">
-          <input type="hidden" name="as_sitesearch" value="blog.enzotech.in">
+          <input type="hidden" name="as_sitesearch" value="blog.enzo.cc">
         </form>
       </header>
     </div>
@@ -35,237 +35,279 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline7">1. 后台处理流程</a>
+<li><a href="#sec-1">1. 后台处理流程</a>
 <ul>
-<li><a href="#orgheadline5">1.1. 发货流程</a></li>
-<li><a href="#orgheadline6">1.2. 采购流程</a></li>
+<li><a href="#sec-1-1">1.1. 发货流程</a></li>
+<li><a href="#sec-1-2">1.2. 采购流程</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline19">2. 角色分析</a>
+<li><a href="#sec-2">2. 角色分析</a>
 <ul>
-<li><a href="#orgheadline8">2.1. 涉及角色</a></li>
-<li><a href="#orgheadline10">2.2. 订单管理员</a></li>
-<li><a href="#orgheadline13">2.3. 仓库管理员</a></li>
-<li><a href="#orgheadline16">2.4. 采购管理员</a></li>
-<li><a href="#orgheadline18">2.5. 财务</a></li>
+<li><a href="#sec-2-1">2.1. 涉及角色</a></li>
+<li><a href="#sec-2-2">2.2. 订单管理员</a></li>
+<li><a href="#sec-2-3">2.3. 仓库管理员</a></li>
+<li><a href="#sec-2-4">2.4. 采购管理员</a></li>
+<li><a href="#sec-2-5">2.5. 财务</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline24">3. 系统功能</a>
+<li><a href="#sec-3">3. 系统功能</a>
 <ul>
-<li><a href="#orgheadline20">3.1. 订单管理员</a></li>
-<li><a href="#orgheadline21">3.2. 仓库管理员</a></li>
-<li><a href="#orgheadline22">3.3. 采购</a></li>
-<li><a href="#orgheadline23">3.4. 财务</a></li>
+<li><a href="#sec-3-1">3.1. 订单管理员</a></li>
+<li><a href="#sec-3-2">3.2. 仓库管理员</a></li>
+<li><a href="#sec-3-3">3.3. 采购</a></li>
+<li><a href="#sec-3-4">3.4. 财务</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline27">4. 一期功能</a>
+<li><a href="#sec-4">4. 一期功能</a>
 <ul>
-<li><a href="#orgheadline25">4.1. 功能清单</a></li>
-<li><a href="#orgheadline26">4.2. 系统不能做什么</a></li>
+<li><a href="#sec-4-1">4.1. 功能清单</a></li>
+<li><a href="#sec-4-2">4.2. 系统不能做什么</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-2">
-<h2 id="orgheadline7"><span class="section-number-2">1</span> 后台处理流程</h2>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 后台处理流程</h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5"><span class="section-number-3">1.1</span> 发货流程</h3>
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 发货流程</h3>
 <div class="outline-text-3" id="text-1-1">
-</div><ol class="org-ol"><li><a id="orgheadline1"></a>1:<br  /><div class="outline-text-4" id="text-1-1-1">
+</div><ol class="org-ol"><li><a id="sec-1-1-1" name="sec-1-1-1"></a>1:<br  /><div class="outline-text-4" id="text-1-1-1">
 <p>
 订单 -&gt; 确认卖家库存 -&gt; 2a,2b
 </p>
-</div></li>
+</div>
+</li>
 
-<li><a id="orgheadline2"></a>2a:<br  /><div class="outline-text-4" id="text-1-1-2">
+<li><a id="sec-1-1-2" name="sec-1-1-2"></a>2a:<br  /><div class="outline-text-4" id="text-1-1-2">
 <p>
 有库存 -&gt; 直接发货
 </p>
-</div></li>
+</div>
+</li>
 
-<li><a id="orgheadline3"></a>2b:<br  /><div class="outline-text-4" id="text-1-1-3">
+<li><a id="sec-1-1-3" name="sec-1-1-3"></a>2b:<br  /><div class="outline-text-4" id="text-1-1-3">
 <p>
 对应卖家无库存  -&gt; 向仓库获取  -&gt; 采购流程  -&gt; 2a,3
 </p>
-</div></li>
+</div>
+</li>
 
-<li><a id="orgheadline4"></a>3:<br  /><div class="outline-text-4" id="text-1-1-4">
+<li><a id="sec-1-1-4" name="sec-1-1-4"></a>3:<br  /><div class="outline-text-4" id="text-1-1-4">
 <p>
 采购失败 -&gt; 客服联系，退款，赔偿，更换更高价值商品
 </p>
-</div></li></ol>
+</div>
+</li></ol>
 </div>
 
 
-<div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="orgheadline6"><span class="section-number-3">1.2</span> 采购流程</h3>
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 采购流程</h3>
 <div class="outline-text-3" id="text-1-2">
 <ul class="org-ul">
-<li>卖家主动发货 -&gt; 到货 -&gt; 结款</li>
+<li>卖家主动发货 -&gt; 到货 -&gt; 结款
+</li>
 
-<li>公司采购  -&gt; 到货 -&gt; 结款</li>
+<li>公司采购  -&gt; 到货 -&gt; 结款
+</li>
 </ul>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline19" class="outline-2">
-<h2 id="orgheadline19"><span class="section-number-2">2</span> 角色分析</h2>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> 角色分析</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-orgheadline8" class="outline-3">
-<h3 id="orgheadline8"><span class="section-number-3">2.1</span> 涉及角色</h3>
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> 涉及角色</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
-<li>订单管理员 （负责向仓库要库存，发货，协调订单）</li>
-<li>仓库 （负责商品出入库，通知采购，通知订单管理员）</li>
-<li>采购 （负责获取商品）</li>
-<li>财务  (负责结款)</li>
+<li>订单管理员 （负责向仓库要库存，发货，协调订单）
+</li>
+<li>仓库 （负责商品出入库，通知采购，通知订单管理员）
+</li>
+<li>采购 （负责获取商品）
+</li>
+<li>财务  (负责结款)
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="orgheadline10"><span class="section-number-3">2.2</span> 订单管理员</h3>
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> 订单管理员</h3>
 <div class="outline-text-3" id="text-2-2">
-</div><ol class="org-ol"><li><a id="orgheadline9"></a>日常工作<br  /><div class="outline-text-4" id="text-2-2-1">
+</div><ol class="org-ol"><li><a id="sec-2-2-1" name="sec-2-2-1"></a>日常工作<br  /><div class="outline-text-4" id="text-2-2-1">
 <ol class="org-ol">
-<li>定期查看可发货订单，进行发货</li>
-<li>对于特殊订单进行人工处理  &#x2013; <span class="underline">无货订单等?</span></li>
+<li>定期查看可发货订单，进行发货
+</li>
+<li>对于特殊订单进行人工处理  &#x2013; <span class="underline">无货订单等?</span>
+</li>
 </ol>
-</div></li></ol>
+</div>
+</li></ol>
 </div>
 
 
-<div id="outline-container-orgheadline13" class="outline-3">
-<h3 id="orgheadline13"><span class="section-number-3">2.3</span> 仓库管理员</h3>
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> 仓库管理员</h3>
 <div class="outline-text-3" id="text-2-3">
-</div><ol class="org-ol"><li><a id="orgheadline11"></a>日常工作<br  /><div class="outline-text-4" id="text-2-3-1">
+</div><ol class="org-ol"><li><a id="sec-2-3-1" name="sec-2-3-1"></a>日常工作<br  /><div class="outline-text-4" id="text-2-3-1">
 <ol class="org-ol">
-<li>对于采购回的商品做入库</li>
-<li>对于需要发货的商品做出库</li>
-<li>通知采购去获取缺货商品</li>
-<li>到货商品通知订单管理员可以检查发货</li>
+<li>对于采购回的商品做入库
+</li>
+<li>对于需要发货的商品做出库
+</li>
+<li>通知采购去获取缺货商品
+</li>
+<li>到货商品通知订单管理员可以检查发货
+</li>
 </ol>
-</div></li>
+</div>
+</li>
 
-<li><a id="orgheadline12"></a>例外情况<br  /><div class="outline-text-4" id="text-2-3-2">
+<li><a id="sec-2-3-2" name="sec-2-3-2"></a>例外情况<br  /><div class="outline-text-4" id="text-2-3-2">
 <p>
 无货通知订单管理员进行协商，走退款/赔偿/补偿流程
 </p>
-</div></li></ol>
+</div>
+</li></ol>
 </div>
 
-<div id="outline-container-orgheadline16" class="outline-3">
-<h3 id="orgheadline16"><span class="section-number-3">2.4</span> 采购管理员</h3>
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4"><span class="section-number-3">2.4</span> 采购管理员</h3>
 <div class="outline-text-3" id="text-2-4">
-</div><ol class="org-ol"><li><a id="orgheadline14"></a>日常工作<br  /><div class="outline-text-4" id="text-2-4-1">
+</div><ol class="org-ol"><li><a id="sec-2-4-1" name="sec-2-4-1"></a>日常工作<br  /><div class="outline-text-4" id="text-2-4-1">
 <ol class="org-ol">
-<li><code>黄牛</code> 卖家, 等待其到货，提供给仓库商品，财务打款单据</li>
-<li><code>自营</code> 卖家, 自行采购，提供给仓库商品，财务打款单据</li>
+<li><code>黄牛</code> 卖家, 等待其到货，提供给仓库商品，财务打款单据
+</li>
+<li><code>自营</code> 卖家, 自行采购，提供给仓库商品，财务打款单据
+</li>
 </ol>
-</div></li>
+</div>
+</li>
 
-<li><a id="orgheadline15"></a>例外情况<br  /><div class="outline-text-4" id="text-2-4-2">
+<li><a id="sec-2-4-2" name="sec-2-4-2"></a>例外情况<br  /><div class="outline-text-4" id="text-2-4-2">
 <p>
 采购失败，需库房知晓无货。
 </p>
-</div></li></ol>
+</div>
+</li></ol>
 </div>
 
-<div id="outline-container-orgheadline18" class="outline-3">
-<h3 id="orgheadline18"><span class="section-number-3">2.5</span> 财务</h3>
+<div id="outline-container-sec-2-5" class="outline-3">
+<h3 id="sec-2-5"><span class="section-number-3">2.5</span> 财务</h3>
 <div class="outline-text-3" id="text-2-5">
-</div><ol class="org-ol"><li><a id="orgheadline17"></a>日常工作<br  /><div class="outline-text-4" id="text-2-5-1">
+</div><ol class="org-ol"><li><a id="sec-2-5-1" name="sec-2-5-1"></a>日常工作<br  /><div class="outline-text-4" id="text-2-5-1">
 <p>
 打款给采购渠道方, 包括 <code>黄牛</code>, 自行采购对接的 <code>其他公司</code> , 系统出票的 <code>对接公司</code> 等上游渠道
 </p>
-</div></li></ol>
+</div>
+</li></ol>
 </div>
 </div>
 
-<div id="outline-container-orgheadline24" class="outline-2">
-<h2 id="orgheadline24"><span class="section-number-2">3</span> 系统功能</h2>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> 系统功能</h2>
 <div class="outline-text-2" id="text-3">
-</div><div id="outline-container-orgheadline20" class="outline-3">
-<h3 id="orgheadline20"><span class="section-number-3">3.1</span> 订单管理员</h3>
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> 订单管理员</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
-<li>查看可发货订单，进行发货处理</li>
-<li>查看缺货订单</li>
-<li>查看无货订单</li>
+<li>查看可发货订单，进行发货处理
+</li>
+<li>查看缺货订单
+</li>
+<li>查看无货订单
+</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline21" class="outline-3">
-<h3 id="orgheadline21"><span class="section-number-3">3.2</span> 仓库管理员</h3>
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> 仓库管理员</h3>
 <div class="outline-text-3" id="text-3-2">
 <ul class="org-ul">
 <li>查看缺货商品
 <ul class="org-ul">
-<li>商品： <span class="underline">演出,场次,票档,卖家均相同为一类商品</span></li>
-</ul></li>
+<li>商品： <span class="underline">演出,场次,票档,卖家均相同为一类商品</span>
+</li>
+</ul>
+</li>
 
-<li>查看现有商品，做出入库</li>
+<li>查看现有商品，做出入库
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline22" class="outline-3">
-<h3 id="orgheadline22"><span class="section-number-3">3.3</span> 采购</h3>
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> 采购</h3>
 <div class="outline-text-3" id="text-3-3">
 <ul class="org-ul">
-<li>查看缺货商品</li>
+<li>查看缺货商品
+</li>
 
-<li>录入采购单据</li>
+<li>录入采购单据
+</li>
 
 <li>查看采购单据
 <ul class="org-ul">
-<li>自营人工录入, 黄牛到货后系统生成</li>
-</ul></li>
+<li>自营人工录入, 黄牛到货后系统生成
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline23" class="outline-3">
-<h3 id="orgheadline23"><span class="section-number-3">3.4</span> 财务</h3>
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4"><span class="section-number-3">3.4</span> 财务</h3>
 <div class="outline-text-3" id="text-3-4">
 <ul class="org-ul">
-<li>查看采购单据</li>
+<li>查看采购单据
+</li>
 
-<li>打款等后续处理</li>
+<li>打款等后续处理
+</li>
 </ul>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline27" class="outline-2">
-<h2 id="orgheadline27"><span class="section-number-2">4</span> 一期功能</h2>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> 一期功能</h2>
 <div class="outline-text-2" id="text-4">
-</div><div id="outline-container-orgheadline25" class="outline-3">
-<h3 id="orgheadline25"><span class="section-number-3">4.1</span> 功能清单</h3>
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> 功能清单</h3>
 <div class="outline-text-3" id="text-4-1">
 <ul class="org-ul">
-<li>缺货商品查看</li>
-<li>商品出入库管理</li>
-<li>可发货订单管理</li>
-<li>缺货订单查看</li>
+<li>缺货商品查看
+</li>
+<li>商品出入库管理
+</li>
+<li>可发货订单管理
+</li>
+<li>缺货订单查看
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline26" class="outline-3">
-<h3 id="orgheadline26"><span class="section-number-3">4.2</span> 系统不能做什么</h3>
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> 系统不能做什么</h3>
 <div class="outline-text-3" id="text-4-2">
 <ul class="org-ul">
 <li>区分每一张票的特性
 <ul class="org-ul">
-<li>理解什么叫连座</li>
-</ul></li>
+<li>理解什么叫连座
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -276,7 +318,7 @@
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2015-12-15</span>
-        <span title="last modification date" class="post-info">2016-04-01</span>
+        <span title="last modification date" class="post-info">2016-02-02</span>
         <span title="tags" class="post-info">N/A</span>
         <span title="author" class="post-info">刘恩泽</span>
       </div>
@@ -286,7 +328,7 @@
         <script type="text/javascript">
           //var disqus_developer = 1;
           var disqus_identifier = "/blog/2015/12/15/商品后台管理系统/";
-          var disqus_url = "http://blog.enzotech.in/blog/2015/12/15/商品后台管理系统/";
+          var disqus_url = "https://blog.enzo.cc/blog/2015/12/15/商品后台管理系统/";
           var disqus_shortname = 'enzo-liu';
           /* * * DON'T EDIT BELOW THIS LINE * * */
           (function() {
@@ -303,7 +345,7 @@
       <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="/media/js/main.js"></script>
       <div class="footer">
-        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.x (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
         <p>
           Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:enze &lt;dot&gt; liu &lt;at&gt; ipiaoniu &lt;dot&gt; com">刘恩泽</a>
           &nbsp;&nbsp;-&nbsp;&nbsp;

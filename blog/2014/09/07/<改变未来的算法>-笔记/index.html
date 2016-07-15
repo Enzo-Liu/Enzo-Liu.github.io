@@ -23,7 +23,7 @@
         </ul>
         <form method="get" id="searchform" action="//www.google.com/search">
           <input type="text" class="field" name="q" id="s" placeholder="Search">
-          <input type="hidden" name="as_sitesearch" value="blog.enzotech.in">
+          <input type="hidden" name="as_sitesearch" value="blog.enzo.cc">
         </form>
       </header>
     </div>
@@ -32,9 +32,9 @@
 <div class="post">
 <h1>&lt;改变未来的算法&gt; 笔记</h1>
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1">搜索引擎</h2>
-<div class="outline-text-2" id="text-orgheadline1">
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">搜索引擎</h2>
+<div class="outline-text-2" id="text-1">
 <blockquote>
 <p>
 简要的说，一次搜索包含了: 匹配，排名。
@@ -42,9 +42,9 @@
 </blockquote>
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-3">
-<h3 id="orgheadline2">匹配</h3>
-<div class="outline-text-3" id="text-orgheadline2">
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1">匹配</h3>
+<div class="outline-text-3" id="text-1-1">
 <p>
 这里的主要概念就是索引。（想象一下字典） 首先需要知道词出现在哪里
 </p>
@@ -72,19 +72,20 @@
 </div>
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-2">
-<h2 id="orgheadline4">PageRank</h2>
-<div class="outline-text-2" id="text-orgheadline4">
-</div><div id="outline-container-orgheadline3" class="outline-3">
-<h3 id="orgheadline3">排名</h3>
-<div class="outline-text-3" id="text-orgheadline3">
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">PageRank</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1">排名</h3>
+<div class="outline-text-3" id="text-2-1">
 <p>
 匹配完成后，还有一个重要的事情就是排名，找到最接近查找的内容。但是同样一个词，计算机如何去理解什么是最接近的?
 可选的办法就是：*权重，计分*
 </p>
 
 <ul class="org-ul">
-<li>计分:</li>
+<li>计分:
+</li>
 </ul>
 
 <blockquote>
@@ -94,7 +95,8 @@
 </blockquote>
 
 <ul class="org-ul">
-<li>权重:</li>
+<li>权重:
+</li>
 </ul>
 
 <p>
@@ -120,15 +122,16 @@
 </div>
 </div>
 
-<div id="outline-container-orgheadline5" class="outline-2">
-<h2 id="orgheadline5">公钥加密</h2>
-<div class="outline-text-2" id="text-orgheadline5">
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">公钥加密</h2>
+<div class="outline-text-2" id="text-3">
 <p>
 当信息交换双方协商好一种加密密钥（类似加密字典）,简单的加密也就可以进行了。下面探讨的主要是，如何公共的协商出一种密钥。
 </p>
 
 <ol class="org-ol">
-<li>首先考虑一个问题，如何利用公共的信息得到一个秘密。假设有这种一个操作可以。那:</li>
+<li>首先考虑一个问题，如何利用公共的信息得到一个秘密。假设有这种一个操作可以。那:
+</li>
 </ol>
 
 <blockquote>
@@ -142,13 +145,12 @@
 </pre>
 
 <ol class="org-ol">
-<li><p>
-假定该操作为'*',协议双方选择一种公钥p，个人私钥p1,p2(只有自己知道)
-</p>
+<li>假定该操作为'*',协议双方选择一种公钥p，个人私钥p1,p2(只有自己知道)
 
 <p>
 p * p1 = r1; p * p2 = r2; key = r1 * p2 = r2 * p1
-</p></li>
+</p>
+</li>
 </ol>
 
 <p>
@@ -161,100 +163,117 @@ p * p1 = r1; p * p2 = r2; key = r1 * p2 = r2 * p1
 </div>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-2">
-<h2 id="orgheadline6">纠错码</h2>
-<div class="outline-text-2" id="text-orgheadline6">
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">纠错码</h2>
+<div class="outline-text-2" id="text-4">
 <p>
 本质而言，我理解，就是冗余信息进行容错。
 </p>
 
 <ol class="org-ol">
-<li>简单校验和。（checkSum）</li>
-<li>阶梯校验和。（通过位置+值计算）</li>
-<li>将校验和进行二维应用，即可定位到错误的地方。</li>
+<li>简单校验和。（checkSum）
+</li>
+<li>阶梯校验和。（通过位置+值计算）
+</li>
+<li>将校验和进行二维应用，即可定位到错误的地方。
+</li>
 </ol>
 </div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-2">
-<h2 id="orgheadline7">图形识别</h2>
-<div class="outline-text-2" id="text-orgheadline7">
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">图形识别</h2>
+<div class="outline-text-2" id="text-5">
 <p>
 主要模式就是 1. 训练 2. 分类
 </p>
 
 <ol class="org-ol">
-<li>邻近者模式 &gt; 对每个像素做异或，寻找差异最小的模式</li>
+<li>邻近者模式 &gt; 对每个像素做异或，寻找差异最小的模式
+</li>
 
-<li>决策树 &gt; 学习过程没有太明白，分类就按照决策树遍历即可。</li>
+<li>决策树 &gt; 学习过程没有太明白，分类就按照决策树遍历即可。
+</li>
 
 <li>神经网络 &gt;
-学习过程同样没有太明白。分类：现实问题作为输入映射到神经元，神经元的阀值触发信号，汇聚到下一级神经元，一直到最终决定。</li>
+学习过程同样没有太明白。分类：现实问题作为输入映射到神经元，神经元的阀值触发信号，汇聚到下一级神经元，一直到最终决定。
+</li>
 </ol>
 </div>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-2">
-<h2 id="orgheadline8">数据压缩</h2>
-<div class="outline-text-2" id="text-orgheadline8">
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">数据压缩</h2>
+<div class="outline-text-2" id="text-6">
 <p>
 本质上就是查找重复模式
 </p>
 </div>
 
-<div id="outline-container-orgheadline9" class="outline-3">
-<h3 id="orgheadline9">无损压缩</h3>
-<div class="outline-text-3" id="text-orgheadline9">
+<div id="outline-container-sec-6-1" class="outline-3">
+<h3 id="sec-6-1">无损压缩</h3>
+<div class="outline-text-3" id="text-6-1">
 <ol class="org-ol">
-<li>同前</li>
-<li>根据词频进行更短符号</li>
-<li>TODO 霍夫曼编码</li>
+<li>同前
+</li>
+<li>根据词频进行更短符号
+</li>
+<li>TODO 霍夫曼编码
+</li>
 </ol>
 </div>
 </div>
 
-<div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="orgheadline10">有损压缩</h3>
-<div class="outline-text-3" id="text-orgheadline10">
+<div id="outline-container-sec-6-2" class="outline-3">
+<h3 id="sec-6-2">有损压缩</h3>
+<div class="outline-text-3" id="text-6-2">
 <ol class="org-ol">
-<li>图片（隔行列删除像素信息）</li>
-<li>JPEG（像素块内寻找模式-比如分成8*8的块状信息体）</li>
+<li>图片（隔行列删除像素信息）
+</li>
+<li>JPEG（像素块内寻找模式-比如分成8*8的块状信息体）
+</li>
 </ol>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline11" class="outline-2">
-<h2 id="orgheadline11">数据库</h2>
-<div class="outline-text-2" id="text-orgheadline11">
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7">数据库</h2>
+<div class="outline-text-2" id="text-7">
 <ol class="org-ol">
-<li>事物 作为待办事项，写redo-log，保证操作幂等。</li>
-<li>复制提交</li>
-<li>回滚</li>
-<li>预备提交</li>
-<li>虚表</li>
+<li>事物 作为待办事项，写redo-log，保证操作幂等。
+</li>
+<li>复制提交
+</li>
+<li>回滚
+</li>
+<li>预备提交
+</li>
+<li>虚表
+</li>
 </ol>
 </div>
 </div>
 
-<div id="outline-container-orgheadline12" class="outline-2">
-<h2 id="orgheadline12">数字签名</h2>
-<div class="outline-text-2" id="text-orgheadline12">
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8">数字签名</h2>
+<div class="outline-text-2" id="text-8">
 <p>
 TODO 再仔细看一看
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgheadline13" class="outline-2">
-<h2 id="orgheadline13">不可判定问题</h2>
-<div class="outline-text-2" id="text-orgheadline13">
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9">不可判定问题</h2>
+<div class="outline-text-2" id="text-9">
 <p>
 构造冲突的命题
 </p>
 
 <ol class="org-ol">
-<li>构造一类程序用于判断程序是否会崩溃</li>
+<li>构造一类程序用于判断程序是否会崩溃
+</li>
 </ol>
 
 <p>
@@ -277,7 +296,7 @@ canCrash&#x2014;&gt;canCrashWired&#x2014;&gt;crashOnSelf&#x2014;&gt;antiCrashOnS
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2014-09-07</span>
-        <span title="last modification date" class="post-info">2016-04-01</span>
+        <span title="last modification date" class="post-info">2016-02-03</span>
         <span title="tags" class="post-info"><a href="/tags/reading_note/">reading_note</a></span>
         <span title="author" class="post-info">enzo liu</span>
       </div>
@@ -287,7 +306,7 @@ canCrash&#x2014;&gt;canCrashWired&#x2014;&gt;crashOnSelf&#x2014;&gt;antiCrashOnS
         <script type="text/javascript">
           //var disqus_developer = 1;
           var disqus_identifier = "/blog/2014/09/07/&lt;改变未来的算法&gt;-笔记/";
-          var disqus_url = "http://blog.enzotech.in/blog/2014/09/07/&lt;改变未来的算法&gt;-笔记/";
+          var disqus_url = "https://blog.enzo.cc/blog/2014/09/07/&lt;改变未来的算法&gt;-笔记/";
           var disqus_shortname = 'enzo-liu';
           /* * * DON'T EDIT BELOW THIS LINE * * */
           (function() {
@@ -304,7 +323,7 @@ canCrash&#x2014;&gt;canCrashWired&#x2014;&gt;crashOnSelf&#x2014;&gt;antiCrashOnS
       <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="/media/js/main.js"></script>
       <div class="footer">
-        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.x (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
         <p>
           Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
           &nbsp;&nbsp;-&nbsp;&nbsp;
