@@ -3,11 +3,11 @@
 #+EMAIL:       liuenze6516@gmail.com
 #+DATE:        2016-06-30 Thu
 #+URI:         /blog/%y/%m/%d/docker
-#+KEYWORDS:    <TODO: insert your keywords here>
-#+TAGS:        <TODO: insert your tags here>
+#+KEYWORDS:    docker
+#+TAGS:        docker
 #+LANGUAGE:    en
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
-#+DESCRIPTION: <TODO: insert your description here>
+#+DESCRIPTION: docker使用记录
 
 前段时间，公司意外断电，导致内网服务器硬盘数据损坏, 之前纯手工打造的内网环境全跪了。欲哭无泪，于是就不哭了，借这个机会体验一把 ~docker~, 这里记录一下使用中遇到的一些状况。
 
