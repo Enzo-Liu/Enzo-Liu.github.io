@@ -1,0 +1,89 @@
+#+TITLE:       手工搭建spark数据分析平台
+#+AUTHOR:      enzo liu
+#+EMAIL:       liuenze6516@gmail.com
+#+DATE:        2016-06-30 Thu
+#+URI:         /blog/%y/%m/%d/spark
+#+KEYWORDS:    spark, python, ipython
+#+TAGS:        spark, python, ipython
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: using spark to analyze our data
+
+我们的 [[https://www.piaoniu.com][应用]] 在线上也已经运行了快一年了，时常想分析一下过去积累的数据，比如用户的类型，访问路径，转化漏斗等等。
+相对比较好做的也就是一点简单的记录在mysql中的数据。
+
+对于用户运营同事想要的基于uv的留存率等数据，之前的做法：
+
+- 手动备份线上 ~nginx log~ 到一个地方
+- 解压日志 (10g+)
+- ~awk~ 提取需要的信息(1g+)
+- ~sort && unique~ 得到基于日期和ip的访问日志 (200M)　
+- 同步到内网
+- 写个 ~ruby~ 脚本，解析uv, 计算留存率等，得到一个csv
+- 发给运营同事
+
+所以，每个月初，出上月月报的时候，挺痛苦的，帮各个角色出各种数据。
+
+** 穷极思变
+
+累的久了，自然想改变一下。于是自动同步线上日志(~rsync~)，自动解压，解析，去重，生成uv. 每个月需要报表的时候，手动去执行一下脚本就可以了。
+
+接着我们又想去计算转化漏斗，计算每个平台访问频率高的页面，计算演出访问的关联性。脚本已经跑不动了。
+
+** 又一次变化
+
+~spark~ comes to the resuce.
+
+** spark 的好处
+
+*** 自动的任务分解
+
+    我理解，其实和 ~functional programming~ 里的概念很类似。 ~haskell~ 也可以在编译时指定开启多线程，就能自动分解任务。
+    基于的前提都是理解操作间的关联与影响。知道哪些操作是可以先分解再合并的。于是，写的时候当做单线程去写，执行的时候帮你优化。
+
+*** 自动的中间结果缓存
+
+    同样是为了效率的优化，对于撰写脚本计算的人屏蔽了这一层优化的考虑，降低负担.
+
+*** 可以直接本地执行，榨干机器的CPU
+
+
+** 任务示例
+
+比如想知道点了一个演出之后，又点了另一个演出的比例。
+
+#+BEGIN_SRC python
+  # visitsframe为nginx日志解析之后的dataframe
+  # normalVisits为过滤了爬虫的访问之后的
+  normalVisits = (visitsFrame.filter(visitsFrame['res'] == True)
+                  .filter('ua not like "%pider%"')
+                  .filter('ua != "Googlebot"'))
+
+  #relatedVisits 就是当前访问为某个演出页且refer也是某个演出页的记录，按天聚合后的数量
+  relatedVistis = normalVisits.filter("host = 'www.piaoniu.com' and url like '/activity/%' and refer like '%www.piaoniu.com/activity/%'").groupBy('day').count()
+#+END_SRC
+
+在写这段脚本的时候，不关心如何计算，怎么样分解任务,　只负责描述清楚要达成的目标。
+而 ~spark~ 负责很快的执行完。
+
+** 当前的使用方式　
+
+- 安装spark
+  ~docker~ 安装 ~jupyter/all-spark-notebook~
+
+- 数据同步
+  通过crontab的形式，将线上日志导入到内网服务器的制定位置
+
+- 分析脚本开发
+  之前安装的docker image, 8888端口会启动一个ipython的server, 通过该端口使用 ipython 连接到 spark 的 shell, 通过python 来开发分析脚本
+
+- 结果分析
+  1. 直接在 ~ipython~ 的 ~notebook~ 中使用 ~pandas~ 看生成的图片, 比如这样的代码和这样的曲线
+     #+BEGIN_SRC python
+       normalVisits.groupby('day').agg(func.countDistinct('ip')).toPandas().set_index('day').plot()
+     #+END_SRC
+     [[./growth.png]]
+
+  2. 保存结果到csv后导入回mysql做报表展示
+
+*于是，生活又一次幸福了很多。*
