@@ -4,14 +4,21 @@
     <title>enzo&#39;s note book</title>
     <link>https://blog.enzo.cc/</link>
     <description>M-x (sketch for random ideas)</description>
-    <pubDate>Fri, 15 Jul 2016 17:57:30 CST</pubDate>
-    <lastBuildDate>Fri, 15 Jul 2016 17:57:30 CST</lastBuildDate>
+    <pubDate>Sun, 17 Jul 2016 13:12:48 CST</pubDate>
+    <lastBuildDate>Sun, 17 Jul 2016 13:12:48 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
     <item>
+      <title>票务行业的思考</title>
+      <link>https://blog.enzo.cc/work/2016/07/17/票务行业的思考</link>
+      <description><![CDATA[piaoniu]]></description>
+      <pubDate>2016-07-17</pubDate>
+      <guid>https://blog.enzo.cc/work/2016/07/17/票务行业的思考</guid>
+    </item>
+    <item>
       <title>docker的使用</title>
       <link>https://blog.enzo.cc/blog/2016/06/30/docker</link>
-      <description><![CDATA[]]></description>
+      <description><![CDATA[docker使用记录]]></description>
       <pubDate>2016-07-15</pubDate>
       <guid>https://blog.enzo.cc/blog/2016/06/30/docker</guid>
     </item>
@@ -25,58 +32,273 @@
     <item>
       <title>讲讲抽象</title>
       <link>https://blog.enzo.cc/blog/2016/07/07/abstraction</link>
-      <description><![CDATA[]]></description>
+      <description><![CDATA[<TODO: insert your description here>]]></description>
       <pubDate>2016-07-15</pubDate>
       <guid>https://blog.enzo.cc/blog/2016/07/07/abstraction</guid>
     </item>
     <item>
       <title>致孩子</title>
       <link>https://blog.enzo.cc/blog/2016/07/03/for-children</link>
-      <description><![CDATA[]]></description>
+      <description><![CDATA[<TODO: insert your description here>]]></description>
       <pubDate>2016-07-15</pubDate>
       <guid>https://blog.enzo.cc/blog/2016/07/03/for-children</guid>
     </item>
     <item>
       <title>parser in haskell</title>
       <link>https://blog.enzo.cc/blog/2016/06/08/parser-in-haskell</link>
-      <description><![CDATA[]]></description>
+      <description><![CDATA[<div>
+<div class="post">
+<h1>parser in haskell</h1>
+<blockquote>
+<p>
+声明: 素材来源于 <a href="https://www.seas.upenn.edu/~cis194/lectures.html">cis194的课后习题</a>
+</p>
+</blockquote>
+
+<p>
+手写一个解析 <code>s-expression</code> 的 <code>parser</code>
+</p>
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">结构定义</h2>
+<div class="outline-text-2" id="text-orgheadline1">
+<p>
+<code>parser</code> 就是一个接受一个 <code>String</code>, 返回一个解析后的结果的函数。
+</p>
+
+<p>
+返回的结果可能是
+</p>
+
+<ol class="org-ol">
+<li>解析错误</li>
+<li>解析出的结果以及剩下的字符串</li>
+</ol>
+
+<div class="org-src-container">
+
+<pre class="src src-haskell" id="orgsrcblock1">import           Control.Applicative
+import           Data.Char
+
+newtype Parser a = Parser { runParser :: String -&gt; Maybe (a, String) }
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2">结果</h2>
+<div class="outline-text-2" id="text-orgheadline2">
+<ul class="org-ul">
+<li><code>parseAtom</code> : 一个数字或者开头为字目的字符串的 <code>parser</code></li>
+<li><code>parseSExpr</code> : (一个原子表达式或者一个S表达式的列表)的 <code>parser</code></li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-haskell" id="orgsrcblock2">-- An "identifier" is represented as just a String; however, only
+-- those Strings consisting of a letter followed by any number of
+-- letters and digits are valid identifiers.
+type Ident = String
+
+-- An "atom" is either an integer value or an identifier.
+data Atom = N Integer | I Ident
+  deriving Show
+
+-- An S-expression is either an atom, or a list of S-expressions.
+data SExpr = A Atom | Comb [SExpr] deriving Show
+
+parseAtom :: Parser Atom
+parseAtom = (N &lt;$&gt; posInt) &lt;|&gt; (I &lt;$&gt; ident)
+
+parseSExpr :: Parser SExpr
+--           周围可能是空格  (  原子     或者  S表达式的列表 )
+parseSExpr = withSpaces      $  parseA   &lt;|&gt;   parseC
+--              构造Atom       (作用在parser的结果上)     atom的parser
+  where parseA = A             &lt;$&gt;                        parseAtom
+--              构造列表    (同上)    (空格         (至少一个S表达式的parser))
+        parseC = Comb       &lt;$&gt;       (inBrackets $ oneOrMore parseSExpr)
+--                     消耗掉 '('             消耗掉 ')'
+        inBrackets p = char '(' *&gt;     p      &lt;* char ')'
+--                     消耗掉空格             消耗掉空格
+        withSpaces p = spaces *&gt;       p      &lt;* spaces
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3">基本的抽象</h2>
+<div class="outline-text-2" id="text-orgheadline3">
+<div class="org-src-container">
+
+<pre class="src src-haskell" id="orgsrcblock3">first :: (a -&gt; b) -&gt; (a,c) -&gt; (b,c)
+first f  (a,c) = (f a , c)
+
+doubleLift ::(Applicative f, Applicative g) =&gt; (a-&gt;b) -&gt; f (g a) -&gt; f (g b)
+doubleLift f a= fmap (fmap f) a
+
+instance Functor Parser where
+  fmap f (Parser a) = Parser $ doubleLift (first f)  a
+  (&lt;$&gt;) = fmap
+
+instance Applicative Parser where
+  pure a = Parser (\s -&gt; Just (a,s))
+  (Parser mf) &lt;*&gt; a = Parser f
+    where f s = case mf s of
+            Nothing -&gt; Nothing
+            Just (g, s') -&gt; runParser (g &lt;$&gt; a) s'
+
+instance Alternative Parser where
+  empty = Parser (\_-&gt;Nothing)
+  Parser f1 &lt;|&gt; Parser f2 = Parser $ liftA2 (&lt;|&gt;) f1 f2
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4">一些帮助函数</h2>
+<div class="outline-text-2" id="text-orgheadline4">
+<div class="org-src-container">
+
+<pre class="src src-haskell" id="orgsrcblock4">-- For example, 'satisfy' takes a predicate on Char, and constructs a
+-- parser which succeeds only if it sees a Char that satisfies the
+-- predicate (which it then returns).  If it encounters a Char that
+-- does not satisfy the predicate (or an empty input), it fails.
+satisfy :: (Char -&gt; Bool) -&gt; Parser Char
+satisfy p = Parser f
+  where
+    f [] = Nothing    -- fail on the empty input
+    f (x:xs)          -- check if x satisfies the predicate
+                        -- if so, return x along with the remainder
+                        -- of the input (that is, xs)
+        | p x       = Just (x, xs)
+        | otherwise = Nothing  -- otherwise, fail
+
+zeroOrMore :: Parser a -&gt; Parser [a]
+zeroOrMore p = oneOrMore p &lt;|&gt; pure []
+
+oneOrMore :: Parser a -&gt; Parser [a]
+oneOrMore p = (:) &lt;$&gt; p &lt;*&gt; zeroOrMore p
+-- oneOrMore  = some
+
+spaces :: Parser String
+spaces = zeroOrMore $ satisfy isSpace
+
+ident :: Parser String
+ident = (:) &lt;$&gt; satisfy isAlpha &lt;*&gt; (zeroOrMore $ satisfy isAlphaNum)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-2">
+<h2 id="orgheadline5">应用</h2>
+<div class="outline-text-2" id="text-orgheadline5">
+<div class="org-src-container">
+
+<pre class="src src-haskell">runParser parseSExpr "(1 2 3)"
+-- Just (Comb [A (N 1),A (N 2),A (N 3)],"")
+
+runParser parseSExpr "(1 2 3"
+-- Nothing
+
+runParser parseSExpr "1 2 3"
+-- Just (A (N 1),"2 3")
+
+runParser parseSExpr " (1 2 (3) ab) 3"
+-- Just (Comb [A (N 1),A (N 2),Comb [A (N 3)],A (I "ab")],"3")
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline6" class="outline-2">
+<h2 id="orgheadline6">分析</h2>
+<div class="outline-text-2" id="text-orgheadline6">
+<ol class="org-ol">
+<li>好读, 代码整体就是一篇说明，从底层的定义开始, 一点点构建到上层</li>
+<li>关键还是对于领域的理解，按照这个思路，在 <code>java</code> 里也是可以写出近似的结构.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-2">
+<h2 id="orgheadline7">functor</h2>
+<div class="outline-text-2" id="text-orgheadline7">
+<blockquote>
+<p>
+对于(控制)结构的抽象, 用于处理容器内部的值，容器控制调用方式，次数等
+</p>
+</blockquote>
+
+<dl class="org-dl">
+<dt>List</dt><dd>一个可以迭代的结构</dd>
+
+<dt>Maybe</dt><dd>一个内容可能有空的结构</dd>
+
+<dt>function</dt><dd><p>
+不知道怎么形象的类比，这个结构是一个映射关系。引用一段别人的定义：
+</p>
+<blockquote>
+<p>
+As a container, (e -&gt; a) represents a (possibly infinite) set of values of a, indexed by values of e. Alternatively, and more usefully, ((-&gt;) e) can be thought of as a context in which a value of type e is available to be consulted in a read-only fashion. <a href="https://wiki.haskell.org/Typeclassopedia#Instances">原文</a>
+</p>
+</blockquote>
+
+<ul class="org-ul">
+<li>(+2) equals \ x -&gt; x + 2</li>
+<li>(*3) equals \ x -&gt; x * 3</li>
+<li>fmap (+2) (*3) equals \ x -&gt; (+2) (x*3)</li>
+</ul></dd>
+</dl>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8">haskell的定义</h3>
+<div class="outline-text-3" id="text-orgheadline8">
+<div class="org-src-container">
+
+<pre class="src src-haskell">fmap :: (a -&gt; b) -&gt; f a -&gt; f b
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>]]></description>
       <pubDate>2016-07-15</pubDate>
       <guid>https://blog.enzo.cc/blog/2016/06/08/parser-in-haskell</guid>
     </item>
     <item>
       <title>128. Longest Consecutive Sequence</title>
       <link>https://blog.enzo.cc/leetcode/128</link>
-      <description><![CDATA[]]></description>
+      <description><![CDATA[leetcode]]></description>
       <pubDate>2016-04-01</pubDate>
       <guid>https://blog.enzo.cc/leetcode/128</guid>
     </item>
     <item>
       <title>防火墙！防火墙！</title>
       <link>https://blog.enzo.cc/blog/2016/03/18/firewall-iptables</link>
-      <description><![CDATA[]]></description>
+      <description><![CDATA[iptables的防火墙配置]]></description>
       <pubDate>2016-03-18</pubDate>
       <guid>https://blog.enzo.cc/blog/2016/03/18/firewall-iptables</guid>
     </item>
     <item>
       <title>38. Count and Say</title>
       <link>https://blog.enzo.cc/leetcode/38</link>
-      <description><![CDATA[]]></description>
+      <description><![CDATA[leetcode]]></description>
       <pubDate>2016-03-09</pubDate>
       <guid>https://blog.enzo.cc/leetcode/38</guid>
     </item>
     <item>
       <title>179. Largest Number</title>
       <link>https://blog.enzo.cc/leetcode/179</link>
-      <description><![CDATA[]]></description>
+      <description><![CDATA[leetcode]]></description>
       <pubDate>2016-03-01</pubDate>
       <guid>https://blog.enzo.cc/leetcode/179</guid>
-    </item>
-    <item>
-      <title>26. Remove Duplicates from Sorted Array</title>
-      <link>https://blog.enzo.cc/leetcode/26</link>
-      <description><![CDATA[]]></description>
-      <pubDate>2016-03-01</pubDate>
-      <guid>https://blog.enzo.cc/leetcode/26</guid>
     </item>
   </channel>
 </rss>

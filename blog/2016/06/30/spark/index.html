@@ -16,6 +16,7 @@
         <p>M-x (sketch for random ideas)</p>
         <ul>
           <li><a href="/blog/">Blog</a></li>
+          <li><a href="/draft/">Draft</a></li>
           <li><a href="/history/">History</a></li>
           <li><a href="/leetcode/">Leetcode</a></li>
           <li><a href="/tags/">Tags</a></li>
@@ -42,29 +43,22 @@
 </p>
 
 <ul class="org-ul">
-<li>手动备份线上 <code>nginx log</code> 到一个地方
-</li>
-<li>解压日志 (10g+)
-</li>
-<li><code>awk</code> 提取需要的信息(1g+)
-</li>
-<li><code>sort &amp;&amp; unique</code> 得到基于日期和ip的访问日志 (200M)　
-</li>
-<li>同步到内网
-</li>
-<li>写个 <code>ruby</code> 脚本，解析uv, 计算留存率等，得到一个csv
-</li>
-<li>发给运营同事
-</li>
+<li>手动备份线上 <code>nginx log</code> 到一个地方</li>
+<li>解压日志 (10g+)</li>
+<li><code>awk</code> 提取需要的信息(1g+)</li>
+<li><code>sort &amp;&amp; unique</code> 得到基于日期和ip的访问日志 (200M)　</li>
+<li>同步到内网</li>
+<li>写个 <code>ruby</code> 脚本，解析uv, 计算留存率等，得到一个csv</li>
+<li>发给运营同事</li>
 </ul>
 
 <p>
 所以，每个月初，出上月月报的时候，挺痛苦的，帮各个角色出各种数据。
 </p>
 
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1">穷极思变</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">穷极思变</h2>
+<div class="outline-text-2" id="text-orgheadline1">
 <p>
 累的久了，自然想改变一下。于是自动同步线上日志(<code>rsync</code>)，自动解压，解析，去重，生成uv. 每个月需要报表的时候，手动去执行一下脚本就可以了。
 </p>
@@ -75,45 +69,45 @@
 </div>
 </div>
 
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2">又一次变化</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2">又一次变化</h2>
+<div class="outline-text-2" id="text-orgheadline2">
 <p>
 <code>spark</code> comes to the resuce.
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3">spark 的好处</h2>
-<div class="outline-text-2" id="text-3">
-</div><div id="outline-container-sec-3-1" class="outline-3">
-<h3 id="sec-3-1">自动的任务分解</h3>
-<div class="outline-text-3" id="text-3-1">
+<div id="outline-container-orgheadline6" class="outline-2">
+<h2 id="orgheadline6">spark 的好处</h2>
+<div class="outline-text-2" id="text-orgheadline6">
+</div><div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3">自动的任务分解</h3>
+<div class="outline-text-3" id="text-orgheadline3">
 <p>
 我理解，其实和 <code>functional programming</code> 里的概念很类似。 <code>haskell</code> 也可以在编译时指定开启多线程，就能自动分解任务。基于的前提都是理解操作间的关联与影响。知道哪些操作是可以先分解再合并的。于是，写的时候当做单线程去写，执行的时候帮你优化。
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-3-2" class="outline-3">
-<h3 id="sec-3-2">自动的中间结果缓存</h3>
-<div class="outline-text-3" id="text-3-2">
+<div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="orgheadline4">自动的中间结果缓存</h3>
+<div class="outline-text-3" id="text-orgheadline4">
 <p>
 同样是为了效率的优化，对于撰写脚本计算的人屏蔽了这一层优化的考虑，降低负担.
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-3-3" class="outline-3">
-<h3 id="sec-3-3">可以直接本地执行，榨干机器的CPU</h3>
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5">可以直接本地执行，榨干机器的CPU</h3>
 </div>
 </div>
 
 
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4">任务示例</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-orgheadline7" class="outline-2">
+<h2 id="orgheadline7">任务示例</h2>
+<div class="outline-text-2" id="text-orgheadline7">
 <p>
 比如想知道点了一个演出之后，又点了另一个演出的比例。
 </p>
@@ -137,23 +131,22 @@ relatedVistis = normalVisits.filter("host = 'www.piaoniu.com' and url like '/act
 </div>
 </div>
 
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5">当前的使用方式　</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-orgheadline8" class="outline-2">
+<h2 id="orgheadline8">当前的使用方式　</h2>
+<div class="outline-text-2" id="text-orgheadline8">
 <ul class="org-ul">
 <li>安装spark
-<code>docker</code> 安装 <code>jupyter/all-spark-notebook</code>
-</li>
+<code>docker</code> 安装 <code>jupyter/all-spark-notebook</code></li>
 
-<li>数据同步通过crontab的形式，将线上日志导入到内网服务器的制定位置
-</li>
+<li>数据同步通过crontab的形式，将线上日志导入到内网服务器的制定位置</li>
 
-<li>分析脚本开发之前安装的docker image, 8888端口会启动一个ipython的server, 通过该端口使用 ipython 连接到 spark 的 shell, 通过python 来开发分析脚本
-</li>
+<li>分析脚本开发之前安装的docker image, 8888端口会启动一个ipython的server, 通过该端口使用 ipython 连接到 spark 的 shell, 通过python 来开发分析脚本</li>
 
 <li>结果分析
 <ol class="org-ol">
-<li>直接在 <code>ipython</code> 的 <code>notebook</code> 中使用 <code>pandas</code> 看生成的图片, 比如这样的代码和这样的曲线
+<li><p>
+直接在 <code>ipython</code> 的 <code>notebook</code> 中使用 <code>pandas</code> 看生成的图片, 比如这样的代码和这样的曲线
+</p>
 <div class="org-src-container">
 
 <pre class="src src-python">normalVisits.groupby('day').agg(func.countDistinct('ip')).toPandas().set_index('day').plot()
@@ -161,15 +154,12 @@ relatedVistis = normalVisits.filter("host = 'www.piaoniu.com' and url like '/act
 </div>
 
 <div class="figure">
-<p><img src="/assets/blog/2016/06/30/spark/growth.png" alt="growth.png" />
+<p><img src="./growth.png" alt="growth.png" />
 </p>
-</div>
-</li>
+</div></li>
 
-<li>保存结果到csv后导入回mysql做报表展示
-</li>
-</ol>
-</li>
+<li>保存结果到csv后导入回mysql做报表展示</li>
+</ol></li>
 </ul>
 
 <p>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>票务行业的思考 - enzo&#39;s note book</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="enzo liu" />
+    <meta name="description" content="piaoniu" />
+    <meta name="keywords" content="piaoniu" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+  </head>
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">enzo&#39;s note book</a></h1>
+        <p>M-x (sketch for random ideas)</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/draft/">Draft</a></li>
+          <li><a href="/history/">History</a></li>
+          <li><a href="/leetcode/">Leetcode</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="blog.enzo.cc">
+        </form>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>票务行业的思考</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline1">行业认知 (存在的问题, 回答 why)</a>
+<ul>
+<li><a href="#orgheadline2">各自的优势和劣势</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline3">C-&gt;C 框架下的可能价值 (adding value)</a>
+<ul>
+<li><a href="#orgheadline4">问题分析</a></li>
+<li><a href="#orgheadline5">针对问题，可能存在的价值</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline6">差异化的方向</a>
+<ul>
+<li><a href="#orgheadline7">用户服务</a></li>
+<li><a href="#orgheadline8">卖家服务</a></li>
+<li><a href="#orgheadline9">保障</a></li>
+<li><a href="#orgheadline10">定价</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+工作以来，学会的最重要的一件事情，就是逼问自己，到底在做什么。
+</p>
+
+<p>
+这两天，在读一本书叫做  <b>rework</b> , 看见的最有感触的就是相对规范化的提供了几个问题用来拷问自己。记下我觉得最重要的几个问题:
+</p>
+
+<ul class="org-ul">
+<li>why are you doing this?</li>
+<li>what problems are you solving?</li>
+<li>is this actually useful?</li>
+<li>are you adding value?</li>
+</ul>
+
+<p>
+借此也梳理一下这一年来，我对这个行业的理解。
+</p>
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">行业认知 (存在的问题, 回答 why)</h2>
+<div class="outline-text-2" id="text-orgheadline1">
+<p>
+从行业的模式来分，主要有两类玩家。
+</p>
+
+<ul class="org-ul">
+<li>B-&gt;C <code>大麦</code> , <code>永乐</code>, <code>东方票务</code> 等</li>
+<li>C-&gt;C <code>西十区</code>, <code>票牛</code>, <code>牛魔王</code> 等</li>
+</ul>
+
+<p>
+其实，我更愿意用 <code>一级市场</code> 和 <code>二级市场</code> 这样的概念尝试去理解这两类模式。
+</p>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="orgheadline2">各自的优势和劣势</h3>
+<div class="outline-text-3" id="text-orgheadline2">
+<ul class="org-ul">
+<li>B-&gt;C (一级市场)
+<ul class="org-ul">
+<li>优势规模化（商品的差异化越小，越容易规模化）, 从而成本低服务稳定 (不可控的因素很少, 直接对接主办方和用户，解决掉常规票务销售的渠道问题)</li>
+<li>劣势作为计划经济的实现，定价会脱离实际, 也部分提供了投机的空间，促进了票务市场的紊乱</li>
+</ul></li>
+
+<li>C-&gt;C (二级市场)
+<ul class="org-ul">
+<li>优势
+<ul class="org-ul">
+<li>提供了反应票券实际价值的可能性, 给上游更大的利益空间</li>
+<li>增加了票券流通的可能性，让有意愿的用户更有可能规范的买到</li>
+<li>相对规范的实施票务价值的更大化</li>
+</ul></li>
+<li>劣势
+<ul class="org-ul">
+<li>服务不稳定，上下游资源不可控</li>
+<li>交易成本高</li>
+<li>规范化程度不高</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3">C-&gt;C 框架下的可能价值 (adding value)</h2>
+<div class="outline-text-2" id="text-orgheadline3">
+<blockquote>
+<p>
+既然存在问题，那么解决问题就能带来相应的价值。
+</p>
+</blockquote>
+</div>
+
+<div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="orgheadline4">问题分析</h3>
+<div class="outline-text-3" id="text-orgheadline4">
+<ul class="org-ul">
+<li>服务不稳定
+<ul class="org-ul">
+<li>库存 (多-沉没成本, 少-跳票， 提前准备-销不出去的风险， 先销后采-成本的风险)</li>
+<li>定价 (信息不够透明，凭借猜测和感觉定价，交易双方都不满意)</li>
+<li>保障 (对商户的库存，成本的保障， 对用户的票品，价格的保障)</li>
+</ul></li>
+
+<li>交易成本高
+<ul class="org-ul">
+<li>信任的成本 (小商家，小平台的公信力, 无担保, 无规范)</li>
+<li>沟通的成本</li>
+<li>票务流通成本 (物流, 时间等)</li>
+<li>交易环节的成本 (定价，销售，采购等每一步的不确定性)</li>
+</ul></li>
+
+<li>规范化
+<ul class="org-ul">
+<li>还不清楚规范好了应该是什么样，暂时我只能类比淘宝，我觉得它已经比较靠谱了</li>
+</ul></li>
+
+<li>保障
+<ul class="org-ul">
+<li>对卖家的保障  (滞销，资金, 定价)</li>
+<li>对买家的保障 （真假，价格保护, 退换等）</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5">针对问题，可能存在的价值</h3>
+<div class="outline-text-3" id="text-orgheadline5">
+<blockquote>
+<p>
+每一个可能价值都会是方向，你创造了价值，才能分一杯羹，才能活下去。
+</p>
+</blockquote>
+
+<ul class="org-ul">
+<li>整体价值
+<ul class="org-ul">
+<li>交易行为规范化</li>
+<li>交易成本降低</li>
+<li>行为保障 (系统性抵御风险，类似保险思路)</li>
+</ul></li>
+
+<li>对上游的价值
+<ul class="org-ul">
+<li>提供公允的商品价值, 增加收益或降低沉没成本</li>
+<li>联合众多上游(平台化思路)，提供资金，库存相关服务 (风险)</li>
+<li>减少中间商, 降低成本</li>
+<li>相对精准的营销</li>
+</ul></li>
+
+<li>对下游的价值
+<ul class="org-ul">
+<li>增加以合理价格购买到的可能性</li>
+<li>通过相对公允和流通的市场，增加票品商品化的收益或者降低沉没成本</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline6" class="outline-2">
+<h2 id="orgheadline6">差异化的方向</h2>
+<div class="outline-text-2" id="text-orgheadline6">
+<blockquote>
+<p>
+每一个行为一定都有各自的代价和收益。
+</p>
+</blockquote>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7">用户服务</h3>
+<div class="outline-text-3" id="text-orgheadline7">
+<ul class="org-ul">
+<li>售前
+<dl class="org-dl">
+<dt>交易决策</dt><dd>内容的好坏(评论)，商品的质量(位置，距离), 信息服务(演出信息，演员信息)</dd>
+<dt>商品发现</dt><dd>相关，热门，别人看过评论过，用户分类，精准推荐等</dd>
+<dt>咨询，交流</dt><dd>客服咨询，用户间交流</dd>
+<dt>场景化销售</dt><dd>情侣看什么，亲子看什么，悬疑看什么，打发周末看什么，刺激一下看什么</dd>
+</dl></li>
+
+<li>售中
+<dl class="org-dl">
+<dt>商品流转信息</dt><dd>信息透明，增加信任感, 提前预知风险（很久都没备票完成...）</dd>
+<dt>真假保障</dt><dd>赔付</dd>
+<dt>价格保障</dt><dd>一大部分觉得被骗的原因是因为和实际价值不符，信息不对称, 可以曝光交易行为，可以在浮动过大的情况下适当赔付，同时，服务是可以收费的。</dd>
+</dl></li>
+
+<li>售后
+<ul class="org-ul">
+<li>退换货</li>
+<li>转让</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8">卖家服务</h3>
+<div class="outline-text-3" id="text-orgheadline8">
+<p>
+我觉得这里主要是数据服务, 收集交易行为，提前提供参考，甚至平台提供保险保障。
+</p>
+
+<dl class="org-dl">
+<dt>资金</dt><dd>集资采购, 分摊风险</dd>
+<dt>库存</dt><dd>提前采购</dd>
+<dt>定价</dt><dd>指导定价</dd>
+<dt>精准销售</dt><dd>利用平台用户信息</dd>
+</dl>
+</div>
+</div>
+
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="orgheadline9">保障</h3>
+<div class="outline-text-3" id="text-orgheadline9">
+<ul class="org-ul">
+<li>真假</li>
+<li>滞销</li>
+<li>价格</li>
+<li>跳票</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline10" class="outline-3">
+<h3 id="orgheadline10">定价</h3>
+<div class="outline-text-3" id="text-orgheadline10">
+<dl class="org-dl">
+<dt>收集交易行为</dt><dd>平台产生的，用户录入的，其他平台抓取的，等等</dd>
+<dt>提供价格模型</dt><dd>演出，话剧，热门，常规，分门别类尽可能的给出详细的定价参考</dd>
+</dl>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2016-07-17</span>
+        <span title="last modification date" class="post-info">2016-07-17</span>
+        <span title="tags" class="post-info"><a href="/tags/piaoniu/">piaoniu</a></span>
+        <span title="author" class="post-info">enzo liu</span>
+      </div>
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/blog/2016/07/17/票务行业的思考";
+          var disqus_url = "https://blog.enzo.cc/blog/2016/07/17/票务行业的思考";
+          var disqus_shortname = 'enzo-liu';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="/media/js/main.js"></script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
+        <p>
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>

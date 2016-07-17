@@ -14,6 +14,7 @@
         <p>M-x (sketch for random ideas)</p>
         <ul>
           <li><a href="/blog/">Blog</a></li>
+          <li><a href="/draft/">Draft</a></li>
           <li><a href="/history/">History</a></li>
           <li><a href="/leetcode/">Leetcode</a></li>
           <li><a href="/tags/">Tags</a></li>
@@ -35,17 +36,15 @@
 <b>首次系统的接触WEB+前端内容，好好学习一下，做一下问题的记录。</b>
 </p>
 
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1">依赖</h2>
-<div class="outline-text-2" id="text-1">
-</div><div id="outline-container-sec-1-1" class="outline-3">
-<h3 id="sec-1-1">assetPipeLine</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4">依赖</h2>
+<div class="outline-text-2" id="text-orgheadline4">
+</div><div id="outline-container-orgheadline1" class="outline-3">
+<h3 id="orgheadline1">assetPipeLine</h3>
+<div class="outline-text-3" id="text-orgheadline1">
 <ul class="org-ul">
-<li>js，css等文件，同时依赖多次会存在问题。具体原因还没有搞清。js的依赖全部写在了application.js中，css的依赖一样。无须在html人工导入
-</li>
-<li>font文件的依赖，config/application.rb中添加如下代码:
-</li>
+<li>js，css等文件，同时依赖多次会存在问题。具体原因还没有搞清。js的依赖全部写在了application.js中，css的依赖一样。无须在html人工导入</li>
+<li>font文件的依赖，config/application.rb中添加如下代码:</li>
 </ul>
 
 <p>
@@ -64,24 +63,23 @@ scss中通过font-url使用即可。
 </p>
 
 <ul class="org-ul">
-<li>coffeeScript与scss的语法首次接触，对js，css本身的了解也不够，上手起来很是痛苦
-</li>
+<li>coffeeScript与scss的语法首次接触，对js，css本身的了解也不够，上手起来很是痛苦</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-1-2" class="outline-3">
-<h3 id="sec-1-2">View</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="orgheadline2">View</h3>
+<div class="outline-text-3" id="text-orgheadline2">
 <p>
 *BootStrap*果然超级好用。暂时还没有什么研究，不过拷贝过来立刻可以见到成效，感觉很好。
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-1-3" class="outline-3">
-<h3 id="sec-1-3">Route</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3">Route</h3>
+<div class="outline-text-3" id="text-orgheadline3">
 <p>
 工程的路由规则完全由config/Route.rb中内容觉得。当前只是配置了映射关系，和struts的action配置感觉没什么区别。
 </p>
@@ -93,9 +91,9 @@ scss中通过font-url使用即可。
 </div>
 </div>
 
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2">AJAX</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-orgheadline5" class="outline-2">
+<h2 id="orgheadline5">AJAX</h2>
+<div class="outline-text-2" id="text-orgheadline5">
 <p>
 之所以拿出来单独说，是这个让我搞的的确很痛苦。
 </p>
@@ -105,9 +103,9 @@ scss中通过font-url使用即可。
 </p>
 </div>
 
-<div id="outline-container-sec-2-1" class="outline-3">
-<h3 id="sec-2-1">TAG</h3>
-<div class="outline-text-3" id="text-2-1">
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6">TAG</h3>
+<div class="outline-text-3" id="text-orgheadline6">
 <p>
 在html.erb文件中，rails推荐的写法是使用helper提供的各种tag来进行描述。
 </p>
@@ -129,9 +127,9 @@ scss中通过font-url使用即可。
 </div>
 </div>
 
-<div id="outline-container-sec-2-2" class="outline-3">
-<h3 id="sec-2-2">CoffeeScript</h3>
-<div class="outline-text-3" id="text-2-2">
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7">CoffeeScript</h3>
+<div class="outline-text-3" id="text-orgheadline7">
 <p>
 Ajax回调的触发如下，在controller对应的js.coffee文件内，写下
 </p>
@@ -154,20 +152,16 @@ console.log(data);
 </div>
 </div>
 
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3"><span class="todo TODO">TODO</span> </h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-orgheadline8" class="outline-2">
+<h2 id="orgheadline8"><span class="todo TODO">TODO</span> </h2>
+<div class="outline-text-2" id="text-orgheadline8">
 <ol class="org-ol">
 <li>将AJAX的机制再好好了解一下，用Ajax在Rails上做出一个完整的Game Of Life
-网页小动画处来。
-</li>
-<li>学习Bootstrap做一个漂亮的首页讨好一下老婆
-</li>
+网页小动画处来。</li>
+<li>学习Bootstrap做一个漂亮的首页讨好一下老婆</li>
 <li>多了解Rails的convention，学习其中的精华，比如看到的remote:true的配置(Unobtrusive
-JavaScript)的理念，完全可以在日常中想办法借鉴一下使用的。
-</li>
-<li>业余多了解js，css等前端相关技术
-</li>
+JavaScript)的理念，完全可以在日常中想办法借鉴一下使用的。</li>
+<li>业余多了解js，css等前端相关技术</li>
 </ol>
 </div>
 </div>
