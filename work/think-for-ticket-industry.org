@@ -2,7 +2,7 @@
 #+AUTHOR:      enzo liu
 #+EMAIL:       liuenze6516@gmail.com
 #+DATE:        2016-07-17 Sun
-#+URI:         /blog/%y/%m/%d/票务行业的思考
+#+URI:         /work/%y/%m/%d/票务行业的思考
 #+KEYWORDS:    piaoniu
 #+TAGS:        piaoniu
 #+LANGUAGE:    en
