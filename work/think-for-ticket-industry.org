@@ -8,6 +8,10 @@
 #+LANGUAGE:    en
 #+OPTIONS:     H:2 num:nil toc:t \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: piaoniu
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [presentation, bigger]
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+#+BEAMER_THEME: metropolis
 
 工作以来，学会的最重要的一件事情，就是逼问自己，到底在做什么。
 

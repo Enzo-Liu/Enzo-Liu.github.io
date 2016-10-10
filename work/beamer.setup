@@ -1,0 +1,14 @@
+#+AUTHOR: Enzo Liu
+#+DATE: \today
+#+EMAIL: liuenze6516@gmail.com
+
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [presentation,bigger]
+#+PROPERTY: BEAMER_col_ALL 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 0.0 :ETC
+#+BEAMER_THEME: metropolis
+#+BIND: org-beamer-outline-frame-title "目录"
+#+COLUMNS: %45ITEM %10BEAMER_env(Env) %10BEAMER_act(Act) %4BEAMER_col(Col) %8BEAMER_opt(Opt)
+#+latex_header: \AtBeginSection[]{\begin{frame}<beamer>\frametitle{Topic}\tableofcontents[currentsection]\end{frame}}
+#+OPTIONS:   H:2 toc:t num:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+STARTUP: beamer
