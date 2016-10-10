@@ -1,74 +1,41 @@
 #+SETUPFILE: beamer.setup
 #+TITLE: 下一轮方向
 
+
 * 背景
+
+** 介绍
+
+恰逢下一轮融资到来之前，整理一下后续的方向。
 
 ** 过去成果
    :PROPERTIES:
    :BEAMER_opt: allowframebreaks
    :END:
 
-You can include raw LaTeX in your Org presentations and it will get kept as
-LaTeX when it's exported.
+集中力量在交易上，虽然不够深入，但是也收获不少。
 
-*** Left                                                                 :BMCOL:
+
+*** 销售额                                                   :B_exampleblock:
     :PROPERTIES:
-    :BEAMER_col: 0.4
-    :END:
-
-#+begin_src org
-,#+begin_LaTeX
-\begin{minipage}{4cm}
-...
-\end{minipage}
-,#+end_LaTeX
-#+end_src
-
-Such LaTeX code will only be present in the exports to *LaTeX and Beamer*.
-
-*** Right                                                                :BMCOL:
-    :PROPERTIES:
-    :BEAMER_col: 0.4
-    :END:
-
-#+begin_src org
-,#+begin_Beamer
-\begin{minipage}{4cm}
-...
-\end{minipage}
-,#+end_Beamer
-#+end_src
-Such LaTeX code will only be present in the exports to *LaTeX and Beamer*.
-
-*** Back to one column                                         :B_ignoreheading:
-    :PROPERTIES:
-    :BEAMER_env: ignoreheading
-    :END:
-
-It is especially useful for more *advanced stuff* like images or tables where you
-need more control of the LaTeX options than Org mode actually gives you.
-
-For example, to insert a table with colspan or rowspan support:
-
-#+BEAMER: \framebreak
-
-*** An alert block                                                :B_alertblock:
-    :PROPERTIES:
-    :BEAMER_env: alertblock
-    :BEAMER_col: 0.4
-    :END:
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua.
-
-*** An example block                                            :B_exampleblock:
-    :PROPERTIES:
+    :BEAMER_col: 0.45
     :BEAMER_env: exampleblock
-    :BEAMER_col: 0.4
     :END:
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua.
+- 首月 1 万
+- 半年前单月 300 万
+- 当前单月 1000 万
+
+
+*** 用户量                                                   :B_exampleblock:
+    :PROPERTIES:
+    :BEAMER_col: 0.45
+    :BEAMER_env: exampleblock
+    :END:
+
+- 当前总用户 18 万
+- 首月用户 17 人
+- 上月总用户 17000 人
 
 ** 现状
 
