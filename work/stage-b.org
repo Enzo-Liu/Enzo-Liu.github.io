@@ -68,8 +68,8 @@
 
 ** 纵向扩展
 
-- 深入理解用户/商品, 增强品牌认知，降低交易成本, 扩大交易规模
-- 深入客户服务，用户侧保障(真假，价格保护, 退换, 转让)，商家侧保障(滞销，资金,库存，价格)
+- 深入理解用户/商品, 增强品牌认知, 降低交易成本, 扩大交易规模
+- 深入客户服务, 用户侧保障(真假, 价格保护, 退换, 转让), 商家侧保障(滞销, 资金, 库存, 价格)
 - 供应链优化[fn:supply]
 
 [fn:supply] 感觉是规模化的障碍, 所以单独提出
@@ -105,10 +105,173 @@
 #+BEGIN_QUOTE
 方向间也会相互补充, 并不是完全正交
 #+END_QUOTE
-- 提高品牌信任, 作为担保交易的主体必须被认为可靠
-- 降低交易成本 (信任平台的成本, 沟通的成本, 票券流通的成本，渠道的风险成本 \dots )
-- 提高服务质量 (保障，价格保护，数据服务, 营销服务, 其他增值服务)
-- 访问量开源 (口碑, 推广, 流量, 新城市, 小型独家 \dots )
+- 提高 =品牌信任= [fn:trust]
+- 降低 =交易成本= [fn:cost]
+- 提高 =服务质量= [fn:quality]
+- 扩大 =访问规模= [fn:scale]
+
+[fn:trust] 作为担保交易的主体必须被认为可靠
+[fn:cost] 信任平台的成本, 沟通的成本, 票券流通的成本，渠道的风险成本 \dots
+[fn:quality] 保障，价格保护，数据服务, 营销服务, 其他增值服务
+[fn:scale]  口碑, 推广, 流量, 新城市, 小型独家 \dots
+
+** 提高品牌信任
+- 平台规模
+- 用户口碑
+- 品牌宣传
+- 高公信团体背书
+
+** 降低交易成本                                                     :B_frame:
+   :PROPERTIES:
+   :BEAMER_env: frame
+   :BEAMER_opt: allowframebreaks
+   :END:
+
+*** 交易环节                                                :B_ignoreheading:
+    :PROPERTIES:
+    :BEAMER_env: ignoreheading
+    :END:
+首先分析一下交易环节中, =用户=, =商户=, =平台=  三方各自的环节和成本
+
+**** 用户                                            :B_exampleblock:BMCOL:
+     :PROPERTIES:
+     :BEAMER_env: exampleblock
+     :BEAMER_col: 0.3
+     :END:
+- 进入平台
+- 查找商品
+- 选价格,卖家
+- 下单支付
+
+**** 商户                                            :B_exampleblock:BMCOL:
+     :PROPERTIES:
+     :BEAMER_env: exampleblock
+     :BEAMER_col: 0.3
+     :END:
+
+- 选商品挂售
+- 定库存,价格
+- (预先)采购
+- 备货给平台
+
+**** 平台                                            :B_exampleblock:BMCOL:
+     :PROPERTIES:
+     :BEAMER_env: exampleblock
+     :BEAMER_col: 0.3
+     :END:
+
+ - 演出录入
+ - 配货发货
+ - 例外处理
+ - 客服等售后
+
+***  framebreak                                             :B_ignoreheading:
+    :PROPERTIES:
+    :BEAMER_env: ignoreheading
+    :END:
+#+Beamer: \framebreak
+
+
+*** 用户成本
+- 信任平台担保
+- 挑选想要商品的过程
+- 比较价格和商家的过程
+
+*** framebreak                                              :B_ignoreheading:
+    :PROPERTIES:
+    :BEAMER_env: ignoreheading
+    :END:
+#+Beamer: \framebreak
+
+
+*** 降低用户成本                                             :B_exampleblock:
+    :PROPERTIES:
+    :BEAMER_env: exampleblock
+    :END:
+- 增加平台担保的可信度
+- 降低用户选择想要商品的成本 (例如场景化)
+- 增加商品的差异化, 降低比较价格和商家的难度 (能体现出价格的差异点,比如服务,比如位置,比如快递速度,现票/预售票 \dots)
+
+
+*** framebreak                                              :B_ignoreheading:
+    :PROPERTIES:
+    :BEAMER_env: ignoreheading
+    :END:
+#+Beamer: \framebreak
+
+
+*** 商户成本
+- 选择售卖商品的过程(好卖, 赚钱, 利润 \dots )
+- 决定/调整 卖什么价格卖多少份的过程
+- 采购的过程/提前采购好的风险
+- 发货成本
+
+*** framebreak                                              :B_ignoreheading:
+    :PROPERTIES:
+    :BEAMER_env: ignoreheading
+    :END:
+#+Beamer: \framebreak
+
+*** 降低商户成本                                             :B_exampleblock:
+    :PROPERTIES:
+    :BEAMER_env: exampleblock
+    :END:
+- 数据服务, 提供商家项目, 价格, 库存的参考, 降低决策的成本/风险
+- 给商家提供系统对接, 直接打票, 与系统同步库存等服务, 降低备货,调整库存的成本
+
+
+*** framebreak                                              :B_ignoreheading:
+    :PROPERTIES:
+    :BEAMER_env: ignoreheading
+    :END:
+#+Beamer: \framebreak
+
+
+
+*** 平台成本
+- 商品信息录入的成本
+- 为准入的商家负责, 转采等成本
+- 备货, 发货的成本
+- 售后,咨询等服务成本
+
+*** framebreak                                              :B_ignoreheading:
+    :PROPERTIES:
+    :BEAMER_env: ignoreheading
+    :END:
+#+Beamer: \framebreak
+
+
+*** 降低平台成本                                             :B_exampleblock:
+    :PROPERTIES:
+    :BEAMER_env: exampleblock
+    :END:
+我觉得核心在于规模化, =做边际成本能降低的服务=.
+- 系统化商品信息, 通过对接等方式快速录入新内容
+- 电子票
+- 自动化/产品化常见售后类案例, 积累常见客服案例自助咨询.
+
+
+** 提高服务质量
+*** 保障类
+**** 用户
+真假, 位置, 到货时间, 价格保护, 退换, 临时有事不去 \dots
+**** 商户
+保销, 保量 \dots
+*** 增值服务类
+**** 用户
+会员折扣, 赠票, 年票, 周边, 团体定制 \dots
+
+**** 商户
+促销, 代销, 营销, 解决滞销, 代对接, 联系上游渠道 \dots
+
+** 扩大访问规模
+- 资源置换 (尤其得明确平台到底有哪些资源可以用)
+- 推广
+- 口碑
+- 流量
+- 新城市
+- 小型独家
+
 
 * 交易侧措施
 
@@ -130,9 +293,12 @@
 =具体可以做的内容回头专项分析。=
 
 
-** 商品信息精细化
+** 商品信息精细化/差异化
 #+BEGIN_QUOTE
 解决不知道有什么不同价格有什么差别的问题
+#+END_QUOTE
+#+BEGIN_QUOTE
+同时, 针对商家, 提供差异化的售卖可能
 #+END_QUOTE
 比如 位置，区域，距离，视角, 音效 (根据位置做个 =VR= 感受一下)
 以及如何让商户可以方便的录入/系统方便的根据位置生成
@@ -154,8 +320,13 @@
 - 绑定人和位置信息
 
 ** 供应链优化
+- 将在上话,大舞台上面对面的票务置换系统化
+- 长尾打票的模式平台提供代做系统对接的功能
 
 ** 众筹预售
+对于销售不可知, 不敢采购的问题, 也许可以利用众筹包票预售的方式提前试探一下市场.
+
+对于小型项目之类的也可以尝试一下这个模式.
 
 ** 接小型主办试行电子票
 
@@ -167,7 +338,7 @@
 - 促销服务: 商家自定义活动, 平台配合可有资源池补贴
 - 精准营销服务: 给商家提供营销资源
 - 代销服务: 平台联系销售渠道(比如各公司党组织，解决大量滞销票，对方有利益就行)
-- 定期增票: 增值服务
+- 定期赠票: 增值服务
 - 联合场馆发行年票 \dots
 
 ** 其他？
