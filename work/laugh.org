@@ -1,0 +1,2 @@
+#+SETUPFILE: beamer.setup
+#+TITLE: 想放肆的笑一回么
