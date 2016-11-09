@@ -9,10 +9,6 @@
 
 ** 手造节推广
 
-* TODO sleepnomore 包票
-
-* TODO 首页专场的宣传语
-
 * DONE 悬疑，高转化的专场编辑
   CLOSED: [2016-11-02 Wed 14:36]
 
@@ -32,12 +28,28 @@
 (电影, 书, 话剧)
 比如: 狮子王 歌剧魅影 ...
 
-* TODO 边吃边看
-
-* TODO 莫奈画展
-
 * DONE 吴亦凡尾票
   CLOSED: [2016-11-02 Wed 14:37]
+
+* DONE 开心麻花
+  CLOSED: [2016-11-07 Mon 11:27]
+* DONE 戏台
+  CLOSED: [2016-11-07 Mon 13:35]
+
+* DONE 好戏精选， 立减 50
+  CLOSED: [2016-11-07 Mon 13:35]
+* DONE 首页专场的宣传语
+  CLOSED: [2016-11-07 Mon 13:35]
+
+* DONE 边吃边看
+  CLOSED: [2016-11-07 Mon 13:35]
+
+
+* TODO sleepnomore 包票
+
+* TODO 莫奈画展
+* TODO 三体
+* TODO 笑乐汇 郭德纲徒弟
 
 * TODO 价格意向
 
@@ -62,8 +74,17 @@
 * TODO 媒体号运营
 
 * TODO 关键词运营 (东方艺术中心)
+
 * TODO 感恩节(邀请返利)
 * TODO 粉丝团购
 * TODO 三体 (整合营销)
   - 包销
   - 周边, 宣传
+
+* TODO 自动运营抢手， 折扣， 精彩推荐
+* TODO 一元秒杀的替代（团购/抽奖）
+
+* TODO 演出时间线
+* TODO 周末展览/演出
+
+* TODO 演出分期购买
