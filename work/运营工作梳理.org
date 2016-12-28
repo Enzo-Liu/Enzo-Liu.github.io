@@ -1,0 +1,8 @@
+#+SETUPFILE: beamer.setup
+#+TITLE:  运营工作梳理
+
+* 运营职责
+** 拉新
+** 留存
+** 激活
+** 转化
