@@ -44,3 +44,21 @@ def find_min_arrow_shots(points)
   res
 end
 #+END_SRC
+
+* 思路 2
+贪婪
+
+* 代码
+#+BEGIN_SRC ruby
+  # @param {Integer[][]} points
+  # @return {Integer}
+  def find_min_arrow_shots(points)
+    points.sort { |p1,p2| p1[1]<=>p2[1]}.inject([nil,0]) do |res, p|
+      if (res[0] == nil or p[0] > res[0])
+        res[1] = res[1] + 1
+        res[0] = p[1]
+      end
+      res
+    end[1]
+  end
+#+END_SRC
