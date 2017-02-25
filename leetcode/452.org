@@ -1,0 +1,46 @@
+#+TITLE:       452. Minimum Number of Arrows to Burst Balloons
+#+AUTHOR:      enzo liu
+#+EMAIL:       liuenze6516@gmail.com
+#+DATE:        2017-02-25 Thu
+#+URI:         /leetcode/452
+#+KEYWORDS:    leetcode, ruby
+#+TAGS:        leetcode, ruby
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: leetcode
+
+* 题目
+
+[[https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons][链接]]
+
+#+BEGIN_QUOTE
+There are a number of spherical balloons spread in two-dimensional space. For each balloon, provided input is the start and end coordinates of the horizontal diameter. Since it's horizontal, y-coordinates don't matter and hence the x-coordinates of start and end of the diameter suffice. Start is always smaller than end. There will be at most 104 balloons.
+
+An arrow can be shot up exactly vertically from different points along the x-axis. A balloon with xstart and xend bursts by an arrow shot at x if xstart ≤ x ≤ xend. There is no limit to the number of arrows that can be shot. An arrow once shot keeps travelling up infinitely. The problem is to find the minimum number of arrows that must be shot to burst all balloons.
+#+END_QUOTE
+
+* 思路
+按照起点排序，偏离缩小重合区域，一旦无相交则说明需要多一根箭
+
+* 代码
+
+#+BEGIN_SRC ruby
+# @param {Integer[][]} points
+# @return {Integer}
+def find_min_arrow_shots(points)
+  scope = nil
+  res = 0
+  points.sort { |p1,p2| p1[0]<=>p2[0]}.each do |p|
+    if (scope == nil)
+      scope = p
+      res = res + 1
+    elsif (p[0] <= scope[1])
+      scope = [[p[0],scope[0]].max, [p[1], scope[1]].min]
+    else
+      scope = [p[0],p[1]]
+      res = res + 1
+    end
+  end
+  res
+end
+#+END_SRC
