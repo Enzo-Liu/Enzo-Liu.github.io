@@ -45,9 +45,9 @@
 攻击都是来自于外网，所以希望能够关闭外网的入网访问，但是保留对于外网的访问权限。
 </p>
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1">目标</h2>
-<div class="outline-text-2" id="text-orgheadline1">
+<div id="outline-container-orgfa34f3a" class="outline-2">
+<h2 id="orgfa34f3a">目标</h2>
+<div class="outline-text-2" id="text-orgfa34f3a">
 <ol class="org-ol">
 <li>关闭大部分机器的外网入网流量</li>
 <li>跳板机仅开放ssh访问</li>
@@ -58,9 +58,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2">方案</h2>
-<div class="outline-text-2" id="text-orgheadline2">
+<div id="outline-container-orgc0b6275" class="outline-2">
+<h2 id="orgc0b6275">方案</h2>
+<div class="outline-text-2" id="text-orgc0b6275">
 <p>
 前段时间玩了会 <a href="https://github.com/RMerl/asuswrt-merlin"><code>merlin固件</code></a>, 使用的是<a href="https://github.com/koolshare">国内修饰过的版本</a>， 加了一些 `安全上网`, `离线下载`等功能。看了一下里面对于路由规则的实现，基本都是基于 `iptables` 来完成。比如内网转外网，阻止外网请求，对指定网卡开放指定端口。对于指定ip的请求走不同的端口等。
 </p>
@@ -71,12 +71,12 @@
 </div>
 </div>
 
-<div id="outline-container-orgheadline9" class="outline-2">
-<h2 id="orgheadline9">实施</h2>
-<div class="outline-text-2" id="text-orgheadline9">
-</div><div id="outline-container-orgheadline3" class="outline-3">
-<h3 id="orgheadline3">简介</h3>
-<div class="outline-text-3" id="text-orgheadline3">
+<div id="outline-container-orge22cbec" class="outline-2">
+<h2 id="orge22cbec">实施</h2>
+<div class="outline-text-2" id="text-orge22cbec">
+</div><div id="outline-container-org33d0414" class="outline-3">
+<h3 id="org33d0414">简介</h3>
+<div class="outline-text-3" id="text-org33d0414">
 <p>
 由于只是配置防火墙，了解下面的简单用法就基本足够了。
 </p>
@@ -92,9 +92,9 @@ PS: iptables的规则先后顺序很重要!
 </dl>
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-4">
-<h4 id="orgheadline4">匹配的规则</h4>
-<div class="outline-text-4" id="text-orgheadline4">
+<div id="outline-container-org72292ee" class="outline-4">
+<h4 id="org72292ee">匹配的规则</h4>
+<div class="outline-text-4" id="text-org72292ee">
 <dl class="org-dl">
 <dt>-i &lt;eth0&gt;</dt><dd>指定网卡</dd>
 <dt>-s &lt;ip&gt;</dt><dd>指定来源ip</dd>
@@ -105,9 +105,9 @@ PS: iptables的规则先后顺序很重要!
 </div>
 
 
-<div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5">仅阻止外网的流入请求</h3>
-<div class="outline-text-3" id="text-orgheadline5">
+<div id="outline-container-orga014c70" class="outline-3">
+<h3 id="orga014c70">仅阻止外网的流入请求</h3>
+<div class="outline-text-3" id="text-orga014c70">
 <ul class="org-ul">
 <li><p>
 不接受外网的tcp握手请求
@@ -119,7 +119,6 @@ PS: iptables的规则先后顺序很重要!
 </ul>
 
 <div class="org-src-container">
-
 <pre class="src src-sh">iptables -A INPUT -i &lt;eth&gt; -p tcp --syn -j DROP
 </pre>
 </div>
@@ -129,40 +128,36 @@ PS: iptables的规则先后顺序很重要!
 </ul>
 
 <div class="org-src-container">
-
 <pre class="src src-sh">iptables -A INPUT -i &lt;eth&gt; -p udp -j DROP
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="orgheadline6">保留跳板机ssh的端口</h3>
-<div class="outline-text-3" id="text-orgheadline6">
+<div id="outline-container-org31d75f6" class="outline-3">
+<h3 id="org31d75f6">保留跳板机ssh的端口</h3>
+<div class="outline-text-3" id="text-org31d75f6">
 <div class="org-src-container">
-
 <pre class="src src-sh">iptables -A INPUT -i &lt;eth&gt; -p tcp -m multiport --dports ssh -j ACCEPT
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="orgheadline7">不响应ping</h3>
-<div class="outline-text-3" id="text-orgheadline7">
+<div id="outline-container-org27dbe11" class="outline-3">
+<h3 id="org27dbe11">不响应ping</h3>
+<div class="outline-text-3" id="text-org27dbe11">
 <div class="org-src-container">
-
 <pre class="src src-sh">iptables -A INPUT -i &lt;eth&gt; -p icmp --icmp-type echo-request -j DROP
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-3">
-<h3 id="orgheadline8">允许指定&lt;ip&gt;的tcp流量</h3>
-<div class="outline-text-3" id="text-orgheadline8">
+<div id="outline-container-org0c776ef" class="outline-3">
+<h3 id="org0c776ef">允许指定&lt;ip&gt;的tcp流量</h3>
+<div class="outline-text-3" id="text-org0c776ef">
 <div class="org-src-container">
-
 <pre class="src src-sh">iptables -A INPUT -i &lt;eth&gt; -p tcp -s &lt;ip&gt; -j ACCEPT
 </pre>
 </div>
@@ -170,14 +165,13 @@ PS: iptables的规则先后顺序很重要!
 </div>
 </div>
 
-<div id="outline-container-orgheadline12" class="outline-2">
-<h2 id="orgheadline12">最终脚本</h2>
-<div class="outline-text-2" id="text-orgheadline12">
-</div><div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="orgheadline10">跳板机器</h3>
-<div class="outline-text-3" id="text-orgheadline10">
+<div id="outline-container-orgfbde757" class="outline-2">
+<h2 id="orgfbde757">最终脚本</h2>
+<div class="outline-text-2" id="text-orgfbde757">
+</div><div id="outline-container-org22437da" class="outline-3">
+<h3 id="org22437da">跳板机器</h3>
+<div class="outline-text-3" id="text-org22437da">
 <div class="org-src-container">
-
 <pre class="src src-sh">iptables -A INPUT -i &lt;eth&gt; -p tcp -m multiport --dports ssh -j ACCEPT
 iptables -A INPUT -i &lt;eth&gt; -p tcp -s &lt;ip&gt; -j ACCEPT
 iptables -A INPUT -i &lt;eth&gt; -p tcp --syn -j DROP
@@ -188,11 +182,10 @@ iptables -A INPUT -i &lt;eth&gt; -p icmp --icmp-type echo-request -j DROP
 </div>
 </div>
 
-<div id="outline-container-orgheadline11" class="outline-3">
-<h3 id="orgheadline11">内部机器</h3>
-<div class="outline-text-3" id="text-orgheadline11">
+<div id="outline-container-org87d9c59" class="outline-3">
+<h3 id="org87d9c59">内部机器</h3>
+<div class="outline-text-3" id="text-org87d9c59">
 <div class="org-src-container">
-
 <pre class="src src-sh">iptables -A INPUT -i &lt;eth&gt; -p tcp --syn -j DROP
 iptables -A INPUT -i &lt;eth&gt; -p udp -j DROP
 iptables -A INPUT -i &lt;eth&gt; -p icmp --icmp-type echo-request -j DROP
@@ -234,7 +227,7 @@ iptables -A INPUT -i &lt;eth&gt; -p icmp --icmp-type echo-request -j DROP
       <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="/media/js/main.js"></script>
       <div class="footer">
-        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
         <p>
           Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
           &nbsp;&nbsp;-&nbsp;&nbsp;

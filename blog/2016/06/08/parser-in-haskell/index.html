@@ -42,9 +42,9 @@
 手写一个解析 <code>s-expression</code> 的 <code>parser</code>
 </p>
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1">结构定义</h2>
-<div class="outline-text-2" id="text-orgheadline1">
+<div id="outline-container-orgd67fbef" class="outline-2">
+<h2 id="orgd67fbef">结构定义</h2>
+<div class="outline-text-2" id="text-orgd67fbef">
 <p>
 <code>parser</code> 就是一个接受一个 <code>String</code>, 返回一个解析后的结果的函数。
 </p>
@@ -59,8 +59,7 @@
 </ol>
 
 <div class="org-src-container">
-
-<pre class="src src-haskell" id="orgsrcblock1">import           Control.Applicative
+<pre class="src src-haskell" id="orgecbc32e">import           Control.Applicative
 import           Data.Char
 
 newtype Parser a = Parser { runParser :: String -&gt; Maybe (a, String) }
@@ -69,17 +68,16 @@ newtype Parser a = Parser { runParser :: String -&gt; Maybe (a, String) }
 </div>
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2">结果</h2>
-<div class="outline-text-2" id="text-orgheadline2">
+<div id="outline-container-org49999fe" class="outline-2">
+<h2 id="org49999fe">结果</h2>
+<div class="outline-text-2" id="text-org49999fe">
 <ul class="org-ul">
 <li><code>parseAtom</code> : 一个数字或者开头为字目的字符串的 <code>parser</code></li>
 <li><code>parseSExpr</code> : (一个原子表达式或者一个S表达式的列表)的 <code>parser</code></li>
 </ul>
 
 <div class="org-src-container">
-
-<pre class="src src-haskell" id="orgsrcblock2">-- An "identifier" is represented as just a String; however, only
+<pre class="src src-haskell" id="org79e89fc">-- An "identifier" is represented as just a String; however, only
 -- those Strings consisting of a letter followed by any number of
 -- letters and digits are valid identifiers.
 type Ident = String
@@ -110,12 +108,11 @@ parseSExpr = withSpaces      $  parseA   &lt;|&gt;   parseC
 </div>
 </div>
 
-<div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="orgheadline3">基本的抽象</h2>
-<div class="outline-text-2" id="text-orgheadline3">
+<div id="outline-container-org73e9788" class="outline-2">
+<h2 id="org73e9788">基本的抽象</h2>
+<div class="outline-text-2" id="text-org73e9788">
 <div class="org-src-container">
-
-<pre class="src src-haskell" id="orgsrcblock3">first :: (a -&gt; b) -&gt; (a,c) -&gt; (b,c)
+<pre class="src src-haskell" id="orgea00308">first :: (a -&gt; b) -&gt; (a,c) -&gt; (b,c)
 first f  (a,c) = (f a , c)
 
 doubleLift ::(Applicative f, Applicative g) =&gt; (a-&gt;b) -&gt; f (g a) -&gt; f (g b)
@@ -140,12 +137,11 @@ instance Alternative Parser where
 </div>
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-2">
-<h2 id="orgheadline4">一些帮助函数</h2>
-<div class="outline-text-2" id="text-orgheadline4">
+<div id="outline-container-orgacb4536" class="outline-2">
+<h2 id="orgacb4536">一些帮助函数</h2>
+<div class="outline-text-2" id="text-orgacb4536">
 <div class="org-src-container">
-
-<pre class="src src-haskell" id="orgsrcblock4">-- For example, 'satisfy' takes a predicate on Char, and constructs a
+<pre class="src src-haskell" id="org3093ac7">-- For example, 'satisfy' takes a predicate on Char, and constructs a
 -- parser which succeeds only if it sees a Char that satisfies the
 -- predicate (which it then returns).  If it encounters a Char that
 -- does not satisfy the predicate (or an empty input), it fails.
@@ -176,11 +172,10 @@ ident = (:) &lt;$&gt; satisfy isAlpha &lt;*&gt; (zeroOrMore $ satisfy isAlphaNum
 </div>
 </div>
 
-<div id="outline-container-orgheadline5" class="outline-2">
-<h2 id="orgheadline5">应用</h2>
-<div class="outline-text-2" id="text-orgheadline5">
+<div id="outline-container-org6135193" class="outline-2">
+<h2 id="org6135193">应用</h2>
+<div class="outline-text-2" id="text-org6135193">
 <div class="org-src-container">
-
 <pre class="src src-haskell">runParser parseSExpr "(1 2 3)"
 -- Just (Comb [A (N 1),A (N 2),A (N 3)],"")
 
@@ -197,9 +192,9 @@ runParser parseSExpr " (1 2 (3) ab) 3"
 </div>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-2">
-<h2 id="orgheadline6">分析</h2>
-<div class="outline-text-2" id="text-orgheadline6">
+<div id="outline-container-org6f3770b" class="outline-2">
+<h2 id="org6f3770b">分析</h2>
+<div class="outline-text-2" id="text-org6f3770b">
 <ol class="org-ol">
 <li>好读, 代码整体就是一篇说明，从底层的定义开始, 一点点构建到上层</li>
 <li>关键还是对于领域的理解，按照这个思路，在 <code>java</code> 里也是可以写出近似的结构.</li>
@@ -207,9 +202,9 @@ runParser parseSExpr " (1 2 (3) ab) 3"
 </div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-2">
-<h2 id="orgheadline7">functor</h2>
-<div class="outline-text-2" id="text-orgheadline7">
+<div id="outline-container-org7599070" class="outline-2">
+<h2 id="org7599070">functor</h2>
+<div class="outline-text-2" id="text-org7599070">
 <blockquote>
 <p>
 对于(控制)结构的抽象, 用于处理容器内部的值，容器控制调用方式，次数等
@@ -238,11 +233,10 @@ As a container, (e -&gt; a) represents a (possibly infinite) set of values of a,
 </dl>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-3">
-<h3 id="orgheadline8">haskell的定义</h3>
-<div class="outline-text-3" id="text-orgheadline8">
+<div id="outline-container-orgb8105ad" class="outline-3">
+<h3 id="orgb8105ad">haskell的定义</h3>
+<div class="outline-text-3" id="text-orgb8105ad">
 <div class="org-src-container">
-
 <pre class="src src-haskell">fmap :: (a -&gt; b) -&gt; f a -&gt; f b
 </pre>
 </div>
@@ -282,7 +276,7 @@ As a container, (e -&gt; a) represents a (possibly infinite) set of values of a,
       <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="/media/js/main.js"></script>
       <div class="footer">
-        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
         <p>
           Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
           &nbsp;&nbsp;-&nbsp;&nbsp;

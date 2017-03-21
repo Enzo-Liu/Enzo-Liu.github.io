@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>品类分析 - enzo&#39;s note book</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="刘恩泽" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+  </head>
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">enzo&#39;s note book</a></h1>
+        <p>M-x (sketch for random ideas)</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/history/">History</a></li>
+          <li><a href="/leetcode/">Leetcode</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="blog.enzo.cc">
+        </form>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>品类分析</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org8eab6cb">1. 整体数据</a>
+<ul>
+<li><a href="#org5bb2521">1.1. 购买时间分布</a></li>
+<li><a href="#org03e3cb8">1.2. 溢价比例分布</a></li>
+<li><a href="#org15dc768">1.3. 注册购买时间分布</a></li>
+<li><a href="#orgcbaca05">1.4. 成交价格分布</a></li>
+<li><a href="#orgc74dd9c">1.5. 决策时间分布</a></li>
+</ul>
+</li>
+<li><a href="#org6c854a5">2. APP 行为数据</a>
+<ul>
+<li><a href="#org08ea9a2">2.1. 访问量 TOP 的页面</a></li>
+<li><a href="#org1fcbd67">2.2. 主要页面转化</a></li>
+</ul>
+</li>
+<li><a href="#org414f7ee">3. 演唱会</a>
+<ul>
+<li><a href="#org1610bee">3.1. 订单分布</a></li>
+<li><a href="#orgd50795d">3.2. 点击分布</a></li>
+<li><a href="#org0a9ed90">3.3. 转化率分布</a></li>
+<li><a href="#orga838544">3.4. 交易额分布</a></li>
+<li><a href="#org767e0e1">3.5. 价格分布</a></li>
+<li><a href="#orgdc17d68">3.6. 订单票数分布</a></li>
+<li><a href="#orga0457e9">3.7. 行为路径分析</a></li>
+<li><a href="#org6bfa14c">3.8. 购买用户分析</a></li>
+</ul>
+</li>
+<li><a href="#org89e854f">4. 话剧</a>
+<ul>
+<li><a href="#org19185ea">4.1. 订单分布</a></li>
+<li><a href="#orgf5a7eb1">4.2. 点击分布</a></li>
+<li><a href="#org47a53d5">4.3. 转化率分布</a></li>
+<li><a href="#orgb997b85">4.4. 交易额分布</a></li>
+<li><a href="#org25fe80f">4.5. 价格分布</a></li>
+<li><a href="#org5b7de21">4.6. 订单票数分布</a></li>
+<li><a href="#org50a6f0d">4.7. 行为路径分析</a></li>
+<li><a href="#orgebe03c6">4.8. 购买用户分析</a></li>
+</ul>
+</li>
+<li><a href="#orga2fddc8">5. 部分结论</a>
+<ul>
+<li><a href="#org2f93370">5.1. 整体现象</a></li>
+<li><a href="#org28be8ff">5.2. app 的数据</a></li>
+<li><a href="#org3cee447">5.3. 演唱会类交易场景</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8eab6cb" class="outline-2">
+<h2 id="org8eab6cb"><span class="section-number-2">1</span> 整体数据</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-org5bb2521" class="outline-3">
+<h3 id="org5bb2521"><span class="section-number-3">1.1</span> 购买时间分布</h3>
+<div class="outline-text-3" id="text-1-1">
+
+<div class="figure">
+<p><img src="/assets/blog/2017/01/03/品类分析/time-distribution.png" alt="time-distribution.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org03e3cb8" class="outline-3">
+<h3 id="org03e3cb8"><span class="section-number-3">1.2</span> 溢价比例分布</h3>
+<div class="outline-text-3" id="text-1-2">
+
+<div class="figure">
+<p><img src="/assets/blog/2017/01/03/品类分析/over-distribution.png" alt="over-distribution.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org15dc768" class="outline-3">
+<h3 id="org15dc768"><span class="section-number-3">1.3</span> 注册购买时间分布</h3>
+<div class="outline-text-3" id="text-1-3">
+
+<div class="figure">
+<p><img src="/assets/blog/2017/01/03/品类分析/register-distribution.png" alt="register-distribution.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcbaca05" class="outline-3">
+<h3 id="orgcbaca05"><span class="section-number-3">1.4</span> 成交价格分布</h3>
+<div class="outline-text-3" id="text-1-4">
+
+<div class="figure">
+<p><img src="/assets/blog/2017/01/03/品类分析/register-distribution.png" alt="register-distribution.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc74dd9c" class="outline-3">
+<h3 id="orgc74dd9c"><span class="section-number-3">1.5</span> 决策时间分布</h3>
+<div class="outline-text-3" id="text-1-5">
+
+<div class="figure">
+<p><img src="/assets/blog/2017/01/03/品类分析/decision-distribution.png" alt="decision-distribution.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6c854a5" class="outline-2">
+<h2 id="org6c854a5"><span class="section-number-2">2</span> APP 行为数据</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-org08ea9a2" class="outline-3">
+<h3 id="org08ea9a2"><span class="section-number-3">2.1</span> 访问量 TOP 的页面</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+百分比表示占整体流量的多少
+</p>
+<ol class="org-ol">
+<li>演出详情页 20%</li>
+<li>首页 18.9%</li>
+<li>列表页 12.8%</li>
+<li>选票页 11.3%</li>
+<li>个人中心 5.8%</li>
+<li>订单列表 3%</li>
+<li>订单详情 3%</li>
+<li>确认订单页 2.6%</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org1fcbd67" class="outline-3">
+<h3 id="org1fcbd67"><span class="section-number-3">2.2</span> 主要页面转化</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li>演出详情页
+<dl class="org-dl">
+<dt>3.4%</dt><dd>exit</dd>
+<dt>30%</dt><dd>选票页</dd>
+<dt>20%</dt><dd>列表页</dd>
+<dt>7.8%</dt><dd>首页</dd>
+<dt>7.2%</dt><dd>演出详情(相关演出)</dd>
+</dl></li>
+<li>首页
+<dl class="org-dl">
+<dt>12.3%</dt><dd>exit</dd>
+<dt>34%</dt><dd>列表页</dd>
+<dt>17.7%</dt><dd>个人中心</dd>
+<dt>9.4%</dt><dd>演出详情</dd>
+</dl></li>
+</ul>
+<ul class="org-ul">
+<li>列表页
+<dl class="org-dl">
+<dt>7%</dt><dd>exit</dd>
+<dt>47.7%</dt><dd>演出详情</dd>
+<dt>21.4%</dt><dd>首页</dd>
+<dt>10%</dt><dd>选票页(购买)</dd>
+<dt>8.9%</dt><dd>列表页(继续搜索)</dd>
+</dl></li>
+<li>选票页
+<dl class="org-dl">
+<dt>10%</dt><dd>exit</dd>
+<dt>48.3%</dt><dd>演出详情</dd>
+<dt>12.3%</dt><dd>下单页</dd>
+<dt>11.8%</dt><dd>选票页(换票档选择？)</dd>
+</dl></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org414f7ee" class="outline-2">
+<h2 id="org414f7ee"><span class="section-number-2">3</span> 演唱会</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-org1610bee" class="outline-3">
+<h3 id="org1610bee"><span class="section-number-3">3.1</span> 订单分布</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+演唱会总订单 31000+, 前 10 的演出订单 11215. 有订单演出共 647 个. 小于 10 单的演出 300+.
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">演出名称</th>
+<th scope="col" class="org-right">订单数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">五月天 上海站</td>
+<td class="org-right">2370</td>
+</tr>
+
+<tr>
+<td class="org-left">学友.经典 上海站</td>
+<td class="org-right">1653</td>
+</tr>
+
+<tr>
+<td class="org-left">2016 上海简单生活节</td>
+<td class="org-right">1463</td>
+</tr>
+
+<tr>
+<td class="org-left">2016 五月天 北京站</td>
+<td class="org-right">1214</td>
+</tr>
+
+<tr>
+<td class="org-left">陈奕迅 －北京鸟巢站</td>
+<td class="org-right">1114</td>
+</tr>
+
+<tr>
+<td class="org-left">学友.经典 北京站</td>
+<td class="org-right">895</td>
+</tr>
+
+<tr>
+<td class="org-left">中国新歌声总决赛暨巅峰之夜</td>
+<td class="org-right">737</td>
+</tr>
+
+<tr>
+<td class="org-left">上海滴水湖春浪音乐节</td>
+<td class="org-right">616</td>
+</tr>
+
+<tr>
+<td class="org-left">学友.经典 广州站</td>
+<td class="org-right">595</td>
+</tr>
+
+<tr>
+<td class="org-left">张杰 2016“我想”北京站</td>
+<td class="org-right">558</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+排名前 50 的演出订单量 21285 万, 涉及的关键词为:
+</p>
+
+<blockquote>
+<p>
+五月天;张学友;上海简单生活节;陈奕迅;中国新歌声;
+春浪音乐节;张杰;长阳音乐节;周杰伦;陈慧娴;陈奕迅;
+BIGBANG;草莓音乐节;好妹妹乐队;
+热波音乐节;罗大佑;崔健;刘若英;
+李荣浩;风暴电音节;张信哲;宋仲基;蔡健雅;田馥甄;
+张惠妹;梁静茹;林忆莲;马克西姆
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-orgd50795d" class="outline-3">
+<h3 id="orgd50795d"><span class="section-number-3">3.2</span> 点击分布</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+演唱会总点击 560 万, 前 10 的演出点击 165 万, 前 10 的演出除了五月天,其他转化率在千 2 和千 9 之间
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">演出名称</th>
+<th scope="col" class="org-right">订单数</th>
+<th scope="col" class="org-right">点击数</th>
+<th scope="col" class="org-right">转化率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">学友.经典 上海站</td>
+<td class="org-right">1653</td>
+<td class="org-right">256915</td>
+<td class="org-right">0.0064</td>
+</tr>
+
+<tr>
+<td class="org-left">2016 周杰伦 上海站</td>
+<td class="org-right">517</td>
+<td class="org-right">225648</td>
+<td class="org-right">0.0023</td>
+</tr>
+
+<tr>
+<td class="org-left">2016 周杰伦 北京站</td>
+<td class="org-right">345</td>
+<td class="org-right">216424</td>
+<td class="org-right">0.0016</td>
+</tr>
+
+<tr>
+<td class="org-left">2016 五月天 上海站</td>
+<td class="org-right">2370</td>
+<td class="org-right">189998</td>
+<td class="org-right">0.0125</td>
+</tr>
+
+<tr>
+<td class="org-left">2016 BIGBANG SHANGHAI</td>
+<td class="org-right">375</td>
+<td class="org-right">176637</td>
+<td class="org-right">0.0021</td>
+</tr>
+
+<tr>
+<td class="org-left">陈奕迅 北京鸟巢站</td>
+<td class="org-right">1114</td>
+<td class="org-right">165120</td>
+<td class="org-right">0.0067</td>
+</tr>
+
+<tr>
+<td class="org-left">陈奕迅 上海站</td>
+<td class="org-right">407</td>
+<td class="org-right">116387</td>
+<td class="org-right">0.0035</td>
+</tr>
+
+<tr>
+<td class="org-left">学友.经典 广州站</td>
+<td class="org-right">595</td>
+<td class="org-right">112771</td>
+<td class="org-right">0.0053</td>
+</tr>
+
+<tr>
+<td class="org-left">学友.经典 北京站</td>
+<td class="org-right">895</td>
+<td class="org-right">99861</td>
+<td class="org-right">0.009</td>
+</tr>
+
+<tr>
+<td class="org-left">2016 五月天 北京站</td>
+<td class="org-right">1214</td>
+<td class="org-right">95994</td>
+<td class="org-right">0.0126</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+排名前 50 的演出点击量为 350 万, 涉及的关键词为:
+</p>
+
+<blockquote>
+<p>
+张学友;周杰伦;五月天;BIGBANG;陈奕迅;宋仲基;王菲;
+刘若英;中国新歌声;简单生活节;SNH48;张杰;
+echo;回声嘉年华音乐节; 蔡依林;张信哲;
+张惠妹;长阳音乐节;百威风暴电音节;
+陈慧娴;浙江卫视;湖南卫视;田馥甄;
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-org0a9ed90" class="outline-3">
+<h3 id="org0a9ed90"><span class="section-number-3">3.3</span> 转化率分布</h3>
+<div class="outline-text-3" id="text-3-3">
+<dl class="org-dl">
+<dt>转化率最高: 17%</dt><dd>130*90 铝膜双面加厚 音乐节防潮垫 票牛特价</dd>
+<dt>转化率最低: 0.04%</dt><dd>SNH48</dd>
+<dt>转化率 1% 以上的 83 个</dt><dd>总点击 77 万, 总成单 12353, 客单均价 300-400 左右</dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-orga838544" class="outline-3">
+<h3 id="orga838544"><span class="section-number-3">3.4</span> 交易额分布</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+总交易额 4344 万, 前 10 的演出 2000 万, 前 20 的演出 2560 万, 前 10 的客单均价在 2000-3000 左右
+</p>
+
+<p>
+交易额前 10 的演出为:
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">演出名称</th>
+<th scope="col" class="org-right">订单量</th>
+<th scope="col" class="org-right">点击数</th>
+<th scope="col" class="org-right">转化率</th>
+<th scope="col" class="org-right">总流水</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">学友.经典 上海站</td>
+<td class="org-right">1653</td>
+<td class="org-right">256915</td>
+<td class="org-right">0.0064</td>
+<td class="org-right">5400668</td>
+</tr>
+
+<tr>
+<td class="org-left">五月天 上海站</td>
+<td class="org-right">2370</td>
+<td class="org-right">189998</td>
+<td class="org-right">0.0125</td>
+<td class="org-right">3265187</td>
+</tr>
+
+<tr>
+<td class="org-left">学友.经典 北京站</td>
+<td class="org-right">895</td>
+<td class="org-right">99861</td>
+<td class="org-right">0.009</td>
+<td class="org-right">2207305</td>
+</tr>
+
+<tr>
+<td class="org-left">周杰伦 上海站</td>
+<td class="org-right">517</td>
+<td class="org-right">225648</td>
+<td class="org-right">0.0023</td>
+<td class="org-right">1853747</td>
+</tr>
+
+<tr>
+<td class="org-left">陈奕迅 北京鸟巢站</td>
+<td class="org-right">1114</td>
+<td class="org-right">165120</td>
+<td class="org-right">0.0067</td>
+<td class="org-right">1600086</td>
+</tr>
+
+<tr>
+<td class="org-left">学友.经典 广州站</td>
+<td class="org-right">595</td>
+<td class="org-right">112771</td>
+<td class="org-right">0.0053</td>
+<td class="org-right">1586930</td>
+</tr>
+
+<tr>
+<td class="org-left">BIGBANG  SHANGHAI</td>
+<td class="org-right">375</td>
+<td class="org-right">176637</td>
+<td class="org-right">0.0021</td>
+<td class="org-right">1328730</td>
+</tr>
+
+<tr>
+<td class="org-left">五月天 北京站</td>
+<td class="org-right">1214</td>
+<td class="org-right">95994</td>
+<td class="org-right">0.0126</td>
+<td class="org-right">1256848</td>
+</tr>
+
+<tr>
+<td class="org-left">周杰伦 北京站</td>
+<td class="org-right">345</td>
+<td class="org-right">216424</td>
+<td class="org-right">0.0016</td>
+<td class="org-right">1239325</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org767e0e1" class="outline-3">
+<h3 id="org767e0e1"><span class="section-number-3">3.5</span> 价格分布</h3>
+<div class="outline-text-3" id="text-3-5">
+
+<div class="figure">
+<p><img src="/assets/blog/2017/01/03/品类分析/vocal-price-distribution.png" alt="vocal-price-distribution.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdc17d68" class="outline-3">
+<h3 id="orgdc17d68"><span class="section-number-3">3.6</span> 订单票数分布</h3>
+<div class="outline-text-3" id="text-3-6">
+
+<div class="figure">
+<p><img src="/assets/blog/2017/01/03/品类分析/order-tickets-distribution.png" alt="order-tickets-distribution.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga0457e9" class="outline-3">
+<h3 id="orga0457e9"><span class="section-number-3">3.7</span> 行为路径分析</h3>
+<div class="outline-text-3" id="text-3-7">
+<p>
+<b>没做出来，未完待续&#x2026;</b>
+</p>
+</div>
+</div>
+<div id="outline-container-org6bfa14c" class="outline-3">
+<h3 id="org6bfa14c"><span class="section-number-3">3.8</span> 购买用户分析</h3>
+<div class="outline-text-3" id="text-3-8">
+<ul class="org-ul">
+<li>演唱会购买用户共 26800 人</li>
+<li>2800 个演唱会购买用户会买其他类目</li>
+<li><p>
+5800 个演唱会用户有复购行为
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">购买单数</th>
+<th scope="col" class="org-right">用户数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">21520</td>
+</tr>
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-right">3163</td>
+</tr>
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-right">920</td>
+</tr>
+
+<tr>
+<td class="org-right">4</td>
+<td class="org-right">417</td>
+</tr>
+
+<tr>
+<td class="org-right">5</td>
+<td class="org-right">196</td>
+</tr>
+
+<tr>
+<td class="org-right">6</td>
+<td class="org-right">136</td>
+</tr>
+
+<tr>
+<td class="org-right">7</td>
+<td class="org-right">78</td>
+</tr>
+
+<tr>
+<td class="org-right">8</td>
+<td class="org-right">61</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org89e854f" class="outline-2">
+<h2 id="org89e854f"><span class="section-number-2">4</span> 话剧</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-org19185ea" class="outline-3">
+<h3 id="org19185ea"><span class="section-number-3">4.1</span> 订单分布</h3>
+<div class="outline-text-3" id="text-4-1">
+<blockquote>
+<p>
+有一定的品牌效应, 但整体话剧分布更均匀, 长尾效应也更明显
+</p>
+</blockquote>
+<ul class="org-ul">
+<li>话剧总订单 28585</li>
+<li>前 10 的话剧订单 6000</li>
+<li>超过 100 单的话剧共 60 个</li>
+<li>小于 10 单的话剧共 655 个</li>
+<li>有订单的话剧共 1040 个</li>
+<li>不眠之夜订单 1114</li>
+<li>恋爱的犀牛订单 897</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf5a7eb1" class="outline-3">
+<h3 id="orgf5a7eb1"><span class="section-number-3">4.2</span> 点击分布</h3>
+<div class="outline-text-3" id="text-4-2">
+<blockquote>
+<p>
+从这个维度没看出啥特别的，整体很平滑
+</p>
+</blockquote>
+<ul class="org-ul">
+<li>点击最高的如梦之梦和不眠之夜，点击数基本一样，5 万多</li>
+<li>点击数上万的 42 个</li>
+<li>点击数上千的 352 个</li>
+<li>点击数上百的 621 个</li>
+<li>点击数小于 100 的 25 个</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org47a53d5" class="outline-3">
+<h3 id="org47a53d5"><span class="section-number-3">4.3</span> 转化率分布</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+转化率超过 10%的 13 个演出 (猜和早期量少关系很大)
+</p>
+<ul class="org-ul">
+<li>契诃夫名剧《万尼亚舅舅》 3.1565</li>
+<li>开心麻花爆笑舞台剧《小丑爱美丽》2.76</li>
+<li>话剧《恋爱的犀牛》 1.16</li>
+<li>开心麻花 2016 爆笑舞台剧《李茶的姑妈》 0.82</li>
+<li>开心麻花爆笑舞台剧《乌龙山伯爵》 0.5204</li>
+<li>孟京辉戏剧作品《希特勒的肚子》 0.4271</li>
+<li>开心麻花爆笑舞台剧《江湖学院》 0.3284</li>
+<li>韩国第一音乐喜剧《乱打神厨》 0.2274</li>
+<li>歌剧《一江春水向东流》音乐会版 0.1667</li>
+<li>开心麻花爆笑舞台剧《羞羞的铁拳》 0.1515</li>
+<li>繁星戏剧 都市爱情喜剧《那次奋不顾身的爱情》 0.1273</li>
+<li>百老汇音乐剧《我，堂吉诃德》中文版 0.1077</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb997b85" class="outline-3">
+<h3 id="orgb997b85"><span class="section-number-3">4.4</span> 交易额分布</h3>
+<div class="outline-text-3" id="text-4-4">
+<p>
+总交易额 1289 万, 前 10 的销售 481 万.
+</p>
+<ul class="org-ul">
+<li>不眠之夜 117 万</li>
+<li>如梦之梦 114 万</li>
+<li>舞马 53 万</li>
+<li>乌龙山伯爵 31 万</li>
+<li>恋爱的犀牛 27 万</li>
+<li>三体 22 万</li>
+<li>戏台 19 万</li>
+<li>无人生还 18 万</li>
+<li>莫扎特 18 万</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org25fe80f" class="outline-3">
+<h3 id="org25fe80f"><span class="section-number-3">4.5</span> 价格分布</h3>
+<div class="outline-text-3" id="text-4-5">
+
+<div class="figure">
+<p><img src="/assets/blog/2017/01/03/品类分析/drama-price-distribution.png" alt="drama-price-distribution.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5b7de21" class="outline-3">
+<h3 id="org5b7de21"><span class="section-number-3">4.6</span> 订单票数分布</h3>
+<div class="outline-text-3" id="text-4-6">
+
+<div class="figure">
+<p><img src="/assets/blog/2017/01/03/品类分析/drama-tickets-distribution.png" alt="drama-tickets-distribution.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org50a6f0d" class="outline-3">
+<h3 id="org50a6f0d"><span class="section-number-3">4.7</span> 行为路径分析</h3>
+<div class="outline-text-3" id="text-4-7">
+<p>
+<b>没做出来，未完待续&#x2026;</b>
+</p>
+</div>
+</div>
+<div id="outline-container-orgebe03c6" class="outline-3">
+<h3 id="orgebe03c6"><span class="section-number-3">4.8</span> 购买用户分析</h3>
+<div class="outline-text-3" id="text-4-8">
+<ul class="org-ul">
+<li>话剧类购买用户共 12441 人</li>
+<li>3781 个话剧购买用户会买其他类目</li>
+<li>5972 个话剧购买用户有复购行为</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">购买单数</th>
+<th scope="col" class="org-right">用户数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">12441</td>
+</tr>
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-right">2981</td>
+</tr>
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-right">1165</td>
+</tr>
+
+<tr>
+<td class="org-right">4</td>
+<td class="org-right">559</td>
+</tr>
+
+<tr>
+<td class="org-right">5</td>
+<td class="org-right">324</td>
+</tr>
+
+<tr>
+<td class="org-right">6</td>
+<td class="org-right">205</td>
+</tr>
+
+<tr>
+<td class="org-right">7</td>
+<td class="org-right">136</td>
+</tr>
+
+<tr>
+<td class="org-right">8</td>
+<td class="org-right">96</td>
+</tr>
+
+<tr>
+<td class="org-right">9</td>
+<td class="org-right">80</td>
+</tr>
+
+<tr>
+<td class="org-right">10</td>
+<td class="org-right">62</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga2fddc8" class="outline-2">
+<h2 id="orga2fddc8"><span class="section-number-2">5</span> 部分结论</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-org2f93370" class="outline-3">
+<h3 id="org2f93370"><span class="section-number-3">5.1</span> 整体现象</h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li>60%的订单量在开演前两周内完成</li>
+<li>演唱会/话剧 2 个月内销量提升, 展览 2 周内, 其他类目 1 周内</li>
+<li>整体平台正价票销量最多</li>
+<li>演唱会折扣在 0.5-2 之间销量都还可以</li>
+<li>话剧折扣在 0.95-1 之间的销量最好</li>
+</ul>
+<ul class="org-ul">
+<li>注册当天就购买的订单占比 90%以上, 第二天还不买基本就不会买了</li>
+<li>除了演唱会,其余票价在 100-200 之间的销量最好</li>
+<li>演唱会票价对销量的影响更小, 在 200-600 之间都不错</li>
+<li>大部分的购买是冲动型, 5-10 分钟以内就决策决定买</li>
+<li>决策时间越长, 支付比例越高</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org28be8ff" class="outline-3">
+<h3 id="org28be8ff"><span class="section-number-3">5.2</span> app 的数据</h3>
+<div class="outline-text-3" id="text-5-2">
+<ul class="org-ul">
+<li>一半以上在列表页能看到想看的(会进行点击)</li>
+<li>首页的退出率 12%, 首屏的项目/栏目的吸引度/新鲜度不够</li>
+<li>app 的转化漏斗大约为 详情-&gt;30%(选票) -&gt; (下单)12.3% -&gt; (支付) 16% -&gt; (支付成功) 28%</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3cee447" class="outline-3">
+<h3 id="org3cee447"><span class="section-number-3">5.3</span> 演唱会类交易场景</h3>
+<div class="outline-text-3" id="text-5-3">
+<p>
+最大场景: 热门明星
+</p>
+<ul class="org-ul">
+<li>价值点: 1. 信息(什么时候开)  2. 靠谱的买到 3. 价格合理的买到</li>
+</ul>
+
+<p>
+次级场景(热点): 音乐节　生活节　逢年过节演唱会
+</p>
+
+<p>
+其他场景: 搜索/浏览其他演唱会
+</p>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2017-01-03</span>
+        <span title="last modification date" class="post-info">2017-01-12</span>
+        <span title="tags" class="post-info">N/A</span>
+        <span title="author" class="post-info">刘恩泽</span>
+      </div>
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/blog/2017/01/03/品类分析/";
+          var disqus_url = "https://blog.enzo.cc/blog/2017/01/03/品类分析/";
+          var disqus_shortname = 'enzo-liu';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="/media/js/main.js"></script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+        <p>
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:enze &lt;dot&gt; liu &lt;at&gt; ipiaoniu &lt;dot&gt; com">刘恩泽</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>

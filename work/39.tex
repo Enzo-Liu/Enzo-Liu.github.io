@@ -1,0 +1,137 @@
+% Created 2016-08-15 Mon 10:33
+\documentclass[presentation, bigger]{beamer}
+\usepackage[no-math]{fontspec}
+\usepackage[BoldFont,SlantFont,AutoFakeBold=true,AutoFakeSlant=true]{xeCJK}
+\setCJKmainfont[BoldFont=FandolSong-Bold.otf,ItalicFont=FandolKai-Regular.otf]{FandolSong-Regular.otf}
+\setCJKsansfont[BoldFont=FandolHei-Bold.otf]{FandolHei-Regular.otf}
+\setCJKmonofont{FandolFang-Regular.otf}
+\usefonttheme[stillsansseriflarge,stillsansserifsmall]{serif}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\defaultfontfeatures{Mapping=tex-text}
+\usepackage{geometry}
+\usepackage{verbatim}
+\usepackage{fixltx2e}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\setlength{\parindent}{0in}
+\tolerance=1000
+\author{刘恩泽}
+\date{2015-11-23}
+\title{39元抢购活动}
+\hypersetup{
+ pdfauthor={刘恩泽},
+ pdftitle={39元抢购活动},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 25.1.1 (Org mode 8.3.5)},
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+\section{概念定义}
+\label{sec:orgheadline5}
+\subsection{活动对象}
+\label{sec:orgheadline2}
+\begin{enumerate}
+\item 新用户下单
+\label{sec:orgheadline1}
+注册用户的首次下单称为新用户下单
+\end{enumerate}
+
+\subsection{商品}
+\label{sec:orgheadline4}
+\begin{enumerate}
+\item 活动商品
+\label{sec:orgheadline3}
+仅在活动页显示，与正常商品不共享库存，无法在正常列表页看见
+\end{enumerate}
+
+\section{主线场景}
+\label{sec:orgheadline10}
+\subsection{正常流程}
+\label{sec:orgheadline6}
+\lstset{frame=single,backgroundcolor=\color[gray]{0.95},identifierstyle=\ttfamily,keywordstyle=\color[rgb]{0,0,1},commentstyle=\color[rgb]{0.133,0.545,0.133},stringstyle=\color[rgb]{0.627,0.126,0.941},basicstyle=\scriptsize,extendedchars=true,breaklines=true,prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},columns=fixed,keepspaces=true,showstringspaces=false,numbers=left,xleftmargin=.25in,xrightmargin=.25in,numberstyle=\tiny,language=dot,label= ,caption= ,captionpos=b}
+\begin{lstlisting}
+digraph {
+  // graph from left to right
+  rankdir=LR;
+  splines=true;
+  node [shape=box];
+
+  id [label="banner"]
+  conf [label="活动列表页"]
+  dot [label="下单支付"]
+
+  id -> conf
+  conf -> dot
+  dot -> "无库存明天再试" [style=dotted]
+  dot -> "购买成功分享"
+  }
+\end{lstlisting}
+
+
+\subsection{新用户注册后购买}
+\label{sec:orgheadline7}
+\begin{quote}
+\begin{enumerate}
+\item 点击banner
+\item 查看列表，点击购买
+\item 弹出登陆注册页
+\item 注册成功
+\item 弹出订单页
+\item 支付成功
+\item 分享
+\end{enumerate}
+\end{quote}
+
+\subsection{新用户登陆后购买}
+\label{sec:orgheadline8}
+\begin{quote}
+\begin{enumerate}
+\item 点击banner
+\item 查看列表，点击购买
+\item 弹出登陆页
+\item 登陆成功
+\item 弹出订单页
+\item 支付成功
+\item 分享
+\end{enumerate}
+\end{quote}
+
+\subsection{老用户登陆后不能购买}
+\label{sec:orgheadline9}
+\begin{quote}
+\begin{enumerate}
+\item 点击banner
+\item 查看列表，点击购买
+\item 弹出登陆页
+\item 登陆成功
+\item 弹出老用户不能下单
+\end{enumerate}
+\end{quote}
+
+\section{异常场景}
+\label{sec:orgheadline13}
+\subsection{用户进入列表页已无库存}
+\label{sec:orgheadline11}
+
+页面按钮变成售罄
+
+\subsection{用户登陆后下单失败（无库存）}
+\label{sec:orgheadline12}
+
+提示明天再试
+\end{document}

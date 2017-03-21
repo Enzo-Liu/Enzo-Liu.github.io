@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>452. Minimum Number of Arrows to Burst Balloons - enzo&#39;s note book</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="enzo liu" />
+    <meta name="description" content="leetcode" />
+    <meta name="keywords" content="leetcode, ruby" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+  </head>
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">enzo&#39;s note book</a></h1>
+        <p>M-x (sketch for random ideas)</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/history/">History</a></li>
+          <li><a href="/leetcode/">Leetcode</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="//www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="as_sitesearch" value="blog.enzo.cc">
+        </form>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>452. Minimum Number of Arrows to Burst Balloons</h1>
+
+<div id="outline-container-org9886ee0" class="outline-2">
+<h2 id="org9886ee0">题目</h2>
+<div class="outline-text-2" id="text-org9886ee0">
+<p>
+<a href="https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons">链接</a>
+</p>
+
+<blockquote>
+<p>
+There are a number of spherical balloons spread in two-dimensional space. For each balloon, provided input is the start and end coordinates of the horizontal diameter. Since it's horizontal, y-coordinates don't matter and hence the x-coordinates of start and end of the diameter suffice. Start is always smaller than end. There will be at most 104 balloons.
+</p>
+
+<p>
+An arrow can be shot up exactly vertically from different points along the x-axis. A balloon with xstart and xend bursts by an arrow shot at x if xstart ≤ x ≤ xend. There is no limit to the number of arrows that can be shot. An arrow once shot keeps travelling up infinitely. The problem is to find the minimum number of arrows that must be shot to burst all balloons.
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-org8b3d1ca" class="outline-2">
+<h2 id="org8b3d1ca">思路</h2>
+<div class="outline-text-2" id="text-org8b3d1ca">
+<p>
+按照起点排序，偏离缩小重合区域，一旦无相交则说明需要多一根箭
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd7cb0c7" class="outline-2">
+<h2 id="orgd7cb0c7">代码</h2>
+<div class="outline-text-2" id="text-orgd7cb0c7">
+<div class="org-src-container">
+<pre class="src src-ruby"># @param {Integer[][]} points
+# @return {Integer}
+def find_min_arrow_shots(points)
+  scope = nil
+  res = 0
+  points.sort { |p1,p2| p1[0]&lt;=&gt;p2[0]}.each do |p|
+    if (scope == nil)
+      scope = p
+      res = res + 1
+    elsif (p[0] &lt;= scope[1])
+      scope = [[p[0],scope[0]].max, [p[1], scope[1]].min]
+    else
+      scope = [p[0],p[1]]
+      res = res + 1
+    end
+  end
+  res
+end
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd2f105e" class="outline-2">
+<h2 id="orgd2f105e">思路 2</h2>
+<div class="outline-text-2" id="text-orgd2f105e">
+<p>
+贪婪
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0209e8c" class="outline-2">
+<h2 id="org0209e8c">代码</h2>
+<div class="outline-text-2" id="text-org0209e8c">
+<div class="org-src-container">
+<pre class="src src-ruby"># @param {Integer[][]} points
+# @return {Integer}
+def find_min_arrow_shots(points)
+  points.sort { |p1,p2| p1[1]&lt;=&gt;p2[1]}.inject([nil,0]) do |res, p|
+    if (res[0] == nil or p[0] &gt; res[0])
+      res[1] = res[1] + 1
+      res[0] = p[1]
+    end
+    res
+  end[1]
+end
+</pre>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2017-02-25</span>
+        <span title="last modification date" class="post-info">2017-02-25</span>
+        <span title="tags" class="post-info"><a href="/tags/leetcode/">leetcode</a>, <a href="/tags/ruby/">ruby</a></span>
+        <span title="author" class="post-info">enzo liu</span>
+      </div>
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/leetcode/452";
+          var disqus_url = "https://blog.enzo.cc/leetcode/452";
+          var disqus_shortname = 'enzo-liu';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+      <script src="//code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="/media/js/main.js"></script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+        <p>
+          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>
