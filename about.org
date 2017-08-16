@@ -47,7 +47,7 @@
 - 2017-03 商家子账户, 商家运营活动，商家分销系统, 票务系统（锁票，打票，验票)
 - 2017-04 迁移大数据存储至阿里 odps, 线上 spark 环境, 自动发货系统(对接顺丰自动打印)
 - 2017-05 在线选座挂售
-- 技术相关: spark, ansible, zabbix, 业务心跳，发布脚本，qiniu, daogen, docker, scala, mysql ...
+- 技术相关: spark, ansible, zabbix, elk, ruby, qiniu, daogen, docker, scala, mysql ...
 *** 点评商品制作系统
 主要内容都在 =业务系统= 的设计上。
 - 为了前台页面的属性化/场景化搜索，完成了 =内容属性化= 及 =分类目属性模板=
