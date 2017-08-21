@@ -1,0 +1,32 @@
+* DOING [0/6] SEM 投放优化
+   DEADLINE: <2017-09-01 Fri>
+** TODO 整理 =SEM= 方案沟通
+  DEADLINE: <2017-08-23 Wed>
+  [[~/work/piaoniu/documentation/sem.org][sem 方案]]
+** TODO 历史数据分析
+  - 演出维度, 关键词花费，以及效果.
+** TODO 自动添加推广单元
+** TODO 自动添加推广关键词
+** TODO 自动添加推广创意
+** TODO 长尾演出的自动出价策略
+
+* TODO [0/2] rock lititz & taittowers 研究
+  DEADLINE: <2017-08-25 Fri>
+** TODO rock lititz
+** TODO taittowers
+
+* DOING [0/5] 天猫对接
+** DOING 天猫账号申请
+** TODO SDK 下载与对接
+** TODO 同步演出
+** TODO 同步库存
+** TODO 同步订单，发货
+
+* TODO [0/1] 技术分享
+** DOING 主题 & PPT
+   [[/Users/enzo/Documents/blog/blog/path.org][成长]]
+  DEADLINE: <2017-09-21 Thu>
+
+* DOING [0/1]日常工作
+** TODO 外部订单区分支付和出票
+   DEADLINE: <2017-08-22 Tue>
