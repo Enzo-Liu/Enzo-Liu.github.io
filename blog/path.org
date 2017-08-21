@@ -1,0 +1,22 @@
+#+TITLE:       工作轨迹: a programmer's perspective
+#+AUTHOR:      enzo liu
+#+EMAIL:       liuenze6516@gmail.com
+#+DATE:        2017-08-21 Mon
+#+URI:         /blog/%y/%m/%d/docker
+#+KEYWORDS:    docker
+#+TAGS:        docker
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: 工作轨迹: a programmer's perspective
+
+16 年初，就一直有个 +愿望+  想法 ，整理一下自己的技能体系。在和同事交流的过程中，也有 *推荐学习路线* 的需要，唯一能直接推荐出来的也就是一本叫做 =SICP= [fn:sicp]的书而已.
+
+毕业至今，工作已经满 6 年了。
+
+** 轨迹
+
+** 技能点
+
+** 书单
+
+[fn:sicp] 我觉得这本书对于非专业人士入门很友好，各种高阶概念都通过一种极其朴素通俗的方式解释了出来
