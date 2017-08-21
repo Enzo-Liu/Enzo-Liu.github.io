@@ -1,4 +1,4 @@
-#+TITLE:       工作轨迹: a programmer's perspective
+#+TITLE:       职业发展路线: a programmer's perspective
 #+AUTHOR:      enzo liu
 #+EMAIL:       liuenze6516@gmail.com
 #+DATE:        2017-08-21 Mon
@@ -9,9 +9,9 @@
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: 工作轨迹: a programmer's perspective
 
-16 年初，就一直有个 +愿望+  想法 ，整理一下自己的技能体系。在和同事交流的过程中，也有 *推荐学习路线* 的需要，唯一能直接推荐出来的也就是一本叫做 =SICP= [fn:sicp]的书而已.
+16 年初，就一直有个 +愿望+  想法 ，整理一下自己的技能体系。在和同事交流的过程中，也有 *推荐学习路线* 的需要，唯一能直接推荐出来的也就是一本叫做 =SICP= [fn:sicp]的书而已. 又恰逢需要做分享，就定了这个主题，介绍一下自己的发展路线。
 
-毕业至今，工作已经满 6 年了。
+毕业至今, 工作已经满 6 年了。
 
 ** 轨迹
 
