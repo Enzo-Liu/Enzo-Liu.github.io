@@ -24,7 +24,7 @@
 
 * TODO [0/1] 技术分享
 ** DOING 主题 & PPT
-   [[/Users/enzo/Documents/blog/blog/path.org][成长]]
+   [[~/Documents/blog/blog/path.org][成长]]
   DEADLINE: <2017-09-21 Thu>
 
 * DOING [0/1]日常工作
