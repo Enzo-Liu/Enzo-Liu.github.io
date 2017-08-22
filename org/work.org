@@ -24,9 +24,11 @@
 
 * TODO [0/1] 技术分享
 ** DOING 主题 & PPT
-   [[~/Documents/blog/blog/path.org][成长]]
+   [[~/Documents/blog/blog/path.org][我的职业路线]]
   DEADLINE: <2017-09-21 Thu>
 
-* DOING [0/1]日常工作
-** TODO 外部订单区分支付和出票
-   DEADLINE: <2017-08-22 Tue>
+* DOING [2/2]日常工作
+** DONE 外部订单区分支付和出票
+   CLOSED: [2017-08-22 Tue 10:25] DEADLINE: <2017-08-22 Tue>
+** DONE 扫码枪支持平台配票
+   CLOSED: [2017-08-22 Tue 14:03] DEADLINE: <2017-08-22 Tue>
