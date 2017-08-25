@@ -1,19 +1,31 @@
-* DOING [0/6] SEM 投放优化
+* DOING [1/6] SEM 投放优化
    DEADLINE: <2017-09-01 Fri>
-** TODO 整理 =SEM= 方案沟通
-  DEADLINE: <2017-08-23 Wed>
+** DONE 整理 =SEM= 方案沟通
+  CLOSED: [2017-08-23 Wed 17:47] DEADLINE: <2017-08-23 Wed>
   [[~/work/piaoniu/documentation/sem.org][sem 方案]]
 ** TODO 历史数据分析
+   DEADLINE: <2017-08-30 Wed>
   - 演出维度, 关键词花费，以及效果.
 ** TODO 自动添加推广单元
 ** TODO 自动添加推广关键词
 ** TODO 自动添加推广创意
 ** TODO 长尾演出的自动出价策略
 
-* TODO [0/2] rock lititz & taittowers 研究
-  DEADLINE: <2017-08-25 Fri>
-** TODO rock lititz
-** TODO taittowers
+* DONE [2/2] rock lititz & taittowers 研究
+  CLOSED: [2017-08-25 Fri 12:01] DEADLINE: <2017-08-25 Fri>
+- 业务范围:
+- 市场规模
+- 业务模式
+- 对行业的价值
+- 进入门槛
+- 国内的可行性
+** 结论
+   [[~/work/piaoniu/documentation/organizer_service.org][主办服务研究]]
+** DONE rock lititz
+   CLOSED: [2017-08-25 Fri 12:01]
+
+** DONE taittowers
+   CLOSED: [2017-08-25 Fri 12:01]
 
 * DOING [0/5] 天猫对接
 ** DOING 天猫账号申请
