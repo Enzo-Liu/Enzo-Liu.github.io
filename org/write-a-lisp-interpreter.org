@@ -1,0 +1,141 @@
+#+TITLE: 写一个解释器
+#+AUTHOR: 刘恩泽
+#+EMAIL:  liuenze6516@gmail.com
+#+DATE: 2017-09-24
+#+OPTIONS:   H:2 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+startup: beamer
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [presentation, bigger]
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+#+BEAMER_THEME: metropolis
+#+BIND: org-beamer-outline-frame-title "目录"
+
+* 什么是解释器
+** 解释器
+- =同声传译=
+- 一段能够理解并执行 =你的程序= 的 =程序=
+  - 理解你的代码所表示的意图
+  - 执行你的意图
+
+** 代码的意图
+- 赋值/定义
+
+  #+BEGIN_SRC lisp
+  (setf a 1)
+  (defun plus (a b) (+ a b))
+  #+END_SRC
+
+- 取值
+
+  =a=
+
+- 执行
+
+  =(plus 1 2)=
+
+** =LISP=
+*** =语法(S Expression)=
+- 原子 =a=, =1=, ="hello world"=
+- 表 =()=, =nil=, =(a 1 2)=, =(a . b)= , =(a . nil)=, =(a (b))=
+*** =语义=
+- 原子表达式 :: 即 =a=, =1= 等原子，可直接求值或上下文中查找对应的值
+- 复合表达式 :: 函数
+- 特殊形式 :: 求值方式与函数不一致
+
+* 如何下手
+** 步骤                                                             :B_frame:
+   :PROPERTIES:
+   :BEAMER_env: frame
+   :BEAMER_opt: allowframebreaks,label=
+   :END:
+
+#+ATTR_LATEX: :width 0.3\textwidth
+*Dragon book*, 中文名 =编译原理=
+#+ATTR_LATEX: :width 0.45\textwidth :placement {r}{0.5\textwidth}
+[[./img/dragon.jpg]]
+
+#+BEAMER: \framebreak
+
+#+ATTR_LATEX: :width 0.3\textwidth
+*Tiger book*, 中文名 =现代编译原理-C 语言描述=
+#+ATTR_LATEX: :width 0.38\textwidth :placement {r}{0.4\textwidth}
+[[./img/tiger.jpg]]
+
+#+BEAMER: \framebreak
+
+#+ATTR_LATEX: :width 0.3\textwidth
+*Whale book*, 中文名 =高级编译器设计与实现=
+#+ATTR_LATEX: :width 0.45\textwidth :placement {r}{0.5\textwidth}
+[[./img/whale.jpg]]
+
+** 结束
+
+- <+-> *好，分享结束，大家可以回去看书了. 预计一年后，应该可以成功写出来了。*
+- <2> *其实只是开个玩笑，我们继续, 看一个半小时就能写出来的版本。*
+
+* 半小时版本
+** 核心逻辑
+- parse -> (eval[fn::处理表达式] -> apply[fn::处理值]) loop...
+#+ATTR_LATEX: :width 0.3\textwidth :placement {r}{0.3\textwidth}
+[[./img/eval-apply.png]]
+** 解析(1 min)
+这里我们就偷个懒，利用 =lisp= 的 =read-from-string= / =read= 方法
+
+#+BEGIN_SRC lisp
+(read-from-string "(1 2 3)")
+;;; => (1 2 3)
+(read-from-string "1")
+;;; => 1
+(read-from-string "nil")
+ ;;; => NIL
+(read-from-string "(defun plus (a b ) (+ a b))")
+;;; => (DEFUN PLUS (A B) (+ A B))
+(read-from-string "(defun plus (a b)")
+;;; Exception
+#+END_SRC
+
+** 原子
+*** 符号
+求值规则: =当遇到了一个符号的时候，从当前的上下文中去查找其对应的值，做替换=
+
+#+BEGIN_SRC lisp
+a
+;;; nil or unbound exception
+(setf a 1)
+;;; => 1
+a
+ ;;; => 1
+#+END_SRC
+
+*** 常量
+求值规则: 常量表达式的值即为本身
+
+#+BEGIN_SRC lisp
+'a
+;;; => a
+'(a b c)
+;;; => (A B C)
+1
+;;; => 1
+"abc"
+;;; "abc"
+#+END_SRC
+
+** 特殊形式
+
+** 函数调用
+
+** 求值环境
+[[./img/context.png]]
+
+* 一个解释器
+** test
+
+* 最后
+** 参考文档
+- [[http://norvig.com/lispy.html][(How to Write a (Lisp) Interpreter (in Python))]]
+- [[http://norvig.com/lispy2.html][(An ((Even Better) Lisp) Interpreter (in Python))]]
+- [[https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-26.html#%_sec_4.1][SICP Charpter 4: The Metacircular Evaluator]]
