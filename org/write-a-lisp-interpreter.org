@@ -112,8 +112,6 @@ a ;;; => 1
 求值规则: =常量表达式的值即为本身=
 
 #+BEGIN_SRC lisp
-'a ;;; => a
-'(a b c) ;;; => (A B C)
 1 ;;; => 1
 "abc" ;;; "abc"
 #+END_SRC
@@ -132,43 +130,86 @@ a ;;; => 1
 
 并不会将表内表达式均求值，而是根据第一个元素的值，来决定后续如何进行求值。
 
-** 特殊形式 *define*
+** 特殊形式 *define* 以及 *set!*
 
 =(define variable value)=
-
-求值规则:
-
-#+BEGIN_QUOTE
-先求值 ~predicate~ , 如果符合，则求值 =consquence=, 反之，则求值 =alternative=
-#+END_QUOTE
-
-特殊在于, =控制表内的求值顺序= 。
-
-并不会将表内表达式均求值，而是根据第一个元素的值，来决定后续如何进行求值。
-
-** 特殊形式 *set!*
 
 =(set! variable value)=
 
 求值规则:
 
 #+BEGIN_QUOTE
-先求值 ~predicate~ , 如果符合，则求值 =consquence=, 反之，则求值 =alternative=
+只 ~eval~ =value=, 并将求值后的结果赋值给 =variable=
+
+其中, 赋值表示在上下文中添加 (install) 这个符号以及这个符号对应的值.
+#+END_QUOTE
+
+特殊在于, =控制表内的求值顺序= 以及 =修改上下文=
+
+不对 =variable= 求值，仅求值 =value=, 而后修改上下文。
+
+** 特殊形式 *quote*
+=(quote (a b c))=
+
+syntactic sugar: ='(a b c)=
+
+求值规则:
+
+#+BEGIN_QUOTE
+返回其引用的表达式
 #+END_QUOTE
 
 特殊在于, =控制表内的求值顺序= 。
 
-并不会将表内表达式均求值，而是根据第一个元素的值，来决定后续如何进行求值。
+不对表达式内求值，仅返回其引用的表达式。
+
+
+** 特殊形式 *lambda*
+=(lambda (a) (+ 1 a))=
+
+求值规则:
+
+#+BEGIN_QUOTE
+生成一个 =procedure=,...
+#+END_QUOTE
+
+特殊在于, =控制表内的求值顺序= 。
+
+不对表达式内求值，仅返回其引用的表达式。
+
+** 特殊形式 *begin*
+=(begin (define a 3) (set! a 1) (+ a 2))=
+
+求值规则:
+
+#+BEGIN_QUOTE
+#+END_QUOTE
 
 ** 函数调用
 
-** 求值环境
+** 求值环境/上下文
 [[./img/context.png]]
 
-* 一个解释器
-** test
+* 实现一个解释器
+**  =eval= (dispatch)
+**  =env= 上下文
+**  =eval-atom=
+**  =eval-define= & =eval-assign=
+**  =eval-if=
+**  =eval-quote=
+**  =eval-lambda=
+**  =eval-begin=
+
+**  待续
 
 * 最后
+** 几个题外话
+- 如果没有 assign, 会不会简单很多
+- 如果使用 lazy 的求值, 而不是应用时求值，是否很多特殊形式就没有必要了
+- 如果增加一个 =case= 的关键字
+- 如果做语法分析
+- 如果要编译成 c
+
 ** 参考文档
 - [[http://norvig.com/lispy.html][(How to Write a (Lisp) Interpreter (in Python))]]
 - [[http://norvig.com/lispy2.html][(An ((Even Better) Lisp) Interpreter (in Python))]]
