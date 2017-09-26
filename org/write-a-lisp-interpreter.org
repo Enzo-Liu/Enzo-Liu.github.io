@@ -228,6 +228,7 @@ syntactic sugar: ='(a b c)=
 #+BEAMER: \framebreak
 
 函数定义
+
 #+BEGIN_SRC lisp
 ;;; env => ((+) (<primitive +>))
 (define plus1 (lambda (a) (+ 1 a)))
@@ -239,7 +240,9 @@ syntactic sugar: ='(a b c)=
 #+END_SRC
 
 #+BEAMER: \framebreak
+
 执行过程
+
 #+BEGIN_SRC lisp
 (eval 'plus1 env) ;;; <procedure object>
 (eval 2) ;;; 2
@@ -256,16 +259,178 @@ syntactic sugar: ='(a b c)=
 [[./img/context.png]]
 
 * 实现一个解释器
-**  =eval= (dispatch)
-**  =env= 上下文
-**  =eval-atom=
-**  =eval-define= & =eval-assign=
-**  =eval-if=
-**  =eval-quote=
-**  =eval-lambda=
-**  =eval-begin=
+** 声明
+源代码来自 SICP 第 4 章，链接见附录。
 
-**  待续
+**  =eval= (dispatch)
+#+BEGIN_SRC lisp
+(define (eval exp env)
+  (cond ((self-evaluating? exp) exp)
+        ((variable? exp) (lookup-variable-value exp env))
+        ((quoted? exp) (text-of-quotation exp))
+        ((assignment? exp) (eval-assignment exp env))
+        ((definition? exp) (eval-definition exp env))
+        ((if? exp) (eval-if exp env))
+        ((lambda? exp)
+         (make-procedure (lambda-parameters exp)
+                         (lambda-body exp)
+                         env))
+        ((begin? exp)
+         (eval-sequence (begin-actions exp) env))
+        ((application? exp)
+         (apply (eval (operator exp) env)
+                (list-of-values (operands exp) env)))
+        (else
+         (error "Unknown expression type -- EVAL" exp))))
+#+END_SRC
+**  =apply=
+#+BEGIN_SRC lisp
+(define (apply procedure arguments)
+  (cond ((primitive-procedure? procedure)
+         (apply-primitive-procedure procedure arguments))
+        ((compound-procedure? procedure)
+         (eval-sequence
+           (procedure-body procedure)
+           (extend-environment
+             (procedure-parameters procedure)
+             arguments
+             (procedure-environment procedure))))
+        (else
+         (error
+          "Unknown procedure type -- APPLY" procedure))))
+#+END_SRC
+**  =env= 求值上下文
+   :PROPERTIES:
+   :BEAMER_env: frame
+   :BEAMER_opt: allowframebreaks,label=
+   :END:
+#+BEGIN_SRC lisp
+(define (enclosing-environment env) (cdr env))
+(define (first-frame env) (car env))
+(define the-empty-environment '())
+
+(define (make-frame variables values)
+  (cons variables values))
+(define (frame-variables frame) (car frame))
+(define (frame-values frame) (cdr frame))
+(define (add-binding-to-frame! var val frame)
+  (set-car! frame (cons var (car frame)))
+  (set-cdr! frame (cons val (cdr frame))))
+#+END_SRC
+
+#+BEAMER: \framebreak
+#+BEGIN_SRC lisp
+(define (extend-environment vars vals base-env)
+  (if (= (length vars) (length vals))
+      (cons (make-frame vars vals) base-env)
+      (if (< (length vars) (length vals))
+          (error "Too many arguments supplied" vars vals)
+          (error "Too few arguments supplied" vars vals))))
+
+#+END_SRC
+
+**  =eval-atom=
+   :PROPERTIES:
+   :BEAMER_env: frame
+   :BEAMER_opt: allowframebreaks,label=
+   :END:
+#+BEGIN_SRC lisp
+(define (self-evaluating? exp)
+  (cond ((number? exp) true)
+        ((string? exp) true)
+        (else false)))
+
+(define (variable? exp) (symbol? exp))
+
+#+END_SRC
+
+#+BEAMER: \framebreak
+#+BEGIN_SRC lisp
+(define (lookup-variable-value var env)
+  (define (env-loop env)
+    (define (scan vars vals)
+      (cond ((null? vars)
+             (env-loop (enclosing-environment env)))
+            ((eq? var (car vars))
+             (car vals))
+            (else (scan (cdr vars) (cdr vals)))))
+    (if (eq? env the-empty-environment)
+        (error "Unbound variable" var)
+        (let ((frame (first-frame env)))
+          (scan (frame-variables frame)
+                (frame-values frame)))))
+  (env-loop env))
+#+END_SRC
+
+
+**  =eval-define= & =eval-assign=
+   :PROPERTIES:
+   :BEAMER_env: frame
+   :BEAMER_opt: allowframebreaks,label=
+   :END:
+#+BEGIN_SRC lisp
+  (define (eval-assignment exp env)
+    (set-variable-value!
+       (assignment-variable exp)
+       (eval (assignment-value exp) env)
+       env)
+    'ok)
+
+  (define (eval-definition exp env)
+      (define-variable!
+          (definition-variable exp)
+          (eval (definition-value exp) env)
+        env)
+    'ok)
+#+END_SRC
+
+#+BEAMER: \framebreak
+#+BEGIN_SRC lisp
+(define (define-variable! var val env)
+  (let ((frame (first-frame env)))
+    (define (scan vars vals)
+      (cond ((null? vars)
+             (add-binding-to-frame! var val frame))
+            ((eq? var (car vars))
+             (set-car! vals val))
+            (else (scan (cdr vars) (cdr vals)))))
+    (scan (frame-variables frame)
+          (frame-values frame))))
+#+END_SRC
+
+**  =eval-if=
+#+BEGIN_SRC lisp
+(define (eval-if exp env)
+  (if (true? (eval (if-predicate exp) env))
+      (eval (if-consequent exp) env)
+      (eval (if-alternative exp) env)))
+
+#+END_SRC
+**  =eval-quote=
+#+BEGIN_SRC lisp
+(define (quoted? exp)
+  (tagged-list? exp 'quote))
+
+(define (text-of-quotation exp) (cadr exp))
+
+#+END_SRC
+**  =eval-lambda=
+#+BEGIN_SRC lisp
+(define (make-procedure parameters body env)
+  (list 'procedure parameters body env))
+(define (compound-procedure? p)
+  (tagged-list? p 'procedure))
+(define (procedure-parameters p) (cadr p))
+(define (procedure-body p) (caddr p))
+(define (procedure-environment p) (cadddr p))
+#+END_SRC
+**  =eval-begin=
+#+BEGIN_SRC lisp
+(define (eval-sequence exps env)
+  (cond ((last-exp? exps) (eval (first-exp exps) env))
+        (else (eval (first-exp exps) env)
+              (eval-sequence (rest-exps exps) env))))
+#+END_SRC
 
 * 最后
 ** 几个题外话
