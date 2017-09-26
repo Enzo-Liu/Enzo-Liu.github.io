@@ -102,29 +102,22 @@
 求值规则: =当遇到了一个符号的时候，从当前的上下文中去查找其对应的值，做替换=
 
 #+BEGIN_SRC lisp
-a
-;;; nil or unbound exception
-(setf a 1)
-;;; => 1
-a
- ;;; => 1
+a ;;; nil or unbound exception
+(setf a 1) ;;; => 1
+a ;;; => 1
 #+END_SRC
 
 *** 常量
-求值规则: 常量表达式的值即为本身
+求值规则: =常量表达式的值即为本身=
 
 #+BEGIN_SRC lisp
-'a
-;;; => a
-'(a b c)
-;;; => (A B C)
-1
-;;; => 1
-"abc"
-;;; "abc"
+'a ;;; => a
+'(a b c) ;;; => (A B C)
+1 ;;; => 1
+"abc" ;;; "abc"
 #+END_SRC
 
-** 特殊形式
+** 特殊形式 *if*
 
 ** 函数调用
 
