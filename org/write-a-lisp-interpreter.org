@@ -54,21 +54,20 @@
 
 #+ATTR_LATEX: :width 0.3\textwidth
 *Dragon book*, 中文名 =编译原理=
-#+ATTR_LATEX: :width 0.45\textwidth :placement {r}{0.5\textwidth}
+#+ATTR_LATEX: :width 0.5\textwidth :placement {r}{0.5\textwidth}
 [[./img/dragon.jpg]]
 
 #+BEAMER: \framebreak
-
-#+ATTR_LATEX: :width 0.3\textwidth
+#+ATTR_LATEX: :width 0.4\textwidth
 *Tiger book*, 中文名 =现代编译原理-C 语言描述=
-#+ATTR_LATEX: :width 0.38\textwidth :placement {r}{0.4\textwidth}
+#+ATTR_LATEX: :width 0.3\textwidth :placement {r}{0.5\textwidth}
 [[./img/tiger.jpg]]
 
 #+BEAMER: \framebreak
 
-#+ATTR_LATEX: :width 0.3\textwidth
+#+ATTR_LATEX: :width 0.4\textwidth
 *Whale book*, 中文名 =高级编译器设计与实现=
-#+ATTR_LATEX: :width 0.45\textwidth :placement {r}{0.5\textwidth}
+#+ATTR_LATEX: :width 0.3\textwidth :placement {r}{0.5\textwidth}
 [[./img/whale.jpg]]
 
 ** 结束
@@ -98,18 +97,36 @@
 ;;; Exception
 #+END_SRC
 
+** 表达式类型
+- 原子
+  - 常量 *1*, *"abc"*
+  - 变量 *a*, *test*
+- 列表
+  - quote *(quote (a b c))*
+  - if *(if t 1 2)*
+  - lambda *(lambda (a) (+ 1 a))*
+  - define *(define a 1)*
+  - assign *(set! a 2)*
+  - begin *(begin (define b 1) (set! b 2))*
+  - apply procedure *(plus 1 2)*
+
 ** 原子表达式
 *** 符号
-求值规则: =当遇到了一个符号的时候，从当前的上下文中去查找其对应的值，做替换=
+#+BEGIN_QUOTE
+=当遇到了一个符号的时候，从当前的上下文中去查找其对应的值，做替换=
+#+END_QUOTE
 
 #+BEGIN_SRC lisp
 a ;;; nil or unbound exception
-(setf a 1) ;;; => 1
+(set! a 1) ;;; => 1
 a ;;; => 1
 #+END_SRC
 
 *** 常量
-求值规则: =常量表达式的值即为本身=
+
+#+BEGIN_QUOTE
+=常量表达式的值即为本身=
+#+END_QUOTE
 
 #+BEGIN_SRC lisp
 1 ;;; => 1
@@ -118,12 +135,12 @@ a ;;; => 1
 
 ** 特殊形式 *if*
 
-=(if predicate consuquence alternative)=
-
-求值规则:
+#+BEGIN_SRC lisp
+(if predicate consuquence alternative)
+#+END_SRC
 
 #+BEGIN_QUOTE
-先 =eval= ~predicate~ , 如果符合，则 =eval= ~consquence~, 反之，则 =eval= ~alternative~
+先求值 =predicate= , 如果符合，则求值 =consquence=, 反之，则求值 =alternative=
 #+END_QUOTE
 
 特殊在于, =控制表内的求值顺序= 。
@@ -132,16 +149,13 @@ a ;;; => 1
 
 ** 特殊形式 *define* 以及 *set!*
 
-=(define variable value)=
-
-=(set! variable value)=
-
-求值规则:
+#+BEGIN_SRC lisp
+(define variable value)
+(set! variable value)
+#+END_SRC
 
 #+BEGIN_QUOTE
-只 ~eval~ =value=, 并将求值后的结果赋值给 =variable=
-
-其中, 赋值表示在上下文中添加 (install) 这个符号以及这个符号对应的值.
+只求值 =value=, 并将求值后的结果赋值给 =variable=[fn::赋值表示在上下文中添加 (install) 这个符号以及这个符号对应的值.]
 #+END_QUOTE
 
 特殊在于, =控制表内的求值顺序= 以及 =修改上下文=
@@ -149,41 +163,47 @@ a ;;; => 1
 不对 =variable= 求值，仅求值 =value=, 而后修改上下文。
 
 ** 特殊形式 *quote*
-=(quote (a b c))=
 
-syntactic sugar: ='(a b c)=
-
-求值规则:
+#+BEGIN_SRC lisp
+(quote (a b c))
+#+END_SRC
 
 #+BEGIN_QUOTE
 返回其引用的表达式
 #+END_QUOTE
 
+syntactic sugar: ='(a b c)=
+
 特殊在于, =控制表内的求值顺序= 。
 
 不对表达式内求值，仅返回其引用的表达式。
-
 
 ** 特殊形式 *lambda*
-=(lambda (a) (+ 1 a))=
-
-求值规则:
+#+BEGIN_SRC lisp
+(lambda (a) (+ 1 a))
+#+END_SRC
 
 #+BEGIN_QUOTE
-生成一个 =procedure=,...
+生成一个 =procedure=, 包含 *形式参数* 列表，以及 *待执行的表达式* 列表。
 #+END_QUOTE
 
-特殊在于, =控制表内的求值顺序= 。
+特殊同样在于, =控制表内的求值顺序= 。
 
-不对表达式内求值，仅返回其引用的表达式。
+只将待执行的表达式记录下来，留待需要时使用。
 
 ** 特殊形式 *begin*
-=(begin (define a 3) (set! a 1) (+ a 2))=
-
-求值规则:
+#+BEGIN_SRC lisp
+  (begin
+   (define a 3)
+   (set! a 1)
+   (+ a 2))
+#+END_SRC
 
 #+BEGIN_QUOTE
+依次执行表达式序列
 #+END_QUOTE
+
+特殊在于, =控制表内的求值顺序=
 
 ** 函数调用
 
