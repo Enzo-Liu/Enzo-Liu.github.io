@@ -1,0 +1,451 @@
+#+TITLE: 写一个解释器
+#+AUTHOR: 刘恩泽
+#+URI:         /blog/%y/%m/%d/lisp-interceptor
+#+KEYWORDS:    lisp, interceptor
+#+TAGS:        lisp, interceptor
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: iptables的防火墙配置
+#+EMAIL:  liuenze6516@gmail.com
+#+DATE: 2017-09-24
+#+OPTIONS:   H:2 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+startup: beamer
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [presentation, bigger]
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+#+BEAMER_THEME: metropolis
+#+BIND: org-beamer-outline-frame-title "目录"
+
+* 什么是解释器
+** 解释器
+- =同声传译=
+- 一段能够理解并执行 =你的程序= 的 =程序=
+  - 理解你的代码所表示的意图
+  - 执行你的意图
+
+** 代码的意图
+- 赋值/定义
+
+  #+BEGIN_SRC lisp
+  (setf a 1)
+  (defun plus (a b) (+ a b))
+  #+END_SRC
+
+- 取值
+
+  =a=
+
+- 执行
+
+  =(plus 1 2)=
+
+** =LISP=
+*** =语法(S Expression)=
+- 原子 =a=, =1=, ="hello world"=
+- 表 =()=, =nil=, =(a 1 2)=, =(a . b)= , =(a . nil)=, =(a (b))=
+*** =语义=
+- 原子表达式 :: 即 =a=, =1= 等原子，可直接求值或上下文中查找对应的值
+- 复合表达式 :: 函数
+- 特殊形式 :: 求值方式与函数不一致
+
+* 如何下手
+** 步骤                                                             :B_frame:
+   :PROPERTIES:
+   :BEAMER_env: frame
+   :BEAMER_opt: allowframebreaks,label=
+   :END:
+
+#+ATTR_LATEX: :width 0.3\textwidth
+*Dragon book*, 中文名 =编译原理=
+#+ATTR_LATEX: :width 0.5\textwidth :placement {r}{0.5\textwidth}
+[[./img/dragon.jpg]]
+
+#+BEAMER: \framebreak
+#+ATTR_LATEX: :width 0.4\textwidth
+*Tiger book*, 中文名 =现代编译原理-C 语言描述=
+#+ATTR_LATEX: :width 0.3\textwidth :placement {r}{0.5\textwidth}
+[[./img/tiger.jpg]]
+
+#+BEAMER: \framebreak
+
+#+ATTR_LATEX: :width 0.4\textwidth
+*Whale book*, 中文名 =高级编译器设计与实现=
+#+ATTR_LATEX: :width 0.3\textwidth :placement {r}{0.5\textwidth}
+[[./img/whale.jpg]]
+
+** 结束
+
+- <+-> 好，分享结束，大家可以回去看书了.
+- <2-> 预计一年后，应该可以成功写出来了。
+- <3> 开个玩笑，我们继续. 看一个 *半小时就能写出来的版本* 。
+
+* 半小时版本
+** 核心逻辑
+- parse -> (eval[fn::处理表达式] -> apply[fn::处理值]) loop...
+#+ATTR_LATEX: :width 0.3\textwidth :placement {r}{0.3\textwidth}
+[[./img/eval-apply.png]]
+** 解析(1 min)
+这里我们就偷个懒，利用 =lisp= 的 =read-from-string= / =read= 方法
+
+#+BEGIN_SRC lisp
+(read-from-string "(1 2 3)")
+;;; => (1 2 3)
+(read-from-string "1")
+;;; => 1
+(read-from-string "nil")
+ ;;; => NIL
+(read-from-string "(defun plus (a b ) (+ a b))")
+;;; => (DEFUN PLUS (A B) (+ A B))
+(read-from-string "(defun plus (a b)")
+;;; Exception
+#+END_SRC
+
+** 表达式类型
+- 原子
+  - 常量 *1*, *"abc"*
+  - 变量 *a*, *test*
+- 列表
+  - quote *(quote (a b c))*
+  - if *(if t 1 2)*
+  - lambda *(lambda (a) (+ 1 a))*
+  - define *(define a 1)*
+  - assign *(set! a 2)*
+  - begin *(begin (define b 1) (set! b 2))*
+  - apply procedure *(plus 1 2)*
+
+** 原子表达式
+*** 符号
+#+BEGIN_QUOTE
+=当遇到了一个符号的时候，从当前的上下文中去查找其对应的值，做替换=
+#+END_QUOTE
+
+#+BEGIN_SRC lisp
+a ;;; nil or unbound exception
+(set! a 1) ;;; => 1
+a ;;; => 1
+#+END_SRC
+
+*** 常量
+
+#+BEGIN_QUOTE
+=常量表达式的值即为本身=
+#+END_QUOTE
+
+#+BEGIN_SRC lisp
+1 ;;; => 1
+"abc" ;;; "abc"
+#+END_SRC
+
+** 特殊形式 *if*
+
+#+BEGIN_SRC lisp
+(if predicate consuquence alternative)
+#+END_SRC
+
+#+BEGIN_QUOTE
+先求值 =predicate= , 如果符合，则求值 =consquence=, 反之，则求值 =alternative=
+#+END_QUOTE
+
+特殊在于, =控制表内的求值顺序= 。
+
+并不会将表内表达式均求值，而是根据第一个元素的值，来决定后续如何进行求值。
+
+** 特殊形式 *define* 以及 *set!*
+
+#+BEGIN_SRC lisp
+(define variable value)
+(set! variable value)
+#+END_SRC
+
+#+BEGIN_QUOTE
+只求值 =value=, 并将求值后的结果赋值给 =variable=[fn::赋值表示在上下文中添加 (install) 这个符号以及这个符号对应的值.]
+#+END_QUOTE
+
+特殊在于, =控制表内的求值顺序= 以及 =修改上下文=
+
+不对 =variable= 求值，仅求值 =value=, 而后修改上下文。
+
+** 特殊形式 *quote*
+
+#+BEGIN_SRC lisp
+(quote (a b c))
+#+END_SRC
+
+#+BEGIN_QUOTE
+返回其引用的表达式
+#+END_QUOTE
+
+syntactic sugar: ='(a b c)=
+
+特殊在于, =控制表内的求值顺序= 。
+
+不对表达式内求值，仅返回其引用的表达式。
+
+** 特殊形式 *lambda*
+#+BEGIN_SRC lisp
+(lambda (a) (+ 1 a))
+#+END_SRC
+
+#+BEGIN_QUOTE
+生成一个 =procedure=, 包含 *形式参数* 列表，以及 *待执行的表达式* 列表。
+#+END_QUOTE
+
+特殊同样在于, =控制表内的求值顺序= 。
+
+只将待执行的表达式记录下来，留待需要时使用。
+
+** 特殊形式 *begin*
+#+BEGIN_SRC lisp
+  (begin
+   (define a 3)
+   (set! a 1)
+   (+ a 2))
+#+END_SRC
+
+#+BEGIN_QUOTE
+依次执行表达式序列
+#+END_QUOTE
+
+特殊在于, =控制表内的求值顺序=
+
+** 函数调用
+   :PROPERTIES:
+   :BEAMER_env: frame
+   :BEAMER_opt: allowframebreaks,label=
+   :END:
+#+BEGIN_SRC lisp
+(define plus (lambda (a) (+ 1 a)))
+(plus 2) ;;; 3
+#+END_SRC
+
+#+BEGIN_QUOTE
+1. 求值操作符
+2. 求值操作数
+3. 系统方法，则直接调用下层的 apply
+4. 自定义的方法
+   1. 把形参对应的值添加到上下文中, 生成新的上下文
+   2. 在新的上下文中，求值表达式列表
+#+END_QUOTE
+
+#+BEAMER: \framebreak
+
+函数定义
+
+#+BEGIN_SRC lisp
+;;; env => ((+) (<primitive +>))
+(define plus1 (lambda (a) (+ 1 a)))
+;;; env =>
+;;;       ( (+ plus1)
+;;;         (<primitive +> <procedure object>) )
+
+(plus1 2)
+#+END_SRC
+
+#+BEAMER: \framebreak
+
+执行过程
+
+#+BEGIN_SRC lisp
+(eval 'plus1 env) ;;; <procedure object>
+(eval 2) ;;; 2
+(extend (a) (2) env)
+;;; env' => ( (+ plus1 a)
+;;;           (<primitive +> <procedure object> 2))
+
+(eval '(+ 1 a) env')
+(eval a env') ;;; 2
+(apply-primitive '+ (1 2)) ;;; 3
+#+END_SRC
+
+** 求值环境/上下文
+[[./img/context.png]]
+
+* 实现一个解释器
+** 声明
+源代码来自 SICP 第 4 章，链接见附录。
+
+**  =eval= (dispatch)
+#+BEGIN_SRC lisp
+(define (eval exp env)
+  (cond ((self-evaluating? exp) exp)
+        ((variable? exp) (lookup-variable-value exp env))
+        ((quoted? exp) (text-of-quotation exp))
+        ((assignment? exp) (eval-assignment exp env))
+        ((definition? exp) (eval-definition exp env))
+        ((if? exp) (eval-if exp env))
+        ((lambda? exp)
+         (make-procedure (lambda-parameters exp)
+                         (lambda-body exp)
+                         env))
+        ((begin? exp)
+         (eval-sequence (begin-actions exp) env))
+        ((application? exp)
+         (apply (eval (operator exp) env)
+                (list-of-values (operands exp) env)))
+        (else
+         (error "Unknown expression type -- EVAL" exp))))
+#+END_SRC
+**  =apply=
+#+BEGIN_SRC lisp
+(define (apply procedure arguments)
+  (cond ((primitive-procedure? procedure)
+         (apply-primitive-procedure procedure arguments))
+        ((compound-procedure? procedure)
+         (eval-sequence
+           (procedure-body procedure)
+           (extend-environment
+             (procedure-parameters procedure)
+             arguments
+             (procedure-environment procedure))))
+        (else
+         (error
+          "Unknown procedure type -- APPLY" procedure))))
+#+END_SRC
+**  =env= 求值上下文
+   :PROPERTIES:
+   :BEAMER_env: frame
+   :BEAMER_opt: allowframebreaks,label=
+   :END:
+#+BEGIN_SRC lisp
+(define (enclosing-environment env) (cdr env))
+(define (first-frame env) (car env))
+(define the-empty-environment '())
+
+(define (make-frame variables values)
+  (cons variables values))
+(define (frame-variables frame) (car frame))
+(define (frame-values frame) (cdr frame))
+(define (add-binding-to-frame! var val frame)
+  (set-car! frame (cons var (car frame)))
+  (set-cdr! frame (cons val (cdr frame))))
+#+END_SRC
+
+#+BEAMER: \framebreak
+#+BEGIN_SRC lisp
+(define (extend-environment vars vals base-env)
+  (if (= (length vars) (length vals))
+      (cons (make-frame vars vals) base-env)
+      (if (< (length vars) (length vals))
+          (error "Too many arguments supplied" vars vals)
+          (error "Too few arguments supplied" vars vals))))
+
+#+END_SRC
+
+**  =eval-atom=
+   :PROPERTIES:
+   :BEAMER_env: frame
+   :BEAMER_opt: allowframebreaks,label=
+   :END:
+#+BEGIN_SRC lisp
+(define (self-evaluating? exp)
+  (cond ((number? exp) true)
+        ((string? exp) true)
+        (else false)))
+
+(define (variable? exp) (symbol? exp))
+
+#+END_SRC
+
+#+BEAMER: \framebreak
+#+BEGIN_SRC lisp
+(define (lookup-variable-value var env)
+  (define (env-loop env)
+    (define (scan vars vals)
+      (cond ((null? vars)
+             (env-loop (enclosing-environment env)))
+            ((eq? var (car vars))
+             (car vals))
+            (else (scan (cdr vars) (cdr vals)))))
+    (if (eq? env the-empty-environment)
+        (error "Unbound variable" var)
+        (let ((frame (first-frame env)))
+          (scan (frame-variables frame)
+                (frame-values frame)))))
+  (env-loop env))
+#+END_SRC
+
+
+**  =eval-define= & =eval-assign=
+   :PROPERTIES:
+   :BEAMER_env: frame
+   :BEAMER_opt: allowframebreaks,label=
+   :END:
+#+BEGIN_SRC lisp
+  (define (eval-assignment exp env)
+    (set-variable-value!
+       (assignment-variable exp)
+       (eval (assignment-value exp) env)
+       env)
+    'ok)
+
+  (define (eval-definition exp env)
+      (define-variable!
+          (definition-variable exp)
+          (eval (definition-value exp) env)
+        env)
+    'ok)
+#+END_SRC
+
+#+BEAMER: \framebreak
+#+BEGIN_SRC lisp
+(define (define-variable! var val env)
+  (let ((frame (first-frame env)))
+    (define (scan vars vals)
+      (cond ((null? vars)
+             (add-binding-to-frame! var val frame))
+            ((eq? var (car vars))
+             (set-car! vals val))
+            (else (scan (cdr vars) (cdr vals)))))
+    (scan (frame-variables frame)
+          (frame-values frame))))
+#+END_SRC
+
+**  =eval-if=
+#+BEGIN_SRC lisp
+(define (eval-if exp env)
+  (if (true? (eval (if-predicate exp) env))
+      (eval (if-consequent exp) env)
+      (eval (if-alternative exp) env)))
+
+#+END_SRC
+**  =eval-quote=
+#+BEGIN_SRC lisp
+(define (quoted? exp)
+  (tagged-list? exp 'quote))
+
+(define (text-of-quotation exp) (cadr exp))
+
+#+END_SRC
+**  =eval-lambda=
+#+BEGIN_SRC lisp
+(define (make-procedure parameters body env)
+  (list 'procedure parameters body env))
+(define (compound-procedure? p)
+  (tagged-list? p 'procedure))
+(define (procedure-parameters p) (cadr p))
+(define (procedure-body p) (caddr p))
+(define (procedure-environment p) (cadddr p))
+#+END_SRC
+**  =eval-begin=
+#+BEGIN_SRC lisp
+(define (eval-sequence exps env)
+  (cond ((last-exp? exps) (eval (first-exp exps) env))
+        (else (eval (first-exp exps) env)
+              (eval-sequence (rest-exps exps) env))))
+#+END_SRC
+
+* 最后
+** 几个题外话
+- 如果没有 assign, 会不会简单很多
+- 如果使用 lazy 的求值, 而不是应用时求值，是否很多特殊形式就没有必要了
+- 如果增加一个 =case= 的关键字
+- 如果做语法分析
+- 如果要编译成 c
+
+** 参考文档
+- [[http://norvig.com/lispy.html][(How to Write a (Lisp) Interpreter (in Python))]]
+- [[http://norvig.com/lispy2.html][(An ((Even Better) Lisp) Interpreter (in Python))]]
+- [[https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-26.html#%_sec_4.1][SICP Charpter 4: The Metacircular Evaluator]]
