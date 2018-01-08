@@ -1,0 +1,47 @@
+#+TITLE: 建议技术选型
+#+AUTHOR: 刘恩泽
+#+EMAIL:  liuenze6516@gmail.com
+#+DATE: 2018-01-08
+#+OPTIONS:   H:2 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+startup: beamer
+
+* 资产存储
+- 代码&设计&文档等
+  - coding.io  :: 申请公司账号
+- 服务器
+  - aliyun.com :: 申请公司账号 & 充值
+- 数据库
+  - 自建 mysql? (主备?)
+- 文件/图片存储 & CDN
+  - qiniu.com :: 申请公司账号
+
+* 开发选型
+- 后端
+  - 建议 =java=
+  - =spring mvc=, =mybatis=
+- 客户端
+  - =native=
+
+* 部署方案
+- 数据库*2 (2 核 4g)
+- api * 2 (2 核 4g)
+- 阿里 SLB
+- nginx
+
+* 其他
+- https 证书购买
+- ios 的公司开发者账户
+- 日志
+  - 定期收集, 清理, elk
+- 监控
+  - 客户端监控
+  - 服务端监控
+    - =cat=
+  - 机器监控
+    - =zabbix=
+- 服务端发布更新
+- 数据备份方案
+- 短信和 push (按需申请)
