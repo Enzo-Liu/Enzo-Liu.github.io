@@ -1,0 +1,8 @@
+#+TITLE: 主办产品规划
+#+AUTHOR: 行业研发
+#+EMAIL:  liuenze6516@gmail.com
+#+DATE: 2018-01-25
+#+OPTIONS:   H:2 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
