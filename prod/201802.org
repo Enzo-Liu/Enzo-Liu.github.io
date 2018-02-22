@@ -1,0 +1,63 @@
+#+TITLE: 二月述职报告
+#+AUTHOR: 行业研发
+#+EMAIL:  liuenze6516@gmail.com
+#+DATE: 2018-03-03
+#+OPTIONS:   H:2 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+startup: beamer
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [presentation, bigger]
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+#+BEAMER_THEME: metropolis
+#+BIND: org-beamer-outline-frame-title "目录"
+
+* 产品研发
+** 主办订单报表
+
+** 主办渠道管理
+
+* 产品方向
+** 整体思路
+- 以服务换取线下流量
+  - 现场购票
+  - 旗舰店/小程序
+  - 闸机入场&数据统计
+- 特定场景的解决方案
+  - 分销系统
+  - 票务系统
+
+* 业务支持
+** 重庆红岩村项目
+- 场馆游客统计分析
+
+** 场馆座位图导入
+** 其他
+- 开发闸机采购
+- 全民单车小程序旗舰店(代销)
+  - 0 单, 小程序访问无
+- 重庆春节套票项目
+  - 共成单 2 单 ...
+** 北京谢天笑分销试点
+
+- 系统内的配置工作 1 月 25 日开始，1 月 26 日完成。
+- 推广传播以及后续效果待跟进
+
+** 雷子笑工厂小程序直接支付项目
+- 1 月 24 日开始配置，而后申请小程序的微信支付，至 1 月 31 日还在申请过程中。
+- 除支付配置外，其余内容已 ok, 后续继续跟进.
+
+* 团队情况
+** 内部管理
+
+* 三月计划
+
+** 主办渠道管理产品
+- 完成渠道管理的系统设计
+  - 涉及到与销售系统间的定位，边界划分，以及如何支持实库虚库库存等概念
+- 明确产品受众和痛点，就产品设计和业务方达成一致
+- 完成渠道产品的研发工作
+
+** 全国项目现场调研
+   - 分销系统
+   - 现场购票
+   - 票务系统
