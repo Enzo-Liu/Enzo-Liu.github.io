@@ -1,0 +1,72 @@
+#+TITLE: 行业研发规划
+#+AUTHOR: 行业研发
+#+EMAIL:  liuenze6516@gmail.com
+#+DATE: 2018-03-03
+#+OPTIONS:   H:2 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+startup: beamer
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [presentation, bigger]
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+#+BEAMER_THEME: metropolis
+#+BIND: org-beamer-outline-frame-title "目录"
+
+* 部门定位
+** 整体目标
+- 目标(Objective)
+  - 为了获取更可靠的供应链, 提高与主办合作的话语权,  我们需要深入主办日常工作流程, 在各方面给其提供服务。
+
+- 衡量标准(Key Result)
+  - 票务系统合作数
+  - 现场购票合作数&订单量
+  - 闸机合作数
+
+** 2018 年业务部门 KPI
+- 合作主办数: *全国 500 家主办*
+- 销售订单量: *25 万*
+- 盈利额:  *100 万*
+
+** 行业线研发的职责和工作
+  - *制定产品计划* , 负责 *推进产品推广* , 跟综后续产品的支持与优化
+  - *落实* 具体的产品研发任务, 按时按质按量完成研发工作
+  - *支持* 业务部门达成其 KPI
+
+** 行业线研发 2018 目标
+
+- 目标(Objective)
+  - 一款成功的主办产品
+
+- 衡量标准(Key Result)
+  - ?
+
+* 产品梳理
+** 整体思路
+给主办提供各种服务, 促进合作, 从而利用主办流量
+** 主办
+- 流量获取
+  - 现场购票
+  - 闸机入场
+  - 旗舰店/小程序
+- 提供服务
+  - 售票服务, 含补贴
+  - 数据统计/分析
+  - 会员运营/触达/唤醒
+  - 分销系统
+  - 票务系统
+
+** 现有推广策略
+
+- 找线下流量、腰部主办做突破口
+- 优化有亮点的产品：现场购票、轧机、打票核销
+- 推广渠道分销，目标能对接几家较大的渠道
+
+* 已有解决方案&推广
+** 1. 现场购票
+现场购票 + 主办小程序 + 数据统计 + 会员体系 + 用户触达；
+** 2. 渠道分销
+推渠道分销
+** 3. 主办行业系统+票务系统
+闸机入场，打票机
+
+* 产品方向
+* 研发计划
