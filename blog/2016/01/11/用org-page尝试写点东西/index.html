@@ -1,40 +1,57 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <title>用org-page尝试写点东西 - enzo&#39;s note book</title>
-    <meta charset="utf-8" />
-    <meta name="author" content="enzo liu" />
-    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
-    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
-  </head>
+<head>
+  <title>用org-page尝试写点东西 - enzo&#39;s note book</title>
+  <meta charset="utf-8" />
+  <meta name="author" content="enzo liu" />
+
+  <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml">
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/posts.css" type="text/css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</head>
+
   <body class="container">
-    <div>
-      <header class="masthead">
-        <h1 class="masthead-title"><a href="/">enzo&#39;s note book</a></h1>
-        <p>M-x (sketch for random ideas)</p>
-        <ul>
-          <li><a href="/blog/">Blog</a></li>
-          <li><a href="/history/">History</a></li>
-          <li><a href="/leetcode/">Leetcode</a></li>
-          <li><a href="/tags/">Tags</a></li>
-          <li><a href="/about/">About</a></li>
-          <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
-          <li><a href="/rss.xml">RSS</a></li>
-        </ul>
-        <form method="get" id="searchform" action="//www.google.com/search">
-          <input type="text" class="field" name="q" id="s" placeholder="Search">
-          <input type="hidden" name="as_sitesearch" value="blog.enzo.cc">
-        </form>
-      </header>
-    </div>
+<header id="header">
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top" style="opacity: .9" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">enzo&#39;s note book</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                            <li class="active"><a href="/blog/">Blog</a></li>
+                            <li class="active"><a href="/history/">History</a></li>
+                            <li class="active"><a href="/leetcode/">Leetcode</a></li>
+                            <li class="active"><a href="/prod/">Prod</a></li>
+                        <li><a href="/tags/">Tags</a></li>
+                        <li><a href="/about/">About</a></li>
+                        <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
+                        <li><a href="/rss.xml">RSS</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </body>
+</header>
 
-<div>
-<div class="post">
-<h1>用org-page尝试写点东西</h1>
-
-<div id="outline-container-org70dbf6c" class="outline-2">
-<h2 id="org70dbf6c">背景</h2>
-<div class="outline-text-2" id="text-org70dbf6c">
+<section id="content" role="main">
+    <div id="outline-container-sec-" class="row" style="padding-top: 70px">
+        <div class="col-md-2"></div>
+            <h1>用org-page尝试写点东西</h1>
+            
+<div id="outline-container-orge308f7c" class="outline-2">
+<h2 id="orge308f7c">背景</h2>
+<div class="outline-text-2" id="text-orge308f7c">
 <p>
 近段时间一直喜欢自己用 <code>org-mode</code> 写点东西。业务上的文档，个人的笔记等。
 </p>
@@ -45,18 +62,18 @@
 </div>
 </div>
 
-<div id="outline-container-org2788b22" class="outline-2">
-<h2 id="org2788b22">安装</h2>
-<div class="outline-text-2" id="text-org2788b22">
+<div id="outline-container-org0a63279" class="outline-2">
+<h2 id="org0a63279">安装</h2>
+<div class="outline-text-2" id="text-org0a63279">
 <p>
 如文档上所说，使用 <code>melpa</code> 可以很容易就安装成功。 略微配置一下文件夹地址，哪些文件夹不要发布到网站上，使用的 <code>branch</code> 的名称即可。
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgb82fb89" class="outline-2">
-<h2 id="orgb82fb89">迁移</h2>
-<div class="outline-text-2" id="text-orgb82fb89">
+<div id="outline-container-org358ee22" class="outline-2">
+<h2 id="org358ee22">迁移</h2>
+<div class="outline-text-2" id="text-org358ee22">
 <p>
 虽然过去的 <code>blog</code> 写的很幼稚， 但是还有有一点 <del>历史</del> 意义的。
 </p>
@@ -76,9 +93,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgdf181c8" class="outline-2">
-<h2 id="orgdf181c8">github pages</h2>
-<div class="outline-text-2" id="text-orgdf181c8">
+<div id="outline-container-orge9f9962" class="outline-2">
+<h2 id="orge9f9962">github pages</h2>
+<div class="outline-text-2" id="text-orge9f9962">
 <p>
 原先就是使用 <code>jekyll</code> 托管在 <code>github page</code> 上， 现在只需要把 <code>master</code> 分支的文件替换成 <code>org-page</code> 生成的文件就可以了。
 </p>
@@ -105,47 +122,25 @@ That's done.
 </div>
 </div>
 
-</div>
-</div>
-    <div>
-      <div class="post-meta">
+    </div>
+</section>
+
+
+    <div class="post-meta">
         <span title="post date" class="post-info">2016-01-11</span>
         <span title="last modification date" class="post-info">2016-02-03</span>
         <span title="tags" class="post-info"><a href="/tags/org-page/">org-page</a>, <a href="/tags/blog/">blog</a>, <a href="/tags/emacs/">emacs</a>, <a href="/tags/org-mode/">org-mode</a></span>
         <span title="author" class="post-info">enzo liu</span>
-      </div>
-      <section>
-        <h1>Comments</h1>
-        <div id="disqus_thread"></div>
-        <script type="text/javascript">
-          //var disqus_developer = 1;
-          var disqus_identifier = "/blog/2016/01/11/用org-page尝试写点东西/";
-          var disqus_url = "https://blog.enzo.cc/blog/2016/01/11/用org-page尝试写点东西/";
-          var disqus_shortname = 'enzo-liu';
-          /* * * DON'T EDIT BELOW THIS LINE * * */
-          (function() {
-          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-          })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-      </section>
-      <script src="//code.jquery.com/jquery-latest.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
-      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-      <script src="/media/js/main.js"></script>
-      <div class="footer">
-        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
-        <p>
-          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
-          &nbsp;&nbsp;-&nbsp;&nbsp;
-          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
-          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
-        </p>
-      </div>
     </div>
+<footer class="footer">
+    <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 26.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+    <p>
+        Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
+        &nbsp;&nbsp;-&nbsp;&nbsp;
+        Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+        <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+    </p>
+</footer>
 
   </body>
 </html>

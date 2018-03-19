@@ -1,39 +1,56 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <title>手工搭建spark数据分析平台 - enzo&#39;s note book</title>
-    <meta charset="utf-8" />
-    <meta name="author" content="enzo liu" />
-    <meta name="description" content="using spark to analyze our data" />
-    <meta name="keywords" content="spark, python, ipython" />
-    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
-    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
-  </head>
-  <body class="container">
-    <div>
-      <header class="masthead">
-        <h1 class="masthead-title"><a href="/">enzo&#39;s note book</a></h1>
-        <p>M-x (sketch for random ideas)</p>
-        <ul>
-          <li><a href="/blog/">Blog</a></li>
-          <li><a href="/history/">History</a></li>
-          <li><a href="/leetcode/">Leetcode</a></li>
-          <li><a href="/tags/">Tags</a></li>
-          <li><a href="/about/">About</a></li>
-          <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
-          <li><a href="/rss.xml">RSS</a></li>
-        </ul>
-        <form method="get" id="searchform" action="//www.google.com/search">
-          <input type="text" class="field" name="q" id="s" placeholder="Search">
-          <input type="hidden" name="as_sitesearch" value="blog.enzo.cc">
-        </form>
-      </header>
-    </div>
+<head>
+  <title>手工搭建spark数据分析平台 - enzo&#39;s note book</title>
+  <meta charset="utf-8" />
+  <meta name="author" content="enzo liu" />
+  <meta name="description" content="using spark to analyze our data" />
+  <meta name="keywords" content="spark, python, ipython" />
 
-<div>
-<div class="post">
-<h1>手工搭建spark数据分析平台</h1>
-<p>
+  <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml">
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/posts.css" type="text/css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</head>
+
+  <body class="container">
+<header id="header">
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top" style="opacity: .9" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">enzo&#39;s note book</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                            <li class="active"><a href="/blog/">Blog</a></li>
+                            <li class="active"><a href="/history/">History</a></li>
+                            <li class="active"><a href="/leetcode/">Leetcode</a></li>
+                            <li class="active"><a href="/prod/">Prod</a></li>
+                        <li><a href="/tags/">Tags</a></li>
+                        <li><a href="/about/">About</a></li>
+                        <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
+                        <li><a href="/rss.xml">RSS</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </body>
+</header>
+
+<section id="content" role="main">
+    <div id="outline-container-sec-" class="row" style="padding-top: 70px">
+        <div class="col-md-2"></div>
+            <h1>手工搭建spark数据分析平台</h1>
+            <p>
 我们的 <a href="https://www.piaoniu.com">应用</a> 在线上也已经运行了快一年了，时常想分析一下过去积累的数据，比如用户的类型，访问路径，转化漏斗等等。相对比较好做的也就是一点简单的记录在mysql中的数据。
 </p>
 
@@ -55,9 +72,9 @@
 所以，每个月初，出上月月报的时候，挺痛苦的，帮各个角色出各种数据。
 </p>
 
-<div id="outline-container-org5537164" class="outline-2">
-<h2 id="org5537164">穷极思变</h2>
-<div class="outline-text-2" id="text-org5537164">
+<div id="outline-container-orgc321565" class="outline-2">
+<h2 id="orgc321565">穷极思变</h2>
+<div class="outline-text-2" id="text-orgc321565">
 <p>
 累的久了，自然想改变一下。于是自动同步线上日志(<code>rsync</code>)，自动解压，解析，去重，生成uv. 每个月需要报表的时候，手动去执行一下脚本就可以了。
 </p>
@@ -68,45 +85,46 @@
 </div>
 </div>
 
-<div id="outline-container-org8b75dd4" class="outline-2">
-<h2 id="org8b75dd4">又一次变化</h2>
-<div class="outline-text-2" id="text-org8b75dd4">
+<div id="outline-container-orge13761e" class="outline-2">
+<h2 id="orge13761e">又一次变化</h2>
+<div class="outline-text-2" id="text-orge13761e">
 <p>
 <code>spark</code> comes to the resuce.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org428dbbc" class="outline-2">
-<h2 id="org428dbbc">spark 的好处</h2>
-<div class="outline-text-2" id="text-org428dbbc">
-</div><div id="outline-container-org7655b16" class="outline-3">
-<h3 id="org7655b16">自动的任务分解</h3>
-<div class="outline-text-3" id="text-org7655b16">
+<div id="outline-container-orgba31e48" class="outline-2">
+<h2 id="orgba31e48">spark 的好处</h2>
+<div class="outline-text-2" id="text-orgba31e48">
+</div>
+<div id="outline-container-orgfe0560f" class="outline-3">
+<h3 id="orgfe0560f">自动的任务分解</h3>
+<div class="outline-text-3" id="text-orgfe0560f">
 <p>
 我理解，其实和 <code>functional programming</code> 里的概念很类似。 <code>haskell</code> 也可以在编译时指定开启多线程，就能自动分解任务。基于的前提都是理解操作间的关联与影响。知道哪些操作是可以先分解再合并的。于是，写的时候当做单线程去写，执行的时候帮你优化。
 </p>
 </div>
 </div>
 
-<div id="outline-container-org30c30b7" class="outline-3">
-<h3 id="org30c30b7">自动的中间结果缓存</h3>
-<div class="outline-text-3" id="text-org30c30b7">
+<div id="outline-container-org5806822" class="outline-3">
+<h3 id="org5806822">自动的中间结果缓存</h3>
+<div class="outline-text-3" id="text-org5806822">
 <p>
 同样是为了效率的优化，对于撰写脚本计算的人屏蔽了这一层优化的考虑，降低负担.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgec0605e" class="outline-3">
-<h3 id="orgec0605e">可以直接本地执行，榨干机器的CPU</h3>
+<div id="outline-container-orgccddf2d" class="outline-3">
+<h3 id="orgccddf2d">可以直接本地执行，榨干机器的CPU</h3>
 </div>
 </div>
 
 
-<div id="outline-container-orgbecc791" class="outline-2">
-<h2 id="orgbecc791">任务示例</h2>
-<div class="outline-text-2" id="text-orgbecc791">
+<div id="outline-container-org4a6f675" class="outline-2">
+<h2 id="org4a6f675">任务示例</h2>
+<div class="outline-text-2" id="text-org4a6f675">
 <p>
 比如想知道点了一个演出之后，又点了另一个演出的比例。
 </p>
@@ -129,9 +147,9 @@ relatedVistis = normalVisits.filter("host = 'www.piaoniu.com' and url like '/act
 </div>
 </div>
 
-<div id="outline-container-orgeb1c11b" class="outline-2">
-<h2 id="orgeb1c11b">当前的使用方式　</h2>
-<div class="outline-text-2" id="text-orgeb1c11b">
+<div id="outline-container-org2ffaab9" class="outline-2">
+<h2 id="org2ffaab9">当前的使用方式　</h2>
+<div class="outline-text-2" id="text-org2ffaab9">
 <ul class="org-ul">
 <li>安装spark
 <code>docker</code> 安装 <code>jupyter/all-spark-notebook</code></li>
@@ -165,47 +183,25 @@ relatedVistis = normalVisits.filter("host = 'www.piaoniu.com' and url like '/act
 </div>
 </div>
 
-</div>
-</div>
-    <div>
-      <div class="post-meta">
+    </div>
+</section>
+
+
+    <div class="post-meta">
         <span title="post date" class="post-info">2016-06-30</span>
         <span title="last modification date" class="post-info">2016-07-15</span>
         <span title="tags" class="post-info"><a href="/tags/spark/">spark</a>, <a href="/tags/python/">python</a>, <a href="/tags/ipython/">ipython</a></span>
         <span title="author" class="post-info">enzo liu</span>
-      </div>
-      <section>
-        <h1>Comments</h1>
-        <div id="disqus_thread"></div>
-        <script type="text/javascript">
-          //var disqus_developer = 1;
-          var disqus_identifier = "/blog/2016/06/30/spark";
-          var disqus_url = "https://blog.enzo.cc/blog/2016/06/30/spark";
-          var disqus_shortname = 'enzo-liu';
-          /* * * DON'T EDIT BELOW THIS LINE * * */
-          (function() {
-          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-          })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-      </section>
-      <script src="//code.jquery.com/jquery-latest.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
-      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-      <script src="/media/js/main.js"></script>
-      <div class="footer">
-        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
-        <p>
-          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
-          &nbsp;&nbsp;-&nbsp;&nbsp;
-          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
-          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
-        </p>
-      </div>
     </div>
+<footer class="footer">
+    <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 26.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+    <p>
+        Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
+        &nbsp;&nbsp;-&nbsp;&nbsp;
+        Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+        <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+    </p>
+</footer>
 
   </body>
 </html>

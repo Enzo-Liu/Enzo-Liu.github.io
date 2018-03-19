@@ -1,46 +1,64 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <title>Rails 初探 - enzo&#39;s note book</title>
-    <meta charset="utf-8" />
-    <meta name="author" content="enzo liu" />
-    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
-    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
-  </head>
-  <body class="container">
-    <div>
-      <header class="masthead">
-        <h1 class="masthead-title"><a href="/">enzo&#39;s note book</a></h1>
-        <p>M-x (sketch for random ideas)</p>
-        <ul>
-          <li><a href="/blog/">Blog</a></li>
-          <li><a href="/history/">History</a></li>
-          <li><a href="/leetcode/">Leetcode</a></li>
-          <li><a href="/tags/">Tags</a></li>
-          <li><a href="/about/">About</a></li>
-          <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
-          <li><a href="/rss.xml">RSS</a></li>
-        </ul>
-        <form method="get" id="searchform" action="//www.google.com/search">
-          <input type="text" class="field" name="q" id="s" placeholder="Search">
-          <input type="hidden" name="as_sitesearch" value="blog.enzo.cc">
-        </form>
-      </header>
-    </div>
+<head>
+  <title>Rails 初探 - enzo&#39;s note book</title>
+  <meta charset="utf-8" />
+  <meta name="author" content="enzo liu" />
 
-<div>
-<div class="post">
-<h1>Rails 初探</h1>
-<p>
+  <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml">
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/posts.css" type="text/css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</head>
+
+  <body class="container">
+<header id="header">
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top" style="opacity: .9" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">enzo&#39;s note book</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                            <li class="active"><a href="/blog/">Blog</a></li>
+                            <li class="active"><a href="/history/">History</a></li>
+                            <li class="active"><a href="/leetcode/">Leetcode</a></li>
+                            <li class="active"><a href="/prod/">Prod</a></li>
+                        <li><a href="/tags/">Tags</a></li>
+                        <li><a href="/about/">About</a></li>
+                        <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
+                        <li><a href="/rss.xml">RSS</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </body>
+</header>
+
+<section id="content" role="main">
+    <div id="outline-container-sec-" class="row" style="padding-top: 70px">
+        <div class="col-md-2"></div>
+            <h1>Rails 初探</h1>
+            <p>
 <b>首次系统的接触WEB+前端内容，好好学习一下，做一下问题的记录。</b>
 </p>
 
-<div id="outline-container-org8f2fca5" class="outline-2">
-<h2 id="org8f2fca5">依赖</h2>
-<div class="outline-text-2" id="text-org8f2fca5">
-</div><div id="outline-container-org872be69" class="outline-3">
-<h3 id="org872be69">assetPipeLine</h3>
-<div class="outline-text-3" id="text-org872be69">
+<div id="outline-container-org422a318" class="outline-2">
+<h2 id="org422a318">依赖</h2>
+<div class="outline-text-2" id="text-org422a318">
+</div>
+<div id="outline-container-orgf668ee1" class="outline-3">
+<h3 id="orgf668ee1">assetPipeLine</h3>
+<div class="outline-text-3" id="text-orgf668ee1">
 <ul class="org-ul">
 <li>js，css等文件，同时依赖多次会存在问题。具体原因还没有搞清。js的依赖全部写在了application.js中，css的依赖一样。无须在html人工导入</li>
 <li>font文件的依赖，config/application.rb中添加如下代码:</li>
@@ -67,18 +85,18 @@ scss中通过font-url使用即可。
 </div>
 </div>
 
-<div id="outline-container-org4dddb4f" class="outline-3">
-<h3 id="org4dddb4f">View</h3>
-<div class="outline-text-3" id="text-org4dddb4f">
+<div id="outline-container-org2a7aed5" class="outline-3">
+<h3 id="org2a7aed5">View</h3>
+<div class="outline-text-3" id="text-org2a7aed5">
 <p>
 *BootStrap*果然超级好用。暂时还没有什么研究，不过拷贝过来立刻可以见到成效，感觉很好。
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgeaaca0c" class="outline-3">
-<h3 id="orgeaaca0c">Route</h3>
-<div class="outline-text-3" id="text-orgeaaca0c">
+<div id="outline-container-org82089a0" class="outline-3">
+<h3 id="org82089a0">Route</h3>
+<div class="outline-text-3" id="text-org82089a0">
 <p>
 工程的路由规则完全由config/Route.rb中内容觉得。当前只是配置了映射关系，和struts的action配置感觉没什么区别。
 </p>
@@ -90,9 +108,9 @@ scss中通过font-url使用即可。
 </div>
 </div>
 
-<div id="outline-container-org44a7b9e" class="outline-2">
-<h2 id="org44a7b9e">AJAX</h2>
-<div class="outline-text-2" id="text-org44a7b9e">
+<div id="outline-container-org6d6495b" class="outline-2">
+<h2 id="org6d6495b">AJAX</h2>
+<div class="outline-text-2" id="text-org6d6495b">
 <p>
 之所以拿出来单独说，是这个让我搞的的确很痛苦。
 </p>
@@ -102,9 +120,9 @@ scss中通过font-url使用即可。
 </p>
 </div>
 
-<div id="outline-container-orgee01e59" class="outline-3">
-<h3 id="orgee01e59">TAG</h3>
-<div class="outline-text-3" id="text-orgee01e59">
+<div id="outline-container-org4e09089" class="outline-3">
+<h3 id="org4e09089">TAG</h3>
+<div class="outline-text-3" id="text-org4e09089">
 <p>
 在html.erb文件中，rails推荐的写法是使用helper提供的各种tag来进行描述。
 </p>
@@ -126,9 +144,9 @@ scss中通过font-url使用即可。
 </div>
 </div>
 
-<div id="outline-container-orga5cc085" class="outline-3">
-<h3 id="orga5cc085">CoffeeScript</h3>
-<div class="outline-text-3" id="text-orga5cc085">
+<div id="outline-container-orgbf7a226" class="outline-3">
+<h3 id="orgbf7a226">CoffeeScript</h3>
+<div class="outline-text-3" id="text-orgbf7a226">
 <p>
 Ajax回调的触发如下，在controller对应的js.coffee文件内，写下
 </p>
@@ -151,9 +169,9 @@ console.log(data);
 </div>
 </div>
 
-<div id="outline-container-org36106c7" class="outline-2">
-<h2 id="org36106c7"><span class="todo TODO">TODO</span> </h2>
-<div class="outline-text-2" id="text-org36106c7">
+<div id="outline-container-orgbc17ac3" class="outline-2">
+<h2 id="orgbc17ac3"><span class="todo TODO">TODO</span> </h2>
+<div class="outline-text-2" id="text-orgbc17ac3">
 <ol class="org-ol">
 <li>将AJAX的机制再好好了解一下，用Ajax在Rails上做出一个完整的Game Of Life
 网页小动画处来。</li>
@@ -165,47 +183,25 @@ JavaScript)的理念，完全可以在日常中想办法借鉴一下使用的。
 </div>
 </div>
 
-</div>
-</div>
-    <div>
-      <div class="post-meta">
+    </div>
+</section>
+
+
+    <div class="post-meta">
         <span title="post date" class="post-info">2013-12-20</span>
         <span title="last modification date" class="post-info">2016-02-03</span>
         <span title="tags" class="post-info"><a href="/tags/ruby-rails/">ruby rails</a></span>
         <span title="author" class="post-info">enzo liu</span>
-      </div>
-      <section>
-        <h1>Comments</h1>
-        <div id="disqus_thread"></div>
-        <script type="text/javascript">
-          //var disqus_developer = 1;
-          var disqus_identifier = "/blog/2013/12/20/rails-初探/";
-          var disqus_url = "https://blog.enzo.cc/blog/2013/12/20/rails-初探/";
-          var disqus_shortname = 'enzo-liu';
-          /* * * DON'T EDIT BELOW THIS LINE * * */
-          (function() {
-          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-          })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-      </section>
-      <script src="//code.jquery.com/jquery-latest.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
-      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-      <script src="/media/js/main.js"></script>
-      <div class="footer">
-        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
-        <p>
-          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
-          &nbsp;&nbsp;-&nbsp;&nbsp;
-          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
-          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
-        </p>
-      </div>
     </div>
+<footer class="footer">
+    <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 26.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+    <p>
+        Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
+        &nbsp;&nbsp;-&nbsp;&nbsp;
+        Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+        <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+    </p>
+</footer>
 
   </body>
 </html>
