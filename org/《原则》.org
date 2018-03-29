@@ -66,23 +66,43 @@
 
 
 * 读出了啥
-** Beliefs
-- 因果, 决定论
-- 理性和感性
-  - 人会犯错
-  - 规律不会
-  - 错的规律说明总结的不对，可以优化
+** 前提 I
 
-** Meta-Principle
-- form Principles for yourself
-- how you make decisions
-  - conclude your mechanism
-  - test it
-  - imporve it
-- systematic decisions
+你得相信 *因果*, 倒不用相信报应。 换句话说:
+
+- *决定论* [fn::当然，研究过量子力学的同学可能从极其微观的层面表示这是不对的]
+
+和宿命论搞混的同学请自行研究。
+
+- <2-> 我信, 遇到任何问题, 脑子里的闪现的就是:[fn::可能是工作原因...]
+  - *一定是有原因的*
+  - *一定能找到原因*
+  - *一定能解决*
+
+** 前提 II
+- 你必须自信
+- 理智的自信(认清自己和他人的局限)
+- 强烈的自信(相信自己的思考方式，逻辑，分析，或者是优化分析的能力)
+
+** 如何找到原则
+- 很多人在犯错这件事上，太业余了
+- 我要是犯了一个错，我会记下来，登记在「人生错题集」上
+- 反反复复想错在哪儿，历史上发生过类似的事儿吗，以后碰到同样的事儿该怎么处理。
+
+** 原则的价值
+- Principles are ways of successfully dealing with reality to get what you want out of life. [by Ray Dalio]
+- 真实的认清自己, 认清世界
+  - form your own perspective of how the world/machine works
+- 系统化的决策方式
+
+** 书的其他价值
+- 书中真正重要的 20%，其实是制造这些原则的过程。
+- 作者的系统化决策的方法论
+- 他对团队和人员的看法
+- 他对处理观点冲突的看法
+- 其他（仁者见仁，智者见智了)
 
 * 观点摘录[fn::观点摘录有强烈的倾向性，请自行适应]
-
 ** 对任何事无原则的接纳，是对自己的辜负
 
 Rather than thinking `I'm Right`
@@ -90,6 +110,95 @@ Rather than thinking `I'm Right`
 I start to ask myself
 
 *How do I know I'am right?*
+
+** 如何应用原则
+ 1. 你要极度清晰自己想要什么
+ 2. 想要得到你必须做到客观
+ 3. 设计 *机器* [fn:: 实现目标的方法] ，并持续改进它
+
+** 如何最终实现你希望得到的东西
+   1. Have clear goal
+      - It is important not to confuse “goals” and “desires.”
+      - Avoid setting goals based on what you think you can achieve.
+   2. Identify and don’t tolerate the problems
+   3. Accurately diagnose these problems.
+   4. Design plans that explicitly lay out tasks
+   5. Implement these plans-do these tasks.
+** 文化
+- 求取共识是双向的责任
+- 不要纠结于“埋怨”还是“赞美”，而要专注于“准确”还是“不准确” (理性 vs 感性)
+- 极度透明, 极度求真
+- 最具有可信度的观点来自
+  - 多次成功地解决了相关问题的人
+  - 能够有逻辑地解释结论背后因果关系的人
+- 学生理解老师比老师理解学生更重要，尽管二者都重要
+  - 沟通是为了获得最佳回应，故应与最相关的人沟通
+- 把大事抓好远比把小事做到极致更为重要
+- 可信度加权是个工具，不能取代责任人的决策
+
+** 团队[fn::这就会涉及到，为啥之前有人说这本书没用, 因为道理(也许)都懂, 做到(也许)很难]
+- 打造良好的文化
+- 用对人
+- 建造并进化你的机器
+  - 对于无法计量的事物，你肯定也管不好
+  - 不仅要盯着自己的工作，还要关注如果你不在场，工作会如何开展
+
+** 人员
+- 群体表现取决于个人决策，那么设立一个能让个人做出有效决策并且不断进步的机制
+  - 保证刚进来的人有足够的能力，因为人是很难改变的
+  - 对于每位员工，明确个人的优点和劣势(reality)
+  - 良好的物质补偿保证生存但同时不过高导致个体失去创造价值的动力
+  - 保证个人有途径不断地发展进步
+
+** 个人
+pain + reflection = progress
+
+痛苦 + 反思 = 进步
+
+- 个人想要进步，不只要面对痛苦，有时候还要找罪受
+- 为了能够不断改进自己的判断能力，需要向 believable people 学习
+  - 也涉及到周围的圈子，交往(工作周围)的人决定了你的层次
+- 保持 open-minded
+  - 即使和自己的直觉相违背，也要全力去理解 *背后的逻辑* , 因为更可信的人的说法大概率更有道理
+- transparent（对自己和他人的想法都要诚实地说，这样改得更快）
+
+** 一些(我觉得)好玩的观点 I
+- 如果你问一个组织里每个人他为这个组织的成功做了百分之几的贡献，它们加起来大概等于 300%（桥水内部调查 301%）
+- 如果你希望人在近期能够做出比之前好得多的表现，你可能在犯一个极其严重的错误。最好选择合适的人而不是改变人。
+- 当你是唯一一个思考的人，结果可能很难看。(结合起来就是鼓励大家独立思考)
+
+** 一些(我觉得)好玩的观点 II
+- 不能分清目标和任务的人不能委以重任（任务是达成目标的行动）。
+  - 一个检验方法，问“XXX 目标进行的怎么样？”
+  - 好的回答提供一个大概的进度和已完成的具体任务。
+- 考虑如何 =杠杆= 你的 =生产力= 。
+  - 在桥水，我（指达里奥）的杠杆率一般是 50:1, 即我花 1 小时合作，对方要花 50 小时去推荐项目。
+  - 对于我手下的人, 这个比率在 10:1 到 20:1 之间。
+
+** 桥水的 key share values
+- Meaningful work and meaningful relationships
+- Radical truth and radical transparency
+- An open-minded willingness to explore harsh realities including ones' own weaknesses
+- A sense of ownership（不管职位如何，每个人把公司看成自己的去工作和提出建议）
+- A drive for excellence
+- The willingness to do the good but difficult things.
+
+** 桥水的案例 I
+有一次，达里奥和公司另一位高管讨论一位员工晋升的问题。
+
+高管觉得，这位员工的工作能力很强，可以给他升职加薪，但达里奥却觉得这个员工的能力不够。
+
+后来达里奥一想：不行，不能在员工背后议论他们。于是，达里奥就一个电话把这位员工叫到了自己的办公室，然后开始当面议论他。
+
+当然了，议论他的同时，也给了这位员工辩解的机会。
+
+** 桥水的案例 II
+   达里奥在 2017 年一次 TED 演讲上，跟全场观众分享了一封邮件。这封邮件来自于他的下属，里面是这么写的：
+
+“达里奥，你今天在公司开会时候的讲话简直不及格，你根本没有做任何准备，不然的话，你不会讲得这么烂。以后，你应该多花点时间为开会做准备，如果需要，我甚至可以来陪你做准备，帮你热身。”
+
+信的最后，下属还补了一刀，说：“你要是觉得我的看法不对，可以去问其他同事，或者直接来问我。”
+
 
 * 其他推荐
 ** HOW THE ECONOMIC MACHINE WORKS
