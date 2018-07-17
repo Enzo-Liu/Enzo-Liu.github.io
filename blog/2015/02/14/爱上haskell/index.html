@@ -1,40 +1,58 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <title>爱上haskell - enzo&#39;s note book</title>
-    <meta charset="utf-8" />
-    <meta name="author" content="enzo liu" />
-    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
-    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
-  </head>
+<head>
+  <title>爱上haskell - enzo&#39;s note book</title>
+  <meta charset="utf-8" />
+  <meta name="author" content="enzo liu" />
+
+  <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml">
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/posts.css" type="text/css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</head>
+
   <body class="container">
-    <div>
-      <header class="masthead">
-        <h1 class="masthead-title"><a href="/">enzo&#39;s note book</a></h1>
-        <p>M-x (sketch for random ideas)</p>
-        <ul>
-          <li><a href="/blog/">Blog</a></li>
-          <li><a href="/history/">History</a></li>
-          <li><a href="/leetcode/">Leetcode</a></li>
-          <li><a href="/tags/">Tags</a></li>
-          <li><a href="/about/">About</a></li>
-          <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
-          <li><a href="/rss.xml">RSS</a></li>
-        </ul>
-        <form method="get" id="searchform" action="//www.google.com/search">
-          <input type="text" class="field" name="q" id="s" placeholder="Search">
-          <input type="hidden" name="as_sitesearch" value="blog.enzo.cc">
-        </form>
-      </header>
-    </div>
+<header id="header">
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top" style="opacity: .9" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">enzo&#39;s note book</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                            <li class="active"><a href="/auto/">Auto</a></li>
+                            <li class="active"><a href="/blog/">Blog</a></li>
+                            <li class="active"><a href="/history/">History</a></li>
+                            <li class="active"><a href="/leetcode/">Leetcode</a></li>
+                            <li class="active"><a href="/prod/">Prod</a></li>
+                        <li><a href="/tags/">Tags</a></li>
+                        <li><a href="/about/">About</a></li>
+                        <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
+                        <li><a href="/rss.xml">RSS</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </body>
+</header>
 
-<div>
-<div class="post">
-<h1>爱上haskell</h1>
-
-<div id="outline-container-org20bc6c5" class="outline-2">
-<h2 id="org20bc6c5">简介</h2>
-<div class="outline-text-2" id="text-org20bc6c5">
+<section id="content" role="main">
+    <div id="outline-container-sec-" class="row" style="padding-top: 70px">
+        <div class="col-md-2"></div>
+            <h1>爱上haskell</h1>
+            
+<div id="outline-container-orgf0b5e64" class="outline-2">
+<h2 id="orgf0b5e64">简介</h2>
+<div class="outline-text-2" id="text-orgf0b5e64">
 <p>
 最近有些爱上了haskell，在体验这个纯粹的函数式语言中，确实发现了一些不一样的=美感=。
 </p>
@@ -45,9 +63,9 @@
 </div>
 </div>
 
-<div id="outline-container-orge6ca48b" class="outline-2">
-<h2 id="orge6ca48b">示例</h2>
-<div class="outline-text-2" id="text-orge6ca48b">
+<div id="outline-container-org0c8e491" class="outline-2">
+<h2 id="org0c8e491">示例</h2>
+<div class="outline-text-2" id="text-org0c8e491">
 <p>
 一句话，表现力上，的确很强。 ### 快排
 </p>
@@ -66,9 +84,9 @@ qs (x:xs) = qs [gt | gt &lt;- xs, gt&gt;=x] ++ [x] ++ qs [lt | lt &lt;-xs , lt&l
 </blockquote>
 </div>
 
-<div id="outline-container-org82e074e" class="outline-3">
-<h3 id="org82e074e">斐波那契数列</h3>
-<div class="outline-text-3" id="text-org82e074e">
+<div id="outline-container-org072ed6f" class="outline-3">
+<h3 id="org072ed6f">斐波那契数列</h3>
+<div class="outline-text-3" id="text-org072ed6f">
 <p>
 这个是最最 <b><code>惊艳</code></b> 到我的！！！
 </p>
@@ -107,17 +125,17 @@ fibs = 0 : 1 : [ a + b | (a, b) &lt;- zip fibs (tail fibs)]
 </div>
 </div>
 
-<div id="outline-container-orgc6dad97" class="outline-2">
-<h2 id="orgc6dad97">实践</h2>
-<div class="outline-text-2" id="text-orgc6dad97">
+<div id="outline-container-org9926ad6" class="outline-2">
+<h2 id="org9926ad6">实践</h2>
+<div class="outline-text-2" id="text-org9926ad6">
 <p>
 上面的都有些偏理论，那看看稍微偏使用中的代码是什么样的。
 </p>
 </div>
 
-<div id="outline-container-org260882a" class="outline-3">
-<h3 id="org260882a">project euler</h3>
-<div class="outline-text-3" id="text-org260882a">
+<div id="outline-container-org6d2f62e" class="outline-3">
+<h3 id="org6d2f62e">project euler</h3>
+<div class="outline-text-3" id="text-org6d2f62e">
 <p>
 <a href="http://projecteuler.net/problems">参考地址</a>
 </p>
@@ -133,9 +151,9 @@ fibs = 0 : 1 : [ a + b | (a, b) &lt;- zip fibs (tail fibs)]
 </blockquote>
 </div>
 
-<div id="outline-container-org4c4200a" class="outline-4">
-<h4 id="org4c4200a"><a href="https://projecteuler.net/problem=206">euler 206</a></h4>
-<div class="outline-text-4" id="text-org4c4200a">
+<div id="outline-container-org3fd36e4" class="outline-4">
+<h4 id="org3fd36e4"><a href="https://projecteuler.net/problem=206">euler 206</a></h4>
+<div class="outline-text-4" id="text-org3fd36e4">
 <div class="org-src-container">
 <pre class="src src-haskell">import Data.Char (intToDigit)
 
@@ -153,9 +171,9 @@ solution = head . filter passes $ [1010101010, 1010101020 ..]
 </div>
 </div>
 
-<div id="outline-container-orgd58a585" class="outline-4">
-<h4 id="orgd58a585"><a href="https://projecteuler.net/problem=55">euler 55</a></h4>
-<div class="outline-text-4" id="text-orgd58a585">
+<div id="outline-container-org50478b5" class="outline-4">
+<h4 id="org50478b5"><a href="https://projecteuler.net/problem=55">euler 55</a></h4>
+<div class="outline-text-4" id="text-org50478b5">
 <div class="org-src-container">
 <pre class="src src-haskell">import Data.Char
 palindromicNumber :: Integer -&gt; Bool
@@ -188,9 +206,9 @@ main = print $ length $ filter (== Nothing) $ map lychrel [1..10000]
 </div>
 </div>
 
-<div id="outline-container-org7886177" class="outline-4">
-<h4 id="org7886177"><a href="https://projecteuler.net/problem=56">euler 56</a></h4>
-<div class="outline-text-4" id="text-org7886177">
+<div id="outline-container-org4f7e95c" class="outline-4">
+<h4 id="org4f7e95c"><a href="https://projecteuler.net/problem=56">euler 56</a></h4>
+<div class="outline-text-4" id="text-org4f7e95c">
 <div class="org-src-container">
 <pre class="src src-haskell">digits :: Integer -&gt; [Int]
 digits = map (read . (:[])) . show
@@ -216,9 +234,9 @@ main = print $ maximum [sum $ map digitToInt $ show $ a^b | a &lt;- [1..99], b &
 </div>
 </div>
 
-<div id="outline-container-org651ebe5" class="outline-4">
-<h4 id="org651ebe5"><a href="https://projecteuler.net/problem=56">euler 57</a></h4>
-<div class="outline-text-4" id="text-org651ebe5">
+<div id="outline-container-org10372c8" class="outline-4">
+<h4 id="org10372c8"><a href="https://projecteuler.net/problem=56">euler 57</a></h4>
+<div class="outline-text-4" id="text-org10372c8">
 <div class="org-src-container">
 <pre class="src src-haskell">pairs :: [(Integer,Integer)]
 pairs = pairsFrom (1,1)
@@ -248,56 +266,34 @@ main = print $ (length . filter longer . take 1000) pairs
 </div>
 </div>
 
-<div id="outline-container-orgb9171d7" class="outline-2">
-<h2 id="orgb9171d7">总结</h2>
-<div class="outline-text-2" id="text-orgb9171d7">
+<div id="outline-container-org7cbc8f1" class="outline-2">
+<h2 id="org7cbc8f1">总结</h2>
+<div class="outline-text-2" id="text-org7cbc8f1">
 <p>
 尝试了使用，情难自禁，强力推荐。有机会体验一下，应该会不虚此行。
 </p>
 </div>
 </div>
 
-</div>
-</div>
-    <div>
-      <div class="post-meta">
+    </div>
+</section>
+
+
+    <div class="post-meta">
         <span title="post date" class="post-info">2015-02-14</span>
         <span title="last modification date" class="post-info">2016-02-03</span>
         <span title="tags" class="post-info"><a href="/tags/haskell/">haskell</a></span>
         <span title="author" class="post-info">enzo liu</span>
-      </div>
-      <section>
-        <h1>Comments</h1>
-        <div id="disqus_thread"></div>
-        <script type="text/javascript">
-          //var disqus_developer = 1;
-          var disqus_identifier = "/blog/2015/02/14/爱上haskell/";
-          var disqus_url = "https://blog.enzo.cc/blog/2015/02/14/爱上haskell/";
-          var disqus_shortname = 'enzo-liu';
-          /* * * DON'T EDIT BELOW THIS LINE * * */
-          (function() {
-          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-          })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-      </section>
-      <script src="//code.jquery.com/jquery-latest.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
-      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-      <script src="/media/js/main.js"></script>
-      <div class="footer">
-        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
-        <p>
-          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
-          &nbsp;&nbsp;-&nbsp;&nbsp;
-          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
-          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
-        </p>
-      </div>
     </div>
+<footer class="footer">
+    <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+    <p>
+        Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
+        &nbsp;&nbsp;-&nbsp;&nbsp;
+        Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+        <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+    </p>
+</footer>
 
   </body>
 </html>

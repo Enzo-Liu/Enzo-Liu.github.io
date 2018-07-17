@@ -1,0 +1,176 @@
+% Created 2018-02-28 三 10:45
+% Intended LaTeX compiler: pdflatex
+\documentclass[presentation, bigger]{beamer}
+\usepackage[no-math]{fontspec}
+\usepackage[BoldFont,SlantFont,AutoFakeBold=true,AutoFakeSlant=true]{xeCJK}
+\setCJKmainfont[BoldFont=FandolSong-Bold.otf,ItalicFont=FandolKai-Regular.otf]{FandolSong-Regular.otf}
+\setCJKsansfont[BoldFont=FandolHei-Bold.otf]{FandolHei-Regular.otf}
+\setCJKmonofont{FandolFang-Regular.otf}
+\usefonttheme[stillsansseriflarge,stillsansserifsmall]{serif}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\defaultfontfeatures{Mapping=tex-text}
+\usepackage{geometry}
+\usepackage{verbatim}
+\usepackage{fixltx2e}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\setlength{\parindent}{0in}
+\tolerance=1000
+\usetheme{metropolis}
+\author{行业研发}
+\date{2018-03-03}
+\title{行业研发规划}
+\hypersetup{
+ pdfauthor={行业研发},
+ pdftitle={行业研发规划},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 25.3.1 (Org mode 9.1.6)},
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\begin{frame}{目录}
+\tableofcontents
+\end{frame}
+
+
+\section{部门定位}
+\label{sec:org051f320}
+\begin{frame}[label={sec:org5362c56}]{整体目标}
+\begin{itemize}
+\item 目标(Objective)
+\begin{itemize}
+\item 为了获取更 \alert{可靠的供应链}, 利用主办相对 \alert{廉价的线下流量}, 我们需要深入主办日常工作流程, 在各方面给其提供服务, 提高与主办合作的话语权。
+\end{itemize}
+
+\item 衡量标准(Key Result)\footnote{衡量标准不好可调整}
+\begin{itemize}
+\item 票务系统合作数
+\item 现场购票合作数\&订单量
+\item 分销系统合作数
+\item 闸机合作数
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org4dc5d16}]{2018 年业务部门 KPI}
+\begin{itemize}
+\item 合作主办数: \alert{全国 500 家主办}
+\begin{itemize}
+\item 当前 267
+\end{itemize}
+\item 销售订单量: \alert{25 万}
+\begin{itemize}
+\item 当前 17940 (1.8 万)
+\end{itemize}
+\item 盈利额:  \alert{100 万}
+\begin{itemize}
+\item 当前 84827 (8 万)
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgfc14b02}]{行业线研发的职责和工作}
+\begin{itemize}
+\item \alert{制定产品计划} , 负责 \alert{推进产品推广} , 跟综后续产品的支持与优化
+\item \alert{落实} 具体的产品研发任务, 按时按质按量完成研发工作
+\item \alert{支持} 业务部门达成其 KPI
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org9ec9ba9}]{行业线研发 2018 目标}
+\begin{itemize}
+\item 主要变化[?]
+\begin{itemize}
+\item 研发 \alert{基于项目做开发} --> 业务 \alert{基于产品做推广}
+\end{itemize}
+
+\item 目标(Objective)
+\begin{itemize}
+\item 一款成功的主办产品
+\end{itemize}
+
+\item 衡量标准(Key Result)
+\begin{itemize}
+\item 主办用户数达成 500
+\item ?
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\section{产品思路}
+\label{sec:org36e97a0}
+\begin{frame}[label={sec:org8b8153f}]{整体思路}
+给主办 \alert{提供各种服务}, 促进合作, 从而 \alert{利用主办流量}
+\end{frame}
+\begin{frame}[label={sec:orga4ccaae}]{已有产品分类}
+\begin{itemize}
+\item 流量获取
+\begin{itemize}
+\item 现场购票
+\item 闸机入场
+\item 旗舰店/小程序
+\end{itemize}
+\item 提供服务
+\begin{itemize}
+\item \uline{售票服务, 含补贴}  提供渠道流量，适合单纯想增加一些销量的主办
+\item \uline{销售统计/分析} 增值服务
+\item \uline{会员运营/触达/唤醒} 增值服务，适合有一定品牌，持续有项目有固定用户群体的主办
+\item \uline{分销系统} 适合线上 api 渠道人工同步复杂, 线下渠道管理困难的主办
+\item \uline{票务系统} 适合无电子票系统，无票务系统的主办
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org08d7f21}]{已有产品体系}
+\begin{itemize}
+\item 现场购票
+\begin{itemize}
+\item 现场购票 + 主办小程序 + 数据统计 + 会员体系 + 用户触达
+\end{itemize}
+\item 渠道分销
+\begin{itemize}
+\item 线下渠道分销的管理
+\item API 对接的研发能力
+\end{itemize}
+\item 主办行业系统+票务系统
+\begin{itemize}
+\item 闸机入场，打票机
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgd189554}]{现有推广策略}
+\begin{itemize}
+\item 找线下流量、腰部主办做突破口
+\item 优化有亮点的产品：现场购票、轧机、打票核销
+\item 推广渠道分销，目标能对接几家较大的渠道
+\end{itemize}
+\end{frame}
+
+
+\section{后续产品方向和研发计划}
+\label{sec:orgc57c86b}
+\begin{frame}[label={sec:org97724ac}]{分销系统}
+\begin{itemize}
+\item 支持线下二维码渠道分销的端到端流程
+\item 3 月中下旬完成开发
+\end{itemize}
+\end{frame}
+\begin{frame}[label={sec:orgc54a5bd}]{会员体系}
+\end{frame}
+\begin{frame}[fragile,label={sec:org9a647d6}]{\texttt{其他待调研}}
+\end{frame}
+\end{document}

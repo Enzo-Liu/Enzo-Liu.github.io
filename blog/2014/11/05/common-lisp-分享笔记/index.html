@@ -1,40 +1,58 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <title>common-lisp 分享笔记 - enzo&#39;s note book</title>
-    <meta charset="utf-8" />
-    <meta name="author" content="enzo liu" />
-    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
-    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
-  </head>
+<head>
+  <title>common-lisp 分享笔记 - enzo&#39;s note book</title>
+  <meta charset="utf-8" />
+  <meta name="author" content="enzo liu" />
+
+  <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml">
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/posts.css" type="text/css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</head>
+
   <body class="container">
-    <div>
-      <header class="masthead">
-        <h1 class="masthead-title"><a href="/">enzo&#39;s note book</a></h1>
-        <p>M-x (sketch for random ideas)</p>
-        <ul>
-          <li><a href="/blog/">Blog</a></li>
-          <li><a href="/history/">History</a></li>
-          <li><a href="/leetcode/">Leetcode</a></li>
-          <li><a href="/tags/">Tags</a></li>
-          <li><a href="/about/">About</a></li>
-          <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
-          <li><a href="/rss.xml">RSS</a></li>
-        </ul>
-        <form method="get" id="searchform" action="//www.google.com/search">
-          <input type="text" class="field" name="q" id="s" placeholder="Search">
-          <input type="hidden" name="as_sitesearch" value="blog.enzo.cc">
-        </form>
-      </header>
-    </div>
+<header id="header">
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top" style="opacity: .9" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">enzo&#39;s note book</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                            <li class="active"><a href="/auto/">Auto</a></li>
+                            <li class="active"><a href="/blog/">Blog</a></li>
+                            <li class="active"><a href="/history/">History</a></li>
+                            <li class="active"><a href="/leetcode/">Leetcode</a></li>
+                            <li class="active"><a href="/prod/">Prod</a></li>
+                        <li><a href="/tags/">Tags</a></li>
+                        <li><a href="/about/">About</a></li>
+                        <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
+                        <li><a href="/rss.xml">RSS</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </body>
+</header>
 
-<div>
-<div class="post">
-<h1>common-lisp 分享笔记</h1>
-
-<div id="outline-container-org16f3ba4" class="outline-2">
-<h2 id="org16f3ba4">Lisp</h2>
-<div class="outline-text-2" id="text-org16f3ba4">
+<section id="content" role="main">
+    <div id="outline-container-sec-" class="row" style="padding-top: 70px">
+        <div class="col-md-2"></div>
+            <h1>common-lisp 分享笔记</h1>
+            
+<div id="outline-container-org566d90d" class="outline-2">
+<h2 id="org566d90d">Lisp</h2>
+<div class="outline-text-2" id="text-org566d90d">
 <p>
 Lisp，最初被拼为LISP，一个历史悠久的电脑编程语言家族，以波兰表示法编写。最早由约翰·麦卡锡在1958年基于λ演算创造，是历史第二悠久的高级语言，仅次于Fortran。也是第一个函数式编程语言。
 -wiki
@@ -63,9 +81,9 @@ Levin）在麻省理工学院，以Lisp语言，实做出第一个完整的lisp�
 </p>
 </div>
 
-<div id="outline-container-org57f4510" class="outline-3">
-<h3 id="org57f4510">S表达式(symbolic expression)</h3>
-<div class="outline-text-3" id="text-org57f4510">
+<div id="outline-container-org30fc450" class="outline-3">
+<h3 id="org30fc450">S表达式(symbolic expression)</h3>
+<div class="outline-text-3" id="text-org30fc450">
 <p>
 s-expression sexp
 定义参考链接[<a href="http://en.wikipedia.org/wiki/S-expression">http://en.wikipedia.org/wiki/S-expression</a>]
@@ -127,9 +145,9 @@ pair）来描述的。例如，car 和 cdr 都为数值 1 的单元，要写成�
 </div>
 </div>
 
-<div id="outline-container-orgbe1ccfa" class="outline-3">
-<h3 id="orgbe1ccfa">表</h3>
-<div class="outline-text-3" id="text-orgbe1ccfa">
+<div id="outline-container-org08cc369" class="outline-3">
+<h3 id="org08cc369">表</h3>
+<div class="outline-text-3" id="text-org08cc369">
 <p>
 原子就是不包含空格的符号，可以是字符，也可以是数字。表就是用小括号包含起来的原子或者表,也就是说表可以嵌套
 </p>
@@ -202,9 +220,9 @@ pair）来描述的。例如，car 和 cdr 都为数值 1 的单元，要写成�
 </div>
 </div>
 
-<div id="outline-container-org3c959c8" class="outline-3">
-<h3 id="org3c959c8">lambda 表达式</h3>
-<div class="outline-text-3" id="text-org3c959c8">
+<div id="outline-container-orgbf7dcdf" class="outline-3">
+<h3 id="orgbf7dcdf">lambda 表达式</h3>
+<div class="outline-text-3" id="text-orgbf7dcdf">
 <p>
 匿名函数 简单示例:
 </p>
@@ -223,9 +241,9 @@ lambda x. x+2
 </div>
 </div>
 
-<div id="outline-container-org2c2f46f" class="outline-3">
-<h3 id="org2c2f46f">符号</h3>
-<div class="outline-text-3" id="text-org2c2f46f">
+<div id="outline-container-org328370c" class="outline-3">
+<h3 id="org328370c">符号</h3>
+<div class="outline-text-3" id="text-org328370c">
 <p>
 参考链接:[<a href="http://acl.readthedocs.org/en/latest/zhCN/ch8-cn.html">http://acl.readthedocs.org/en/latest/zhCN/ch8-cn.html</a>]
 </p>
@@ -279,17 +297,17 @@ Evaluation aborted on #.
 </div>
 </div>
 
-<div id="outline-container-org3a7c1d1" class="outline-3">
-<h3 id="org3a7c1d1">过程抽象(函数式编程)</h3>
-<div class="outline-text-3" id="text-org3a7c1d1">
+<div id="outline-container-org5809564" class="outline-3">
+<h3 id="org5809564">过程抽象(函数式编程)</h3>
+<div class="outline-text-3" id="text-org5809564">
 <p>
 作为一种抽象手段(黑盒)，将这一过程的使用方式/目的与该过程究竟如何通过更基本的过程实现的具体细节相分离。
 </p>
 </div>
 
-<div id="outline-container-orgf69208f" class="outline-4">
-<h4 id="orgf69208f">函数作为参数</h4>
-<div class="outline-text-4" id="text-orgf69208f">
+<div id="outline-container-org3820ab1" class="outline-4">
+<h4 id="org3820ab1">函数作为参数</h4>
+<div class="outline-text-4" id="text-org3820ab1">
 <p>
 与其将通用的和专用的混在一起,不如定义一个通用的然后把专用的部分作为参数。
 </p>
@@ -328,9 +346,9 @@ Evaluation aborted on #.
 </div>
 </div>
 
-<div id="outline-container-org24c3df8" class="outline-4">
-<h4 id="org24c3df8">函数作为返回值</h4>
-<div class="outline-text-4" id="text-org24c3df8">
+<div id="outline-container-orgb01591a" class="outline-4">
+<h4 id="orgb01591a">函数作为返回值</h4>
+<div class="outline-text-4" id="text-orgb01591a">
 <p>
 如何更方便的生产函数。
 </p>
@@ -379,9 +397,9 @@ complement需要一个 谓词作为参数,它返回一个函数,这个函数的�
 </div>
 </div>
 
-<div id="outline-container-org8124a69" class="outline-4">
-<h4 id="org8124a69">currying (多元函数规约到一元函数)</h4>
-<div class="outline-text-4" id="text-org8124a69">
+<div id="outline-container-org36cf510" class="outline-4">
+<h4 id="org36cf510">currying (多元函数规约到一元函数)</h4>
+<div class="outline-text-4" id="text-org36cf510">
 <p>
 lambda
 演算是基于一元函数进行推演。而curry就是一个将多元函数规约到一元函数的定义。从而保证lambda演算对于任何函数都成立.
@@ -402,9 +420,9 @@ var foo = function(a) {
 </div>
 </div>
 
-<div id="outline-container-org99fd750" class="outline-4">
-<h4 id="org99fd750">闭包,词法作用域,动态作用域</h4>
-<div class="outline-text-4" id="text-org99fd750">
+<div id="outline-container-org034d301" class="outline-4">
+<h4 id="org034d301">闭包,词法作用域,动态作用域</h4>
+<div class="outline-text-4" id="text-org034d301">
 <p>
 参考链接：[<a href="http://acl.readthedocs.org/en/latest/zhCN/ch6-cn.html#closures">http://acl.readthedocs.org/en/latest/zhCN/ch6-cn.html#closures</a>]
 </p>
@@ -445,12 +463,13 @@ variable）。函数引用到自由的词法变量时，称之为闭包（closur
 </div>
 </div>
 
-<div id="outline-container-org9e6e25e" class="outline-3">
-<h3 id="org9e6e25e">数据抽象</h3>
-<div class="outline-text-3" id="text-org9e6e25e">
-</div><div id="outline-container-org7a2f2cc" class="outline-4">
-<h4 id="org7a2f2cc">函数表达</h4>
-<div class="outline-text-4" id="text-org7a2f2cc">
+<div id="outline-container-org08a5865" class="outline-3">
+<h3 id="org08a5865">数据抽象</h3>
+<div class="outline-text-3" id="text-org08a5865">
+</div>
+<div id="outline-container-org04bc454" class="outline-4">
+<h4 id="org04bc454">函数表达</h4>
+<div class="outline-text-4" id="text-org04bc454">
 <p>
 通常说来,数据结构被用来描述事物。可以用数组描述坐标,用树结构表示命令的层次结构,而用图来表示铁路网。在Lisp里,我们常会使用闭包作为表现形式。在闭包里,变量绑定可以保存信息,也能扮演在复杂数据结构中指针的角色。如果让一组闭包之间共享绑定,或者让它们之间能相互引用,那么我们就可以创建混合型的对象类型。
 </p>
@@ -471,9 +490,9 @@ Procedure。在函数语言中，可以构造一种非常类似于对象的高�
 </div>
 </div>
 
-<div id="outline-container-org5c94014" class="outline-3">
-<h3 id="org5c94014">特殊形式</h3>
-<div class="outline-text-3" id="text-org5c94014">
+<div id="outline-container-org709d6f7" class="outline-3">
+<h3 id="org709d6f7">特殊形式</h3>
+<div class="outline-text-3" id="text-org709d6f7">
 <p>
 Lisp 程序是由形式（Form）排列起来构成的。形式就是 S
 表达式，它通过下面的规则来进行求值。
@@ -507,9 +526,9 @@ setq 以外，特殊形式还有用于条件分支的 if 和用于定义局部�
 </div>
 </div>
 
-<div id="outline-container-org0afb615" class="outline-3">
-<h3 id="org0afb615">宏</h3>
-<div class="outline-text-3" id="text-org0afb615">
+<div id="outline-container-orgedda55d" class="outline-3">
+<h3 id="orgedda55d">宏</h3>
+<div class="outline-text-3" id="text-orgedda55d">
 <p>
 (defun test () '(+ 1 2))
 </p>
@@ -548,9 +567,9 @@ Lisp的代码的表示形式，S表达式本身就是Lisp可以方便操作的�
 </p>
 </div>
 
-<div id="outline-container-org2f0eee3" class="outline-4">
-<h4 id="org2f0eee3">特殊之处</h4>
-<div class="outline-text-4" id="text-org2f0eee3">
+<div id="outline-container-org4a96c8c" class="outline-4">
+<h4 id="org4a96c8c">特殊之处</h4>
+<div class="outline-text-4" id="text-org4a96c8c">
 <ol class="org-ol">
 <li>宏可以控制或阻止对其参数的求值</li>
 
@@ -559,9 +578,9 @@ Lisp的代码的表示形式，S表达式本身就是Lisp可以方便操作的�
 </div>
 </div>
 
-<div id="outline-container-org7e87e6d" class="outline-4">
-<h4 id="org7e87e6d">示例</h4>
-<div class="outline-text-4" id="text-org7e87e6d">
+<div id="outline-container-org1bc42a7" class="outline-4">
+<h4 id="org1bc42a7">示例</h4>
+<div class="outline-text-4" id="text-org1bc42a7">
 <pre class="example">
     (macroexpand-1 '(cond ((= x 2) (/ x 0)) (t 1)))
 
@@ -586,47 +605,25 @@ Lisp的代码的表示形式，S表达式本身就是Lisp可以方便操作的�
 </div>
 </div>
 
-</div>
-</div>
-    <div>
-      <div class="post-meta">
+    </div>
+</section>
+
+
+    <div class="post-meta">
         <span title="post date" class="post-info">2014-11-05</span>
         <span title="last modification date" class="post-info">2016-02-03</span>
         <span title="tags" class="post-info"><a href="/tags/common-lisp/">common-lisp</a></span>
         <span title="author" class="post-info">enzo liu</span>
-      </div>
-      <section>
-        <h1>Comments</h1>
-        <div id="disqus_thread"></div>
-        <script type="text/javascript">
-          //var disqus_developer = 1;
-          var disqus_identifier = "/blog/2014/11/05/common-lisp-分享笔记/";
-          var disqus_url = "https://blog.enzo.cc/blog/2014/11/05/common-lisp-分享笔记/";
-          var disqus_shortname = 'enzo-liu';
-          /* * * DON'T EDIT BELOW THIS LINE * * */
-          (function() {
-          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-          })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-      </section>
-      <script src="//code.jquery.com/jquery-latest.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
-      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-      <script src="/media/js/main.js"></script>
-      <div class="footer">
-        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
-        <p>
-          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
-          &nbsp;&nbsp;-&nbsp;&nbsp;
-          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
-          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
-        </p>
-      </div>
     </div>
+<footer class="footer">
+    <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+    <p>
+        Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
+        &nbsp;&nbsp;-&nbsp;&nbsp;
+        Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+        <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+    </p>
+</footer>
 
   </body>
 </html>

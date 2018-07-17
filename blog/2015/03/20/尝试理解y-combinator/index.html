@@ -1,40 +1,58 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <title>尝试理解Y-combinator - enzo&#39;s note book</title>
-    <meta charset="utf-8" />
-    <meta name="author" content="enzo liu" />
-    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
-    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
-  </head>
+<head>
+  <title>尝试理解Y-combinator - enzo&#39;s note book</title>
+  <meta charset="utf-8" />
+  <meta name="author" content="enzo liu" />
+
+  <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml">
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/posts.css" type="text/css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</head>
+
   <body class="container">
-    <div>
-      <header class="masthead">
-        <h1 class="masthead-title"><a href="/">enzo&#39;s note book</a></h1>
-        <p>M-x (sketch for random ideas)</p>
-        <ul>
-          <li><a href="/blog/">Blog</a></li>
-          <li><a href="/history/">History</a></li>
-          <li><a href="/leetcode/">Leetcode</a></li>
-          <li><a href="/tags/">Tags</a></li>
-          <li><a href="/about/">About</a></li>
-          <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
-          <li><a href="/rss.xml">RSS</a></li>
-        </ul>
-        <form method="get" id="searchform" action="//www.google.com/search">
-          <input type="text" class="field" name="q" id="s" placeholder="Search">
-          <input type="hidden" name="as_sitesearch" value="blog.enzo.cc">
-        </form>
-      </header>
-    </div>
+<header id="header">
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top" style="opacity: .9" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">enzo&#39;s note book</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                            <li class="active"><a href="/auto/">Auto</a></li>
+                            <li class="active"><a href="/blog/">Blog</a></li>
+                            <li class="active"><a href="/history/">History</a></li>
+                            <li class="active"><a href="/leetcode/">Leetcode</a></li>
+                            <li class="active"><a href="/prod/">Prod</a></li>
+                        <li><a href="/tags/">Tags</a></li>
+                        <li><a href="/about/">About</a></li>
+                        <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
+                        <li><a href="/rss.xml">RSS</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </body>
+</header>
 
-<div>
-<div class="post">
-<h1>尝试理解Y-combinator</h1>
-
-<div id="outline-container-org018da87" class="outline-2">
-<h2 id="org018da87">简介</h2>
-<div class="outline-text-2" id="text-org018da87">
+<section id="content" role="main">
+    <div id="outline-container-sec-" class="row" style="padding-top: 70px">
+        <div class="col-md-2"></div>
+            <h1>尝试理解Y-combinator</h1>
+            
+<div id="outline-container-org0a8df14" class="outline-2">
+<h2 id="org0a8df14">简介</h2>
+<div class="outline-text-2" id="text-org0a8df14">
 <p>
 在一个纯粹的函数式语言环境中，只有一种元素，就是一个单参函数
 </p>
@@ -53,9 +71,9 @@
 </div>
 </div>
 
-<div id="outline-container-orge07e439" class="outline-2">
-<h2 id="orge07e439">问题</h2>
-<div class="outline-text-2" id="text-orge07e439">
+<div id="outline-container-orgce3208d" class="outline-2">
+<h2 id="orgce3208d">问题</h2>
+<div class="outline-text-2" id="text-orgce3208d">
 <p>
 比如需要求解一个列表的长度，该如何实现。
 </p>
@@ -70,9 +88,9 @@
 </p>
 </div>
 
-<div id="outline-container-org3ca7c1b" class="outline-3">
-<h3 id="org3ca7c1b">common lisp</h3>
-<div class="outline-text-3" id="text-org3ca7c1b">
+<div id="outline-container-org8818142" class="outline-3">
+<h3 id="org8818142">common lisp</h3>
+<div class="outline-text-3" id="text-org8818142">
 <div class="org-src-container">
 <pre class="src src-lisp">;; in common lisp
 (defun len (ls)
@@ -91,9 +109,9 @@ CL-USER&gt; (len '())
 </div>
 </div>
 
-<div id="outline-container-org128b166" class="outline-3">
-<h3 id="org128b166">haskell</h3>
-<div class="outline-text-3" id="text-org128b166">
+<div id="outline-container-orgef6ce6e" class="outline-3">
+<h3 id="orgef6ce6e">haskell</h3>
+<div class="outline-text-3" id="text-orgef6ce6e">
 <div class="org-src-container">
 <pre class="src src-haskell">len1 :: (Num b ) =&gt; [a] -&gt; b
 len1 [] = 0
@@ -115,9 +133,9 @@ len1 (_:xs) = 1 + len1 xs
 </div>
 </div>
 
-<div id="outline-container-orgc387c62" class="outline-2">
-<h2 id="orgc387c62">第一次尝试</h2>
-<div class="outline-text-2" id="text-orgc387c62">
+<div id="outline-container-org4497f6f" class="outline-2">
+<h2 id="org4497f6f">第一次尝试</h2>
+<div class="outline-text-2" id="text-org4497f6f">
 <p>
 尝试翻译之前写过的实现
 </p>
@@ -135,9 +153,9 @@ len1 (_:xs) = 1 + len1 xs
 </p>
 </div>
 
-<div id="outline-container-org1272c4e" class="outline-3">
-<h3 id="org1272c4e">神来一笔</h3>
-<div class="outline-text-3" id="text-org1272c4e">
+<div id="outline-container-org71a1e36" class="outline-3">
+<h3 id="org71a1e36">神来一笔</h3>
+<div class="outline-text-3" id="text-org71a1e36">
 <p>
 假如有一个len的实现，不就可以了么！！！！
 </p>
@@ -219,9 +237,9 @@ $6 = 2
 </div>
 </div>
 
-<div id="outline-container-org5bba4de" class="outline-3">
-<h3 id="org5bba4de">神又来一笔</h3>
-<div class="outline-text-3" id="text-org5bba4de">
+<div id="outline-container-orgaab748a" class="outline-3">
+<h3 id="orgaab748a">神又来一笔</h3>
+<div class="outline-text-3" id="text-orgaab748a">
 <p>
 时间过去了一年，少年终于写出了可以计算长度
 =14239823586=以内的列表的长度！
@@ -269,9 +287,9 @@ $9 = 8
 </div>
 </div>
 
-<div id="outline-container-orgb4fe0ec" class="outline-3">
-<h3 id="orgb4fe0ec">神又来一笔!</h3>
-<div class="outline-text-3" id="text-orgb4fe0ec">
+<div id="outline-container-org2d40d3a" class="outline-3">
+<h3 id="org2d40d3a">神又来一笔!</h3>
+<div class="outline-text-3" id="text-org2d40d3a">
 <p>
 不过，写出来的程序看着好奇怪。好多=mk-len=,=（mk-len mk-len）=,
 <b>看不懂啊</b>. 只有
@@ -323,9 +341,9 @@ $9 = 8
 </div>
 </div>
 
-<div id="outline-container-org34952d0" class="outline-2">
-<h2 id="org34952d0">the ultimate Y-Combinator</h2>
-<div class="outline-text-2" id="text-org34952d0">
+<div id="outline-container-org7c8c7e5" class="outline-2">
+<h2 id="org7c8c7e5">the ultimate Y-Combinator</h2>
+<div class="outline-text-2" id="text-org7c8c7e5">
 <div class="org-src-container">
 <pre class="src src-lisp">(define Y
   (lambda (targetFunction)
@@ -349,9 +367,9 @@ $10 = 9
 </div>
 </div>
 
-<div id="outline-container-orgaf7fbf0" class="outline-2">
-<h2 id="orgaf7fbf0">实践</h2>
-<div class="outline-text-2" id="text-orgaf7fbf0">
+<div id="outline-container-orgada4446" class="outline-2">
+<h2 id="orgada4446">实践</h2>
+<div class="outline-text-2" id="text-orgada4446">
 <p>
 in haskell
 </p>
@@ -379,9 +397,9 @@ ysum = y (\sum' ls -&gt; if null ls then 0 else head ls + (sum'.tail $ ls))
 </div>
 </div>
 
-<div id="outline-container-org3acd1a4" class="outline-2">
-<h2 id="org3acd1a4">external links</h2>
-<div class="outline-text-2" id="text-org3acd1a4">
+<div id="outline-container-orgcc63892" class="outline-2">
+<h2 id="orgcc63892">external links</h2>
+<div class="outline-text-2" id="text-orgcc63892">
 <p>
 <a href="http://en.wikipedia.org/wiki/Fixed-point_combinator#Y_combinator">y-combinator
 in wikipedia</a>
@@ -394,47 +412,25 @@ chapter 8</a>
 </div>
 </div>
 
-</div>
-</div>
-    <div>
-      <div class="post-meta">
+    </div>
+</section>
+
+
+    <div class="post-meta">
         <span title="post date" class="post-info">2015-03-20</span>
         <span title="last modification date" class="post-info">2016-02-03</span>
         <span title="tags" class="post-info"><a href="/tags/lisp/">lisp</a>, <a href="/tags/haskell/">haskell</a>, <a href="/tags/y-combinator/">y-combinator</a>, <a href="/tags/lambda/">lambda</a></span>
         <span title="author" class="post-info">enzo liu</span>
-      </div>
-      <section>
-        <h1>Comments</h1>
-        <div id="disqus_thread"></div>
-        <script type="text/javascript">
-          //var disqus_developer = 1;
-          var disqus_identifier = "/blog/2015/03/20/尝试理解y-combinator/";
-          var disqus_url = "https://blog.enzo.cc/blog/2015/03/20/尝试理解y-combinator/";
-          var disqus_shortname = 'enzo-liu';
-          /* * * DON'T EDIT BELOW THIS LINE * * */
-          (function() {
-          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-          })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-      </section>
-      <script src="//code.jquery.com/jquery-latest.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
-      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-      <script src="/media/js/main.js"></script>
-      <div class="footer">
-        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
-        <p>
-          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
-          &nbsp;&nbsp;-&nbsp;&nbsp;
-          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
-          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
-        </p>
-      </div>
     </div>
+<footer class="footer">
+    <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+    <p>
+        Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
+        &nbsp;&nbsp;-&nbsp;&nbsp;
+        Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+        <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+    </p>
+</footer>
 
   </body>
 </html>

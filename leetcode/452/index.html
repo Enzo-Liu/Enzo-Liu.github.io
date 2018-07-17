@@ -1,42 +1,60 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <title>452. Minimum Number of Arrows to Burst Balloons - enzo&#39;s note book</title>
-    <meta charset="utf-8" />
-    <meta name="author" content="enzo liu" />
-    <meta name="description" content="leetcode" />
-    <meta name="keywords" content="leetcode, ruby" />
-    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
-    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
-  </head>
+<head>
+  <title>452. Minimum Number of Arrows to Burst Balloons - enzo&#39;s note book</title>
+  <meta charset="utf-8" />
+  <meta name="author" content="enzo liu" />
+  <meta name="description" content="leetcode" />
+  <meta name="keywords" content="leetcode, ruby" />
+
+  <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml">
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/posts.css" type="text/css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</head>
+
   <body class="container">
-    <div>
-      <header class="masthead">
-        <h1 class="masthead-title"><a href="/">enzo&#39;s note book</a></h1>
-        <p>M-x (sketch for random ideas)</p>
-        <ul>
-          <li><a href="/blog/">Blog</a></li>
-          <li><a href="/history/">History</a></li>
-          <li><a href="/leetcode/">Leetcode</a></li>
-          <li><a href="/tags/">Tags</a></li>
-          <li><a href="/about/">About</a></li>
-          <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
-          <li><a href="/rss.xml">RSS</a></li>
-        </ul>
-        <form method="get" id="searchform" action="//www.google.com/search">
-          <input type="text" class="field" name="q" id="s" placeholder="Search">
-          <input type="hidden" name="as_sitesearch" value="blog.enzo.cc">
-        </form>
-      </header>
-    </div>
+<header id="header">
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top" style="opacity: .9" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">enzo&#39;s note book</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                            <li class="active"><a href="/auto/">Auto</a></li>
+                            <li class="active"><a href="/blog/">Blog</a></li>
+                            <li class="active"><a href="/history/">History</a></li>
+                            <li class="active"><a href="/leetcode/">Leetcode</a></li>
+                            <li class="active"><a href="/prod/">Prod</a></li>
+                        <li><a href="/tags/">Tags</a></li>
+                        <li><a href="/about/">About</a></li>
+                        <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
+                        <li><a href="/rss.xml">RSS</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </body>
+</header>
 
-<div>
-<div class="post">
-<h1>452. Minimum Number of Arrows to Burst Balloons</h1>
-
-<div id="outline-container-org9886ee0" class="outline-2">
-<h2 id="org9886ee0">题目</h2>
-<div class="outline-text-2" id="text-org9886ee0">
+<section id="content" role="main">
+    <div id="outline-container-sec-" class="row" style="padding-top: 70px">
+        <div class="col-md-2"></div>
+            <h1>452. Minimum Number of Arrows to Burst Balloons</h1>
+            
+<div id="outline-container-orga46f9b0" class="outline-2">
+<h2 id="orga46f9b0">题目</h2>
+<div class="outline-text-2" id="text-orga46f9b0">
 <p>
 <a href="https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons">链接</a>
 </p>
@@ -53,18 +71,18 @@ An arrow can be shot up exactly vertically from different points along the x-axi
 </div>
 </div>
 
-<div id="outline-container-org8b3d1ca" class="outline-2">
-<h2 id="org8b3d1ca">思路</h2>
-<div class="outline-text-2" id="text-org8b3d1ca">
+<div id="outline-container-orge006382" class="outline-2">
+<h2 id="orge006382">思路</h2>
+<div class="outline-text-2" id="text-orge006382">
 <p>
 按照起点排序，偏离缩小重合区域，一旦无相交则说明需要多一根箭
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgd7cb0c7" class="outline-2">
-<h2 id="orgd7cb0c7">代码</h2>
-<div class="outline-text-2" id="text-orgd7cb0c7">
+<div id="outline-container-org1b09c31" class="outline-2">
+<h2 id="org1b09c31">代码</h2>
+<div class="outline-text-2" id="text-org1b09c31">
 <div class="org-src-container">
 <pre class="src src-ruby"># @param {Integer[][]} points
 # @return {Integer}
@@ -89,18 +107,18 @@ end
 </div>
 </div>
 
-<div id="outline-container-orgd2f105e" class="outline-2">
-<h2 id="orgd2f105e">思路 2</h2>
-<div class="outline-text-2" id="text-orgd2f105e">
+<div id="outline-container-orge699833" class="outline-2">
+<h2 id="orge699833">思路 2</h2>
+<div class="outline-text-2" id="text-orge699833">
 <p>
 贪婪
 </p>
 </div>
 </div>
 
-<div id="outline-container-org0209e8c" class="outline-2">
-<h2 id="org0209e8c">代码</h2>
-<div class="outline-text-2" id="text-org0209e8c">
+<div id="outline-container-orgef1a884" class="outline-2">
+<h2 id="orgef1a884">代码</h2>
+<div class="outline-text-2" id="text-orgef1a884">
 <div class="org-src-container">
 <pre class="src src-ruby"># @param {Integer[][]} points
 # @return {Integer}
@@ -118,47 +136,25 @@ end
 </div>
 </div>
 
-</div>
-</div>
-    <div>
-      <div class="post-meta">
+    </div>
+</section>
+
+
+    <div class="post-meta">
         <span title="post date" class="post-info">2017-02-25</span>
         <span title="last modification date" class="post-info">2017-02-25</span>
         <span title="tags" class="post-info"><a href="/tags/leetcode/">leetcode</a>, <a href="/tags/ruby/">ruby</a></span>
         <span title="author" class="post-info">enzo liu</span>
-      </div>
-      <section>
-        <h1>Comments</h1>
-        <div id="disqus_thread"></div>
-        <script type="text/javascript">
-          //var disqus_developer = 1;
-          var disqus_identifier = "/leetcode/452";
-          var disqus_url = "https://blog.enzo.cc/leetcode/452";
-          var disqus_shortname = 'enzo-liu';
-          /* * * DON'T EDIT BELOW THIS LINE * * */
-          (function() {
-          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-          })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-      </section>
-      <script src="//code.jquery.com/jquery-latest.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
-      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-      <script src="/media/js/main.js"></script>
-      <div class="footer">
-        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
-        <p>
-          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
-          &nbsp;&nbsp;-&nbsp;&nbsp;
-          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
-          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
-        </p>
-      </div>
     </div>
+<footer class="footer">
+    <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+    <p>
+        Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
+        &nbsp;&nbsp;-&nbsp;&nbsp;
+        Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+        <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+    </p>
+</footer>
 
   </body>
 </html>

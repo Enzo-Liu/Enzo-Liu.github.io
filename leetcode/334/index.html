@@ -1,42 +1,60 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <title>334.Increasing Triplet Subsequence - enzo&#39;s note book</title>
-    <meta charset="utf-8" />
-    <meta name="author" content="enzo liu" />
-    <meta name="description" content="leetcode" />
-    <meta name="keywords" content="leetcode, ruby" />
-    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
-    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
-  </head>
+<head>
+  <title>334.Increasing Triplet Subsequence - enzo&#39;s note book</title>
+  <meta charset="utf-8" />
+  <meta name="author" content="enzo liu" />
+  <meta name="description" content="leetcode" />
+  <meta name="keywords" content="leetcode, ruby" />
+
+  <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml">
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/posts.css" type="text/css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</head>
+
   <body class="container">
-    <div>
-      <header class="masthead">
-        <h1 class="masthead-title"><a href="/">enzo&#39;s note book</a></h1>
-        <p>M-x (sketch for random ideas)</p>
-        <ul>
-          <li><a href="/blog/">Blog</a></li>
-          <li><a href="/history/">History</a></li>
-          <li><a href="/leetcode/">Leetcode</a></li>
-          <li><a href="/tags/">Tags</a></li>
-          <li><a href="/about/">About</a></li>
-          <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
-          <li><a href="/rss.xml">RSS</a></li>
-        </ul>
-        <form method="get" id="searchform" action="//www.google.com/search">
-          <input type="text" class="field" name="q" id="s" placeholder="Search">
-          <input type="hidden" name="as_sitesearch" value="blog.enzo.cc">
-        </form>
-      </header>
-    </div>
+<header id="header">
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top" style="opacity: .9" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">enzo&#39;s note book</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                            <li class="active"><a href="/auto/">Auto</a></li>
+                            <li class="active"><a href="/blog/">Blog</a></li>
+                            <li class="active"><a href="/history/">History</a></li>
+                            <li class="active"><a href="/leetcode/">Leetcode</a></li>
+                            <li class="active"><a href="/prod/">Prod</a></li>
+                        <li><a href="/tags/">Tags</a></li>
+                        <li><a href="/about/">About</a></li>
+                        <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
+                        <li><a href="/rss.xml">RSS</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </body>
+</header>
 
-<div>
-<div class="post">
-<h1>334.Increasing Triplet Subsequence</h1>
-
-<div id="outline-container-org28836ae" class="outline-2">
-<h2 id="org28836ae">题目</h2>
-<div class="outline-text-2" id="text-org28836ae">
+<section id="content" role="main">
+    <div id="outline-container-sec-" class="row" style="padding-top: 70px">
+        <div class="col-md-2"></div>
+            <h1>334.Increasing Triplet Subsequence</h1>
+            
+<div id="outline-container-org8cc130e" class="outline-2">
+<h2 id="org8cc130e">题目</h2>
+<div class="outline-text-2" id="text-org8cc130e">
 <p>
 <a href="https://leetcode.com/problems/increasing-triplet-subsequence/">链接</a>
 </p>
@@ -67,9 +85,9 @@ return false.
 </div>
 </div>
 
-<div id="outline-container-org5c79247" class="outline-2">
-<h2 id="org5c79247">思路</h2>
-<div class="outline-text-2" id="text-org5c79247">
+<div id="outline-container-org23e87af" class="outline-2">
+<h2 id="org23e87af">思路</h2>
+<div class="outline-text-2" id="text-org23e87af">
 <p>
 问题等价为
 </p>
@@ -80,9 +98,9 @@ return false.
 </blockquote>
 </div>
 
-<div id="outline-container-orgb06fc69" class="outline-3">
-<h3 id="orgb06fc69">长度为2</h3>
-<div class="outline-text-3" id="text-orgb06fc69">
+<div id="outline-container-org682276b" class="outline-3">
+<h3 id="org682276b">长度为2</h3>
+<div class="outline-text-3" id="text-org682276b">
 <p>
 假设不存在长度为2的子列，则 <code>a[i]&gt;=a[i+1]</code>, 是一个递减数列。
 </p>
@@ -93,9 +111,9 @@ return false.
 </div>
 </div>
 
-<div id="outline-container-org215eab7" class="outline-3">
-<h3 id="org215eab7">长度为3</h3>
-<div class="outline-text-3" id="text-org215eab7">
+<div id="outline-container-orgdacc2cf" class="outline-3">
+<h3 id="orgdacc2cf">长度为3</h3>
+<div class="outline-text-3" id="text-orgdacc2cf">
 <ul class="org-ul">
 <li>假设存在长度为3
 <ol class="org-ol">
@@ -111,9 +129,9 @@ return false.
 </div>
 
 
-<div id="outline-container-org0497d94" class="outline-2">
-<h2 id="org0497d94">代码</h2>
-<div class="outline-text-2" id="text-org0497d94">
+<div id="outline-container-org5973637" class="outline-2">
+<h2 id="org5973637">代码</h2>
+<div class="outline-text-2" id="text-org5973637">
 <div class="org-src-container">
 <pre class="src src-ruby"># @param {Integer[]} nums
 # @return {Boolean}
@@ -127,47 +145,25 @@ end
 </div>
 </div>
 
-</div>
-</div>
-    <div>
-      <div class="post-meta">
+    </div>
+</section>
+
+
+    <div class="post-meta">
         <span title="post date" class="post-info">2016-02-25</span>
         <span title="last modification date" class="post-info">2016-02-25</span>
         <span title="tags" class="post-info"><a href="/tags/leetcode/">leetcode</a>, <a href="/tags/ruby/">ruby</a></span>
         <span title="author" class="post-info">enzo liu</span>
-      </div>
-      <section>
-        <h1>Comments</h1>
-        <div id="disqus_thread"></div>
-        <script type="text/javascript">
-          //var disqus_developer = 1;
-          var disqus_identifier = "/leetcode/334";
-          var disqus_url = "https://blog.enzo.cc/leetcode/334";
-          var disqus_shortname = 'enzo-liu';
-          /* * * DON'T EDIT BELOW THIS LINE * * */
-          (function() {
-          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-          })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-      </section>
-      <script src="//code.jquery.com/jquery-latest.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
-      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-      <script src="/media/js/main.js"></script>
-      <div class="footer">
-        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
-        <p>
-          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
-          &nbsp;&nbsp;-&nbsp;&nbsp;
-          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
-          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
-        </p>
-      </div>
     </div>
+<footer class="footer">
+    <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+    <p>
+        Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
+        &nbsp;&nbsp;-&nbsp;&nbsp;
+        Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+        <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+    </p>
+</footer>
 
   </body>
 </html>

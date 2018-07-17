@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <title>写一个解释器 - enzo&#39;s note book</title>
+  <meta charset="utf-8" />
+  <meta name="author" content="刘恩泽" />
+  <meta name="description" content="iptables的防火墙配置" />
+  <meta name="keywords" content="lisp, interceptor" />
+
+  <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml">
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/posts.css" type="text/css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</head>
+
+  <body class="container">
+<header id="header">
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top" style="opacity: .9" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">enzo&#39;s note book</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                            <li class="active"><a href="/auto/">Auto</a></li>
+                            <li class="active"><a href="/blog/">Blog</a></li>
+                            <li class="active"><a href="/history/">History</a></li>
+                            <li class="active"><a href="/leetcode/">Leetcode</a></li>
+                            <li class="active"><a href="/prod/">Prod</a></li>
+                        <li><a href="/tags/">Tags</a></li>
+                        <li><a href="/about/">About</a></li>
+                        <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
+                        <li><a href="/rss.xml">RSS</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </body>
+</header>
+
+<section id="content" role="main">
+    <div id="outline-container-sec-" class="row" style="padding-top: 70px">
+        <div class="col-md-2"></div>
+            <h1>写一个解释器</h1>
+            <div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgf0620ea">1. 什么是解释器</a>
+<ul>
+<li><a href="#orga856944">1.1. 解释器</a></li>
+<li><a href="#orge6d28c5">1.2. 代码的意图</a></li>
+<li><a href="#org1c5afb5">1.3. <code>LISP</code></a></li>
+</ul>
+</li>
+<li><a href="#org57f2200">2. 如何下手</a>
+<ul>
+<li><a href="#orgfbab899">2.1. 步骤</a></li>
+<li><a href="#orgc7f493f">2.2. 结束</a></li>
+</ul>
+</li>
+<li><a href="#orgf161a85">3. 半小时版本</a>
+<ul>
+<li><a href="#org5f6be18">3.1. 核心逻辑</a></li>
+<li><a href="#orgd570981">3.2. 解析(1 min)</a></li>
+<li><a href="#org84b5e5f">3.3. 表达式类型</a></li>
+<li><a href="#org2cdf0b4">3.4. 原子表达式</a></li>
+<li><a href="#org7106a43">3.5. 特殊形式 <b>if</b></a></li>
+<li><a href="#org0fb78bd">3.6. 特殊形式 <b>define</b> 以及 <b>set!</b></a></li>
+<li><a href="#org6b4852f">3.7. 特殊形式 <b>quote</b></a></li>
+<li><a href="#org03dcb4f">3.8. 特殊形式 <b>lambda</b></a></li>
+<li><a href="#org721e3ec">3.9. 特殊形式 <b>begin</b></a></li>
+<li><a href="#orgcffec72">3.10. 函数调用</a></li>
+<li><a href="#org52b3000">3.11. 求值环境/上下文</a></li>
+</ul>
+</li>
+<li><a href="#org187c4d7">4. 实现一个解释器</a>
+<ul>
+<li><a href="#org5b87b95">4.1. 声明</a></li>
+<li><a href="#org00c5758">4.2. <code>eval</code> (dispatch)</a></li>
+<li><a href="#org5b29e33">4.3. <code>apply</code></a></li>
+<li><a href="#org031e4a6">4.4. <code>env</code> 求值上下文</a></li>
+<li><a href="#org85841b2">4.5. <code>eval-atom</code></a></li>
+<li><a href="#orgbdfb9d4">4.6. <code>eval-define</code> &amp; <code>eval-assign</code></a></li>
+<li><a href="#org5cb17b9">4.7. <code>eval-if</code></a></li>
+<li><a href="#orgfa4eb50">4.8. <code>eval-quote</code></a></li>
+<li><a href="#org85e82d0">4.9. <code>eval-lambda</code></a></li>
+<li><a href="#org88a75ac">4.10. <code>eval-begin</code></a></li>
+</ul>
+</li>
+<li><a href="#org0f9344a">5. 最后</a>
+<ul>
+<li><a href="#orga5f80f6">5.1. 几个题外话</a></li>
+<li><a href="#orge3f7aad">5.2. 参考文档</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf0620ea" class="outline-2">
+<h2 id="orgf0620ea"><span class="section-number-2">1</span> 什么是解释器</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-orga856944" class="outline-3">
+<h3 id="orga856944"><span class="section-number-3">1.1</span> 解释器</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li><code>同声传译</code></li>
+<li>一段能够理解并执行 <code>你的程序</code> 的 <code>程序</code>
+<ul class="org-ul">
+<li>理解你的代码所表示的意图</li>
+<li>执行你的意图</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge6d28c5" class="outline-3">
+<h3 id="orge6d28c5"><span class="section-number-3">1.2</span> 代码的意图</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li><p>
+赋值/定义
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">(setf a 1)
+(defun plus (a b) (+ a b))
+</pre>
+</div></li>
+
+<li><p>
+取值
+</p>
+
+<p>
+<code>a</code>
+</p></li>
+
+<li><p>
+执行
+</p>
+
+<p>
+<code>(plus 1 2)</code>
+</p></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1c5afb5" class="outline-3">
+<h3 id="org1c5afb5"><span class="section-number-3">1.3</span> <code>LISP</code></h3>
+<div class="outline-text-3" id="text-1-3">
+</div>
+<ol class="org-ol">
+<li><a id="orgea1c757"></a><code>语法(S Expression)</code><br />
+<div class="outline-text-4" id="text-1-3-1">
+<ul class="org-ul">
+<li>原子 <code>a</code>, <code>1</code>, <code>"hello world"</code></li>
+<li>表 <code>()</code>, <code>nil</code>, <code>(a 1 2)</code>, <code>(a . b)</code> , <code>(a . nil)</code>, <code>(a (b))</code></li>
+</ul>
+</div>
+</li>
+<li><a id="org69dab6c"></a><code>语义</code><br />
+<div class="outline-text-4" id="text-1-3-2">
+<dl class="org-dl">
+<dt>原子表达式</dt><dd>即 <code>a</code>, <code>1</code> 等原子，可直接求值或上下文中查找对应的值</dd>
+<dt>复合表达式</dt><dd>函数</dd>
+<dt>特殊形式</dt><dd>求值方式与函数不一致</dd>
+</dl>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org57f2200" class="outline-2">
+<h2 id="org57f2200"><span class="section-number-2">2</span> 如何下手</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-orgfbab899" class="outline-3">
+<h3 id="orgfbab899"><span class="section-number-3">2.1</span> 步骤&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span></h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+<b>Dragon book</b>, 中文名 <code>编译原理</code>
+</p>
+
+<div class="figure">
+<p><img src="/assets/blog/2017/09/24/lisp-interceptor/dragon.jpg" alt="dragon.jpg" />
+</p>
+</div>
+
+<p>
+<b>Tiger book</b>, 中文名 <code>现代编译原理-C 语言描述</code>
+</p>
+
+<div class="figure">
+<p><img src="/assets/blog/2017/09/24/lisp-interceptor/tiger.jpg" alt="tiger.jpg" />
+</p>
+</div>
+
+<p>
+<b>Whale book</b>, 中文名 <code>高级编译器设计与实现</code>
+</p>
+
+<div class="figure">
+<p><img src="/assets/blog/2017/09/24/lisp-interceptor/whale.jpg" alt="whale.jpg" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc7f493f" class="outline-3">
+<h3 id="orgc7f493f"><span class="section-number-3">2.2</span> 结束</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li>&lt;+-&gt; 好，分享结束，大家可以回去看书了.</li>
+<li>&lt;2-&gt; 预计一年后，应该可以成功写出来了。</li>
+<li>&lt;3&gt; 开个玩笑，我们继续. 看一个 <b>半小时就能写出来的版本</b> 。</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf161a85" class="outline-2">
+<h2 id="orgf161a85"><span class="section-number-2">3</span> 半小时版本</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org5f6be18" class="outline-3">
+<h3 id="org5f6be18"><span class="section-number-3">3.1</span> 核心逻辑</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li>parse -&gt; (eval<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> -&gt; apply<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup>) loop&#x2026;</li>
+</ul>
+
+<div class="figure">
+<p><img src="/assets/blog/2017/09/24/lisp-interceptor/eval-apply.png" alt="eval-apply.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd570981" class="outline-3">
+<h3 id="orgd570981"><span class="section-number-3">3.2</span> 解析(1 min)</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+这里我们就偷个懒，利用 <code>lisp</code> 的 <code>read-from-string</code> / <code>read</code> 方法
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">(read-from-string "(1 2 3)")
+;;; =&gt; (1 2 3)
+(read-from-string "1")
+;;; =&gt; 1
+(read-from-string "nil")
+ ;;; =&gt; NIL
+(read-from-string "(defun plus (a b ) (+ a b))")
+;;; =&gt; (DEFUN PLUS (A B) (+ A B))
+(read-from-string "(defun plus (a b)")
+;;; Exception
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org84b5e5f" class="outline-3">
+<h3 id="org84b5e5f"><span class="section-number-3">3.3</span> 表达式类型</h3>
+<div class="outline-text-3" id="text-3-3">
+<ul class="org-ul">
+<li>原子
+<ul class="org-ul">
+<li>常量 <b>1</b>, <b>"abc"</b></li>
+<li>变量 <b>a</b>, <b>test</b></li>
+</ul></li>
+<li>列表
+<ul class="org-ul">
+<li>quote <b>(quote (a b c))</b></li>
+<li>if <b>(if t 1 2)</b></li>
+<li>lambda <b>(lambda (a) (+ 1 a))</b></li>
+<li>define <b>(define a 1)</b></li>
+<li>assign <b>(set! a 2)</b></li>
+<li>begin <b>(begin (define b 1) (set! b 2))</b></li>
+<li>apply procedure <b>(plus 1 2)</b></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2cdf0b4" class="outline-3">
+<h3 id="org2cdf0b4"><span class="section-number-3">3.4</span> 原子表达式</h3>
+<div class="outline-text-3" id="text-3-4">
+</div>
+<ol class="org-ol">
+<li><a id="org2955875"></a>符号<br />
+<div class="outline-text-4" id="text-3-4-1">
+<blockquote>
+<p>
+<code>当遇到了一个符号的时候，从当前的上下文中去查找其对应的值，做替换</code>
+</p>
+</blockquote>
+
+<div class="org-src-container">
+<pre class="src src-lisp">a ;;; nil or unbound exception
+(set! a 1) ;;; =&gt; 1
+a ;;; =&gt; 1
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="org59bb78f"></a>常量<br />
+<div class="outline-text-4" id="text-3-4-2">
+<blockquote>
+<p>
+<code>常量表达式的值即为本身</code>
+</p>
+</blockquote>
+
+<div class="org-src-container">
+<pre class="src src-lisp">1 ;;; =&gt; 1
+"abc" ;;; "abc"
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-org7106a43" class="outline-3">
+<h3 id="org7106a43"><span class="section-number-3">3.5</span> 特殊形式 <b>if</b></h3>
+<div class="outline-text-3" id="text-3-5">
+<div class="org-src-container">
+<pre class="src src-lisp">(if predicate consuquence alternative)
+</pre>
+</div>
+
+<blockquote>
+<p>
+先求值 <code>predicate</code> , 如果符合，则求值 <code>consquence</code>, 反之，则求值 <code>alternative</code>
+</p>
+</blockquote>
+
+<p>
+特殊在于, <code>控制表内的求值顺序</code> 。
+</p>
+
+<p>
+并不会将表内表达式均求值，而是根据第一个元素的值，来决定后续如何进行求值。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0fb78bd" class="outline-3">
+<h3 id="org0fb78bd"><span class="section-number-3">3.6</span> 特殊形式 <b>define</b> 以及 <b>set!</b></h3>
+<div class="outline-text-3" id="text-3-6">
+<div class="org-src-container">
+<pre class="src src-lisp">(define variable value)
+(set! variable value)
+</pre>
+</div>
+
+<blockquote>
+<p>
+只求值 <code>value</code>, 并将求值后的结果赋值给 <code>variable</code><sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup>
+</p>
+</blockquote>
+
+<p>
+特殊在于, <code>控制表内的求值顺序</code> 以及 <code>修改上下文</code>
+</p>
+
+<p>
+不对 <code>variable</code> 求值，仅求值 <code>value</code>, 而后修改上下文。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6b4852f" class="outline-3">
+<h3 id="org6b4852f"><span class="section-number-3">3.7</span> 特殊形式 <b>quote</b></h3>
+<div class="outline-text-3" id="text-3-7">
+<div class="org-src-container">
+<pre class="src src-lisp">(quote (a b c))
+</pre>
+</div>
+
+<blockquote>
+<p>
+返回其引用的表达式
+</p>
+</blockquote>
+
+<p>
+syntactic sugar: <code>'(a b c)</code>
+</p>
+
+<p>
+特殊在于, <code>控制表内的求值顺序</code> 。
+</p>
+
+<p>
+不对表达式内求值，仅返回其引用的表达式。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org03dcb4f" class="outline-3">
+<h3 id="org03dcb4f"><span class="section-number-3">3.8</span> 特殊形式 <b>lambda</b></h3>
+<div class="outline-text-3" id="text-3-8">
+<div class="org-src-container">
+<pre class="src src-lisp">(lambda (a) (+ 1 a))
+</pre>
+</div>
+
+<blockquote>
+<p>
+生成一个 <code>procedure</code>, 包含 <b>形式参数</b> 列表，以及 <b>待执行的表达式</b> 列表。
+</p>
+</blockquote>
+
+<p>
+特殊同样在于, <code>控制表内的求值顺序</code> 。
+</p>
+
+<p>
+只将待执行的表达式记录下来，留待需要时使用。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org721e3ec" class="outline-3">
+<h3 id="org721e3ec"><span class="section-number-3">3.9</span> 特殊形式 <b>begin</b></h3>
+<div class="outline-text-3" id="text-3-9">
+<div class="org-src-container">
+<pre class="src src-lisp">(begin
+ (define a 3)
+ (set! a 1)
+ (+ a 2))
+</pre>
+</div>
+
+<blockquote>
+<p>
+依次执行表达式序列
+</p>
+</blockquote>
+
+<p>
+特殊在于, <code>控制表内的求值顺序</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgcffec72" class="outline-3">
+<h3 id="orgcffec72"><span class="section-number-3">3.10</span> 函数调用</h3>
+<div class="outline-text-3" id="text-3-10">
+<div class="org-src-container">
+<pre class="src src-lisp">(define plus (lambda (a) (+ 1 a)))
+(plus 2) ;;; 3
+</pre>
+</div>
+
+<blockquote>
+<ol class="org-ol">
+<li>求值操作符</li>
+<li>求值操作数</li>
+<li>系统方法，则直接调用下层的 apply</li>
+<li>自定义的方法
+<ol class="org-ol">
+<li>把形参对应的值添加到上下文中, 生成新的上下文</li>
+<li>在新的上下文中，求值表达式列表</li>
+</ol></li>
+</ol>
+</blockquote>
+
+<p>
+函数定义
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">;;; env =&gt; ((+) (&lt;primitive +&gt;))
+(define plus1 (lambda (a) (+ 1 a)))
+;;; env =&gt;
+;;;       ( (+ plus1)
+;;;         (&lt;primitive +&gt; &lt;procedure object&gt;) )
+
+(plus1 2)
+</pre>
+</div>
+
+<p>
+执行过程
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">(eval 'plus1 env) ;;; &lt;procedure object&gt;
+(eval 2) ;;; 2
+(extend (a) (2) env)
+;;; env' =&gt; ( (+ plus1 a)
+;;;           (&lt;primitive +&gt; &lt;procedure object&gt; 2))
+
+(eval '(+ 1 a) env')
+(eval a env') ;;; 2
+(apply-primitive '+ (1 2)) ;;; 3
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org52b3000" class="outline-3">
+<h3 id="org52b3000"><span class="section-number-3">3.11</span> 求值环境/上下文</h3>
+<div class="outline-text-3" id="text-3-11">
+
+<div class="figure">
+<p><img src="/assets/blog/2017/09/24/lisp-interceptor/context.png" alt="context.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org187c4d7" class="outline-2">
+<h2 id="org187c4d7"><span class="section-number-2">4</span> 实现一个解释器</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org5b87b95" class="outline-3">
+<h3 id="org5b87b95"><span class="section-number-3">4.1</span> 声明</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+源代码来自 SICP 第 4 章，链接见附录。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org00c5758" class="outline-3">
+<h3 id="org00c5758"><span class="section-number-3">4.2</span> <code>eval</code> (dispatch)</h3>
+<div class="outline-text-3" id="text-4-2">
+<div class="org-src-container">
+<pre class="src src-lisp">(define (eval exp env)
+  (cond ((self-evaluating? exp) exp)
+        ((variable? exp) (lookup-variable-value exp env))
+        ((quoted? exp) (text-of-quotation exp))
+        ((assignment? exp) (eval-assignment exp env))
+        ((definition? exp) (eval-definition exp env))
+        ((if? exp) (eval-if exp env))
+        ((lambda? exp)
+         (make-procedure (lambda-parameters exp)
+                         (lambda-body exp)
+                         env))
+        ((begin? exp)
+         (eval-sequence (begin-actions exp) env))
+        ((application? exp)
+         (apply (eval (operator exp) env)
+                (list-of-values (operands exp) env)))
+        (else
+         (error "Unknown expression type -- EVAL" exp))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org5b29e33" class="outline-3">
+<h3 id="org5b29e33"><span class="section-number-3">4.3</span> <code>apply</code></h3>
+<div class="outline-text-3" id="text-4-3">
+<div class="org-src-container">
+<pre class="src src-lisp">(define (apply procedure arguments)
+  (cond ((primitive-procedure? procedure)
+         (apply-primitive-procedure procedure arguments))
+        ((compound-procedure? procedure)
+         (eval-sequence
+           (procedure-body procedure)
+           (extend-environment
+             (procedure-parameters procedure)
+             arguments
+             (procedure-environment procedure))))
+        (else
+         (error
+          "Unknown procedure type -- APPLY" procedure))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org031e4a6" class="outline-3">
+<h3 id="org031e4a6"><span class="section-number-3">4.4</span> <code>env</code> 求值上下文</h3>
+<div class="outline-text-3" id="text-4-4">
+<div class="org-src-container">
+<pre class="src src-lisp">(define (enclosing-environment env) (cdr env))
+(define (first-frame env) (car env))
+(define the-empty-environment '())
+
+(define (make-frame variables values)
+  (cons variables values))
+(define (frame-variables frame) (car frame))
+(define (frame-values frame) (cdr frame))
+(define (add-binding-to-frame! var val frame)
+  (set-car! frame (cons var (car frame)))
+  (set-cdr! frame (cons val (cdr frame))))
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-lisp">(define (extend-environment vars vals base-env)
+  (if (= (length vars) (length vals))
+      (cons (make-frame vars vals) base-env)
+      (if (&lt; (length vars) (length vals))
+          (error "Too many arguments supplied" vars vals)
+          (error "Too few arguments supplied" vars vals))))
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org85841b2" class="outline-3">
+<h3 id="org85841b2"><span class="section-number-3">4.5</span> <code>eval-atom</code></h3>
+<div class="outline-text-3" id="text-4-5">
+<div class="org-src-container">
+<pre class="src src-lisp">(define (self-evaluating? exp)
+  (cond ((number? exp) true)
+        ((string? exp) true)
+        (else false)))
+
+(define (variable? exp) (symbol? exp))
+
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-lisp">(define (lookup-variable-value var env)
+  (define (env-loop env)
+    (define (scan vars vals)
+      (cond ((null? vars)
+             (env-loop (enclosing-environment env)))
+            ((eq? var (car vars))
+             (car vals))
+            (else (scan (cdr vars) (cdr vals)))))
+    (if (eq? env the-empty-environment)
+        (error "Unbound variable" var)
+        (let ((frame (first-frame env)))
+          (scan (frame-variables frame)
+                (frame-values frame)))))
+  (env-loop env))
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgbdfb9d4" class="outline-3">
+<h3 id="orgbdfb9d4"><span class="section-number-3">4.6</span> <code>eval-define</code> &amp; <code>eval-assign</code></h3>
+<div class="outline-text-3" id="text-4-6">
+<div class="org-src-container">
+<pre class="src src-lisp">(define (eval-assignment exp env)
+  (set-variable-value!
+     (assignment-variable exp)
+     (eval (assignment-value exp) env)
+     env)
+  'ok)
+
+(define (eval-definition exp env)
+    (define-variable!
+        (definition-variable exp)
+        (eval (definition-value exp) env)
+      env)
+  'ok)
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-lisp">(define (define-variable! var val env)
+  (let ((frame (first-frame env)))
+    (define (scan vars vals)
+      (cond ((null? vars)
+             (add-binding-to-frame! var val frame))
+            ((eq? var (car vars))
+             (set-car! vals val))
+            (else (scan (cdr vars) (cdr vals)))))
+    (scan (frame-variables frame)
+          (frame-values frame))))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5cb17b9" class="outline-3">
+<h3 id="org5cb17b9"><span class="section-number-3">4.7</span> <code>eval-if</code></h3>
+<div class="outline-text-3" id="text-4-7">
+<div class="org-src-container">
+<pre class="src src-lisp">(define (eval-if exp env)
+  (if (true? (eval (if-predicate exp) env))
+      (eval (if-consequent exp) env)
+      (eval (if-alternative exp) env)))
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfa4eb50" class="outline-3">
+<h3 id="orgfa4eb50"><span class="section-number-3">4.8</span> <code>eval-quote</code></h3>
+<div class="outline-text-3" id="text-4-8">
+<div class="org-src-container">
+<pre class="src src-lisp">(define (quoted? exp)
+  (tagged-list? exp 'quote))
+
+(define (text-of-quotation exp) (cadr exp))
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org85e82d0" class="outline-3">
+<h3 id="org85e82d0"><span class="section-number-3">4.9</span> <code>eval-lambda</code></h3>
+<div class="outline-text-3" id="text-4-9">
+<div class="org-src-container">
+<pre class="src src-lisp">(define (make-procedure parameters body env)
+  (list 'procedure parameters body env))
+(define (compound-procedure? p)
+  (tagged-list? p 'procedure))
+(define (procedure-parameters p) (cadr p))
+(define (procedure-body p) (caddr p))
+(define (procedure-environment p) (cadddr p))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org88a75ac" class="outline-3">
+<h3 id="org88a75ac"><span class="section-number-3">4.10</span> <code>eval-begin</code></h3>
+<div class="outline-text-3" id="text-4-10">
+<div class="org-src-container">
+<pre class="src src-lisp">(define (eval-sequence exps env)
+  (cond ((last-exp? exps) (eval (first-exp exps) env))
+        (else (eval (first-exp exps) env)
+              (eval-sequence (rest-exps exps) env))))
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0f9344a" class="outline-2">
+<h2 id="org0f9344a"><span class="section-number-2">5</span> 最后</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-orga5f80f6" class="outline-3">
+<h3 id="orga5f80f6"><span class="section-number-3">5.1</span> 几个题外话</h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li>如果没有 assign, 会不会简单很多</li>
+<li>如果使用 lazy 的求值, 而不是应用时求值，是否很多特殊形式就没有必要了</li>
+<li>如果增加一个 <code>case</code> 的关键字</li>
+<li>如果做语法分析</li>
+<li>如果要编译成 c</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge3f7aad" class="outline-3">
+<h3 id="orge3f7aad"><span class="section-number-3">5.2</span> 参考文档</h3>
+<div class="outline-text-3" id="text-5-2">
+<ul class="org-ul">
+<li><a href="http://norvig.com/lispy.html">(How to Write a (Lisp) Interpreter (in Python))</a></li>
+<li><a href="http://norvig.com/lispy2.html">(An ((Even Better) Lisp) Interpreter (in Python))</a></li>
+<li><a href="https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-26.html#%_sec_4.1">SICP Charpter 4: The Metacircular Evaluator</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara">处理表达式</div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara">处理值</div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3">3</a></sup> <div class="footpara">赋值表示在上下文中添加 (install) 这个符号以及这个符号对应的值.</div></div>
+
+
+</div>
+</div>
+    </div>
+</section>
+
+
+    <div class="post-meta">
+        <span title="post date" class="post-info">2017-09-24</span>
+        <span title="last modification date" class="post-info">2017-09-29</span>
+        <span title="tags" class="post-info"><a href="/tags/lisp/">lisp</a>, <a href="/tags/interceptor/">interceptor</a></span>
+        <span title="author" class="post-info">刘恩泽</span>
+    </div>
+<footer class="footer">
+    <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+    <p>
+        Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">刘恩泽</a>
+        &nbsp;&nbsp;-&nbsp;&nbsp;
+        Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+        <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+    </p>
+</footer>
+
+  </body>
+</html>

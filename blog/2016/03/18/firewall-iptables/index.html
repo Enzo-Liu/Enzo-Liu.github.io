@@ -1,39 +1,57 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <title>防火墙！防火墙！ - enzo&#39;s note book</title>
-    <meta charset="utf-8" />
-    <meta name="author" content="enzo liu" />
-    <meta name="description" content="iptables的防火墙配置" />
-    <meta name="keywords" content="iptables, firewall, linux, tcp" />
-    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
-    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
-  </head>
-  <body class="container">
-    <div>
-      <header class="masthead">
-        <h1 class="masthead-title"><a href="/">enzo&#39;s note book</a></h1>
-        <p>M-x (sketch for random ideas)</p>
-        <ul>
-          <li><a href="/blog/">Blog</a></li>
-          <li><a href="/history/">History</a></li>
-          <li><a href="/leetcode/">Leetcode</a></li>
-          <li><a href="/tags/">Tags</a></li>
-          <li><a href="/about/">About</a></li>
-          <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
-          <li><a href="/rss.xml">RSS</a></li>
-        </ul>
-        <form method="get" id="searchform" action="//www.google.com/search">
-          <input type="text" class="field" name="q" id="s" placeholder="Search">
-          <input type="hidden" name="as_sitesearch" value="blog.enzo.cc">
-        </form>
-      </header>
-    </div>
+<head>
+  <title>防火墙！防火墙！ - enzo&#39;s note book</title>
+  <meta charset="utf-8" />
+  <meta name="author" content="enzo liu" />
+  <meta name="description" content="iptables的防火墙配置" />
+  <meta name="keywords" content="iptables, firewall, linux, tcp" />
 
-<div>
-<div class="post">
-<h1>防火墙！防火墙！</h1>
-<p>
+  <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml">
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/posts.css" type="text/css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</head>
+
+  <body class="container">
+<header id="header">
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top" style="opacity: .9" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">enzo&#39;s note book</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                            <li class="active"><a href="/auto/">Auto</a></li>
+                            <li class="active"><a href="/blog/">Blog</a></li>
+                            <li class="active"><a href="/history/">History</a></li>
+                            <li class="active"><a href="/leetcode/">Leetcode</a></li>
+                            <li class="active"><a href="/prod/">Prod</a></li>
+                        <li><a href="/tags/">Tags</a></li>
+                        <li><a href="/about/">About</a></li>
+                        <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
+                        <li><a href="/rss.xml">RSS</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </body>
+</header>
+
+<section id="content" role="main">
+    <div id="outline-container-sec-" class="row" style="padding-top: 70px">
+        <div class="col-md-2"></div>
+            <h1>防火墙！防火墙！</h1>
+            <p>
 长话短说，发现了一堆扫描和嗅探，所以需要一定的防御。
 </p>
 
@@ -45,9 +63,9 @@
 攻击都是来自于外网，所以希望能够关闭外网的入网访问，但是保留对于外网的访问权限。
 </p>
 
-<div id="outline-container-orgfa34f3a" class="outline-2">
-<h2 id="orgfa34f3a">目标</h2>
-<div class="outline-text-2" id="text-orgfa34f3a">
+<div id="outline-container-orgf4fe505" class="outline-2">
+<h2 id="orgf4fe505">目标</h2>
+<div class="outline-text-2" id="text-orgf4fe505">
 <ol class="org-ol">
 <li>关闭大部分机器的外网入网流量</li>
 <li>跳板机仅开放ssh访问</li>
@@ -58,9 +76,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgc0b6275" class="outline-2">
-<h2 id="orgc0b6275">方案</h2>
-<div class="outline-text-2" id="text-orgc0b6275">
+<div id="outline-container-org25d9dab" class="outline-2">
+<h2 id="org25d9dab">方案</h2>
+<div class="outline-text-2" id="text-org25d9dab">
 <p>
 前段时间玩了会 <a href="https://github.com/RMerl/asuswrt-merlin"><code>merlin固件</code></a>, 使用的是<a href="https://github.com/koolshare">国内修饰过的版本</a>， 加了一些 `安全上网`, `离线下载`等功能。看了一下里面对于路由规则的实现，基本都是基于 `iptables` 来完成。比如内网转外网，阻止外网请求，对指定网卡开放指定端口。对于指定ip的请求走不同的端口等。
 </p>
@@ -71,12 +89,13 @@
 </div>
 </div>
 
-<div id="outline-container-orge22cbec" class="outline-2">
-<h2 id="orge22cbec">实施</h2>
-<div class="outline-text-2" id="text-orge22cbec">
-</div><div id="outline-container-org33d0414" class="outline-3">
-<h3 id="org33d0414">简介</h3>
-<div class="outline-text-3" id="text-org33d0414">
+<div id="outline-container-org8dc6fa0" class="outline-2">
+<h2 id="org8dc6fa0">实施</h2>
+<div class="outline-text-2" id="text-org8dc6fa0">
+</div>
+<div id="outline-container-orgb2fed74" class="outline-3">
+<h3 id="orgb2fed74">简介</h3>
+<div class="outline-text-3" id="text-orgb2fed74">
 <p>
 由于只是配置防火墙，了解下面的简单用法就基本足够了。
 </p>
@@ -92,9 +111,9 @@ PS: iptables的规则先后顺序很重要!
 </dl>
 </div>
 
-<div id="outline-container-org72292ee" class="outline-4">
-<h4 id="org72292ee">匹配的规则</h4>
-<div class="outline-text-4" id="text-org72292ee">
+<div id="outline-container-org369b43b" class="outline-4">
+<h4 id="org369b43b">匹配的规则</h4>
+<div class="outline-text-4" id="text-org369b43b">
 <dl class="org-dl">
 <dt>-i &lt;eth0&gt;</dt><dd>指定网卡</dd>
 <dt>-s &lt;ip&gt;</dt><dd>指定来源ip</dd>
@@ -105,9 +124,9 @@ PS: iptables的规则先后顺序很重要!
 </div>
 
 
-<div id="outline-container-orga014c70" class="outline-3">
-<h3 id="orga014c70">仅阻止外网的流入请求</h3>
-<div class="outline-text-3" id="text-orga014c70">
+<div id="outline-container-org3db0597" class="outline-3">
+<h3 id="org3db0597">仅阻止外网的流入请求</h3>
+<div class="outline-text-3" id="text-org3db0597">
 <ul class="org-ul">
 <li><p>
 不接受外网的tcp握手请求
@@ -134,9 +153,9 @@ PS: iptables的规则先后顺序很重要!
 </div>
 </div>
 
-<div id="outline-container-org31d75f6" class="outline-3">
-<h3 id="org31d75f6">保留跳板机ssh的端口</h3>
-<div class="outline-text-3" id="text-org31d75f6">
+<div id="outline-container-org05057b1" class="outline-3">
+<h3 id="org05057b1">保留跳板机ssh的端口</h3>
+<div class="outline-text-3" id="text-org05057b1">
 <div class="org-src-container">
 <pre class="src src-sh">iptables -A INPUT -i &lt;eth&gt; -p tcp -m multiport --dports ssh -j ACCEPT
 </pre>
@@ -144,9 +163,9 @@ PS: iptables的规则先后顺序很重要!
 </div>
 </div>
 
-<div id="outline-container-org27dbe11" class="outline-3">
-<h3 id="org27dbe11">不响应ping</h3>
-<div class="outline-text-3" id="text-org27dbe11">
+<div id="outline-container-orgfe08c2e" class="outline-3">
+<h3 id="orgfe08c2e">不响应ping</h3>
+<div class="outline-text-3" id="text-orgfe08c2e">
 <div class="org-src-container">
 <pre class="src src-sh">iptables -A INPUT -i &lt;eth&gt; -p icmp --icmp-type echo-request -j DROP
 </pre>
@@ -154,9 +173,9 @@ PS: iptables的规则先后顺序很重要!
 </div>
 </div>
 
-<div id="outline-container-org0c776ef" class="outline-3">
-<h3 id="org0c776ef">允许指定&lt;ip&gt;的tcp流量</h3>
-<div class="outline-text-3" id="text-org0c776ef">
+<div id="outline-container-orged366ce" class="outline-3">
+<h3 id="orged366ce">允许指定&lt;ip&gt;的tcp流量</h3>
+<div class="outline-text-3" id="text-orged366ce">
 <div class="org-src-container">
 <pre class="src src-sh">iptables -A INPUT -i &lt;eth&gt; -p tcp -s &lt;ip&gt; -j ACCEPT
 </pre>
@@ -165,12 +184,13 @@ PS: iptables的规则先后顺序很重要!
 </div>
 </div>
 
-<div id="outline-container-orgfbde757" class="outline-2">
-<h2 id="orgfbde757">最终脚本</h2>
-<div class="outline-text-2" id="text-orgfbde757">
-</div><div id="outline-container-org22437da" class="outline-3">
-<h3 id="org22437da">跳板机器</h3>
-<div class="outline-text-3" id="text-org22437da">
+<div id="outline-container-org02d0366" class="outline-2">
+<h2 id="org02d0366">最终脚本</h2>
+<div class="outline-text-2" id="text-org02d0366">
+</div>
+<div id="outline-container-orgeeebee0" class="outline-3">
+<h3 id="orgeeebee0">跳板机器</h3>
+<div class="outline-text-3" id="text-orgeeebee0">
 <div class="org-src-container">
 <pre class="src src-sh">iptables -A INPUT -i &lt;eth&gt; -p tcp -m multiport --dports ssh -j ACCEPT
 iptables -A INPUT -i &lt;eth&gt; -p tcp -s &lt;ip&gt; -j ACCEPT
@@ -182,9 +202,9 @@ iptables -A INPUT -i &lt;eth&gt; -p icmp --icmp-type echo-request -j DROP
 </div>
 </div>
 
-<div id="outline-container-org87d9c59" class="outline-3">
-<h3 id="org87d9c59">内部机器</h3>
-<div class="outline-text-3" id="text-org87d9c59">
+<div id="outline-container-orgef63df5" class="outline-3">
+<h3 id="orgef63df5">内部机器</h3>
+<div class="outline-text-3" id="text-orgef63df5">
 <div class="org-src-container">
 <pre class="src src-sh">iptables -A INPUT -i &lt;eth&gt; -p tcp --syn -j DROP
 iptables -A INPUT -i &lt;eth&gt; -p udp -j DROP
@@ -195,47 +215,25 @@ iptables -A INPUT -i &lt;eth&gt; -p icmp --icmp-type echo-request -j DROP
 </div>
 </div>
 
-</div>
-</div>
-    <div>
-      <div class="post-meta">
+    </div>
+</section>
+
+
+    <div class="post-meta">
         <span title="post date" class="post-info">2016-03-18</span>
         <span title="last modification date" class="post-info">2016-03-18</span>
         <span title="tags" class="post-info"><a href="/tags/linux/">linux</a>, <a href="/tags/firewall/">firewall</a>, <a href="/tags/iptables/">iptables</a></span>
         <span title="author" class="post-info">enzo liu</span>
-      </div>
-      <section>
-        <h1>Comments</h1>
-        <div id="disqus_thread"></div>
-        <script type="text/javascript">
-          //var disqus_developer = 1;
-          var disqus_identifier = "/blog/2016/03/18/firewall-iptables";
-          var disqus_url = "https://blog.enzo.cc/blog/2016/03/18/firewall-iptables";
-          var disqus_shortname = 'enzo-liu';
-          /* * * DON'T EDIT BELOW THIS LINE * * */
-          (function() {
-          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-          })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-      </section>
-      <script src="//code.jquery.com/jquery-latest.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
-      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-      <script src="/media/js/main.js"></script>
-      <div class="footer">
-        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
-        <p>
-          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
-          &nbsp;&nbsp;-&nbsp;&nbsp;
-          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
-          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
-        </p>
-      </div>
     </div>
+<footer class="footer">
+    <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+    <p>
+        Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
+        &nbsp;&nbsp;-&nbsp;&nbsp;
+        Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+        <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+    </p>
+</footer>
 
   </body>
 </html>

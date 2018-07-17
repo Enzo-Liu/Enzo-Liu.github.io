@@ -1,40 +1,58 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <title>&lt;改变未来的算法&gt; 笔记 - enzo&#39;s note book</title>
-    <meta charset="utf-8" />
-    <meta name="author" content="enzo liu" />
-    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
-    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
-  </head>
+<head>
+  <title>&lt;改变未来的算法&gt; 笔记 - enzo&#39;s note book</title>
+  <meta charset="utf-8" />
+  <meta name="author" content="enzo liu" />
+
+  <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml">
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/posts.css" type="text/css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</head>
+
   <body class="container">
-    <div>
-      <header class="masthead">
-        <h1 class="masthead-title"><a href="/">enzo&#39;s note book</a></h1>
-        <p>M-x (sketch for random ideas)</p>
-        <ul>
-          <li><a href="/blog/">Blog</a></li>
-          <li><a href="/history/">History</a></li>
-          <li><a href="/leetcode/">Leetcode</a></li>
-          <li><a href="/tags/">Tags</a></li>
-          <li><a href="/about/">About</a></li>
-          <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
-          <li><a href="/rss.xml">RSS</a></li>
-        </ul>
-        <form method="get" id="searchform" action="//www.google.com/search">
-          <input type="text" class="field" name="q" id="s" placeholder="Search">
-          <input type="hidden" name="as_sitesearch" value="blog.enzo.cc">
-        </form>
-      </header>
-    </div>
+<header id="header">
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top" style="opacity: .9" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">enzo&#39;s note book</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                            <li class="active"><a href="/auto/">Auto</a></li>
+                            <li class="active"><a href="/blog/">Blog</a></li>
+                            <li class="active"><a href="/history/">History</a></li>
+                            <li class="active"><a href="/leetcode/">Leetcode</a></li>
+                            <li class="active"><a href="/prod/">Prod</a></li>
+                        <li><a href="/tags/">Tags</a></li>
+                        <li><a href="/about/">About</a></li>
+                        <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
+                        <li><a href="/rss.xml">RSS</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </body>
+</header>
 
-<div>
-<div class="post">
-<h1>&lt;改变未来的算法&gt; 笔记</h1>
-
-<div id="outline-container-orgb5d41fe" class="outline-2">
-<h2 id="orgb5d41fe">搜索引擎</h2>
-<div class="outline-text-2" id="text-orgb5d41fe">
+<section id="content" role="main">
+    <div id="outline-container-sec-" class="row" style="padding-top: 70px">
+        <div class="col-md-2"></div>
+            <h1>&lt;改变未来的算法&gt; 笔记</h1>
+            
+<div id="outline-container-orgf590905" class="outline-2">
+<h2 id="orgf590905">搜索引擎</h2>
+<div class="outline-text-2" id="text-orgf590905">
 <blockquote>
 <p>
 简要的说，一次搜索包含了: 匹配，排名。
@@ -42,9 +60,9 @@
 </blockquote>
 </div>
 
-<div id="outline-container-orge73cad4" class="outline-3">
-<h3 id="orge73cad4">匹配</h3>
-<div class="outline-text-3" id="text-orge73cad4">
+<div id="outline-container-org56d0010" class="outline-3">
+<h3 id="org56d0010">匹配</h3>
+<div class="outline-text-3" id="text-org56d0010">
 <p>
 这里的主要概念就是索引。（想象一下字典） 首先需要知道词出现在哪里
 </p>
@@ -72,12 +90,13 @@
 </div>
 </div>
 
-<div id="outline-container-orgf9e820d" class="outline-2">
-<h2 id="orgf9e820d">PageRank</h2>
-<div class="outline-text-2" id="text-orgf9e820d">
-</div><div id="outline-container-orgfa49cf8" class="outline-3">
-<h3 id="orgfa49cf8">排名</h3>
-<div class="outline-text-3" id="text-orgfa49cf8">
+<div id="outline-container-org628d782" class="outline-2">
+<h2 id="org628d782">PageRank</h2>
+<div class="outline-text-2" id="text-org628d782">
+</div>
+<div id="outline-container-orgb8974a9" class="outline-3">
+<h3 id="orgb8974a9">排名</h3>
+<div class="outline-text-3" id="text-orgb8974a9">
 <p>
 匹配完成后，还有一个重要的事情就是排名，找到最接近查找的内容。但是同样一个词，计算机如何去理解什么是最接近的?
 可选的办法就是：*权重，计分*
@@ -120,9 +139,9 @@
 </div>
 </div>
 
-<div id="outline-container-org437d5dc" class="outline-2">
-<h2 id="org437d5dc">公钥加密</h2>
-<div class="outline-text-2" id="text-org437d5dc">
+<div id="outline-container-orgd8e4d55" class="outline-2">
+<h2 id="orgd8e4d55">公钥加密</h2>
+<div class="outline-text-2" id="text-orgd8e4d55">
 <p>
 当信息交换双方协商好一种加密密钥（类似加密字典）,简单的加密也就可以进行了。下面探讨的主要是，如何公共的协商出一种密钥。
 </p>
@@ -161,9 +180,9 @@ p * p1 = r1; p * p2 = r2; key = r1 * p2 = r2 * p1
 </div>
 </div>
 
-<div id="outline-container-orge1b6cf9" class="outline-2">
-<h2 id="orge1b6cf9">纠错码</h2>
-<div class="outline-text-2" id="text-orge1b6cf9">
+<div id="outline-container-org3318886" class="outline-2">
+<h2 id="org3318886">纠错码</h2>
+<div class="outline-text-2" id="text-org3318886">
 <p>
 本质而言，我理解，就是冗余信息进行容错。
 </p>
@@ -176,9 +195,9 @@ p * p1 = r1; p * p2 = r2; key = r1 * p2 = r2 * p1
 </div>
 </div>
 
-<div id="outline-container-org47704d2" class="outline-2">
-<h2 id="org47704d2">图形识别</h2>
-<div class="outline-text-2" id="text-org47704d2">
+<div id="outline-container-org443ec1c" class="outline-2">
+<h2 id="org443ec1c">图形识别</h2>
+<div class="outline-text-2" id="text-org443ec1c">
 <p>
 主要模式就是 1. 训练 2. 分类
 </p>
@@ -194,17 +213,17 @@ p * p1 = r1; p * p2 = r2; key = r1 * p2 = r2 * p1
 </div>
 </div>
 
-<div id="outline-container-org6fd333b" class="outline-2">
-<h2 id="org6fd333b">数据压缩</h2>
-<div class="outline-text-2" id="text-org6fd333b">
+<div id="outline-container-org0ae6016" class="outline-2">
+<h2 id="org0ae6016">数据压缩</h2>
+<div class="outline-text-2" id="text-org0ae6016">
 <p>
 本质上就是查找重复模式
 </p>
 </div>
 
-<div id="outline-container-orgb389835" class="outline-3">
-<h3 id="orgb389835">无损压缩</h3>
-<div class="outline-text-3" id="text-orgb389835">
+<div id="outline-container-orgdedc8a4" class="outline-3">
+<h3 id="orgdedc8a4">无损压缩</h3>
+<div class="outline-text-3" id="text-orgdedc8a4">
 <ol class="org-ol">
 <li>同前</li>
 <li>根据词频进行更短符号</li>
@@ -213,9 +232,9 @@ p * p1 = r1; p * p2 = r2; key = r1 * p2 = r2 * p1
 </div>
 </div>
 
-<div id="outline-container-org981bcbe" class="outline-3">
-<h3 id="org981bcbe">有损压缩</h3>
-<div class="outline-text-3" id="text-org981bcbe">
+<div id="outline-container-org4bb3496" class="outline-3">
+<h3 id="org4bb3496">有损压缩</h3>
+<div class="outline-text-3" id="text-org4bb3496">
 <ol class="org-ol">
 <li>图片（隔行列删除像素信息）</li>
 <li>JPEG（像素块内寻找模式-比如分成8*8的块状信息体）</li>
@@ -224,9 +243,9 @@ p * p1 = r1; p * p2 = r2; key = r1 * p2 = r2 * p1
 </div>
 </div>
 
-<div id="outline-container-org4934e26" class="outline-2">
-<h2 id="org4934e26">数据库</h2>
-<div class="outline-text-2" id="text-org4934e26">
+<div id="outline-container-org43774ed" class="outline-2">
+<h2 id="org43774ed">数据库</h2>
+<div class="outline-text-2" id="text-org43774ed">
 <ol class="org-ol">
 <li>事物 作为待办事项，写redo-log，保证操作幂等。</li>
 <li>复制提交</li>
@@ -237,18 +256,18 @@ p * p1 = r1; p * p2 = r2; key = r1 * p2 = r2 * p1
 </div>
 </div>
 
-<div id="outline-container-orge27c62a" class="outline-2">
-<h2 id="orge27c62a">数字签名</h2>
-<div class="outline-text-2" id="text-orge27c62a">
+<div id="outline-container-org2c9f77b" class="outline-2">
+<h2 id="org2c9f77b">数字签名</h2>
+<div class="outline-text-2" id="text-org2c9f77b">
 <p>
 TODO 再仔细看一看
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgf6792fc" class="outline-2">
-<h2 id="orgf6792fc">不可判定问题</h2>
-<div class="outline-text-2" id="text-orgf6792fc">
+<div id="outline-container-org9795c7f" class="outline-2">
+<h2 id="org9795c7f">不可判定问题</h2>
+<div class="outline-text-2" id="text-org9795c7f">
 <p>
 构造冲突的命题
 </p>
@@ -272,47 +291,25 @@ canCrash&#x2014;&gt;canCrashWired&#x2014;&gt;crashOnSelf&#x2014;&gt;antiCrashOnS
 </div>
 </div>
 
-</div>
-</div>
-    <div>
-      <div class="post-meta">
+    </div>
+</section>
+
+
+    <div class="post-meta">
         <span title="post date" class="post-info">2014-09-07</span>
         <span title="last modification date" class="post-info">2016-02-03</span>
         <span title="tags" class="post-info"><a href="/tags/reading_note/">reading_note</a></span>
         <span title="author" class="post-info">enzo liu</span>
-      </div>
-      <section>
-        <h1>Comments</h1>
-        <div id="disqus_thread"></div>
-        <script type="text/javascript">
-          //var disqus_developer = 1;
-          var disqus_identifier = "/blog/2014/09/07/&lt;改变未来的算法&gt;-笔记/";
-          var disqus_url = "https://blog.enzo.cc/blog/2014/09/07/&lt;改变未来的算法&gt;-笔记/";
-          var disqus_shortname = 'enzo-liu';
-          /* * * DON'T EDIT BELOW THIS LINE * * */
-          (function() {
-          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-          })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-      </section>
-      <script src="//code.jquery.com/jquery-latest.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
-      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-      <script src="/media/js/main.js"></script>
-      <div class="footer">
-        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
-        <p>
-          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
-          &nbsp;&nbsp;-&nbsp;&nbsp;
-          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
-          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
-        </p>
-      </div>
     </div>
+<footer class="footer">
+    <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+    <p>
+        Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
+        &nbsp;&nbsp;-&nbsp;&nbsp;
+        Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+        <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+    </p>
+</footer>
 
   </body>
 </html>

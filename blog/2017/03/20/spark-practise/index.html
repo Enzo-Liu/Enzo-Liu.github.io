@@ -1,42 +1,60 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <title>Spark 入门实操 - enzo&#39;s note book</title>
-    <meta charset="utf-8" />
-    <meta name="author" content="enzo liu" />
-    <meta name="description" content="spark" />
-    <meta name="keywords" content="spark" />
-    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
-    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
-  </head>
+<head>
+  <title>Spark 入门实操 - enzo&#39;s note book</title>
+  <meta charset="utf-8" />
+  <meta name="author" content="enzo liu" />
+  <meta name="description" content="spark" />
+  <meta name="keywords" content="spark" />
+
+  <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml">
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/posts.css" type="text/css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</head>
+
   <body class="container">
-    <div>
-      <header class="masthead">
-        <h1 class="masthead-title"><a href="/">enzo&#39;s note book</a></h1>
-        <p>M-x (sketch for random ideas)</p>
-        <ul>
-          <li><a href="/blog/">Blog</a></li>
-          <li><a href="/history/">History</a></li>
-          <li><a href="/leetcode/">Leetcode</a></li>
-          <li><a href="/tags/">Tags</a></li>
-          <li><a href="/about/">About</a></li>
-          <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
-          <li><a href="/rss.xml">RSS</a></li>
-        </ul>
-        <form method="get" id="searchform" action="//www.google.com/search">
-          <input type="text" class="field" name="q" id="s" placeholder="Search">
-          <input type="hidden" name="as_sitesearch" value="blog.enzo.cc">
-        </form>
-      </header>
-    </div>
+<header id="header">
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top" style="opacity: .9" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">enzo&#39;s note book</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                            <li class="active"><a href="/auto/">Auto</a></li>
+                            <li class="active"><a href="/blog/">Blog</a></li>
+                            <li class="active"><a href="/history/">History</a></li>
+                            <li class="active"><a href="/leetcode/">Leetcode</a></li>
+                            <li class="active"><a href="/prod/">Prod</a></li>
+                        <li><a href="/tags/">Tags</a></li>
+                        <li><a href="/about/">About</a></li>
+                        <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
+                        <li><a href="/rss.xml">RSS</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </body>
+</header>
 
-<div>
-<div class="post">
-<h1>Spark 入门实操</h1>
-
-<div id="outline-container-org5d418ce" class="outline-2">
-<h2 id="org5d418ce">背景</h2>
-<div class="outline-text-2" id="text-org5d418ce">
+<section id="content" role="main">
+    <div id="outline-container-sec-" class="row" style="padding-top: 70px">
+        <div class="col-md-2"></div>
+            <h1>Spark 入门实操</h1>
+            
+<div id="outline-container-orgdc76812" class="outline-2">
+<h2 id="orgdc76812">背景</h2>
+<div class="outline-text-2" id="text-orgdc76812">
 <p>
 内网服务器的 spark 又跑不动了... 所以在阿里云上买两台机器, 严肃点的部署一下.
 顺便把之前的 pyspark 脚本也迁移到 scala 上，可以利用起我们 java 下的资源.
@@ -44,9 +62,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgfe083b5" class="outline-2">
-<h2 id="orgfe083b5">部署环境</h2>
-<div class="outline-text-2" id="text-orgfe083b5">
+<div id="outline-container-orgce36375" class="outline-2">
+<h2 id="orgce36375">部署环境</h2>
+<div class="outline-text-2" id="text-orgce36375">
 <ul class="org-ul">
 <li>机器阿里云 2 台 4 核 16g</li>
 <li>依赖软件
@@ -59,9 +77,9 @@
 </div>
 </div>
 
-<div id="outline-container-org17b2e6d" class="outline-2">
-<h2 id="org17b2e6d">部署过程</h2>
-<div class="outline-text-2" id="text-org17b2e6d">
+<div id="outline-container-org8823a6f" class="outline-2">
+<h2 id="org8823a6f">部署过程</h2>
+<div class="outline-text-2" id="text-org8823a6f">
 <blockquote>
 <p>
 为了后续添加 slave 方便，在 ansible 的脚本上花了很大的功夫。根据 master 以及 slave 的 inventory 配置
@@ -97,9 +115,9 @@
 </div>
 </div>
 
-<div id="outline-container-org0d78c6b" class="outline-2">
-<h2 id="org0d78c6b">发布方式</h2>
-<div class="outline-text-2" id="text-org0d78c6b">
+<div id="outline-container-org3dd3776" class="outline-2">
+<h2 id="org3dd3776">发布方式</h2>
+<div class="outline-text-2" id="text-org3dd3776">
 <ul class="org-ul">
 <li>打包
 <code>sbt assembly</code></li>
@@ -109,9 +127,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgd7921b4" class="outline-2">
-<h2 id="orgd7921b4">执行方式</h2>
-<div class="outline-text-2" id="text-orgd7921b4">
+<div id="outline-container-orgc9b1929" class="outline-2">
+<h2 id="orgc9b1929">执行方式</h2>
+<div class="outline-text-2" id="text-orgc9b1929">
 <p>
 <code>crontab</code> 定期调度
 </p>
@@ -122,9 +140,9 @@
 </div>
 </div>
 
-<div id="outline-container-org8278c70" class="outline-2">
-<h2 id="org8278c70">App 示例</h2>
-<div class="outline-text-2" id="text-org8278c70">
+<div id="outline-container-org100c2fd" class="outline-2">
+<h2 id="org100c2fd">App 示例</h2>
+<div class="outline-text-2" id="text-org100c2fd">
 <div class="org-src-container">
 <pre class="src src-scala">val idsRDD = odpsOps.readTable(project, table, pr, read, numPartitions)
   .filter(_.time.isAfter(start)) // 保留最近一个月的访问记录
@@ -162,9 +180,9 @@ def withReverse(res: ((Int,Int), Double)) = {
 </div>
 </div>
 
-<div id="outline-container-org0574d80" class="outline-2">
-<h2 id="org0574d80">执行结果</h2>
-<div class="outline-text-2" id="text-org0574d80">
+<div id="outline-container-orge5b14a7" class="outline-2">
+<h2 id="orge5b14a7">执行结果</h2>
+<div class="outline-text-2" id="text-orge5b14a7">
 <p>
 同样的功能，由于
 </p>
@@ -178,47 +196,25 @@ def withReverse(res: ((Int,Int), Double)) = {
 </div>
 </div>
 
-</div>
-</div>
-    <div>
-      <div class="post-meta">
+    </div>
+</section>
+
+
+    <div class="post-meta">
         <span title="post date" class="post-info">2017-03-20</span>
         <span title="last modification date" class="post-info">2017-03-21</span>
         <span title="tags" class="post-info"><a href="/tags/spark/">spark</a></span>
         <span title="author" class="post-info">enzo liu</span>
-      </div>
-      <section>
-        <h1>Comments</h1>
-        <div id="disqus_thread"></div>
-        <script type="text/javascript">
-          //var disqus_developer = 1;
-          var disqus_identifier = "/blog/2017/03/20/spark-practise";
-          var disqus_url = "https://blog.enzo.cc/blog/2017/03/20/spark-practise";
-          var disqus_shortname = 'enzo-liu';
-          /* * * DON'T EDIT BELOW THIS LINE * * */
-          (function() {
-          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-          })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        <a href="//disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-      </section>
-      <script src="//code.jquery.com/jquery-latest.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
-      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-      <script src="/media/js/main.js"></script>
-      <div class="footer">
-        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
-        <p>
-          Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
-          &nbsp;&nbsp;-&nbsp;&nbsp;
-          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
-          <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
-        </p>
-      </div>
     </div>
+<footer class="footer">
+    <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+    <p>
+        Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
+        &nbsp;&nbsp;-&nbsp;&nbsp;
+        Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+        <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+    </p>
+</footer>
 
   </body>
 </html>
