@@ -1,0 +1,65 @@
+#+Title: 研发组织
+#+AUTHOR: 恩泽
+#+DATE: \today
+#+EMAIL: liuenze6516@gmail.com
+
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [presentation,bigger]
+#+PROPERTY: BEAMER_col_ALL 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 0.0 :ETC
+#+BEAMER_THEME: metropolis
+#+BIND: org-beamer-outline-frame-title "目录"
+#+COLUMNS: %45ITEM %10BEAMER_env(Env) %10BEAMER_act(Act) %4BEAMER_col(Col) %8BEAMER_opt(Opt)
+#+latex_header: \AtBeginSection[]{\begin{frame}<beamer>\frametitle{Topic}\tableofcontents[currentsection]\end{frame}}
+#+OPTIONS:   H:2 toc:t num:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+STARTUP: beamer
+
+* 职责
+
+** 研发价值
+1. 可行性
+   - 把不可能的事情变成可能
+2. 效率
+   - 把事情做的更快/更好
+3. 边际效益
+   - 让事情扩展的成本更低
+
+** 研发职责
+1. 支撑业务的顺利推进，配合业务规划的实现
+   - 完成产品规划, 研发落实
+2. 保障系统的稳定和可靠
+
+* 问题
+** 现象
+1. 各项项目研发进展不够快速
+2. 业务规划已飞速向前, 研发反而拖慢了一些节奏
+
+** 总结
+当前研发资源有限, 如何更好的支撑业务发展
+
+** 解决
+1. 持续适当的补充资源
+2. (当前)更好的组织管理方式
+   - 针对两种不同的组织形式，需要探讨其优劣
+
+* 方案 I
+** 具体措施
+拆分成 2 个小团队
+
+** 优点
+- 业务方对于研发资源有保障(独占资源)
+
+** 缺点
+- 研发效率
+
+* 方案 II
+** 具体措施
+保留在一个团队
+
+** 优点
+- 提升研发效率
+- 团队梯队易于建立，更容易拔尖
+
+** 缺点
+- 管理成本上升[fn::人太多之后，可以通过内部拆分小组来进行管理]
+- 业务方对于研发资源的分配感知不透明
