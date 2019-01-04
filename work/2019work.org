@@ -1,0 +1,44 @@
+#+TITLE: 2018 & 2019
+#+AUTHOR: 刘恩泽
+#+EMAIL:  enze.liu@ipiaoniu.com
+#+DATE: 2019-01-05
+#+OPTIONS:   H:2 toc:t num:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+startup: beamer
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [presentation, bigger]
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+#+BEAMER_THEME: metropolis
+#+BIND: org-beamer-outline-frame-title "目录"
+
+* 2018 工作总结-事
+** 大项目 I
+- 行业分销系统  :: dead
+- 行业票务系统 :: not good living
+- 班夫电影节 :: dead
+- crm :: dead
+- 微赛 :: dead
+ 
+** 大项目 II
+- 拼团 :: almost dead
+- 猫眼对接 :: alive
+- 订单中台 :: alive
+- 先看后付 :: alive
+
+** 日常工作
+- 故障处理 
+- 项目支持
+- 分销问题处理
+- 日常管理
+
+** 职责
+   
+* 2018 工作总结-人
+** 培养
+** 招聘
+** 规划
+
+* 2019 工作计划
+** 项目
