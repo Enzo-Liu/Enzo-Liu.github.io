@@ -1,0 +1,37 @@
+#+TITLE:       分布式系统框架和入门
+#+AUTHOR:      enzo liu
+#+EMAIL:       liuenze6516@gmail.com
+#+DATE:        2018-12-17 Thu
+#+URI:         /blog/%y/%m/%d/distributed
+#+KEYWORDS:    docker
+#+TAGS:        docker
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: 分布式系统框架和入门
+
+* 2PC
+  
+* Paxos
+** 要求  
+- consistency guarentee
+  - different decree ==> different ballot (num) :: each ballot has unique number
+  - in every two ballot, at least one priest in common
+  - in one ballot, 
+    - the newest (before this one) ballot's decree
+    - if null, any decree
+      
+- progress
+  - one leader and majority keeps alive
+  - ?
+  
+** 组成部分
+  
+- proposer
+  - prepare
+  - propose
+- acceptor
+  - promise
+  - accept
+- leaner
+
+* Gossip
