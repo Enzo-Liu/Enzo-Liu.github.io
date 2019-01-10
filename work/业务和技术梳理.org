@@ -1,0 +1,268 @@
+#+TITLE: 交易/行业业务和技术梳理
+#+AUTHOR: 刘恩泽
+#+EMAIL:  enze.liu@ipiaoniu.com
+#+DATE: 2019-01-10
+#+OPTIONS:   H:2 toc:t num:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+startup: beamer
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [presentation, bigger]
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+#+BEAMER_THEME: metropolis
+#+BIND: org-beamer-outline-frame-title "目录"
+
+* 业务概述
+** 总览
+1. 基础信息
+2. 电商运营交易
+3. 行业解决方案
+4. 现场娱乐相关内容平台 [fn::内容相关业务，就不赘述了]
+
+** 基础信息
+- 演出, 标题, 详情, 评分, +评论+
+- 城市，场馆, 位置
+- 艺人, 巡演
+- IP 
+  
+** *电商平台*
+- 营销
+- 商品
+- 订单
+- 商家订单/采购
+- 发货
+- 券
+** 行业解决方案
+- 票务系统
+- 统一核销系统
+- 主办小程序，旗舰店等建站业务
+- 双面屏，扫码枪等现场业务
+
+* 基础信息
+** 信息结构
+#+BEGIN_src plantuml :file info-structure.png
+  @startuml
+  scale 2880*1800
+
+  City "1" <-- "*" Venue
+  Venue "1" <-- "*" Activity
+  Activity "1" <-- "*" ActivityEvent
+  Activity "1" -- "*" ActivityCategory
+  Activity "1" -- "*" ActivityGallery
+  Activity "1" -- "*" SearchTag
+  Activity "*" -- "*" Actor
+  Tour "1" -- "*" Activity
+  ActivityEvent "1" <-- "*" TicketCategory
+  PublishCity "*" -- "1" Activity
+  @enduml
+#+END_src  
+
+#+ATTR_LATEX: :width 300pt :height 230pt
+#+RESULTS:
+[[file:info-structure.png]]
+
+
+** 业务
+- 搜索
+- 推荐
+- 场次过期
+- 修改场次，票档
+- 信息编辑, 发布
+- 修改审计
+- 访问统计
+  
+* 电商平台
+** 概述
+#+BEGIN_src plantuml :file trade-flow.png
+    @startuml
+    scale 2880*1800
+  (*) --> 平台提供信息 
+  -right-> 商家挂售
+  -right-> 用户查看商品
+  -right-> 用户购买
+  --> 商家提供商品
+  -left-> 平台发货
+  -left-> 用户收货
+  用户收货 --> (*)
+    @enduml
+#+END_SRC
+
+#+RESULTS:
+[[file:trade-flow.png]]
+
+
+** 子业务概述
+- 商家 :: 资质，积分，惩罚，账户，充值体现
+- 用户 :: 注册登录，通知，积分，级别...
+- 营销,运营 :: 首页推荐，运营位, banner, 优惠券，立减，抢购，秒杀...
+- 商品 :: 商家挂售, 外部供应商对接, 价格，库存，选座，多商家...
+- 渠道,推广 :: SEO/SEM, 异业合作, 天猫, 招行...
+- 订单 :: 锁定商品，支付，派单, 发货，签收, 现场验票, 各式通知...
+- 采购,发货 :: 商家发货, 到货，入库，平台发货...
+- 券 :: 发券，验券...
+      
+
+** 商家
+- *账户, 资质, 积分, 公告*
+- *库存管理*
+  - 尾票管理
+- *订单管理*
+  - 现场取票
+- *钱包, 充值，提现*
+- 超时惩罚，无票转采, 商家返点等商户运营
+- 店铺, 主办小程序
+- 出票验票 (epass)
+- 数据支持, 演出销量，客户...
+- 各式操作审计
+
+** 用户 
+- 注册，登录，第三方登录
+- 积分，级别
+- 通知
+- 地址
+- 喜欢, 关注
+- 唤醒
+  
+** 营销/运营 [fn::很多用户运营都是在线下，不很了解，后续群聊发挥作用可能会熟一些]
+- 分城市分类目运营位, 首页推荐, 折扣演出
+- 领券, 抽奖, 秒杀, 立减, 优惠券
+- 各式活动, 三周年,分享有奖, 抢票好友助力, 答题活动, 七夕节...
+- 调价&跟价
+- 礼品卡
+- 指定用户/时间区间/项目/类目/金额/数量等情况下的优惠
+** 商品   
+- 价格: 挂售，售卖，结算
+- 供应商: 自在, 南湖, 开心麻花，欢乐谷, 重庆仁义, 猫眼，智游宝，聚橙
+- 售卖限制: 连座，不可剩单张, 是否可拆卖, 特殊商品, 选座商品, 配送限制, 抢票, 发货时间, 售卖排序, 最多最少购买张数
+- 操作审计
+** 渠道/推广
+- SEO, SEM, 积分墙，异业合作, app 推广等导流
+- 渠道运营, 选品, 优惠
+- 兜里，博桥...
+- 猫眼，天猫，京东...
+- 豆瓣，招行...
+- 票牛时光机分销系统
+  
+** 订单
+- 购票订单，抢票订单，线下收款，拼团订单, 票务系统分销订单
+- 现场购票，双面屏
+- 电子票，快递实体票，现场取票
+- 支付: 支付宝，微信，招行一网通, 招行掌上生活, 小程序直接支付, 双面屏线下收款, 兜里积分, 杉得支付, 代理支付，先看后付
+- 渠道搬单
+- 26 种订单短信, 发货，配票，签收, 支付，提交，抢票, 拼团, 取消，扣款，实名认证, 以及在电子票，实体票，现场等不同情况下...
+   
+** 采购/发货
+- 采购，发货
+- 超时，转采，退款, 跳票，尾票和预售押金
+- 顺丰，打印
+- 第三方系统采购自动发货: 券码，取票码
+- 结算，返点
+- 现场取票
+   
+** 券
+- 出票验票(epass)
+- 导入码, 导出码
+- 赠票
+   
+* 行业系统
+** 概述
+#+BEGIN_QUOTE
+提供行业票务解决方案
+#+END_QUOTE
+
+具体如之前介绍
+
+** 票务系统
+1. 演出基本信息维护，场次票档，座位图，票版划分，票面设计
+2. 票纸打印
+3. 分销, 结算
+4. 票品验证
+
+** 现场业务
+- 双面屏现场购票
+- 扫描枪现场验票
+- 现场 WIFI 方案
+- 现场闸机
+ 
+** 主办建站   
+- 主办小程序
+  - 直接付款到主办账户
+- 主办旗舰店
+
+
+* 技术架构
+** 系统视图
+
+#+BEGIN_src plantuml :file tech-structure.png
+  @startuml
+  scale 2880*1800
+  component UI {
+    component iosClient
+    component androidClient
+    component shipClient
+    component merchantClient
+    component printerPcClient
+    component wechatApp
+    component alipayApp
+  }
+
+  UI -- gateway
+  cloud gateway{
+    cloud SLB
+    cloud nginx
+  }
+  gateway -- bizApplication
+  node bizApplication{
+    artifact nodeSsr
+    artifact mapi
+    artifact pc
+    artifact openapi
+    artifact merchant
+    artifact op
+    artifact midwayApp
+    artifact tsweb
+    artifact track
+    artifact unifiedVerify
+  }
+  node job {
+    artifact xxljob
+    artifact pnjob 
+    artifact tsjob
+  }
+  bizApplication -- baseComponent
+  job -- baseComponent
+  baseApplication -- baseComponent
+  node baseApplication {
+    artifact server
+    artifact smsServer
+  }
+  node baseComponent {
+    artifact solr 
+    storage memcached 
+    storage redis 
+    database user 
+    database pndb
+    database pns 
+    database midwaydb 
+    database ts
+    database sms
+    artifact sentry 
+  }
+  node techComponent {
+    artifact elk 
+    artifact cat 
+    artifact ansible 
+    artifact mozart 
+  }
+  node data {
+    artifact spark
+    artifact odps
+  }
+  @enduml
+#+END_src  
+
+#+ATTR_LATEX: :width 330pt 
+#+RESULTS:
+[[file:tech-structure.png]]
+
