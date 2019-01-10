@@ -307,6 +307,6 @@
   @enduml
 #+END_src  
 
-#+ATTR_LATEX: :width 330pt  :height 230pt
+#+ATTR_LATEX: :height 200pt
 #+RESULTS:
 [[file:tech-biz-structure.png]]
