@@ -271,3 +271,42 @@
 ** 监控视图
    
 ** 业务视图
+#+BEGIN_src plantuml :file tech-biz-structure.png
+  @startuml
+  scale 2880*1800
+  component 营销 {
+    artifact 优惠
+    artifact 活动
+    artifact 跟价
+  }
+  component 渠道 {
+    component 渠道商品
+    component 渠道演出
+    component 渠道订单
+  }
+  component 基础信息 {
+    component 演出
+  }
+  component 商品 {
+    component 变更记录 
+    component 快照 
+    component 价格库存 
+  }
+  component 供应商 {
+
+  }
+  component 订单
+  component 券
+  渠道演出 -- 演出
+  渠道商品 -- 商品
+  渠道订单 -- 订单
+  营销 -- 商品
+  订单 -- 商品
+  商品 -- 演出
+  订单 -- 营销
+  @enduml
+#+END_src  
+
+#+ATTR_LATEX: :width 330pt  :height 230pt
+#+RESULTS:
+[[file:tech-biz-structure.png]]
