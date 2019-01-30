@@ -1,0 +1,27 @@
+#+TITLE: 优势，成长和未来
+#+AUTHOR: enzo liu
+#+EMAIL:  liuenze6516@gmail.com
+#+DATE: 2018-01-27
+#+URI:         /blog/%y/%m/%d/advantage-importment-future
+#+OPTIONS:   H:3 toc:nil num:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+
+#+BEGIN_QUOTE
+最难的事情莫过于清醒的自我认知
+#+END_QUOTE
+
+* 优势
+** 研发技能
+1. 复杂业务系统设计能力, 业务领域涉及: 电商, IM, 销售/商家管理
+2. 研发，运维，监控，部署等完整链路
+3. 较强的研发落实能力, ruby, common-lisp, haskell 等多语言多范式的使用和理解
+4. 解释器, dsl, 模板引擎等技术领域的研究
+5. 对于分布式一致算法(paxos, raft), 分布式系统, 数据库, 服务中间件等有一定的了解
+
+
+* 劣势
+* 成长
+
+* 未来
