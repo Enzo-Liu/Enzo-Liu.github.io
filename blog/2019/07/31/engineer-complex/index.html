@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <title>工程的复杂度 - enzo&#39;s note book</title>
+  <meta charset="utf-8" />
+  <meta name="author" content="enzo liu" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+
+  <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml">
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/posts.css" type="text/css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</head>
+
+  <body class="container">
+<header id="header">
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top" style="opacity: .9" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">enzo&#39;s note book</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                            <li class="active"><a href="/blog/">Blog</a></li>
+                            <li class="active"><a href="/history/">History</a></li>
+                            <li class="active"><a href="/leetcode/">Leetcode</a></li>
+                            <li class="active"><a href="/prod/">Prod</a></li>
+                        <li><a href="/tags/">Tags</a></li>
+                        <li><a href="/about/">About</a></li>
+                        <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
+                        <li><a href="/rss.xml">RSS</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </body>
+</header>
+
+<section id="content" role="main">
+    <div id="outline-container-sec-" class="row" style="padding-top: 70px">
+        <div class="col-md-2"></div>
+            <h1>工程的复杂度</h1>
+            <p>
+近期换了一个工作领域，遇到了不少问题，简单记录一下。
+</p>
+
+<div id="outline-container-org951b307" class="outline-2">
+<h2 id="org951b307">spring-boot 中调度 map-reduce 任务</h2>
+<div class="outline-text-2" id="text-org951b307">
+<ul class="org-ul">
+<li><code>spring-boot</code> 的打包方式导致 jar 包无法被直接依赖
+<ul class="org-ul">
+<li>只有 spring-boot 的类直接在 jar 包里暴露, 其他依赖的类在 jar 包内的 <code>BOOT-INF</code> 目录下</li>
+<li>jar 包内的 <code>META-INF/MANIFEST.MF</code> 指定的启动的 <code>lancher</code>, <code>lancher</code> 内有自定的 <code>classpath</code>, 处理路径相关的问题</li>
+<li>解决办法: 将 web 项目和任务调度的项目分离成两个不同的 jar 包</li>
+</ul></li>
+<li><code>spring-boot</code> 有自定义的 lancher, 无法按照 <code>java</code> 常规方式配置 <code>classpath</code>
+<ul class="org-ul">
+<li><code>spring-boot</code> 提供了不同的打包的 <code>layout</code> , 其中, <code>PropertiesLauncher</code> 提供扩展点指定额外的 <code>classpath</code></li>
+<li>修改打包的 <code>layout</code> 为 <code>ZIP</code> 的方式, 从而使用 <code>PropertiesLauncher</code></li>
+</ul></li>
+<li>如何读取 yarn , hbase, hadoop 相关的配置
+<ul class="org-ul">
+<li>读 <code>HadoopConfiguration</code>, <code>HbaseConfiguration</code> 等类, 发现配置的加载是从指定文件中读取</li>
+<li>自定义的配置可以 <code>runtime</code> 直接设置 <code>configuration</code> , 提交任务时，相关配置会被序列化到 <code>job.xml</code> 中</li>
+<li>集群通过 <code>cloudrea</code> 进行配置管理，于是将 cloudrea 维护的配置启动时同步一份至 classpath 下即可</li>
+</ul></li>
+<li>问题排查过程中, 如何确认是打包相关的问题
+<ol class="org-ol">
+<li>研究发现, 任务的提交和执行是通过将 job 任务序列化至 hdfs</li>
+<li>读序列化好的 job 任务，确认 <code>classpath</code> 正常，依赖的 jar 包上传至了 <code>hdfs</code></li>
+<li>读 <code>yarn-client</code> 的代码，找到自定义的 <code>classloader</code>, 发现是从 hdfs 中下载 jar 包后去加载</li>
+<li>手动下载依赖的 jar 包解压后，发现 layout 与常规的 jar 包不一致</li>
+<li>其他零碎的问题就不赘述了</li>
+</ol></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org933ea0b" class="outline-2">
+<h2 id="org933ea0b">同一个项目中, 添加调度 spark 任务</h2>
+<div class="outline-text-2" id="text-org933ea0b">
+<ul class="org-ul">
+<li><code>spring-boot</code> 不支持 zip64 的压缩方式
+<ul class="org-ul">
+<li>由于任务调度的项目已依赖了 <code>hadoop</code> , <code>hbase</code> 等包, 继续加入 <code>spark</code> 的依赖后，打成 jar 包的文件数超过了 65535, 则自动采取了 <code>zip64</code> 的压缩方式</li>
+<li>解决办法
+<ol class="org-ol">
+<li>将 spark 相关的依赖修改成 <code>provided</code>, 修改部署环境和发布脚本, 依赖机器上提供好的包</li>
+<li>将相关 spark 执行时的依赖包提前上传至 hdfs 中，在任务提交的 <code>classpath</code>  配置中添加指定路径</li>
+</ol></li>
+</ul></li>
+<li>spark 的 executor 执行指定任务(? extend scala.App)时, 报错空指针(依赖的静态变量为空)
+<ul class="org-ul">
+<li><del>以下表述不一定精确</del></li>
+<li>spark 有 <code>driver</code> 和 <code>executor</code>, 其中 <code>driver</code> 负责分析 <code>RDD</code> , 生成任务, <code>executor</code> 负责执行</li>
+<li>任务依赖的静态信息(class 等)是通过 jar 包传递, 动态(runtime)信息通过序列化/class 初始化传递</li>
+<li>scala.App 继承至 delayedInit, 其中 <code>body</code> 里的 <code>val</code> 实际为静态变量, 依赖初始化的代码进行赋值操作</li>
+<li>spark 会将 RDD 中使用的 <code>closure</code> 进行序列化操作，传递给 <code>executor</code>, 序列化的 <code>context</code> 仅包含了 本地变量(<code>method-scope-variable</code>)</li>
+<li>如果依赖的本地变量里涉及到其他的类的对象，同样会进行序列化操作(如果不可序列化，则会 spark 任务提交失败)</li>
+<li>其他相关信息可参考 <a href="https://medium.com/@manuzhang/npe-from-spark-app-that-extends-scala-app-ef7378195850">https://medium.com/@manuzhang/npe-from-spark-app-that-extends-scala-app-ef7378195850</a>, <a href="https://github.com/apache/spark/pull/23903">https://github.com/apache/spark/pull/23903</a>, <a href="https://issues.apache.org/jira/browse/SPARK-4170">https://issues.apache.org/jira/browse/SPARK-4170</a></li>
+<li>解决办法: 不继承 scala.App, 直接定义 <code>main</code> , 从而依赖的变量被 scala 编译成本地变量，从而 spark 的 closure 序列化时，可以捕捉到</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8df0925" class="outline-2">
+<h2 id="org8df0925">感想</h2>
+<div class="outline-text-2" id="text-org8df0925">
+<p>
+这些问题不难, 但是复杂。涉及到的工程领域（框架，抽象层次）很多，每一层都需要去了解其细节，才能分析和解决问题。
+</p>
+<blockquote>
+<p>
+<code>spring-boot</code> 如何打包, yarn 的 client 如何加载依赖包, 如何读取配置, 如何传递上下文, scala 如何编译, object 内的变量编译到字节码是什么类型，spark 的任务生成是如何传递依赖信息的，不同类型的变量处理方式又是如何，scala 的 <code>delayedInit</code> 如何触发，作为 spark 的 <code>executor</code> 被调度时为何不触发初始化赋值, 等等等等...
+</p>
+</blockquote>
+
+<p>
+<b>只能说工程越来越复杂，做一个好的工程师挺不容易。</b> <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara"><del>或者是基础架构不够稳健, 层间接口过于宽松，导致需要了解细节</del> 那估计换成 haskell 就没问题了，毕竟类型系统足够有表达力，更好做限制...</p></div></div>
+
+
+</div>
+</div>
+    </div>
+</section>
+
+
+    <div class="post-meta">
+        <span title="post date" class="post-info">2019-07-31</span>
+        <span title="last modification date" class="post-info">2019-07-31</span>
+        <span title="tags" class="post-info">N/A</span>
+        <span title="author" class="post-info">enzo liu</span>
+    </div>
+<footer class="footer">
+    <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 26.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+    <p>
+        Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
+        &nbsp;&nbsp;-&nbsp;&nbsp;
+        Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+        <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+    </p>
+</footer>
+
+  </body>
+</html>

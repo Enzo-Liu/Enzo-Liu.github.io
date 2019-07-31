@@ -1,0 +1,278 @@
+% Created 2019-01-10 Thu 16:57
+% Intended LaTeX compiler: pdflatex
+\documentclass[presentation, bigger]{beamer}
+\usepackage[no-math]{fontspec}
+\usepackage[BoldFont,SlantFont,AutoFakeBold=true,AutoFakeSlant=true]{xeCJK}
+\setCJKmainfont[BoldFont=FandolSong-Bold.otf,ItalicFont=FandolKai-Regular.otf]{FandolSong-Regular.otf}
+\setCJKsansfont[BoldFont=FandolHei-Bold.otf]{FandolHei-Regular.otf}
+\setCJKmonofont{FandolFang-Regular.otf}
+\usefonttheme[stillsansseriflarge,stillsansserifsmall]{serif}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\defaultfontfeatures{Mapping=tex-text}
+\usepackage{geometry}
+\usepackage{verbatim}
+\usepackage{fixltx2e}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\setlength{\parindent}{0in}
+\tolerance=1000
+\usetheme{metropolis}
+\author{刘恩泽}
+\date{2019-01-10}
+\title{交易/行业业务和技术梳理}
+\hypersetup{
+ pdfauthor={刘恩泽},
+ pdftitle={交易/行业业务和技术梳理},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 26.1 (Org mode 9.2)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\begin{frame}{目录}
+\tableofcontents
+\end{frame}
+
+
+\section{业务概述}
+\label{sec:org398abb7}
+\begin{frame}[label={sec:orga639a5b}]{总览}
+\begin{enumerate}
+\item 基础信息
+\item 电商运营交易
+\item 行业解决方案
+\item 现场娱乐相关内容平台 \footnote{内容相关业务，就不赘述了}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[label={sec:orgc2a8ddc}]{基础信息}
+\begin{itemize}
+\item 演出, 标题, 详情, 评分, \sout{评论}
+\item 城市，场馆, 位置
+\item 艺人, 巡演
+\item IP
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org596f9a0}]{\alert{电商平台}}
+\begin{itemize}
+\item 营销
+\item 商品
+\item 订单
+\item 商家订单/采购
+\item 发货
+\item 券
+\end{itemize}
+\end{frame}
+\begin{frame}[label={sec:orgd109613}]{行业解决方案}
+\begin{itemize}
+\item 票务系统
+\item 统一核销系统
+\item 主办小程序，旗舰店等建站业务
+\item 双面屏，扫码枪等现场业务
+\end{itemize}
+\end{frame}
+
+\section{基础信息}
+\label{sec:org26f59f8}
+\begin{frame}[label={sec:org436e5e2}]{信息结构}
+\begin{center}
+\includegraphics[width=300pt,height=230pt]{info-structure.png}
+\end{center}
+\end{frame}
+
+
+\begin{frame}[label={sec:org44d4856}]{业务}
+\begin{itemize}
+\item 搜索
+\item 推荐
+\item 场次过期
+\item 修改场次，票档
+\item 信息编辑, 发布
+\item 修改审计
+\item 访问统计
+\end{itemize}
+\end{frame}
+
+\section{电商平台}
+\label{sec:org2f6ca98}
+\begin{frame}[label={sec:org1695310}]{概述}
+\begin{center}
+\includegraphics[width=.9\linewidth]{trade-flow.png}
+\end{center}
+\end{frame}
+
+
+\begin{frame}[label={sec:org4bad73e}]{子业务概述}
+\begin{description}
+\item[{商家}] 资质，积分，惩罚，账户，充值体现
+\item[{用户}] 注册登录，通知，积分，级别\ldots{}
+\item[{营销,运营}] 首页推荐，运营位, banner, 优惠券，立减，抢购，秒杀\ldots{}
+\item[{商品}] 商家挂售, 外部供应商对接, 价格，库存，选座，多商家\ldots{}
+\item[{渠道,推广}] SEO/SEM, 异业合作, 天猫, 招行\ldots{}
+\item[{订单}] 锁定商品，支付，派单, 发货，签收, 现场验票, 各式通知\ldots{}
+\item[{采购,发货}] 商家发货, 到货，入库，平台发货\ldots{}
+\item[{券}] 发券，验券\ldots{}
+\end{description}
+\end{frame}
+
+
+\begin{frame}[label={sec:orgf7de671}]{商家}
+\begin{itemize}
+\item \alert{账户, 资质, 积分, 公告}
+\item \alert{库存管理}
+\begin{itemize}
+\item 尾票管理
+\end{itemize}
+\item \alert{订单管理}
+\begin{itemize}
+\item 现场取票
+\end{itemize}
+\item \alert{钱包, 充值，提现}
+\item 超时惩罚，无票转采, 商家返点等商户运营
+\item 店铺, 主办小程序
+\item 出票验票 (epass)
+\item 数据支持, 演出销量，客户\ldots{}
+\item 各式操作审计
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org04aeba4}]{用户}
+\begin{itemize}
+\item 注册，登录，第三方登录
+\item 积分，级别
+\item 通知
+\item 地址
+\item 喜欢, 关注
+\item 唤醒
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org8373e05}]{营销/运营 \footnote{很多用户运营都是在线下，不很了解，后续群聊发挥作用可能会熟一些}}
+\begin{itemize}
+\item 分城市分类目运营位, 首页推荐, 折扣演出
+\item 领券, 抽奖, 秒杀, 立减, 优惠券
+\item 各式活动, 三周年,分享有奖, 抢票好友助力, 答题活动, 七夕节\ldots{}
+\item 调价\&跟价
+\item 礼品卡
+\item 指定用户/时间区间/项目/类目/金额/数量等情况下的优惠
+\end{itemize}
+\end{frame}
+\begin{frame}[label={sec:org9f66de9}]{商品}
+\begin{itemize}
+\item 价格: 挂售，售卖，结算
+\item 供应商: 自在, 南湖, 开心麻花，欢乐谷, 重庆仁义, 猫眼，智游宝，聚橙
+\item 售卖限制: 连座，不可剩单张, 是否可拆卖, 特殊商品, 选座商品, 配送限制, 抢票, 发货时间, 售卖排序, 最多最少购买张数
+\item 操作审计
+\end{itemize}
+\end{frame}
+\begin{frame}[label={sec:org2dee2d2}]{渠道/推广}
+\begin{itemize}
+\item SEO, SEM, 积分墙，异业合作, app 推广等导流
+\item 渠道运营, 选品, 优惠
+\item 兜里，博桥\ldots{}
+\item 猫眼，天猫，京东\ldots{}
+\item 豆瓣，招行\ldots{}
+\item 票牛时光机分销系统
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org45eaa3d}]{订单}
+\begin{itemize}
+\item 购票订单，抢票订单，线下收款，拼团订单, 票务系统分销订单
+\item 现场购票，双面屏
+\item 拆单
+\item 电子票，快递实体票，现场取票
+\item 支付: 支付宝，微信，招行一网通, 招行掌上生活, 小程序直接支付, 双面屏线下收款, 兜里积分, 杉得支付, 代理支付，先看后付
+\item 渠道搬单
+\item 26 种订单短信, 发货，配票，签收, 支付，提交，抢票, 拼团, 取消，扣款，实名认证, 以及在电子票，实体票，现场等不同情况下\ldots{}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org1076334}]{采购/发货}
+\begin{itemize}
+\item 采购，发货, 拆单, 合单
+\item 超时，转采，退款, 跳票，尾票和预售押金
+\item 顺丰，打印
+\item 第三方系统采购自动发货: 券码，取票码
+\item 结算，返点
+\item 现场取票
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgbd709e7}]{券}
+\begin{itemize}
+\item 出票验票(epass)
+\item 导入码, 导出码
+\item 赠票
+\end{itemize}
+\end{frame}
+
+\section{行业系统}
+\label{sec:orge094fbb}
+\begin{frame}[label={sec:org700d2c4}]{概述}
+\begin{quote}
+提供行业票务解决方案
+\end{quote}
+
+具体如之前介绍
+\end{frame}
+
+\begin{frame}[label={sec:org2e3e05b}]{票务系统}
+\begin{enumerate}
+\item 演出基本信息维护，场次票档，座位图，票版划分，票面设计
+\item 票纸打印
+\item 分销, 结算
+\item 票品验证
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[label={sec:org908f8fd}]{现场业务}
+\begin{itemize}
+\item 双面屏现场购票
+\item 扫描枪现场验票
+\item 现场 WIFI 方案
+\item 现场闸机
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org59f25f0}]{主办建站}
+\begin{itemize}
+\item 主办小程序
+\begin{itemize}
+\item 直接付款到主办账户
+\end{itemize}
+\item 主办旗舰店
+\end{itemize}
+\end{frame}
+
+
+\section{技术架构}
+\label{sec:org6062b40}
+\begin{frame}[label={sec:orgb0ed39a}]{系统视图}
+\begin{center}
+\includegraphics[width=330pt]{tech-structure.png}
+\end{center}
+\end{frame}
+
+
+\begin{frame}[label={sec:orgc78f95a}]{监控视图}
+\end{frame}
+
+\begin{frame}[label={sec:org6998080}]{业务视图}
+\begin{center}
+\includegraphics[height=200pt]{tech-biz-structure.png}
+\end{center}
+\end{frame}
+\end{document}

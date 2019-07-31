@@ -1,0 +1,16 @@
+\message{ !name(<none>.tex)}
+\message{ !name(<none>) !offset(-2) }
+\begin{equation}
+\begin{split}
+&    & & a*10^y*10^z + c * 10^y + b - (b*10^x*10^z + c*10^x + a) \\
+& =  & & a*(10^{(y+z)} -1) + c * (10^y - 10^x) + b*(1-10^{(x+z)}) \\
+& >= & & b*(10^x-1)*10^z + a - a + c * (10^y - 10^x) + b*(1-10^(x+z)) \\
+& >= & & b*(10^{(x+z)}-10^z+1-10^{(x+z)}) + c * (10^y-10^x) \\
+& >= & & b*(1-10^z) + c * (10^y-10^x) \\
+& >= & & b - (c*10^y+b-c) + c *10^y - c * 10^x \\
+& >= & & c*(1-10^x) \\
+& >= & & 0
+\end{split}
+\end{equation}
+
+\message{ !name(<none>.tex) !offset(-16) }

@@ -1,0 +1,136 @@
+% Created 2018-05-22 Tue 15:39
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\setCJKmainfont[BoldFont=FandolSong-Bold.otf,ItalicFont=FandolKai-Regular.otf]{FandolSong-Regular.otf}
+\setCJKsansfont[BoldFont=FandolHei-Bold.otf]{FandolHei-Regular.otf}
+\setCJKmonofont{FandolFang-Regular.otf}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\defaultfontfeatures{Mapping=tex-text}
+\usepackage{geometry}
+\usepackage{verbatim}
+\usepackage{fixltx2e}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{parskip}
+\setlength{\parindent}{15pt}
+\usepackage{indentfirst}
+\geometry{a4paper, textwidth=6.5in, textheight=10in,
+            marginparsep=7pt, marginparwidth=.6in}
+\tolerance=1000
+\pagestyle{empty}
+\author{enzo liu}
+\date{2018-05-22 Tue}
+\title{完整的演出行业系统}
+\hypersetup{
+ pdfauthor={enzo liu},
+ pdftitle={完整的演出行业系统},
+ pdfkeywords={piaoniu},
+ pdfsubject={piaoniu},
+ pdfcreator={Emacs 26.1 (Org mode 9.1.13)},
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+\section*{整体目标}
+\label{sec:org31fa064}
+
+\begin{enumerate}
+\item 有基础的配置项目, 出票，销售，验票功能
+\item 其他日常的涉及到票务, 销售，运营，分销, 对账相关的操作
+\item 最终呈现为一个主办愿意以自己名义外推/对接的系统
+\end{enumerate}
+
+\section*{用户和场景}
+\label{sec:org03764cc}
+\subsection*{[2/4] 为了制作项目，用于销售, 希望}
+\label{sec:org1ac0e00}
+\begin{itemize}
+\item[{$\boxtimes$}] 能上 \textbf{选座/非选座} 项目
+\item[{$\boxtimes$}] 能上 \textbf{指定日期/展览通票/平日周末} 等不同场次, 可以划分 \textbf{不同的票版/票价}
+\item[{$\square$}] 能上 \textbf{预售/正价} 票，从而在不同时间不同售价
+\item[{$\square$}] 能上 \textbf{纸质票/电子票}
+\end{itemize}
+\subsection*{[0/6] 为了能够直接销售, 沉淀用户, 支持各种运营活动, 且不依赖于某一平台, 希望}
+\label{sec:orgaf34325}
+\begin{itemize}
+\item[{$\square$}] \textbf{有自己的销售系统, 能够支持用户，商品，交易，支付, 订单, 优惠功能}
+\item[{$\square$}] 用户可以通过 pc, m 站, app, 小程序 等地址访问
+\item[{$\square$}] 能有 \textbf{运营活动}, 比如 \textbf{套票}, \textbf{满立减}, \textbf{折扣} , \textbf{秒杀}, \textbf{限时优惠} 等
+\item[{$\square$}] 能有用户级别，会员积分权益等
+\item[{$\square$}] 能够通过短信触达到会员，通知最新的项目/优惠信息
+\item[{$\square$}] 支持购物车的功能
+\end{itemize}
+\subsection*{[4/6]为了能扩大销售渠道，希望}
+\label{sec:org58c9504}
+\begin{itemize}
+\item[{$\boxtimes$}] 能有分销管理功能
+\item[{$\boxtimes$}] 能有对接系统分销渠道的功能
+\item[{$\boxtimes$}] 可以支持仅有部分库存的分销
+\item[{$\square$}] 可以支持电子票\&纸质票的分销
+\item[{$\boxtimes$}] 能针对不同渠道有不同的返点/售价，用于可以激励渠道等
+\item[{$\square$}] 能支持多级渠道，比如多一级服务商，服务商管理下级渠道
+\end{itemize}
+\subsection*{[2/2] 为了能方便和渠道方结算，平台方结算，知晓项目销售情况, 希望}
+\label{sec:orge6d14f3}
+\begin{itemize}
+\item[{$\boxtimes$}] 能看到项目报表, 场次报表
+\item[{$\boxtimes$}] 能够指定项目给渠道方/场馆方看到对应的报表
+\end{itemize}
+\subsection*{[2/3] 为了能让票务代理方销售，希望}
+\label{sec:org0284e0c}
+\begin{itemize}
+\item[{$\boxtimes$}] 能支持电子票对接, \textbf{直接/提供凭证给票代} 发送给用户
+\item[{$\square$}] 能支持纸质票发货流程对接（由主办自行发货)
+\item[{$\boxtimes$}] 能支持批量打印纸质票提供给票务代理方 \textbf{主办打票或者票代自行出票}
+\end{itemize}
+\subsection*{[3/5] 为了能保障用户购票后进场，验证购票真实性, 希望}
+\label{sec:org81a6223}
+\begin{itemize}
+\item[{$\boxtimes$}] 能够验证票品有效性，不能重复验证
+\item[{$\square$}] 能够保障稳定和效率
+\item[{$\boxtimes$}] 能够支持身份证，纸质票，电子票二维码进场
+\item[{$\square$}] 能够支持现场取票
+\item[{$\boxtimes$}] 在他方票务系统未对接的情况下，有办法 hack 或者导码或者其他合作形式, \textbf{验证其他票代提供的凭证}
+\end{itemize}
+\subsection*{[2/2] (班夫项目) 为了节约人工操作成本，希望}
+\label{sec:org8d9512e}
+\begin{itemize}
+\item[{$\boxtimes$}] 能符合一定规则(销售量超过 50\%)，自动开售新场次
+\item[{$\boxtimes$}] 多场套票选座可以系统按规则自动分配座位
+\end{itemize}
+\subsection*{[2/2] 为了提高用户体验，希望}
+\label{sec:orgc97fa36}
+\begin{itemize}
+\item[{$\boxtimes$}] 现场用户可以扫码查看订单
+\item[{$\boxtimes$}] 临演前可以发放提醒通知用户
+\end{itemize}
+\subsection*{[0/2]为了满足公安要求，希望}
+\label{sec:orgfcbb1eb}
+\begin{itemize}
+\item[{$\square$}] 系统能有大型项目经验，符合安防和稳定要求
+\item[{$\square$}] 能够帮助项目通过公安检查
+\end{itemize}
+
+
+\section*{功能清单}
+\label{sec:org59f5ae8}
+
+
+\section*{现有系统}
+\label{sec:org7d4f21a}
+\end{document}

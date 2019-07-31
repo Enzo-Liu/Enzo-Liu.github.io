@@ -1,0 +1,121 @@
+% Created 2019-07-16 Tue 13:11
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\setCJKmainfont[BoldFont=FandolSong-Bold.otf,ItalicFont=FandolKai-Regular.otf]{FandolSong-Regular.otf}
+\setCJKsansfont[BoldFont=FandolHei-Bold.otf]{FandolHei-Regular.otf}
+\setCJKmonofont{FandolFang-Regular.otf}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\defaultfontfeatures{Mapping=tex-text}
+\usepackage{geometry}
+\usepackage{verbatim}
+\usepackage{fixltx2e}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{parskip}
+\setlength{\parindent}{0pt}
+\usepackage{indentfirst}
+\usepackage[strict]{changepage}
+\usepackage{framed}
+\definecolor{formalshade}{rgb}{0.95,0.95,1}
+\newenvironment{formal}{%
+  \def\FrameCommand{%
+    \hspace{1pt}%
+    {\color{darkgray}\vrule width 2pt}%
+    {\color{formalshade}\vrule width 2pt}%
+    \colorbox{formalshade}%
+  }%
+  \MakeFramed{\advance\hsize-\width\FrameRestore}%
+  \noindent\hspace{-2.55pt}% disable indenting first paragraph
+  \begin{adjustwidth}{}{2pt}%
+}
+{%
+  \vspace{2pt}\end{adjustwidth}\endMakeFramed%
+}
+\geometry{a4paper, textwidth=6.5in, textheight=10in,
+            marginparsep=7pt, marginparwidth=.6in}
+\tolerance=1000
+\pagestyle{empty}
+\author{enzo}
+\date{2016-02-25 Thu}
+\title{179. Largest Number}
+\hypersetup{
+ pdfauthor={enzo},
+ pdftitle={179. Largest Number},
+ pdfkeywords={leetcode, ruby},
+ pdfsubject={leetcode},
+ pdfcreator={Emacs 26.2 (Org mode 9.2.4)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+
+\section*{题目}
+\label{sec:orge26a73b}
+
+\href{https://leetcode.com/problems/largest-number/}{链接}
+
+\begin{quote}
+Given a list of non negative integers, arrange them such that they form the largest number.
+
+For example, given [3, 30, 34, 5, 9], the largest formed number is 9534330.
+
+Note: The result may be very large, so you need to return a string instead of an integer.
+\end{quote}
+
+\section*{思路}
+\label{sec:org9e732b7}
+
+两个数字a,b, 假设 ab >= ba (例如9，98， 998>989)
+
+\begin{enumerate}
+\item 对于任意c， abc >= bac \&\& cab >= cba
+\item 对于任意c,  需要证明 如果ac>=ca, bc<=cb 则 acb >= bca
+
+x 为 a 的长度 , y 为 b 的长度， z 为 c 的长度
+
+已知 \(a*10^y + b >= b*10^x + a\), \(b*10^z + c <= c * 10^y+b\), \(c > 0\) , \(x >= 1\)
+
+\begin{equation}
+\begin{split}
+&    & & a*10^y*10^z + c * 10^y + b - (b*10^x*10^z + c*10^x + a) \\
+& =  & & a*(10^{(y+z)} -1) + c * (10^y - 10^x) + b*(1-10^{(x+z)}) \\
+& >= & & b*(10^x-1)*10^z + a - a + c * (10^y - 10^x) + b*(1-10^(x+z)) \\
+& >= & & b*(10^{(x+z)}-10^z+1-10^{(x+z)}) + c * (10^y-10^x) \\
+& >= & & b*(1-10^z) + c * (10^y-10^x) \\
+& >= & & b - (c*10^y+b-c) + c *10^y - c * 10^x \\
+& >= & & c*(1-10^x) \\
+& >= & & 0
+\end{split}
+\end{equation}
+\end{enumerate}
+
+从而问题转化为排序问题。且排序规则为 \((ab>=ba)=>(a>=b)\)
+
+\section*{代码}
+\label{sec:org057963b}
+
+\lstset{frame=single,backgroundcolor=\color[gray]{0.95},identifierstyle=\ttfamily,keywordstyle=\color[rgb]{0,0,1},commentstyle=\color[rgb]{0.133,0.545,0.133},stringstyle=\color[rgb]{0.627,0.126,0.941},basicstyle=\scriptsize,extendedchars=true,breaklines=true,prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},columns=fixed,keepspaces=true,showstringspaces=false,numbers=left,xleftmargin=.25in,xrightmargin=.25in,numberstyle=\tiny,language=Ruby,label= ,caption= ,captionpos=b}
+\begin{lstlisting}
+# @param {Integer[]} nums
+# @return {String}
+def largest_number(nums)
+  res = nums
+        .sort {|b,a| a.to_s+b.to_s <=> b.to_s+a.to_s}
+        .drop_while{|x| x==0 }
+        .join
+  if res == "" then "0" else res end
+end
+\end{lstlisting}
+\end{document}
