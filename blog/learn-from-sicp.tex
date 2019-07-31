@@ -1,0 +1,75 @@
+% Created 2017-04-18 Tue 23:08
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\setCJKmainfont[BoldFont=FandolSong-Bold.otf,ItalicFont=FandolKai-Regular.otf]{FandolSong-Regular.otf}
+\setCJKsansfont[BoldFont=FandolHei-Bold.otf]{FandolHei-Regular.otf}
+\setCJKmonofont{FandolFang-Regular.otf}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\defaultfontfeatures{Mapping=tex-text}
+\usepackage{geometry}
+\usepackage{verbatim}
+\usepackage{fixltx2e}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{parskip}
+\setlength{\parindent}{15pt}
+\usepackage{indentfirst}
+\geometry{a4paper, textwidth=6.5in, textheight=10in,
+            marginparsep=7pt, marginparwidth=.6in}
+\tolerance=1000
+\pagestyle{empty}
+\author{enzo liu}
+\date{2017-04-18 Tue}
+\title{读完 SICP, 我到底学会了啥}
+\hypersetup{
+ pdfauthor={enzo liu},
+ pdftitle={读完 SICP, 我到底学会了啥},
+ pdfkeywords={sicp, learning},
+ pdfsubject={what do I learn from SICP},
+ pdfcreator={Emacs 25.1.1 (Org mode 9.0.5)},
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+最近遇到了好几位同学找我推荐本书学习计算机。一般情况下，我就直接报 \texttt{SICP} 。
+作为一本基础入门的书，介绍了众多复杂的概念却还讲的异常简单。尤为喜爱作者公开课中最常讲的一句话 \texttt{See, it's no magic here.}
+
+真要说好在哪里的话，其实不容易。就借机罗列一下我学到的东西，觉得有价值的，可以去看看书，听听课体会一下:)
+
+\textbf{免责声明: 以下为一家之言，仅供参考。}
+
+\section*{抽象}
+\label{sec:org03f49bf}
+怎么说呢，我觉得，程序本质就在于抽象, 而抽象, 又在于真实而复杂的世界不是一个正常人可以直接理解的。
+首章直接引用了 <An Essay Concerning Human Understanding>
+\begin{quote}
+\begin{enumerate}
+\item Combining several simple ideas into one compound one, and thus all complex ideas are made.
+\item The second is bringing two ideas, whether simple or complex, together, and setting them by one another so as to take a view of them at once, without uniting them into one, by which it gets all its ideas of relations.
+\item The third is separating them from all other ideas that accompany them in their real existence: this is called abstraction, and thus all its general ideas are made.
+\end{enumerate}
+\end{quote}
+翻译不好，自行理解...下面回到正题。
+
+\section*{求值模型}
+\label{sec:org408d565}
+计算机如何求解一个简单表达式的. (+ a b) \sout{(a + b)}
+
+\section*{表达式组合}
+\label{sec:org0917cb7}
+
+\section*{函数/过程(Procedures)组合}
+\label{sec:org394bfc3}
+\end{document}

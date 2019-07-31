@@ -1,0 +1,162 @@
+% Created 2017-09-27 Wed 09:50
+% Intended LaTeX compiler: pdflatex
+\documentclass[presentation, bigger]{beamer}
+\usepackage[no-math]{fontspec}
+\usepackage[BoldFont,SlantFont,AutoFakeBold=true,AutoFakeSlant=true]{xeCJK}
+\setCJKmainfont[BoldFont=FandolSong-Bold.otf,ItalicFont=FandolKai-Regular.otf]{FandolSong-Regular.otf}
+\setCJKsansfont[BoldFont=FandolHei-Bold.otf]{FandolHei-Regular.otf}
+\setCJKmonofont{FandolFang-Regular.otf}
+\usefonttheme[stillsansseriflarge,stillsansserifsmall]{serif}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\defaultfontfeatures{Mapping=tex-text}
+\usepackage{geometry}
+\usepackage{verbatim}
+\usepackage{fixltx2e}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\setlength{\parindent}{0in}
+\tolerance=1000
+\usetheme{metropolis}
+\author{刘恩泽}
+\date{2017-09-22}
+\title{项目计划书}
+\hypersetup{
+ pdfauthor={刘恩泽},
+ pdftitle={项目计划书},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 25.3.1 (Org mode 9.1.1)},
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\begin{frame}{目录}
+\tableofcontents
+\end{frame}
+
+
+\section{项目概述}
+\label{sec:orgf845e92}
+\begin{frame}[label={sec:orgda1e39d}]{产品概述}
+\begin{enumerate}
+\item 监管人员可以实时，准确的查看各项目的实施风险，提出修改意见，有效的进行监控和管理。
+\item 项目人员可以实施自检，查看风险评估，进行预防以及满足合规要求。
+\item 现场施工人员 xxx
+\end{enumerate}
+\end{frame}
+\begin{frame}[label={sec:org10dc243}]{项目模式}
+\begin{enumerate}
+\item 一套产品
+\item 可能基于项目定制客户端
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[label={sec:org2965479}]{当前市场和竞对}
+\begin{enumerate}
+\item \href{http://www.kehaoinfo.com/}{科皓信息}
+\item \ldots{}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[label={sec:org29d5b20}]{整体计划}
+\begin{description}
+\item[{17-10-15}] 产品文档
+\item[{17-11-30}] 设计交付 \& 后台研发 \& 前台无设计
+\item[{17-12-31}] 简单的 dash 数据后台 \& app 美观
+\end{description}
+\end{frame}
+\section{项目阶段}
+\label{sec:org36901d3}
+\begin{frame}[label={sec:org2c2e7bb}]{前期 checklist}
+\begin{itemize}
+\item $\square$ 产品流程梳理
+\item $\boxtimes$ 域名
+\item $\square$ 企业邮箱
+\item\relax [0/4] 开发前
+\begin{itemize}
+\item $\square$ 阿里云企业账户 \& 开发服务器 \& 测试数据库
+\item $\square$ 七牛云存储企业服务
+\item $\square$ ios 的开发者账户
+\item $\square$ 短信服务
+\end{itemize}
+\item\relax [0/5] 实施前
+\begin{itemize}
+\item $\square$ https 证书
+\item $\square$ andorid 各市场账户
+\item $\square$ dns 配置
+\item $\square$ cdn 服务
+\item $\square$ 负载均衡 服务
+\end{itemize}
+\end{itemize}
+\end{frame}
+\begin{frame}[label={sec:org6187363}]{设计}
+\begin{itemize}
+\item app 前台设计
+\end{itemize}
+\end{frame}
+\begin{frame}[label={sec:org0f5a545}]{研发}
+\begin{itemize}
+\item 技术方案与设计
+\item app 后台开发
+\item app 客户端开发
+\item dash 数据后台开发
+\end{itemize}
+\end{frame}
+\begin{frame}[label={sec:org67a3c1c}]{实施 \& 运维}
+\begin{itemize}
+\item 服务器搭建
+\item 数据库搭建
+\item nginx \& 负载均衡
+\item 数据库备份
+\item 服务状态监控
+\end{itemize}
+\end{frame}
+
+\section{外部依赖}
+\label{sec:org331d6ed}
+\begin{frame}[label={sec:org6110ebb}]{外包}
+\begin{itemize}
+\item 找个设计团队负责设计
+\item 前端页面开发
+\end{itemize}
+\end{frame}
+\begin{frame}[label={sec:org286821f}]{外部账户}
+\begin{itemize}
+\item IOS 开发者公司账户
+\item 安卓各大市场账户
+\item 七牛云存储账户
+\item 阿里云账户
+\item dns 运营商账户
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org05c8b32}]{物料/资产}
+\begin{itemize}
+\item 阿里云服务器
+\item https 证书
+\item 域名
+\item 云存储/文件服务器
+\item 代码/文档/设计
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org18a6109}]{依赖服务}
+\begin{itemize}
+\item 短信服务商
+\item push 服务商
+\item dns 解析服务商
+\item CDN 访问服务 \footnote{用于国内各网络下访问加速}
+\item 负载均衡服务 \footnote{用于服务器无缝升级}
+\end{itemize}
+\end{frame}
+\end{document}

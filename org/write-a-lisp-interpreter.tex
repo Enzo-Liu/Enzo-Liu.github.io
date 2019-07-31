@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 % Created 2019-07-15 Mon 11:56
+=======
+% Created 2017-09-27 Wed 20:56
+>>>>>>> origin/master
 % Intended LaTeX compiler: pdflatex
 \documentclass[presentation, bigger]{beamer}
 \usepackage[no-math]{fontspec}
@@ -35,7 +39,11 @@
  pdftitle={写一个解释器},
  pdfkeywords={},
  pdfsubject={},
+<<<<<<< HEAD
  pdfcreator={Emacs 26.2 (Org mode 9.2.4)}, 
+=======
+ pdfcreator={Emacs 25.3.1 (Org mode 9.1.1)},
+>>>>>>> origin/master
  pdflang={English}}
 \begin{document}
 
@@ -46,8 +54,13 @@
 
 
 \section{什么是解释器}
+<<<<<<< HEAD
 \label{sec:org1339c11}
 \begin{frame}[label={sec:org106539d},fragile]{解释器}
+=======
+\label{sec:orgabd5bd5}
+\begin{frame}[fragile,label={sec:org3533937}]{解释器}
+>>>>>>> origin/master
  \begin{itemize}
 \item \texttt{同声传译}
 \item 一段能够理解并执行 \texttt{你的程序} 的 \texttt{程序}
@@ -58,7 +71,11 @@
 \end{itemize}
 \end{frame}
 
+<<<<<<< HEAD
 \begin{frame}[label={sec:org3020c49},fragile]{代码的意图}
+=======
+\begin{frame}[fragile,label={sec:orgf3baafe}]{代码的意图}
+>>>>>>> origin/master
  \begin{itemize}
 \item 赋值/定义
 
@@ -78,7 +95,11 @@
 \end{itemize}
 \end{frame}
 
+<<<<<<< HEAD
 \begin{frame}[label={sec:org3aa0441},fragile]{\texttt{LISP}}
+=======
+\begin{frame}[fragile,label={sec:org17ed4b8}]{\texttt{LISP}}
+>>>>>>> origin/master
  \begin{block}{\texttt{语法(S Expression)}}
 \begin{itemize}
 \item 原子 \texttt{a}, \texttt{1}, \texttt{"hello world"}
@@ -95,7 +116,11 @@
 \end{frame}
 
 \section{如何下手}
+<<<<<<< HEAD
 \label{sec:orgdf880a7}
+=======
+\label{sec:org58d33f0}
+>>>>>>> origin/master
 \begin{frame}[fragile,allowframebreaks,label=]{步骤}
  \alert{Dragon book}, 中文名 \texttt{编译原理}
 \begin{center}
@@ -116,7 +141,11 @@
 \end{center}
 \end{frame}
 
+<<<<<<< HEAD
 \begin{frame}[label={sec:orgae54002}]{结束}
+=======
+\begin{frame}[label={sec:orga8944f3}]{结束}
+>>>>>>> origin/master
 \begin{itemize}
 \item <+-> 好，分享结束，大家可以回去看书了.
 \item <2-> 预计一年后，应该可以成功写出来了。
@@ -125,8 +154,13 @@
 \end{frame}
 
 \section{半小时版本}
+<<<<<<< HEAD
 \label{sec:org83842ef}
 \begin{frame}[label={sec:orgdceac76}]{核心逻辑}
+=======
+\label{sec:org701a80c}
+\begin{frame}[label={sec:org2d32788}]{核心逻辑}
+>>>>>>> origin/master
 \begin{itemize}
 \item parse -> (eval\footnote{处理表达式} -> apply\footnote{处理值}) loop\ldots{}
 \end{itemize}
@@ -134,7 +168,11 @@
 \includegraphics[width=0.3\textwidth]{./img/eval-apply.png}
 \end{center}
 \end{frame}
+<<<<<<< HEAD
 \begin{frame}[label={sec:org629dbc5},fragile]{解析(1 min)}
+=======
+\begin{frame}[fragile,label={sec:orgaa054ab}]{解析(1 min)}
+>>>>>>> origin/master
  这里我们就偷个懒，利用 \texttt{lisp} 的 \texttt{read-from-string} / \texttt{read} 方法
 
 \lstset{frame=single,backgroundcolor=\color[gray]{0.95},identifierstyle=\ttfamily,keywordstyle=\color[rgb]{0,0,1},commentstyle=\color[rgb]{0.133,0.545,0.133},stringstyle=\color[rgb]{0.627,0.126,0.941},basicstyle=\scriptsize,extendedchars=true,breaklines=true,prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},columns=fixed,keepspaces=true,showstringspaces=false,numbers=left,xleftmargin=.25in,xrightmargin=.25in,numberstyle=\tiny,language=Lisp,label= ,caption= ,captionpos=b}
@@ -152,7 +190,11 @@
 \end{lstlisting}
 \end{frame}
 
+<<<<<<< HEAD
 \begin{frame}[label={sec:org4dc3947}]{表达式类型}
+=======
+\begin{frame}[label={sec:org8cf6684}]{表达式类型}
+>>>>>>> origin/master
 \begin{itemize}
 \item 原子
 \begin{itemize}
@@ -172,7 +214,11 @@
 \end{itemize}
 \end{frame}
 
+<<<<<<< HEAD
 \begin{frame}[label={sec:org0820679},fragile]{原子表达式}
+=======
+\begin{frame}[fragile,label={sec:orga68c5b0}]{原子表达式}
+>>>>>>> origin/master
  \begin{block}{符号}
 \begin{quote}
 \texttt{当遇到了一个符号的时候，从当前的上下文中去查找其对应的值，做替换}
@@ -199,7 +245,11 @@ a ;;; => 1
 \end{block}
 \end{frame}
 
+<<<<<<< HEAD
 \begin{frame}[label={sec:org7f2d161},fragile]{特殊形式 \alert{if}}
+=======
+\begin{frame}[fragile,label={sec:orgb2a84e3}]{特殊形式 \alert{if}}
+>>>>>>> origin/master
  \lstset{frame=single,backgroundcolor=\color[gray]{0.95},identifierstyle=\ttfamily,keywordstyle=\color[rgb]{0,0,1},commentstyle=\color[rgb]{0.133,0.545,0.133},stringstyle=\color[rgb]{0.627,0.126,0.941},basicstyle=\scriptsize,extendedchars=true,breaklines=true,prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},columns=fixed,keepspaces=true,showstringspaces=false,numbers=left,xleftmargin=.25in,xrightmargin=.25in,numberstyle=\tiny,language=Lisp,label= ,caption= ,captionpos=b}
 \begin{lstlisting}
 (if predicate consuquence alternative)
@@ -214,7 +264,11 @@ a ;;; => 1
 并不会将表内表达式均求值，而是根据第一个元素的值，来决定后续如何进行求值。
 \end{frame}
 
+<<<<<<< HEAD
 \begin{frame}[label={sec:org068cbf5},fragile]{特殊形式 \alert{define} 以及 \alert{set!}}
+=======
+\begin{frame}[fragile,label={sec:org276f1f0}]{特殊形式 \alert{define} 以及 \alert{set!}}
+>>>>>>> origin/master
  \lstset{frame=single,backgroundcolor=\color[gray]{0.95},identifierstyle=\ttfamily,keywordstyle=\color[rgb]{0,0,1},commentstyle=\color[rgb]{0.133,0.545,0.133},stringstyle=\color[rgb]{0.627,0.126,0.941},basicstyle=\scriptsize,extendedchars=true,breaklines=true,prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},columns=fixed,keepspaces=true,showstringspaces=false,numbers=left,xleftmargin=.25in,xrightmargin=.25in,numberstyle=\tiny,language=Lisp,label= ,caption= ,captionpos=b}
 \begin{lstlisting}
 (define variable value)
@@ -230,7 +284,11 @@ a ;;; => 1
 不对 \texttt{variable} 求值，仅求值 \texttt{value}, 而后修改上下文。
 \end{frame}
 
+<<<<<<< HEAD
 \begin{frame}[label={sec:org112cef9},fragile]{特殊形式 \alert{quote}}
+=======
+\begin{frame}[fragile,label={sec:org08d36e8}]{特殊形式 \alert{quote}}
+>>>>>>> origin/master
  \lstset{frame=single,backgroundcolor=\color[gray]{0.95},identifierstyle=\ttfamily,keywordstyle=\color[rgb]{0,0,1},commentstyle=\color[rgb]{0.133,0.545,0.133},stringstyle=\color[rgb]{0.627,0.126,0.941},basicstyle=\scriptsize,extendedchars=true,breaklines=true,prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},columns=fixed,keepspaces=true,showstringspaces=false,numbers=left,xleftmargin=.25in,xrightmargin=.25in,numberstyle=\tiny,language=Lisp,label= ,caption= ,captionpos=b}
 \begin{lstlisting}
 (quote (a b c))
@@ -247,7 +305,11 @@ syntactic sugar: \texttt{'(a b c)}
 不对表达式内求值，仅返回其引用的表达式。
 \end{frame}
 
+<<<<<<< HEAD
 \begin{frame}[label={sec:org11ad90e},fragile]{特殊形式 \alert{lambda}}
+=======
+\begin{frame}[fragile,label={sec:org99749ca}]{特殊形式 \alert{lambda}}
+>>>>>>> origin/master
  \lstset{frame=single,backgroundcolor=\color[gray]{0.95},identifierstyle=\ttfamily,keywordstyle=\color[rgb]{0,0,1},commentstyle=\color[rgb]{0.133,0.545,0.133},stringstyle=\color[rgb]{0.627,0.126,0.941},basicstyle=\scriptsize,extendedchars=true,breaklines=true,prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},columns=fixed,keepspaces=true,showstringspaces=false,numbers=left,xleftmargin=.25in,xrightmargin=.25in,numberstyle=\tiny,language=Lisp,label= ,caption= ,captionpos=b}
 \begin{lstlisting}
 (lambda (a) (+ 1 a))
@@ -262,7 +324,11 @@ syntactic sugar: \texttt{'(a b c)}
 只将待执行的表达式记录下来，留待需要时使用。
 \end{frame}
 
+<<<<<<< HEAD
 \begin{frame}[label={sec:org7715afb},fragile]{特殊形式 \alert{begin}}
+=======
+\begin{frame}[fragile,label={sec:org8af9dc8}]{特殊形式 \alert{begin}}
+>>>>>>> origin/master
  \lstset{frame=single,backgroundcolor=\color[gray]{0.95},identifierstyle=\ttfamily,keywordstyle=\color[rgb]{0,0,1},commentstyle=\color[rgb]{0.133,0.545,0.133},stringstyle=\color[rgb]{0.627,0.126,0.941},basicstyle=\scriptsize,extendedchars=true,breaklines=true,prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},columns=fixed,keepspaces=true,showstringspaces=false,numbers=left,xleftmargin=.25in,xrightmargin=.25in,numberstyle=\tiny,language=Lisp,label= ,caption= ,captionpos=b}
 \begin{lstlisting}
 (begin
@@ -289,12 +355,21 @@ syntactic sugar: \texttt{'(a b c)}
 \begin{enumerate}
 \item 求值操作符
 \item 求值操作数
+<<<<<<< HEAD
+=======
+\item 应用该操作
+\begin{itemize}
+>>>>>>> origin/master
 \item 系统方法，则直接调用下层的 apply
 \item 自定义的方法
 \begin{enumerate}
 \item 把形参对应的值添加到上下文中, 生成新的上下文
 \item 在新的上下文中，求值表达式列表
 \end{enumerate}
+<<<<<<< HEAD
+=======
+\end{itemize}
+>>>>>>> origin/master
 \end{enumerate}
 \end{quote}
 
@@ -331,19 +406,32 @@ syntactic sugar: \texttt{'(a b c)}
 \end{lstlisting}
 \end{frame}
 
+<<<<<<< HEAD
 \begin{frame}[label={sec:org620347b}]{求值环境/上下文}
+=======
+\begin{frame}[label={sec:orgc5c3e7c}]{求值环境/上下文}
+>>>>>>> origin/master
 \begin{center}
 \includegraphics[width=.9\linewidth]{./img/context.png}
 \end{center}
 \end{frame}
 
 \section{实现一个解释器}
+<<<<<<< HEAD
 \label{sec:orgc6afbdc}
 \begin{frame}[label={sec:orgd8f1a2b}]{声明}
 源代码来自 SICP 第 4 章，链接见附录。
 \end{frame}
 
 \begin{frame}[label={sec:org54f6ddb},fragile]{\texttt{eval} (dispatch)}
+=======
+\label{sec:org243fb4b}
+\begin{frame}[label={sec:orge1c8c53}]{声明}
+源代码来自 SICP 第 4 章，链接见附录。
+\end{frame}
+
+\begin{frame}[fragile,label={sec:org05cf57d}]{\texttt{eval} (dispatch)}
+>>>>>>> origin/master
  \lstset{frame=single,backgroundcolor=\color[gray]{0.95},identifierstyle=\ttfamily,keywordstyle=\color[rgb]{0,0,1},commentstyle=\color[rgb]{0.133,0.545,0.133},stringstyle=\color[rgb]{0.627,0.126,0.941},basicstyle=\scriptsize,extendedchars=true,breaklines=true,prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},columns=fixed,keepspaces=true,showstringspaces=false,numbers=left,xleftmargin=.25in,xrightmargin=.25in,numberstyle=\tiny,language=Lisp,label= ,caption= ,captionpos=b}
 \begin{lstlisting}
 (define (eval exp env)
@@ -366,7 +454,11 @@ syntactic sugar: \texttt{'(a b c)}
          (error "Unknown expression type -- EVAL" exp))))
 \end{lstlisting}
 \end{frame}
+<<<<<<< HEAD
 \begin{frame}[label={sec:org1c939df},fragile]{\texttt{apply}}
+=======
+\begin{frame}[fragile,label={sec:org5a135bf}]{\texttt{apply}}
+>>>>>>> origin/master
  \lstset{frame=single,backgroundcolor=\color[gray]{0.95},identifierstyle=\ttfamily,keywordstyle=\color[rgb]{0,0,1},commentstyle=\color[rgb]{0.133,0.545,0.133},stringstyle=\color[rgb]{0.627,0.126,0.941},basicstyle=\scriptsize,extendedchars=true,breaklines=true,prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},columns=fixed,keepspaces=true,showstringspaces=false,numbers=left,xleftmargin=.25in,xrightmargin=.25in,numberstyle=\tiny,language=Lisp,label= ,caption= ,captionpos=b}
 \begin{lstlisting}
 (define (apply procedure arguments)
@@ -480,7 +572,11 @@ syntactic sugar: \texttt{'(a b c)}
 \end{lstlisting}
 \end{frame}
 
+<<<<<<< HEAD
 \begin{frame}[label={sec:org01945eb},fragile]{\texttt{eval-if}}
+=======
+\begin{frame}[fragile,label={sec:org35c33d7}]{\texttt{eval-if}}
+>>>>>>> origin/master
  \lstset{frame=single,backgroundcolor=\color[gray]{0.95},identifierstyle=\ttfamily,keywordstyle=\color[rgb]{0,0,1},commentstyle=\color[rgb]{0.133,0.545,0.133},stringstyle=\color[rgb]{0.627,0.126,0.941},basicstyle=\scriptsize,extendedchars=true,breaklines=true,prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},columns=fixed,keepspaces=true,showstringspaces=false,numbers=left,xleftmargin=.25in,xrightmargin=.25in,numberstyle=\tiny,language=Lisp,label= ,caption= ,captionpos=b}
 \begin{lstlisting}
 (define (eval-if exp env)
@@ -490,7 +586,11 @@ syntactic sugar: \texttt{'(a b c)}
 
 \end{lstlisting}
 \end{frame}
+<<<<<<< HEAD
 \begin{frame}[label={sec:orgc6361b8},fragile]{\texttt{eval-quote}}
+=======
+\begin{frame}[fragile,label={sec:orgad3fc64}]{\texttt{eval-quote}}
+>>>>>>> origin/master
  \lstset{frame=single,backgroundcolor=\color[gray]{0.95},identifierstyle=\ttfamily,keywordstyle=\color[rgb]{0,0,1},commentstyle=\color[rgb]{0.133,0.545,0.133},stringstyle=\color[rgb]{0.627,0.126,0.941},basicstyle=\scriptsize,extendedchars=true,breaklines=true,prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},columns=fixed,keepspaces=true,showstringspaces=false,numbers=left,xleftmargin=.25in,xrightmargin=.25in,numberstyle=\tiny,language=Lisp,label= ,caption= ,captionpos=b}
 \begin{lstlisting}
 (define (quoted? exp)
@@ -500,7 +600,11 @@ syntactic sugar: \texttt{'(a b c)}
 
 \end{lstlisting}
 \end{frame}
+<<<<<<< HEAD
 \begin{frame}[label={sec:org42c8c71},fragile]{\texttt{eval-lambda}}
+=======
+\begin{frame}[fragile,label={sec:orga8788b0}]{\texttt{eval-lambda}}
+>>>>>>> origin/master
  \lstset{frame=single,backgroundcolor=\color[gray]{0.95},identifierstyle=\ttfamily,keywordstyle=\color[rgb]{0,0,1},commentstyle=\color[rgb]{0.133,0.545,0.133},stringstyle=\color[rgb]{0.627,0.126,0.941},basicstyle=\scriptsize,extendedchars=true,breaklines=true,prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},columns=fixed,keepspaces=true,showstringspaces=false,numbers=left,xleftmargin=.25in,xrightmargin=.25in,numberstyle=\tiny,language=Lisp,label= ,caption= ,captionpos=b}
 \begin{lstlisting}
 (define (make-procedure parameters body env)
@@ -512,7 +616,11 @@ syntactic sugar: \texttt{'(a b c)}
 (define (procedure-environment p) (cadddr p))
 \end{lstlisting}
 \end{frame}
+<<<<<<< HEAD
 \begin{frame}[label={sec:org7677633},fragile]{\texttt{eval-begin}}
+=======
+\begin{frame}[fragile,label={sec:org3c9ad0a}]{\texttt{eval-begin}}
+>>>>>>> origin/master
  \lstset{frame=single,backgroundcolor=\color[gray]{0.95},identifierstyle=\ttfamily,keywordstyle=\color[rgb]{0,0,1},commentstyle=\color[rgb]{0.133,0.545,0.133},stringstyle=\color[rgb]{0.627,0.126,0.941},basicstyle=\scriptsize,extendedchars=true,breaklines=true,prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},columns=fixed,keepspaces=true,showstringspaces=false,numbers=left,xleftmargin=.25in,xrightmargin=.25in,numberstyle=\tiny,language=Lisp,label= ,caption= ,captionpos=b}
 \begin{lstlisting}
 (define (eval-sequence exps env)
@@ -523,8 +631,13 @@ syntactic sugar: \texttt{'(a b c)}
 \end{frame}
 
 \section{最后}
+<<<<<<< HEAD
 \label{sec:orga1db18b}
 \begin{frame}[label={sec:org79f2833},fragile]{几个题外话}
+=======
+\label{sec:orgbe5e397}
+\begin{frame}[fragile,label={sec:orga1eecfe}]{几个题外话}
+>>>>>>> origin/master
  \begin{itemize}
 \item 如果没有 assign, 会不会简单很多
 \item 如果使用 lazy 的求值, 而不是应用时求值，是否很多特殊形式就没有必要了
@@ -534,7 +647,11 @@ syntactic sugar: \texttt{'(a b c)}
 \end{itemize}
 \end{frame}
 
+<<<<<<< HEAD
 \begin{frame}[label={sec:org1c7f2c5}]{参考文档}
+=======
+\begin{frame}[label={sec:orgcb5f36b}]{参考文档}
+>>>>>>> origin/master
 \begin{itemize}
 \item \href{http://norvig.com/lispy.html}{(How to Write a (Lisp) Interpreter (in Python))}
 \item \href{http://norvig.com/lispy2.html}{(An ((Even Better) Lisp) Interpreter (in Python))}

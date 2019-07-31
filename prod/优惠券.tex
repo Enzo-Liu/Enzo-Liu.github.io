@@ -1,0 +1,112 @@
+% Created 2018-01-30 二 14:58
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\setCJKmainfont[BoldFont=FandolSong-Bold.otf,ItalicFont=FandolKai-Regular.otf]{FandolSong-Regular.otf}
+\setCJKsansfont[BoldFont=FandolHei-Bold.otf]{FandolHei-Regular.otf}
+\setCJKmonofont{FandolFang-Regular.otf}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\defaultfontfeatures{Mapping=tex-text}
+\usepackage{geometry}
+\usepackage{verbatim}
+\usepackage{fixltx2e}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{parskip}
+\setlength{\parindent}{15pt}
+\usepackage{indentfirst}
+\geometry{a4paper, textwidth=6.5in, textheight=10in,
+            marginparsep=7pt, marginparwidth=.6in}
+\tolerance=1000
+\pagestyle{empty}
+\author{行业研发}
+\date{2018-01-25}
+\title{主办优惠券}
+\hypersetup{
+ pdfauthor={行业研发},
+ pdftitle={主办优惠券},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 25.3.1 (Org mode 9.1.4)},
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+\section{优惠券说明}
+\label{sec:org324e77d}
+
+当前系统支持平台优惠券，商家优惠券。主要差异在于补贴成本由谁来承担。
+
+\subsection{优惠形式}
+\label{sec:org8c1ad2c}
+系统支持立减和折扣
+\begin{itemize}
+\item 立减ｎ元表示在符合优惠券使用情况下，总支付金额可立减ｎ元
+\item ｎ折表示在符合优惠券使用条件下，总商品金额打 n 折 (当前折扣金额最多 200 元)
+\end{itemize}
+
+\subsection{优惠券使用条件}
+\label{sec:org6bd610c}
+\begin{enumerate}
+\item 满 n 元可用
+\item 在指定有效期内可用
+\item 在指定客户端\footnote{ios 客户端，android, m 站, pc 等} 可用
+\item 指定演出/场次可用
+\item 指定商家可用
+\end{enumerate}
+
+\subsection{常见发放形式}
+\label{sec:org6280de3}
+\begin{enumerate}
+\item 平台补贴的券
+\label{sec:orga684553}
+\begin{enumerate}
+\item 运营活动，抽奖, 运营批量发放等
+\item 会员活动，每月指定等级的会员自动发放
+\item 客服补贴
+\item 下单红包
+\end{enumerate}
+
+\item 商家补贴的券
+\label{sec:org792f119}
+\begin{enumerate}
+\item 在旗舰店中领用
+\end{enumerate}
+\end{enumerate}
+
+\section{旗舰店中优惠券如何配置}
+\label{sec:org406bca7}
+\begin{enumerate}
+\item 需要主办身份
+\item 主办有自己的演出
+\item 在 e.piaoniu.com 中的营销体系中
+\begin{enumerate}
+\item 创建优惠券
+\begin{itemize}
+\item 店铺可用表示主办的所有演出可用
+\item 商品优惠券需要指定适用的商品
+\end{itemize}
+\item 创建营销计划
+\begin{itemize}
+\item 指定营销计划的有效期
+\item 选择该营销计划中可用的优惠券
+\end{itemize}
+\end{enumerate}
+\end{enumerate}
+
+以上操作结束后，即可在该主办的旗舰店中看到领取的模块。用户领取使用后，该部分补贴成本由主办自行承担。
+\end{document}

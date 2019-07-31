@@ -39,8 +39,14 @@
     "amssymb"
     "hyperref")
    (LaTeX-add-labels
+<<<<<<< HEAD
     "sec:org56a8a25"
     "sec:orgf8ee7e8"
     "sec:orge325ff5"))
+=======
+    "sec:org0f6b115"
+    "sec:org9a7b49e"
+    "sec:org8ecf7e4"))
+>>>>>>> origin/master
  :latex)
 

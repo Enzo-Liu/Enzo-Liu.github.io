@@ -29,6 +29,10 @@
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
+<<<<<<< HEAD
+=======
+                            <li class="active"><a href="/auto/">Auto</a></li>
+>>>>>>> origin/master
                             <li class="active"><a href="/blog/">Blog</a></li>
                             <li class="active"><a href="/history/">History</a></li>
                             <li class="active"><a href="/leetcode/">Leetcode</a></li>
@@ -49,9 +53,15 @@
         <div class="col-md-2"></div>
             <h1>尝试理解Y-combinator</h1>
             
+<<<<<<< HEAD
 <div id="outline-container-org876b0c5" class="outline-2">
 <h2 id="org876b0c5">简介</h2>
 <div class="outline-text-2" id="text-org876b0c5">
+=======
+<div id="outline-container-org0a8df14" class="outline-2">
+<h2 id="org0a8df14">简介</h2>
+<div class="outline-text-2" id="text-org0a8df14">
+>>>>>>> origin/master
 <p>
 在一个纯粹的函数式语言环境中，只有一种元素，就是一个单参函数
 </p>
@@ -70,9 +80,15 @@
 </div>
 </div>
 
+<<<<<<< HEAD
 <div id="outline-container-org0e0affb" class="outline-2">
 <h2 id="org0e0affb">问题</h2>
 <div class="outline-text-2" id="text-org0e0affb">
+=======
+<div id="outline-container-orgce3208d" class="outline-2">
+<h2 id="orgce3208d">问题</h2>
+<div class="outline-text-2" id="text-orgce3208d">
+>>>>>>> origin/master
 <p>
 比如需要求解一个列表的长度，该如何实现。
 </p>
@@ -87,9 +103,15 @@
 </p>
 </div>
 
+<<<<<<< HEAD
 <div id="outline-container-orgbd7bad5" class="outline-3">
 <h3 id="orgbd7bad5">common lisp</h3>
 <div class="outline-text-3" id="text-orgbd7bad5">
+=======
+<div id="outline-container-org8818142" class="outline-3">
+<h3 id="org8818142">common lisp</h3>
+<div class="outline-text-3" id="text-org8818142">
+>>>>>>> origin/master
 <div class="org-src-container">
 <pre class="src src-lisp">;; in common lisp
 (defun len (ls)
@@ -108,9 +130,15 @@ CL-USER&gt; (len '())
 </div>
 </div>
 
+<<<<<<< HEAD
 <div id="outline-container-org194acf0" class="outline-3">
 <h3 id="org194acf0">haskell</h3>
 <div class="outline-text-3" id="text-org194acf0">
+=======
+<div id="outline-container-orgef6ce6e" class="outline-3">
+<h3 id="orgef6ce6e">haskell</h3>
+<div class="outline-text-3" id="text-orgef6ce6e">
+>>>>>>> origin/master
 <div class="org-src-container">
 <pre class="src src-haskell">len1 :: (Num b ) =&gt; [a] -&gt; b
 len1 [] = 0
@@ -132,9 +160,15 @@ len1 (_:xs) = 1 + len1 xs
 </div>
 </div>
 
+<<<<<<< HEAD
 <div id="outline-container-orgcbfa1d0" class="outline-2">
 <h2 id="orgcbfa1d0">第一次尝试</h2>
 <div class="outline-text-2" id="text-orgcbfa1d0">
+=======
+<div id="outline-container-org4497f6f" class="outline-2">
+<h2 id="org4497f6f">第一次尝试</h2>
+<div class="outline-text-2" id="text-org4497f6f">
+>>>>>>> origin/master
 <p>
 尝试翻译之前写过的实现
 </p>
@@ -152,9 +186,15 @@ len1 (_:xs) = 1 + len1 xs
 </p>
 </div>
 
+<<<<<<< HEAD
 <div id="outline-container-org4cdcc86" class="outline-3">
 <h3 id="org4cdcc86">神来一笔</h3>
 <div class="outline-text-3" id="text-org4cdcc86">
+=======
+<div id="outline-container-org71a1e36" class="outline-3">
+<h3 id="org71a1e36">神来一笔</h3>
+<div class="outline-text-3" id="text-org71a1e36">
+>>>>>>> origin/master
 <p>
 假如有一个len的实现，不就可以了么！！！！
 </p>
@@ -236,9 +276,15 @@ $6 = 2
 </div>
 </div>
 
+<<<<<<< HEAD
 <div id="outline-container-orgebbf547" class="outline-3">
 <h3 id="orgebbf547">神又来一笔</h3>
 <div class="outline-text-3" id="text-orgebbf547">
+=======
+<div id="outline-container-orgaab748a" class="outline-3">
+<h3 id="orgaab748a">神又来一笔</h3>
+<div class="outline-text-3" id="text-orgaab748a">
+>>>>>>> origin/master
 <p>
 时间过去了一年，少年终于写出了可以计算长度
 =14239823586=以内的列表的长度！
@@ -286,9 +332,15 @@ $9 = 8
 </div>
 </div>
 
+<<<<<<< HEAD
 <div id="outline-container-org0087abb" class="outline-3">
 <h3 id="org0087abb">神又来一笔!</h3>
 <div class="outline-text-3" id="text-org0087abb">
+=======
+<div id="outline-container-org2d40d3a" class="outline-3">
+<h3 id="org2d40d3a">神又来一笔!</h3>
+<div class="outline-text-3" id="text-org2d40d3a">
+>>>>>>> origin/master
 <p>
 不过，写出来的程序看着好奇怪。好多=mk-len=,=（mk-len mk-len）=,
 <b>看不懂啊</b>. 只有
@@ -340,9 +392,15 @@ $9 = 8
 </div>
 </div>
 
+<<<<<<< HEAD
 <div id="outline-container-org2a4ad7f" class="outline-2">
 <h2 id="org2a4ad7f">the ultimate Y-Combinator</h2>
 <div class="outline-text-2" id="text-org2a4ad7f">
+=======
+<div id="outline-container-org7c8c7e5" class="outline-2">
+<h2 id="org7c8c7e5">the ultimate Y-Combinator</h2>
+<div class="outline-text-2" id="text-org7c8c7e5">
+>>>>>>> origin/master
 <div class="org-src-container">
 <pre class="src src-lisp">(define Y
   (lambda (targetFunction)
@@ -366,9 +424,15 @@ $10 = 9
 </div>
 </div>
 
+<<<<<<< HEAD
 <div id="outline-container-org050bede" class="outline-2">
 <h2 id="org050bede">实践</h2>
 <div class="outline-text-2" id="text-org050bede">
+=======
+<div id="outline-container-orgada4446" class="outline-2">
+<h2 id="orgada4446">实践</h2>
+<div class="outline-text-2" id="text-orgada4446">
+>>>>>>> origin/master
 <p>
 in haskell
 </p>
@@ -396,9 +460,15 @@ ysum = y (\sum' ls -&gt; if null ls then 0 else head ls + (sum'.tail $ ls))
 </div>
 </div>
 
+<<<<<<< HEAD
 <div id="outline-container-org2b03474" class="outline-2">
 <h2 id="org2b03474">external links</h2>
 <div class="outline-text-2" id="text-org2b03474">
+=======
+<div id="outline-container-orgcc63892" class="outline-2">
+<h2 id="orgcc63892">external links</h2>
+<div class="outline-text-2" id="text-orgcc63892">
+>>>>>>> origin/master
 <p>
 <a href="http://en.wikipedia.org/wiki/Fixed-point_combinator#Y_combinator">y-combinator
 in wikipedia</a>
@@ -422,7 +492,11 @@ chapter 8</a>
         <span title="author" class="post-info">enzo liu</span>
     </div>
 <footer class="footer">
+<<<<<<< HEAD
     <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 26.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+=======
+    <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+>>>>>>> origin/master
     <p>
         Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
         &nbsp;&nbsp;-&nbsp;&nbsp;
