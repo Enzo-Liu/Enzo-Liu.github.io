@@ -22,11 +22,11 @@ Note: The result may be very large, so you need to return a string instead of an
 #+END_QUOTE
 
 * 思路
+  
+两个数字 a,b, 假设 ab >= ba (例如 9，98， 998>989)
 
-两个数字a,b, 假设 ab >= ba (例如9，98， 998>989)
-
-1. 对于任意c， abc >= bac && cab >= cba
-2. 对于任意c,  需要证明 如果ac>=ca, bc<=cb 则 acb >= bca
+1. 对于任意 c， abc >= bac && cab >= cba
+2. 对于任意 c,  需要证明 如果 ac>=ca, bc<=cb 则 acb >= bca
 
    x 为 a 的长度 , y 为 b 的长度， z 为 c 的长度
 

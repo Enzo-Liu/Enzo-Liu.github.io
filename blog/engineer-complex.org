@@ -1,0 +1,55 @@
+#+TITLE:       工程的复杂度
+#+AUTHOR:      enzo liu
+#+EMAIL:       liuenze6516@gmail.com
+#+DATE:        2019-07-31 Web
+#+URI:         /blog/%y/%m/%d/engineer-complex
+#+KEYWORDS:    
+#+TAGS:        
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: 
+
+近期换了一个工作领域，遇到了不少问题，简单记录一下。
+
+** spring-boot 中调度 map-reduce 任务
+- =spring-boot= 的打包方式导致 jar 包无法被直接依赖
+  - 只有 spring-boot 的类直接在 jar 包里暴露, 其他依赖的类在 jar 包内的 =BOOT-INF= 目录下
+  - jar 包内的 =META-INF/MANIFEST.MF= 指定的启动的 =lancher=, =lancher= 内有自定的 =classpath=, 处理路径相关的问题
+  - 解决办法: 将 web 项目和任务调度的项目分离成两个不同的 jar 包
+- =spring-boot= 有自定义的 lancher, 无法按照 ~java~ 常规方式配置 =classpath=
+  - =spring-boot= 提供了不同的打包的 =layout= , 其中, =PropertiesLauncher= 提供扩展点指定额外的 =classpath=
+  - 修改打包的 =layout= 为 =ZIP= 的方式, 从而使用 =PropertiesLauncher=
+- 如何读取 yarn , hbase, hadoop 相关的配置
+  - 读 =HadoopConfiguration=, =HbaseConfiguration= 等类, 发现配置的加载是从指定文件中读取
+  - 自定义的配置可以 =runtime= 直接设置 =configuration= , 提交任务时，相关配置会被序列化到 =job.xml= 中
+  - 集群通过 =cloudrea= 进行配置管理，于是将 cloudrea 维护的配置启动时同步一份至 classpath 下即可
+- 问题排查过程中, 如何确认是打包相关的问题
+  1. 研究发现, 任务的提交和执行是通过将 job 任务序列化至 hdfs
+  2. 读序列化好的 job 任务，确认 =classpath= 正常，依赖的 jar 包上传至了 =hdfs=
+  3. 读 =yarn-client= 的代码，找到自定义的 =classloader=, 发现是从 hdfs 中下载 jar 包后去加载
+  4. 手动下载依赖的 jar 包解压后，发现 layout 与常规的 jar 包不一致
+  5. 其他零碎的问题就不赘述了
+  
+** 同一个项目中, 添加调度 spark 任务
+- =spring-boot= 不支持 zip64 的压缩方式
+  - 由于任务调度的项目已依赖了 =hadoop= , =hbase= 等包, 继续加入 =spark= 的依赖后，打成 jar 包的文件数超过了 65535, 则自动采取了 =zip64= 的压缩方式
+  - 解决办法
+    1. 将 spark 相关的依赖修改成 =provided=, 修改部署环境和发布脚本, 依赖机器上提供好的包
+    2. 将相关 spark 执行时的依赖包提前上传至 hdfs 中，在任务提交的 =classpath=  配置中添加指定路径
+- spark 的 executor 执行指定任务(? extend scala.App)时, 报错空指针(依赖的静态变量为空)
+  - +以下表述不一定精确+ 
+  - spark 有 =driver= 和 =executor=, 其中 =driver= 负责分析 =RDD= , 生成任务, =executor= 负责执行
+  - 任务依赖的静态信息(class 等)是通过 jar 包传递, 动态(runtime)信息通过序列化/class 初始化传递
+  - scala.App 继承至 delayedInit, 其中 =body= 里的 =val= 实际为静态变量, 依赖初始化的代码进行赋值操作
+  - spark 会将 RDD 中使用的 =closure= 进行序列化操作，传递给 =executor=, 序列化的 =context= 仅包含了 本地变量(=method-scope-variable=)
+  - 如果依赖的本地变量里涉及到其他的类的对象，同样会进行序列化操作(如果不可序列化，则会 spark 任务提交失败)
+  - 其他相关信息可参考 https://medium.com/@manuzhang/npe-from-spark-app-that-extends-scala-app-ef7378195850, https://github.com/apache/spark/pull/23903, https://issues.apache.org/jira/browse/SPARK-4170
+  - 解决办法: 不继承 scala.App, 直接定义 =main= , 从而依赖的变量被 scala 编译成本地变量，从而 spark 的 closure 序列化时，可以捕捉到
+
+** 感想 
+这些问题不难, 但是复杂。涉及到的工程领域（框架，抽象层次）很多，每一层都需要去了解其细节，才能分析和解决问题。
+#+BEGIN_QUOTE
+=spring-boot= 如何打包, yarn 的 client 如何加载依赖包, 如何读取配置, 如何传递上下文, scala 如何编译, object 内的变量编译到字节码是什么类型，spark 的任务生成是如何传递依赖信息的，不同类型的变量处理方式又是如何，scala 的 =delayedInit= 如何触发，作为 spark 的 =executor= 被调度时为何不触发初始化赋值, 等等等等...
+#+END_QUOTE
+
+*只能说工程越来越复杂，做一个好的工程师挺不容易。* [fn:: +或者是基础架构不够稳健, 层间接口过于宽松，导致需要了解细节+ 那估计换成 haskell 就没问题了，毕竟类型系统足够有表达力，更好做限制...]
