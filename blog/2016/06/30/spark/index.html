@@ -72,9 +72,9 @@
 所以，每个月初，出上月月报的时候，挺痛苦的，帮各个角色出各种数据。
 </p>
 
-<div id="outline-container-org2972f17" class="outline-2">
-<h2 id="org2972f17">穷极思变</h2>
-<div class="outline-text-2" id="text-org2972f17">
+<div id="outline-container-org0e0d8f9" class="outline-2">
+<h2 id="org0e0d8f9">穷极思变</h2>
+<div class="outline-text-2" id="text-org0e0d8f9">
 <p>
 累的久了，自然想改变一下。于是自动同步线上日志(<code>rsync</code>)，自动解压，解析，去重，生成uv. 每个月需要报表的时候，手动去执行一下脚本就可以了。
 </p>
@@ -85,46 +85,46 @@
 </div>
 </div>
 
-<div id="outline-container-org0d0aaac" class="outline-2">
-<h2 id="org0d0aaac">又一次变化</h2>
-<div class="outline-text-2" id="text-org0d0aaac">
+<div id="outline-container-orge2090b7" class="outline-2">
+<h2 id="orge2090b7">又一次变化</h2>
+<div class="outline-text-2" id="text-orge2090b7">
 <p>
 <code>spark</code> comes to the resuce.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org8edb962" class="outline-2">
-<h2 id="org8edb962">spark 的好处</h2>
-<div class="outline-text-2" id="text-org8edb962">
+<div id="outline-container-orge59915f" class="outline-2">
+<h2 id="orge59915f">spark 的好处</h2>
+<div class="outline-text-2" id="text-orge59915f">
 </div>
-<div id="outline-container-orge574739" class="outline-3">
-<h3 id="orge574739">自动的任务分解</h3>
-<div class="outline-text-3" id="text-orge574739">
+<div id="outline-container-orgde4dfd9" class="outline-3">
+<h3 id="orgde4dfd9">自动的任务分解</h3>
+<div class="outline-text-3" id="text-orgde4dfd9">
 <p>
 我理解，其实和 <code>functional programming</code> 里的概念很类似。 <code>haskell</code> 也可以在编译时指定开启多线程，就能自动分解任务。基于的前提都是理解操作间的关联与影响。知道哪些操作是可以先分解再合并的。于是，写的时候当做单线程去写，执行的时候帮你优化。
 </p>
 </div>
 </div>
 
-<div id="outline-container-org6856e16" class="outline-3">
-<h3 id="org6856e16">自动的中间结果缓存</h3>
-<div class="outline-text-3" id="text-org6856e16">
+<div id="outline-container-orgcc0a06b" class="outline-3">
+<h3 id="orgcc0a06b">自动的中间结果缓存</h3>
+<div class="outline-text-3" id="text-orgcc0a06b">
 <p>
 同样是为了效率的优化，对于撰写脚本计算的人屏蔽了这一层优化的考虑，降低负担.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgc160328" class="outline-3">
-<h3 id="orgc160328">可以直接本地执行，榨干机器的CPU</h3>
+<div id="outline-container-org5c5d408" class="outline-3">
+<h3 id="org5c5d408">可以直接本地执行，榨干机器的CPU</h3>
 </div>
 </div>
 
 
-<div id="outline-container-orgec1ed94" class="outline-2">
-<h2 id="orgec1ed94">任务示例</h2>
-<div class="outline-text-2" id="text-orgec1ed94">
+<div id="outline-container-org90bc822" class="outline-2">
+<h2 id="org90bc822">任务示例</h2>
+<div class="outline-text-2" id="text-org90bc822">
 <p>
 比如想知道点了一个演出之后，又点了另一个演出的比例。
 </p>
@@ -147,9 +147,9 @@ relatedVistis = normalVisits.filter("host = 'www.piaoniu.com' and url like '/act
 </div>
 </div>
 
-<div id="outline-container-orgb1a79d0" class="outline-2">
-<h2 id="orgb1a79d0">当前的使用方式　</h2>
-<div class="outline-text-2" id="text-orgb1a79d0">
+<div id="outline-container-orgb939f4c" class="outline-2">
+<h2 id="orgb939f4c">当前的使用方式　</h2>
+<div class="outline-text-2" id="text-orgb939f4c">
 <ul class="org-ul">
 <li>安装spark
 <code>docker</code> 安装 <code>jupyter/all-spark-notebook</code></li>

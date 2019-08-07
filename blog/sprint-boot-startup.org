@@ -1,0 +1,46 @@
+#+TITLE:       Spring Boot 启动过程分析
+#+AUTHOR:      enzo liu
+#+EMAIL:       liuenze6516@gmail.com
+#+DATE:        2019-08-07 Web
+#+URI:         /blog/%y/%m/%d/spring-boot-startup
+#+KEYWORDS:
+#+TAGS:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION:
+
+项目中突然启动时开始打印 DEBUG 的日志，而日志级别配置的都是 INFO. +尽管投产比很低+, 出于洁癖, 花了两个小时研究了一下问题。
+
+想要调查清楚: *为什么会启动时打印 DEBUG 日志，稍后就按照配置的级别(INFO)进行打印.*
+
+** 日志是怎么打印的
+倒叙而言
+- 通过 =logger= 的 =debug= / =info= 等方法进行打印 (实际的打印过程暂且忽略)
+- 获取到的 =logger= 有日志级别，相应的 loggerContext 中也有对应的配置
+  - =spring-boot= 中, 我们配置了 =logback= 作为打印的框架, 以上表述仅针对 =logback= 的实现
+- =logger= 于 =LoggerFactory= 中获取
+  - =Slf4jLogfactory= 会获取 =StaticLoggerBinder= 中的 =LogFactory= 单例
+- =LogFactory= 单例 会被 =LogBackLoggingSystem= 初始化
+- =LogBackLoggingSystem= 会通过 =LoggingApplicationListener= 初始化
+- =LoggingApplicationListener= 会在 =SpringApplication= 的相关生命周期事件回调时被触发
+- =spring-boot= 以及 =spring-cloud= 启动时，均会创建 =SpringApplication=
+  - 简单而言, =spring-cloud= 的启动即是通过先启动一个 =bootstrap= 的 =SpringApplication= 来拉起真正的 =SpringApplication= 。
+
+** 排查过程
+1. debug 打印的过程
+   - 发现启动时对应的 =loggercontext= 和 =RootLogger= 的级别均为 =DEBUG=
+   - 正常运行时打印日志的 logger, 对应的 =loggercontext= 和 =RootLogger= 的级别均为 =INFO=
+2. 找到设置 level 的代码，debug 设值和变化的过程
+   - 发现 =LogBackLoggingSystem= 的初始化会被调用两次, 第一次为 =DEBUG= 级别, 第二次为 =INFO= 级别
+3. 分析为什么会初始化两次
+   1. =SpringApplication.run= 方法触发后, 会通过 =ApplicationListener= 回调
+   2. 回调的 =listner= 中, 有一个 =BootstrapApplicationListener=, 用于启动 =spring-cloud=
+   3. =BootstrapApplicationListener= 会创建一个用于 =bootstrap= 的 =SpringApplication=, 创建的过程中也会触发 =ApplicationListener=, 其中同样包含 =LoggingApplicationListener=
+   4. =spring-boot= 的 =ApplicationListener= 会触发的回调包含 =BootstrapApplicationListener= , =LoggingSystemShutdownListener=, =LoggingApplicationListener= . 由提前设置好的 order 决定触发顺序，所以会先创建用于 =bootstrap= 的 =loggingsystem=, 而后销毁，而后创建应用运行时使用的 =loggingsystem=
+
+** 解决方法
+配置 =bootstrap.yml=, 其中设置 =logging.path= 以及 =logging.level=, 即可指定 =bootstrap= 期间的 =logger= 的行为。
+
+
+** 感想
+这个问题本身解决的价值和带来的经验/知识积累一般。 不过查问题挺爽, +逃避一下严肃的思考+, 另外工程的集成度真高, 这一个小问题里没追究下去的细节还有很多，程序员不容易，哈哈
