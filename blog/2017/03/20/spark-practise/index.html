@@ -51,9 +51,9 @@
         <div class="col-md-2"></div>
             <h1>Spark 入门实操</h1>
             
-<div id="outline-container-org055bcb9" class="outline-2">
-<h2 id="org055bcb9">背景</h2>
-<div class="outline-text-2" id="text-org055bcb9">
+<div id="outline-container-orgb3b6138" class="outline-2">
+<h2 id="orgb3b6138">背景</h2>
+<div class="outline-text-2" id="text-orgb3b6138">
 <p>
 内网服务器的 spark 又跑不动了... 所以在阿里云上买两台机器, 严肃点的部署一下.
 顺便把之前的 pyspark 脚本也迁移到 scala 上，可以利用起我们 java 下的资源.
@@ -61,9 +61,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgd4695da" class="outline-2">
-<h2 id="orgd4695da">部署环境</h2>
-<div class="outline-text-2" id="text-orgd4695da">
+<div id="outline-container-org4f8f7d7" class="outline-2">
+<h2 id="org4f8f7d7">部署环境</h2>
+<div class="outline-text-2" id="text-org4f8f7d7">
 <ul class="org-ul">
 <li>机器阿里云 2 台 4 核 16g</li>
 <li>依赖软件
@@ -76,9 +76,9 @@
 </div>
 </div>
 
-<div id="outline-container-org679d845" class="outline-2">
-<h2 id="org679d845">部署过程</h2>
-<div class="outline-text-2" id="text-org679d845">
+<div id="outline-container-orgb74823f" class="outline-2">
+<h2 id="orgb74823f">部署过程</h2>
+<div class="outline-text-2" id="text-orgb74823f">
 <blockquote>
 <p>
 为了后续添加 slave 方便，在 ansible 的脚本上花了很大的功夫。根据 master 以及 slave 的 inventory 配置
@@ -114,9 +114,9 @@
 </div>
 </div>
 
-<div id="outline-container-org8974ab2" class="outline-2">
-<h2 id="org8974ab2">发布方式</h2>
-<div class="outline-text-2" id="text-org8974ab2">
+<div id="outline-container-orgd616a19" class="outline-2">
+<h2 id="orgd616a19">发布方式</h2>
+<div class="outline-text-2" id="text-orgd616a19">
 <ul class="org-ul">
 <li>打包
 <code>sbt assembly</code></li>
@@ -126,9 +126,9 @@
 </div>
 </div>
 
-<div id="outline-container-org8cfd2a7" class="outline-2">
-<h2 id="org8cfd2a7">执行方式</h2>
-<div class="outline-text-2" id="text-org8cfd2a7">
+<div id="outline-container-org1676a99" class="outline-2">
+<h2 id="org1676a99">执行方式</h2>
+<div class="outline-text-2" id="text-org1676a99">
 <p>
 <code>crontab</code> 定期调度
 </p>
@@ -139,9 +139,9 @@
 </div>
 </div>
 
-<div id="outline-container-org5866b68" class="outline-2">
-<h2 id="org5866b68">App 示例</h2>
-<div class="outline-text-2" id="text-org5866b68">
+<div id="outline-container-orgdbf2f0a" class="outline-2">
+<h2 id="orgdbf2f0a">App 示例</h2>
+<div class="outline-text-2" id="text-orgdbf2f0a">
 <div class="org-src-container">
 <pre class="src src-scala">val idsRDD = odpsOps.readTable(project, table, pr, read, numPartitions)
   .filter(_.time.isAfter(start)) // 保留最近一个月的访问记录
@@ -179,9 +179,9 @@ def withReverse(res: ((Int,Int), Double)) = {
 </div>
 </div>
 
-<div id="outline-container-org6ff5b06" class="outline-2">
-<h2 id="org6ff5b06">执行结果</h2>
-<div class="outline-text-2" id="text-org6ff5b06">
+<div id="outline-container-org387ee10" class="outline-2">
+<h2 id="org387ee10">执行结果</h2>
+<div class="outline-text-2" id="text-org387ee10">
 <p>
 同样的功能，由于
 </p>

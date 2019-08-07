@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <title>Spring Boot 启动过程分析 - enzo&#39;s note book</title>
+  <meta charset="utf-8" />
+  <meta name="author" content="enzo liu" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+
+  <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml">
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/posts.css" type="text/css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</head>
+
+  <body class="container">
+<header id="header">
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top" style="opacity: .9" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">enzo&#39;s note book</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                            <li class="active"><a href="/blog/">Blog</a></li>
+                            <li class="active"><a href="/history/">History</a></li>
+                            <li class="active"><a href="/leetcode/">Leetcode</a></li>
+                            <li class="active"><a href="/prod/">Prod</a></li>
+                        <li><a href="/tags/">Tags</a></li>
+                        <li><a href="/about/">About</a></li>
+                        <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
+                        <li><a href="/rss.xml">RSS</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </body>
+</header>
+
+<section id="content" role="main">
+    <div id="outline-container-sec-" class="row" style="padding-top: 70px">
+        <div class="col-md-2"></div>
+            <h1>Spring Boot 启动过程分析</h1>
+            <p>
+项目中突然启动时开始打印 DEBUG 的日志，而日志级别配置的都是 INFO. <del>尽管投产比很低</del>, 出于洁癖, 花了两个小时研究了一下问题。
+</p>
+
+<p>
+想要调查清楚: <b>为什么会启动时打印 DEBUG 日志，稍后就按照配置的级别(INFO)进行打印.</b>
+</p>
+
+<div id="outline-container-org330f167" class="outline-2">
+<h2 id="org330f167">日志是怎么打印的</h2>
+<div class="outline-text-2" id="text-org330f167">
+<p>
+倒叙而言
+</p>
+<ul class="org-ul">
+<li>通过 <code>logger</code> 的 <code>debug</code> / <code>info</code> 等方法进行打印 (实际的打印过程暂且忽略)</li>
+<li>获取到的 <code>logger</code> 有日志级别，相应的 loggerContext 中也有对应的配置
+<ul class="org-ul">
+<li><code>spring-boot</code> 中, 我们配置了 <code>logback</code> 作为打印的框架, 以上表述仅针对 <code>logback</code> 的实现</li>
+</ul></li>
+<li><code>logger</code> 于 <code>LoggerFactory</code> 中获取
+<ul class="org-ul">
+<li><code>Slf4jLogfactory</code> 会获取 <code>StaticLoggerBinder</code> 中的 <code>LogFactory</code> 单例</li>
+</ul></li>
+<li><code>LogFactory</code> 单例 会被 <code>LogBackLoggingSystem</code> 初始化</li>
+<li><code>LogBackLoggingSystem</code> 会通过 <code>LoggingApplicationListener</code> 初始化</li>
+<li><code>LoggingApplicationListener</code> 会在 <code>SpringApplication</code> 的相关生命周期事件回调时被触发</li>
+<li><code>spring-boot</code> 以及 <code>spring-cloud</code> 启动时，均会创建 <code>SpringApplication</code>
+<ul class="org-ul">
+<li>简单而言, <code>spring-cloud</code> 的启动即是通过先启动一个 <code>bootstrap</code> 的 <code>SpringApplication</code> 来拉起真正的 <code>SpringApplication</code> 。</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org66f3a84" class="outline-2">
+<h2 id="org66f3a84">排查过程</h2>
+<div class="outline-text-2" id="text-org66f3a84">
+<ol class="org-ol">
+<li>debug 打印的过程
+<ul class="org-ul">
+<li>发现启动时对应的 <code>loggercontext</code> 和 <code>RootLogger</code> 的级别均为 <code>DEBUG</code></li>
+<li>正常运行时打印日志的 logger, 对应的 <code>loggercontext</code> 和 <code>RootLogger</code> 的级别均为 <code>INFO</code></li>
+</ul></li>
+<li>找到设置 level 的代码，debug 设值和变化的过程
+<ul class="org-ul">
+<li>发现 <code>LogBackLoggingSystem</code> 的初始化会被调用两次, 第一次为 <code>DEBUG</code> 级别, 第二次为 <code>INFO</code> 级别</li>
+</ul></li>
+<li>分析为什么会初始化两次
+<ol class="org-ol">
+<li><code>SpringApplication.run</code> 方法触发后, 会通过 <code>ApplicationListener</code> 回调</li>
+<li>回调的 <code>listner</code> 中, 有一个 <code>BootstrapApplicationListener</code>, 用于启动 <code>spring-cloud</code></li>
+<li><code>BootstrapApplicationListener</code> 会创建一个用于 <code>bootstrap</code> 的 <code>SpringApplication</code>, 创建的过程中也会触发 <code>ApplicationListener</code>, 其中同样包含 <code>LoggingApplicationListener</code></li>
+<li><code>spring-boot</code> 的 <code>ApplicationListener</code> 会触发的回调包含 <code>BootstrapApplicationListener</code> , <code>LoggingSystemShutdownListener</code>, <code>LoggingApplicationListener</code> . 由提前设置好的 order 决定触发顺序，所以会先创建用于 <code>bootstrap</code> 的 <code>loggingsystem</code>, 而后销毁，而后创建应用运行时使用的 <code>loggingsystem</code></li>
+</ol></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org845b547" class="outline-2">
+<h2 id="org845b547">解决方法</h2>
+<div class="outline-text-2" id="text-org845b547">
+<p>
+配置 <code>bootstrap.yml</code>, 其中设置 <code>logging.path</code> 以及 <code>logging.level</code>, 即可指定 <code>bootstrap</code> 期间的 <code>logger</code> 的行为。
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgdfdefa2" class="outline-2">
+<h2 id="orgdfdefa2">感想</h2>
+<div class="outline-text-2" id="text-orgdfdefa2">
+<p>
+这个问题本身解决的价值和带来的经验/知识积累一般。 不过查问题挺爽, <del>逃避一下严肃的思考</del>, 另外工程的集成度真高, 这一个小问题里没追究下去的细节还有很多，程序员不容易，哈哈
+</p>
+</div>
+</div>
+
+    </div>
+</section>
+
+
+    <div class="post-meta">
+        <span title="post date" class="post-info">2019-08-07</span>
+        <span title="last modification date" class="post-info">2019-08-07</span>
+        <span title="tags" class="post-info">N/A</span>
+        <span title="author" class="post-info">enzo liu</span>
+    </div>
+<footer class="footer">
+    <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 26.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+    <p>
+        Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
+        &nbsp;&nbsp;-&nbsp;&nbsp;
+        Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+        <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+    </p>
+</footer>
+
+  </body>
+</html>
