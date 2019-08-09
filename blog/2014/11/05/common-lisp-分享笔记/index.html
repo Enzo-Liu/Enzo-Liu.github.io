@@ -49,9 +49,9 @@
         <div class="col-md-2"></div>
             <h1>common-lisp 分享笔记</h1>
             
-<div id="outline-container-orgce81f90" class="outline-2">
-<h2 id="orgce81f90">Lisp</h2>
-<div class="outline-text-2" id="text-orgce81f90">
+<div id="outline-container-orga6dddee" class="outline-2">
+<h2 id="orga6dddee">Lisp</h2>
+<div class="outline-text-2" id="text-orga6dddee">
 <p>
 Lisp，最初被拼为LISP，一个历史悠久的电脑编程语言家族，以波兰表示法编写。最早由约翰·麦卡锡在1958年基于λ演算创造，是历史第二悠久的高级语言，仅次于Fortran。也是第一个函数式编程语言。
 -wiki
@@ -80,9 +80,9 @@ Levin）在麻省理工学院，以Lisp语言，实做出第一个完整的lisp�
 </p>
 </div>
 
-<div id="outline-container-org4a03e45" class="outline-3">
-<h3 id="org4a03e45">S表达式(symbolic expression)</h3>
-<div class="outline-text-3" id="text-org4a03e45">
+<div id="outline-container-org08e5b14" class="outline-3">
+<h3 id="org08e5b14">S表达式(symbolic expression)</h3>
+<div class="outline-text-3" id="text-org08e5b14">
 <p>
 s-expression sexp
 定义参考链接[<a href="http://en.wikipedia.org/wiki/S-expression">http://en.wikipedia.org/wiki/S-expression</a>]
@@ -144,9 +144,9 @@ pair）来描述的。例如，car 和 cdr 都为数值 1 的单元，要写成�
 </div>
 </div>
 
-<div id="outline-container-org5c67f3d" class="outline-3">
-<h3 id="org5c67f3d">表</h3>
-<div class="outline-text-3" id="text-org5c67f3d">
+<div id="outline-container-org25acdde" class="outline-3">
+<h3 id="org25acdde">表</h3>
+<div class="outline-text-3" id="text-org25acdde">
 <p>
 原子就是不包含空格的符号，可以是字符，也可以是数字。表就是用小括号包含起来的原子或者表,也就是说表可以嵌套
 </p>
@@ -219,9 +219,9 @@ pair）来描述的。例如，car 和 cdr 都为数值 1 的单元，要写成�
 </div>
 </div>
 
-<div id="outline-container-orge31b66d" class="outline-3">
-<h3 id="orge31b66d">lambda 表达式</h3>
-<div class="outline-text-3" id="text-orge31b66d">
+<div id="outline-container-org8a1942d" class="outline-3">
+<h3 id="org8a1942d">lambda 表达式</h3>
+<div class="outline-text-3" id="text-org8a1942d">
 <p>
 匿名函数 简单示例:
 </p>
@@ -240,9 +240,9 @@ lambda x. x+2
 </div>
 </div>
 
-<div id="outline-container-org1780f7c" class="outline-3">
-<h3 id="org1780f7c">符号</h3>
-<div class="outline-text-3" id="text-org1780f7c">
+<div id="outline-container-orgaf44bca" class="outline-3">
+<h3 id="orgaf44bca">符号</h3>
+<div class="outline-text-3" id="text-orgaf44bca">
 <p>
 参考链接:[<a href="http://acl.readthedocs.org/en/latest/zhCN/ch8-cn.html">http://acl.readthedocs.org/en/latest/zhCN/ch8-cn.html</a>]
 </p>
@@ -296,17 +296,17 @@ Evaluation aborted on #.
 </div>
 </div>
 
-<div id="outline-container-orgec858f5" class="outline-3">
-<h3 id="orgec858f5">过程抽象(函数式编程)</h3>
-<div class="outline-text-3" id="text-orgec858f5">
+<div id="outline-container-orgb61be38" class="outline-3">
+<h3 id="orgb61be38">过程抽象(函数式编程)</h3>
+<div class="outline-text-3" id="text-orgb61be38">
 <p>
 作为一种抽象手段(黑盒)，将这一过程的使用方式/目的与该过程究竟如何通过更基本的过程实现的具体细节相分离。
 </p>
 </div>
 
-<div id="outline-container-org35730ba" class="outline-4">
-<h4 id="org35730ba">函数作为参数</h4>
-<div class="outline-text-4" id="text-org35730ba">
+<div id="outline-container-orgd4b1ab2" class="outline-4">
+<h4 id="orgd4b1ab2">函数作为参数</h4>
+<div class="outline-text-4" id="text-orgd4b1ab2">
 <p>
 与其将通用的和专用的混在一起,不如定义一个通用的然后把专用的部分作为参数。
 </p>
@@ -345,9 +345,9 @@ Evaluation aborted on #.
 </div>
 </div>
 
-<div id="outline-container-orgd2f1633" class="outline-4">
-<h4 id="orgd2f1633">函数作为返回值</h4>
-<div class="outline-text-4" id="text-orgd2f1633">
+<div id="outline-container-orgc2c50f3" class="outline-4">
+<h4 id="orgc2c50f3">函数作为返回值</h4>
+<div class="outline-text-4" id="text-orgc2c50f3">
 <p>
 如何更方便的生产函数。
 </p>
@@ -396,9 +396,9 @@ complement需要一个 谓词作为参数,它返回一个函数,这个函数的�
 </div>
 </div>
 
-<div id="outline-container-orgcdf9145" class="outline-4">
-<h4 id="orgcdf9145">currying (多元函数规约到一元函数)</h4>
-<div class="outline-text-4" id="text-orgcdf9145">
+<div id="outline-container-orgcba2dd2" class="outline-4">
+<h4 id="orgcba2dd2">currying (多元函数规约到一元函数)</h4>
+<div class="outline-text-4" id="text-orgcba2dd2">
 <p>
 lambda
 演算是基于一元函数进行推演。而curry就是一个将多元函数规约到一元函数的定义。从而保证lambda演算对于任何函数都成立.
@@ -419,9 +419,9 @@ var foo = function(a) {
 </div>
 </div>
 
-<div id="outline-container-orga6e08e5" class="outline-4">
-<h4 id="orga6e08e5">闭包,词法作用域,动态作用域</h4>
-<div class="outline-text-4" id="text-orga6e08e5">
+<div id="outline-container-orgaeb1fc1" class="outline-4">
+<h4 id="orgaeb1fc1">闭包,词法作用域,动态作用域</h4>
+<div class="outline-text-4" id="text-orgaeb1fc1">
 <p>
 参考链接：[<a href="http://acl.readthedocs.org/en/latest/zhCN/ch6-cn.html#closures">http://acl.readthedocs.org/en/latest/zhCN/ch6-cn.html#closures</a>]
 </p>
@@ -462,13 +462,13 @@ variable）。函数引用到自由的词法变量时，称之为闭包（closur
 </div>
 </div>
 
-<div id="outline-container-org257a0c2" class="outline-3">
-<h3 id="org257a0c2">数据抽象</h3>
-<div class="outline-text-3" id="text-org257a0c2">
+<div id="outline-container-org45f6ea9" class="outline-3">
+<h3 id="org45f6ea9">数据抽象</h3>
+<div class="outline-text-3" id="text-org45f6ea9">
 </div>
-<div id="outline-container-org9dcfce2" class="outline-4">
-<h4 id="org9dcfce2">函数表达</h4>
-<div class="outline-text-4" id="text-org9dcfce2">
+<div id="outline-container-org737d0fe" class="outline-4">
+<h4 id="org737d0fe">函数表达</h4>
+<div class="outline-text-4" id="text-org737d0fe">
 <p>
 通常说来,数据结构被用来描述事物。可以用数组描述坐标,用树结构表示命令的层次结构,而用图来表示铁路网。在Lisp里,我们常会使用闭包作为表现形式。在闭包里,变量绑定可以保存信息,也能扮演在复杂数据结构中指针的角色。如果让一组闭包之间共享绑定,或者让它们之间能相互引用,那么我们就可以创建混合型的对象类型。
 </p>
@@ -489,9 +489,9 @@ Procedure。在函数语言中，可以构造一种非常类似于对象的高�
 </div>
 </div>
 
-<div id="outline-container-orgc66029b" class="outline-3">
-<h3 id="orgc66029b">特殊形式</h3>
-<div class="outline-text-3" id="text-orgc66029b">
+<div id="outline-container-org92b6daf" class="outline-3">
+<h3 id="org92b6daf">特殊形式</h3>
+<div class="outline-text-3" id="text-org92b6daf">
 <p>
 Lisp 程序是由形式（Form）排列起来构成的。形式就是 S
 表达式，它通过下面的规则来进行求值。
@@ -525,9 +525,9 @@ setq 以外，特殊形式还有用于条件分支的 if 和用于定义局部�
 </div>
 </div>
 
-<div id="outline-container-orgd3fdfd4" class="outline-3">
-<h3 id="orgd3fdfd4">宏</h3>
-<div class="outline-text-3" id="text-orgd3fdfd4">
+<div id="outline-container-org1162f80" class="outline-3">
+<h3 id="org1162f80">宏</h3>
+<div class="outline-text-3" id="text-org1162f80">
 <p>
 (defun test () '(+ 1 2))
 </p>
@@ -566,9 +566,9 @@ Lisp的代码的表示形式，S表达式本身就是Lisp可以方便操作的�
 </p>
 </div>
 
-<div id="outline-container-orga32583c" class="outline-4">
-<h4 id="orga32583c">特殊之处</h4>
-<div class="outline-text-4" id="text-orga32583c">
+<div id="outline-container-orgebd11da" class="outline-4">
+<h4 id="orgebd11da">特殊之处</h4>
+<div class="outline-text-4" id="text-orgebd11da">
 <ol class="org-ol">
 <li>宏可以控制或阻止对其参数的求值</li>
 
@@ -577,9 +577,9 @@ Lisp的代码的表示形式，S表达式本身就是Lisp可以方便操作的�
 </div>
 </div>
 
-<div id="outline-container-org08fbb80" class="outline-4">
-<h4 id="org08fbb80">示例</h4>
-<div class="outline-text-4" id="text-org08fbb80">
+<div id="outline-container-org822e24a" class="outline-4">
+<h4 id="org822e24a">示例</h4>
+<div class="outline-text-4" id="text-org822e24a">
 <pre class="example">
     (macroexpand-1 '(cond ((= x 2) (/ x 0)) (t 1)))
 
