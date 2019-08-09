@@ -34,7 +34,6 @@
                             <li class="active"><a href="/blog/">Blog</a></li>
                             <li class="active"><a href="/history/">History</a></li>
                             <li class="active"><a href="/leetcode/">Leetcode</a></li>
-                            <li class="active"><a href="/prod/">Prod</a></li>
                         <li><a href="/tags/">Tags</a></li>
                         <li><a href="/about/">About</a></li>
                         <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
@@ -72,9 +71,9 @@
 所以，每个月初，出上月月报的时候，挺痛苦的，帮各个角色出各种数据。
 </p>
 
-<div id="outline-container-org339da73" class="outline-2">
-<h2 id="org339da73">穷极思变</h2>
-<div class="outline-text-2" id="text-org339da73">
+<div id="outline-container-org47ccd2f" class="outline-2">
+<h2 id="org47ccd2f">穷极思变</h2>
+<div class="outline-text-2" id="text-org47ccd2f">
 <p>
 累的久了，自然想改变一下。于是自动同步线上日志(<code>rsync</code>)，自动解压，解析，去重，生成uv. 每个月需要报表的时候，手动去执行一下脚本就可以了。
 </p>
@@ -85,46 +84,46 @@
 </div>
 </div>
 
-<div id="outline-container-orgb50b388" class="outline-2">
-<h2 id="orgb50b388">又一次变化</h2>
-<div class="outline-text-2" id="text-orgb50b388">
+<div id="outline-container-org822c925" class="outline-2">
+<h2 id="org822c925">又一次变化</h2>
+<div class="outline-text-2" id="text-org822c925">
 <p>
 <code>spark</code> comes to the resuce.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org6795ce1" class="outline-2">
-<h2 id="org6795ce1">spark 的好处</h2>
-<div class="outline-text-2" id="text-org6795ce1">
+<div id="outline-container-orgdebf7a6" class="outline-2">
+<h2 id="orgdebf7a6">spark 的好处</h2>
+<div class="outline-text-2" id="text-orgdebf7a6">
 </div>
-<div id="outline-container-orgc57ae24" class="outline-3">
-<h3 id="orgc57ae24">自动的任务分解</h3>
-<div class="outline-text-3" id="text-orgc57ae24">
+<div id="outline-container-org61b4d9f" class="outline-3">
+<h3 id="org61b4d9f">自动的任务分解</h3>
+<div class="outline-text-3" id="text-org61b4d9f">
 <p>
 我理解，其实和 <code>functional programming</code> 里的概念很类似。 <code>haskell</code> 也可以在编译时指定开启多线程，就能自动分解任务。基于的前提都是理解操作间的关联与影响。知道哪些操作是可以先分解再合并的。于是，写的时候当做单线程去写，执行的时候帮你优化。
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgb719d33" class="outline-3">
-<h3 id="orgb719d33">自动的中间结果缓存</h3>
-<div class="outline-text-3" id="text-orgb719d33">
+<div id="outline-container-org6f53934" class="outline-3">
+<h3 id="org6f53934">自动的中间结果缓存</h3>
+<div class="outline-text-3" id="text-org6f53934">
 <p>
 同样是为了效率的优化，对于撰写脚本计算的人屏蔽了这一层优化的考虑，降低负担.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org48c35c2" class="outline-3">
-<h3 id="org48c35c2">可以直接本地执行，榨干机器的CPU</h3>
+<div id="outline-container-orgecf1d4d" class="outline-3">
+<h3 id="orgecf1d4d">可以直接本地执行，榨干机器的CPU</h3>
 </div>
 </div>
 
 
-<div id="outline-container-org1bcd850" class="outline-2">
-<h2 id="org1bcd850">任务示例</h2>
-<div class="outline-text-2" id="text-org1bcd850">
+<div id="outline-container-org9235452" class="outline-2">
+<h2 id="org9235452">任务示例</h2>
+<div class="outline-text-2" id="text-org9235452">
 <p>
 比如想知道点了一个演出之后，又点了另一个演出的比例。
 </p>
@@ -147,9 +146,9 @@ relatedVistis = normalVisits.filter("host = 'www.piaoniu.com' and url like '/act
 </div>
 </div>
 
-<div id="outline-container-orgc50effa" class="outline-2">
-<h2 id="orgc50effa">当前的使用方式　</h2>
-<div class="outline-text-2" id="text-orgc50effa">
+<div id="outline-container-orgd047597" class="outline-2">
+<h2 id="orgd047597">当前的使用方式　</h2>
+<div class="outline-text-2" id="text-orgd047597">
 <ul class="org-ul">
 <li>安装spark
 <code>docker</code> 安装 <code>jupyter/all-spark-notebook</code></li>
