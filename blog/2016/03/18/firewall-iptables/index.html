@@ -61,9 +61,9 @@
 攻击都是来自于外网，所以希望能够关闭外网的入网访问，但是保留对于外网的访问权限。
 </p>
 
-<div id="outline-container-org1706d6a" class="outline-2">
-<h2 id="org1706d6a">目标</h2>
-<div class="outline-text-2" id="text-org1706d6a">
+<div id="outline-container-orgfa97cdc" class="outline-2">
+<h2 id="orgfa97cdc">目标</h2>
+<div class="outline-text-2" id="text-orgfa97cdc">
 <ol class="org-ol">
 <li>关闭大部分机器的外网入网流量</li>
 <li>跳板机仅开放ssh访问</li>
@@ -74,9 +74,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgb305c74" class="outline-2">
-<h2 id="orgb305c74">方案</h2>
-<div class="outline-text-2" id="text-orgb305c74">
+<div id="outline-container-org42d8581" class="outline-2">
+<h2 id="org42d8581">方案</h2>
+<div class="outline-text-2" id="text-org42d8581">
 <p>
 前段时间玩了会 <a href="https://github.com/RMerl/asuswrt-merlin"><code>merlin固件</code></a>, 使用的是<a href="https://github.com/koolshare">国内修饰过的版本</a>， 加了一些 `安全上网`, `离线下载`等功能。看了一下里面对于路由规则的实现，基本都是基于 `iptables` 来完成。比如内网转外网，阻止外网请求，对指定网卡开放指定端口。对于指定ip的请求走不同的端口等。
 </p>
@@ -87,13 +87,13 @@
 </div>
 </div>
 
-<div id="outline-container-orgff6bac0" class="outline-2">
-<h2 id="orgff6bac0">实施</h2>
-<div class="outline-text-2" id="text-orgff6bac0">
+<div id="outline-container-org4ee844e" class="outline-2">
+<h2 id="org4ee844e">实施</h2>
+<div class="outline-text-2" id="text-org4ee844e">
 </div>
-<div id="outline-container-orga5b5ef0" class="outline-3">
-<h3 id="orga5b5ef0">简介</h3>
-<div class="outline-text-3" id="text-orga5b5ef0">
+<div id="outline-container-org326cad4" class="outline-3">
+<h3 id="org326cad4">简介</h3>
+<div class="outline-text-3" id="text-org326cad4">
 <p>
 由于只是配置防火墙，了解下面的简单用法就基本足够了。
 </p>
@@ -109,9 +109,9 @@ PS: iptables的规则先后顺序很重要!
 </dl>
 </div>
 
-<div id="outline-container-org39f9580" class="outline-4">
-<h4 id="org39f9580">匹配的规则</h4>
-<div class="outline-text-4" id="text-org39f9580">
+<div id="outline-container-orga36ca22" class="outline-4">
+<h4 id="orga36ca22">匹配的规则</h4>
+<div class="outline-text-4" id="text-orga36ca22">
 <dl class="org-dl">
 <dt>-i &lt;eth0&gt;</dt><dd>指定网卡</dd>
 <dt>-s &lt;ip&gt;</dt><dd>指定来源ip</dd>
@@ -122,9 +122,9 @@ PS: iptables的规则先后顺序很重要!
 </div>
 
 
-<div id="outline-container-org8cbd2ad" class="outline-3">
-<h3 id="org8cbd2ad">仅阻止外网的流入请求</h3>
-<div class="outline-text-3" id="text-org8cbd2ad">
+<div id="outline-container-org25675d5" class="outline-3">
+<h3 id="org25675d5">仅阻止外网的流入请求</h3>
+<div class="outline-text-3" id="text-org25675d5">
 <ul class="org-ul">
 <li><p>
 不接受外网的tcp握手请求
@@ -151,9 +151,9 @@ PS: iptables的规则先后顺序很重要!
 </div>
 </div>
 
-<div id="outline-container-org1205e1f" class="outline-3">
-<h3 id="org1205e1f">保留跳板机ssh的端口</h3>
-<div class="outline-text-3" id="text-org1205e1f">
+<div id="outline-container-org547ebc3" class="outline-3">
+<h3 id="org547ebc3">保留跳板机ssh的端口</h3>
+<div class="outline-text-3" id="text-org547ebc3">
 <div class="org-src-container">
 <pre class="src src-sh">iptables -A INPUT -i &lt;eth&gt; -p tcp -m multiport --dports ssh -j ACCEPT
 </pre>
@@ -161,9 +161,9 @@ PS: iptables的规则先后顺序很重要!
 </div>
 </div>
 
-<div id="outline-container-org7c67ab0" class="outline-3">
-<h3 id="org7c67ab0">不响应ping</h3>
-<div class="outline-text-3" id="text-org7c67ab0">
+<div id="outline-container-orgbbf63f1" class="outline-3">
+<h3 id="orgbbf63f1">不响应ping</h3>
+<div class="outline-text-3" id="text-orgbbf63f1">
 <div class="org-src-container">
 <pre class="src src-sh">iptables -A INPUT -i &lt;eth&gt; -p icmp --icmp-type echo-request -j DROP
 </pre>
@@ -171,9 +171,9 @@ PS: iptables的规则先后顺序很重要!
 </div>
 </div>
 
-<div id="outline-container-org66cdaba" class="outline-3">
-<h3 id="org66cdaba">允许指定&lt;ip&gt;的tcp流量</h3>
-<div class="outline-text-3" id="text-org66cdaba">
+<div id="outline-container-org2c48133" class="outline-3">
+<h3 id="org2c48133">允许指定&lt;ip&gt;的tcp流量</h3>
+<div class="outline-text-3" id="text-org2c48133">
 <div class="org-src-container">
 <pre class="src src-sh">iptables -A INPUT -i &lt;eth&gt; -p tcp -s &lt;ip&gt; -j ACCEPT
 </pre>
@@ -182,13 +182,13 @@ PS: iptables的规则先后顺序很重要!
 </div>
 </div>
 
-<div id="outline-container-orgc9f9eae" class="outline-2">
-<h2 id="orgc9f9eae">最终脚本</h2>
-<div class="outline-text-2" id="text-orgc9f9eae">
+<div id="outline-container-orga6674fe" class="outline-2">
+<h2 id="orga6674fe">最终脚本</h2>
+<div class="outline-text-2" id="text-orga6674fe">
 </div>
-<div id="outline-container-orgbd650b9" class="outline-3">
-<h3 id="orgbd650b9">跳板机器</h3>
-<div class="outline-text-3" id="text-orgbd650b9">
+<div id="outline-container-org20fca64" class="outline-3">
+<h3 id="org20fca64">跳板机器</h3>
+<div class="outline-text-3" id="text-org20fca64">
 <div class="org-src-container">
 <pre class="src src-sh">iptables -A INPUT -i &lt;eth&gt; -p tcp -m multiport --dports ssh -j ACCEPT
 iptables -A INPUT -i &lt;eth&gt; -p tcp -s &lt;ip&gt; -j ACCEPT
@@ -200,9 +200,9 @@ iptables -A INPUT -i &lt;eth&gt; -p icmp --icmp-type echo-request -j DROP
 </div>
 </div>
 
-<div id="outline-container-orga01fade" class="outline-3">
-<h3 id="orga01fade">内部机器</h3>
-<div class="outline-text-3" id="text-orga01fade">
+<div id="outline-container-orgb0a58f6" class="outline-3">
+<h3 id="orgb0a58f6">内部机器</h3>
+<div class="outline-text-3" id="text-orgb0a58f6">
 <div class="org-src-container">
 <pre class="src src-sh">iptables -A INPUT -i &lt;eth&gt; -p tcp --syn -j DROP
 iptables -A INPUT -i &lt;eth&gt; -p udp -j DROP
