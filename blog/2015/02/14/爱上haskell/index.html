@@ -32,6 +32,7 @@
                             <li class="active"><a href="/blog/">Blog</a></li>
                             <li class="active"><a href="/history/">History</a></li>
                             <li class="active"><a href="/leetcode/">Leetcode</a></li>
+                            <li class="active"><a href="/prod/">Prod</a></li>
                         <li><a href="/tags/">Tags</a></li>
                         <li><a href="/about/">About</a></li>
                         <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
@@ -48,9 +49,9 @@
         <div class="col-md-2"></div>
             <h1>爱上haskell</h1>
             
-<div id="outline-container-org1986381" class="outline-2">
-<h2 id="org1986381">简介</h2>
-<div class="outline-text-2" id="text-org1986381">
+<div id="outline-container-org9720e5d" class="outline-2">
+<h2 id="org9720e5d">简介</h2>
+<div class="outline-text-2" id="text-org9720e5d">
 <p>
 最近有些爱上了haskell，在体验这个纯粹的函数式语言中，确实发现了一些不一样的=美感=。
 </p>
@@ -61,9 +62,9 @@
 </div>
 </div>
 
-<div id="outline-container-org2854ae3" class="outline-2">
-<h2 id="org2854ae3">示例</h2>
-<div class="outline-text-2" id="text-org2854ae3">
+<div id="outline-container-orgfa88cfb" class="outline-2">
+<h2 id="orgfa88cfb">示例</h2>
+<div class="outline-text-2" id="text-orgfa88cfb">
 <p>
 一句话，表现力上，的确很强。 ### 快排
 </p>
@@ -82,9 +83,9 @@ qs (x:xs) = qs [gt | gt &lt;- xs, gt&gt;=x] ++ [x] ++ qs [lt | lt &lt;-xs , lt&l
 </blockquote>
 </div>
 
-<div id="outline-container-org011f2cc" class="outline-3">
-<h3 id="org011f2cc">斐波那契数列</h3>
-<div class="outline-text-3" id="text-org011f2cc">
+<div id="outline-container-org7b85358" class="outline-3">
+<h3 id="org7b85358">斐波那契数列</h3>
+<div class="outline-text-3" id="text-org7b85358">
 <p>
 这个是最最 <b><code>惊艳</code></b> 到我的！！！
 </p>
@@ -123,17 +124,17 @@ fibs = 0 : 1 : [ a + b | (a, b) &lt;- zip fibs (tail fibs)]
 </div>
 </div>
 
-<div id="outline-container-org6a3005d" class="outline-2">
-<h2 id="org6a3005d">实践</h2>
-<div class="outline-text-2" id="text-org6a3005d">
+<div id="outline-container-org5c14e32" class="outline-2">
+<h2 id="org5c14e32">实践</h2>
+<div class="outline-text-2" id="text-org5c14e32">
 <p>
 上面的都有些偏理论，那看看稍微偏使用中的代码是什么样的。
 </p>
 </div>
 
-<div id="outline-container-org0edbd53" class="outline-3">
-<h3 id="org0edbd53">project euler</h3>
-<div class="outline-text-3" id="text-org0edbd53">
+<div id="outline-container-org16f22c7" class="outline-3">
+<h3 id="org16f22c7">project euler</h3>
+<div class="outline-text-3" id="text-org16f22c7">
 <p>
 <a href="http://projecteuler.net/problems">参考地址</a>
 </p>
@@ -149,9 +150,9 @@ fibs = 0 : 1 : [ a + b | (a, b) &lt;- zip fibs (tail fibs)]
 </blockquote>
 </div>
 
-<div id="outline-container-orgf7120b0" class="outline-4">
-<h4 id="orgf7120b0"><a href="https://projecteuler.net/problem=206">euler 206</a></h4>
-<div class="outline-text-4" id="text-orgf7120b0">
+<div id="outline-container-org5611001" class="outline-4">
+<h4 id="org5611001"><a href="https://projecteuler.net/problem=206">euler 206</a></h4>
+<div class="outline-text-4" id="text-org5611001">
 <div class="org-src-container">
 <pre class="src src-haskell">import Data.Char (intToDigit)
 
@@ -169,9 +170,9 @@ solution = head . filter passes $ [1010101010, 1010101020 ..]
 </div>
 </div>
 
-<div id="outline-container-org01754b0" class="outline-4">
-<h4 id="org01754b0"><a href="https://projecteuler.net/problem=55">euler 55</a></h4>
-<div class="outline-text-4" id="text-org01754b0">
+<div id="outline-container-orgf37b39d" class="outline-4">
+<h4 id="orgf37b39d"><a href="https://projecteuler.net/problem=55">euler 55</a></h4>
+<div class="outline-text-4" id="text-orgf37b39d">
 <div class="org-src-container">
 <pre class="src src-haskell">import Data.Char
 palindromicNumber :: Integer -&gt; Bool
@@ -204,9 +205,9 @@ main = print $ length $ filter (== Nothing) $ map lychrel [1..10000]
 </div>
 </div>
 
-<div id="outline-container-orga29496a" class="outline-4">
-<h4 id="orga29496a"><a href="https://projecteuler.net/problem=56">euler 56</a></h4>
-<div class="outline-text-4" id="text-orga29496a">
+<div id="outline-container-org00c3a54" class="outline-4">
+<h4 id="org00c3a54"><a href="https://projecteuler.net/problem=56">euler 56</a></h4>
+<div class="outline-text-4" id="text-org00c3a54">
 <div class="org-src-container">
 <pre class="src src-haskell">digits :: Integer -&gt; [Int]
 digits = map (read . (:[])) . show
@@ -232,9 +233,9 @@ main = print $ maximum [sum $ map digitToInt $ show $ a^b | a &lt;- [1..99], b &
 </div>
 </div>
 
-<div id="outline-container-orge85fc18" class="outline-4">
-<h4 id="orge85fc18"><a href="https://projecteuler.net/problem=56">euler 57</a></h4>
-<div class="outline-text-4" id="text-orge85fc18">
+<div id="outline-container-org6df8001" class="outline-4">
+<h4 id="org6df8001"><a href="https://projecteuler.net/problem=56">euler 57</a></h4>
+<div class="outline-text-4" id="text-org6df8001">
 <div class="org-src-container">
 <pre class="src src-haskell">pairs :: [(Integer,Integer)]
 pairs = pairsFrom (1,1)
@@ -264,9 +265,9 @@ main = print $ (length . filter longer . take 1000) pairs
 </div>
 </div>
 
-<div id="outline-container-orgbf75f28" class="outline-2">
-<h2 id="orgbf75f28">总结</h2>
-<div class="outline-text-2" id="text-orgbf75f28">
+<div id="outline-container-orgd97a030" class="outline-2">
+<h2 id="orgd97a030">总结</h2>
+<div class="outline-text-2" id="text-orgd97a030">
 <p>
 尝试了使用，情难自禁，强力推荐。有机会体验一下，应该会不虚此行。
 </p>

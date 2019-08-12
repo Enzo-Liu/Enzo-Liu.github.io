@@ -32,6 +32,7 @@
                             <li class="active"><a href="/blog/">Blog</a></li>
                             <li class="active"><a href="/history/">History</a></li>
                             <li class="active"><a href="/leetcode/">Leetcode</a></li>
+                            <li class="active"><a href="/prod/">Prod</a></li>
                         <li><a href="/tags/">Tags</a></li>
                         <li><a href="/about/">About</a></li>
                         <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
@@ -48,9 +49,9 @@
         <div class="col-md-2"></div>
             <h1>尝试理解Y-combinator</h1>
             
-<div id="outline-container-org10af96b" class="outline-2">
-<h2 id="org10af96b">简介</h2>
-<div class="outline-text-2" id="text-org10af96b">
+<div id="outline-container-org38a081b" class="outline-2">
+<h2 id="org38a081b">简介</h2>
+<div class="outline-text-2" id="text-org38a081b">
 <p>
 在一个纯粹的函数式语言环境中，只有一种元素，就是一个单参函数
 </p>
@@ -69,9 +70,9 @@
 </div>
 </div>
 
-<div id="outline-container-org670b057" class="outline-2">
-<h2 id="org670b057">问题</h2>
-<div class="outline-text-2" id="text-org670b057">
+<div id="outline-container-org4b6ac65" class="outline-2">
+<h2 id="org4b6ac65">问题</h2>
+<div class="outline-text-2" id="text-org4b6ac65">
 <p>
 比如需要求解一个列表的长度，该如何实现。
 </p>
@@ -86,9 +87,9 @@
 </p>
 </div>
 
-<div id="outline-container-org17dbdaa" class="outline-3">
-<h3 id="org17dbdaa">common lisp</h3>
-<div class="outline-text-3" id="text-org17dbdaa">
+<div id="outline-container-orgfb31150" class="outline-3">
+<h3 id="orgfb31150">common lisp</h3>
+<div class="outline-text-3" id="text-orgfb31150">
 <div class="org-src-container">
 <pre class="src src-lisp">;; in common lisp
 (defun len (ls)
@@ -107,9 +108,9 @@ CL-USER&gt; (len '())
 </div>
 </div>
 
-<div id="outline-container-org745e65c" class="outline-3">
-<h3 id="org745e65c">haskell</h3>
-<div class="outline-text-3" id="text-org745e65c">
+<div id="outline-container-orge82e2d6" class="outline-3">
+<h3 id="orge82e2d6">haskell</h3>
+<div class="outline-text-3" id="text-orge82e2d6">
 <div class="org-src-container">
 <pre class="src src-haskell">len1 :: (Num b ) =&gt; [a] -&gt; b
 len1 [] = 0
@@ -131,9 +132,9 @@ len1 (_:xs) = 1 + len1 xs
 </div>
 </div>
 
-<div id="outline-container-org00eb072" class="outline-2">
-<h2 id="org00eb072">第一次尝试</h2>
-<div class="outline-text-2" id="text-org00eb072">
+<div id="outline-container-org852d13e" class="outline-2">
+<h2 id="org852d13e">第一次尝试</h2>
+<div class="outline-text-2" id="text-org852d13e">
 <p>
 尝试翻译之前写过的实现
 </p>
@@ -151,9 +152,9 @@ len1 (_:xs) = 1 + len1 xs
 </p>
 </div>
 
-<div id="outline-container-orgf77d339" class="outline-3">
-<h3 id="orgf77d339">神来一笔</h3>
-<div class="outline-text-3" id="text-orgf77d339">
+<div id="outline-container-org1f6b2e9" class="outline-3">
+<h3 id="org1f6b2e9">神来一笔</h3>
+<div class="outline-text-3" id="text-org1f6b2e9">
 <p>
 假如有一个len的实现，不就可以了么！！！！
 </p>
@@ -235,9 +236,9 @@ $6 = 2
 </div>
 </div>
 
-<div id="outline-container-orgc1a5a87" class="outline-3">
-<h3 id="orgc1a5a87">神又来一笔</h3>
-<div class="outline-text-3" id="text-orgc1a5a87">
+<div id="outline-container-orgc1ce5ed" class="outline-3">
+<h3 id="orgc1ce5ed">神又来一笔</h3>
+<div class="outline-text-3" id="text-orgc1ce5ed">
 <p>
 时间过去了一年，少年终于写出了可以计算长度
 =14239823586=以内的列表的长度！
@@ -285,9 +286,9 @@ $9 = 8
 </div>
 </div>
 
-<div id="outline-container-orga63f5ed" class="outline-3">
-<h3 id="orga63f5ed">神又来一笔!</h3>
-<div class="outline-text-3" id="text-orga63f5ed">
+<div id="outline-container-org66b356d" class="outline-3">
+<h3 id="org66b356d">神又来一笔!</h3>
+<div class="outline-text-3" id="text-org66b356d">
 <p>
 不过，写出来的程序看着好奇怪。好多=mk-len=,=（mk-len mk-len）=,
 <b>看不懂啊</b>. 只有
@@ -339,9 +340,9 @@ $9 = 8
 </div>
 </div>
 
-<div id="outline-container-org1a21ee3" class="outline-2">
-<h2 id="org1a21ee3">the ultimate Y-Combinator</h2>
-<div class="outline-text-2" id="text-org1a21ee3">
+<div id="outline-container-org10eb8e2" class="outline-2">
+<h2 id="org10eb8e2">the ultimate Y-Combinator</h2>
+<div class="outline-text-2" id="text-org10eb8e2">
 <div class="org-src-container">
 <pre class="src src-lisp">(define Y
   (lambda (targetFunction)
@@ -365,9 +366,9 @@ $10 = 9
 </div>
 </div>
 
-<div id="outline-container-org174ae1f" class="outline-2">
-<h2 id="org174ae1f">实践</h2>
-<div class="outline-text-2" id="text-org174ae1f">
+<div id="outline-container-org569e027" class="outline-2">
+<h2 id="org569e027">实践</h2>
+<div class="outline-text-2" id="text-org569e027">
 <p>
 in haskell
 </p>
@@ -395,9 +396,9 @@ ysum = y (\sum' ls -&gt; if null ls then 0 else head ls + (sum'.tail $ ls))
 </div>
 </div>
 
-<div id="outline-container-orgb742aa0" class="outline-2">
-<h2 id="orgb742aa0">external links</h2>
-<div class="outline-text-2" id="text-orgb742aa0">
+<div id="outline-container-orge517cab" class="outline-2">
+<h2 id="orge517cab">external links</h2>
+<div class="outline-text-2" id="text-orge517cab">
 <p>
 <a href="http://en.wikipedia.org/wiki/Fixed-point_combinator#Y_combinator">y-combinator
 in wikipedia</a>

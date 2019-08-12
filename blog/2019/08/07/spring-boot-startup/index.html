@@ -34,6 +34,7 @@
                             <li class="active"><a href="/blog/">Blog</a></li>
                             <li class="active"><a href="/history/">History</a></li>
                             <li class="active"><a href="/leetcode/">Leetcode</a></li>
+                            <li class="active"><a href="/prod/">Prod</a></li>
                         <li><a href="/tags/">Tags</a></li>
                         <li><a href="/about/">About</a></li>
                         <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
@@ -57,9 +58,9 @@
 想要调查清楚: <b>为什么会启动时打印 DEBUG 日志，稍后就按照配置的级别(INFO)进行打印.</b>
 </p>
 
-<div id="outline-container-org09964b2" class="outline-2">
-<h2 id="org09964b2">日志是怎么打印的</h2>
-<div class="outline-text-2" id="text-org09964b2">
+<div id="outline-container-org810add6" class="outline-2">
+<h2 id="org810add6">日志是怎么打印的</h2>
+<div class="outline-text-2" id="text-org810add6">
 <p>
 倒叙而言
 </p>
@@ -84,9 +85,9 @@
 </div>
 </div>
 
-<div id="outline-container-org5215995" class="outline-2">
-<h2 id="org5215995">排查过程</h2>
-<div class="outline-text-2" id="text-org5215995">
+<div id="outline-container-org7364165" class="outline-2">
+<h2 id="org7364165">排查过程</h2>
+<div class="outline-text-2" id="text-org7364165">
 <ol class="org-ol">
 <li>debug 打印的过程
 <ul class="org-ul">
@@ -108,9 +109,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgc8be26e" class="outline-2">
-<h2 id="orgc8be26e">解决方法</h2>
-<div class="outline-text-2" id="text-orgc8be26e">
+<div id="outline-container-org74c087d" class="outline-2">
+<h2 id="org74c087d">解决方法</h2>
+<div class="outline-text-2" id="text-org74c087d">
 <p>
 配置 <code>bootstrap.yml</code>, 其中设置 <code>logging.path</code> 以及 <code>logging.level</code>, 即可指定 <code>bootstrap</code> 期间的 <code>logger</code> 的行为。
 </p>
@@ -118,9 +119,9 @@
 </div>
 
 
-<div id="outline-container-org6a99fea" class="outline-2">
-<h2 id="org6a99fea">感想</h2>
-<div class="outline-text-2" id="text-org6a99fea">
+<div id="outline-container-org1c7474b" class="outline-2">
+<h2 id="org1c7474b">感想</h2>
+<div class="outline-text-2" id="text-org1c7474b">
 <p>
 这个问题本身解决的价值和带来的经验/知识积累一般。 不过查问题挺爽, <del>逃避一下严肃的思考</del>, 另外工程的集成度真高, 这一个小问题里没追究下去的细节还有很多，程序员不容易，哈哈
 </p>
