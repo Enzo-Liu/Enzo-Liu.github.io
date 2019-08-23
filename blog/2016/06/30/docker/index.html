@@ -13,6 +13,9 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript" async
+          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
 </head>
 
   <body class="container">
@@ -53,9 +56,9 @@
 前段时间，公司意外断电，导致内网服务器硬盘数据损坏, 之前纯手工打造的内网环境全跪了。欲哭无泪，于是就不哭了，借这个机会体验一把 <code>docker</code>, 这里记录一下使用中遇到的一些状况。
 </p>
 
-<div id="outline-container-org3594017" class="outline-2">
-<h2 id="org3594017">环境介绍</h2>
-<div class="outline-text-2" id="text-org3594017">
+<div id="outline-container-org2ff5f27" class="outline-2">
+<h2 id="org2ff5f27">环境介绍</h2>
+<div class="outline-text-2" id="text-org2ff5f27">
 <p>
 原来的内网环境中，包含了
 </p>
@@ -84,9 +87,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgec9e930" class="outline-2">
-<h2 id="orgec9e930">docker搭建的过程</h2>
-<div class="outline-text-2" id="text-orgec9e930">
+<div id="outline-container-orgfe8e265" class="outline-2">
+<h2 id="orgfe8e265">docker搭建的过程</h2>
+<div class="outline-text-2" id="text-orgfe8e265">
 <ul class="org-ul">
 <li>用 <code>docker pull</code> <code>docker run</code></li>
 </ul>
@@ -136,9 +139,9 @@ services:
 </div>
 
 
-<div id="outline-container-org9d76f48" class="outline-2">
-<h2 id="org9d76f48">遇到的问题</h2>
-<div class="outline-text-2" id="text-org9d76f48">
+<div id="outline-container-orgda9a1a4" class="outline-2">
+<h2 id="orgda9a1a4">遇到的问题</h2>
+<div class="outline-text-2" id="text-orgda9a1a4">
 <ul class="org-ul">
 <li><p>
 没有 <code>image</code> 和 <code>container</code> 的概念
@@ -185,18 +188,18 @@ services:
 </div>
 </div>
 
-<div id="outline-container-org838034b" class="outline-2">
-<h2 id="org838034b">题外话</h2>
-<div class="outline-text-2" id="text-org838034b">
+<div id="outline-container-orgf5e7fe4" class="outline-2">
+<h2 id="orgf5e7fe4">题外话</h2>
+<div class="outline-text-2" id="text-orgf5e7fe4">
 <p>
 遇到的磁盘坏了的坑，于是搭了 <code>raid-1</code>, 脚本每天备份，备份数据文件夹以及对应的 <code>docker compose file</code> 。以后 <del>服务器跪了</del> 再重新搭建应该更快了.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org0f37e46" class="outline-2">
-<h2 id="org0f37e46">总结</h2>
-<div class="outline-text-2" id="text-org0f37e46">
+<div id="outline-container-orge6005f9" class="outline-2">
+<h2 id="orge6005f9">总结</h2>
+<div class="outline-text-2" id="text-orge6005f9">
 <p>
 搭建，部署，启动 <code>docker</code> 真的都是 <code>好快</code> , <code>好快</code> , <code>好快</code>  ...
 </p>
