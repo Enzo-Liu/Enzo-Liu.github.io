@@ -34,7 +34,6 @@
                             <li class="active"><a href="/blog/">Blog</a></li>
                             <li class="active"><a href="/history/">History</a></li>
                             <li class="active"><a href="/leetcode/">Leetcode</a></li>
-                            <li class="active"><a href="/prod/">Prod</a></li>
                         <li><a href="/tags/">Tags</a></li>
                         <li><a href="/about/">About</a></li>
                         <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
@@ -54,64 +53,64 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org6ae4de4">1. 什么是解释器</a>
+<li><a href="#orgb6e7534">1. 什么是解释器</a>
 <ul>
-<li><a href="#orgb2bd1aa">1.1. 解释器</a></li>
-<li><a href="#org09c623b">1.2. 代码的意图</a></li>
-<li><a href="#orgb095049">1.3. <code>LISP</code></a></li>
+<li><a href="#org845c3a1">1.1. 解释器</a></li>
+<li><a href="#org3be3290">1.2. 代码的意图</a></li>
+<li><a href="#org6994666">1.3. <code>LISP</code></a></li>
 </ul>
 </li>
-<li><a href="#orgad4d348">2. 如何下手</a>
+<li><a href="#org85c616e">2. 如何下手</a>
 <ul>
-<li><a href="#org80ed558">2.1. 步骤</a></li>
-<li><a href="#orgc1d7c7c">2.2. 结束</a></li>
+<li><a href="#orga5bc2c9">2.1. 步骤</a></li>
+<li><a href="#org8acada1">2.2. 结束</a></li>
 </ul>
 </li>
-<li><a href="#org32384cb">3. 半小时版本</a>
+<li><a href="#orge858d7c">3. 半小时版本</a>
 <ul>
-<li><a href="#orgb84a338">3.1. 核心逻辑</a></li>
-<li><a href="#orgf18d5c0">3.2. 解析(1 min)</a></li>
-<li><a href="#org4914d6f">3.3. 表达式类型</a></li>
-<li><a href="#org7370f94">3.4. 原子表达式</a></li>
-<li><a href="#org1ab872e">3.5. 特殊形式 <b>if</b></a></li>
-<li><a href="#org3fe317f">3.6. 特殊形式 <b>define</b> 以及 <b>set!</b></a></li>
-<li><a href="#orgf37c31c">3.7. 特殊形式 <b>quote</b></a></li>
-<li><a href="#org5016e90">3.8. 特殊形式 <b>lambda</b></a></li>
-<li><a href="#org588af43">3.9. 特殊形式 <b>begin</b></a></li>
-<li><a href="#org6b51463">3.10. 函数调用</a></li>
-<li><a href="#org925f0cd">3.11. 求值环境/上下文</a></li>
+<li><a href="#orgdf452d3">3.1. 核心逻辑</a></li>
+<li><a href="#orgebc98d1">3.2. 解析(1 min)</a></li>
+<li><a href="#orgf735b3a">3.3. 表达式类型</a></li>
+<li><a href="#org68431d6">3.4. 原子表达式</a></li>
+<li><a href="#org3375193">3.5. 特殊形式 <b>if</b></a></li>
+<li><a href="#org7db72f0">3.6. 特殊形式 <b>define</b> 以及 <b>set!</b></a></li>
+<li><a href="#org7a80fbb">3.7. 特殊形式 <b>quote</b></a></li>
+<li><a href="#org68c55ab">3.8. 特殊形式 <b>lambda</b></a></li>
+<li><a href="#orgfe6008a">3.9. 特殊形式 <b>begin</b></a></li>
+<li><a href="#orgc7a7259">3.10. 函数调用</a></li>
+<li><a href="#orgd16c10c">3.11. 求值环境/上下文</a></li>
 </ul>
 </li>
-<li><a href="#org4064475">4. 实现一个解释器</a>
+<li><a href="#org5548ef6">4. 实现一个解释器</a>
 <ul>
-<li><a href="#orgc90249f">4.1. 声明</a></li>
-<li><a href="#org08ac723">4.2. <code>eval</code> (dispatch)</a></li>
-<li><a href="#org3591469">4.3. <code>apply</code></a></li>
-<li><a href="#orgcc95b7f">4.4. <code>env</code> 求值上下文</a></li>
-<li><a href="#org1e85141">4.5. <code>eval-atom</code></a></li>
-<li><a href="#org3cc932e">4.6. <code>eval-define</code> &amp; <code>eval-assign</code></a></li>
-<li><a href="#orgfc3424a">4.7. <code>eval-if</code></a></li>
-<li><a href="#org4369386">4.8. <code>eval-quote</code></a></li>
-<li><a href="#org3e74b79">4.9. <code>eval-lambda</code></a></li>
-<li><a href="#org5d44ea4">4.10. <code>eval-begin</code></a></li>
+<li><a href="#orgb0f876f">4.1. 声明</a></li>
+<li><a href="#orgd8597c2">4.2. <code>eval</code> (dispatch)</a></li>
+<li><a href="#org335c714">4.3. <code>apply</code></a></li>
+<li><a href="#org9c7fcfd">4.4. <code>env</code> 求值上下文</a></li>
+<li><a href="#org1ee4b7a">4.5. <code>eval-atom</code></a></li>
+<li><a href="#org43820df">4.6. <code>eval-define</code> &amp; <code>eval-assign</code></a></li>
+<li><a href="#org512a642">4.7. <code>eval-if</code></a></li>
+<li><a href="#org34574f5">4.8. <code>eval-quote</code></a></li>
+<li><a href="#org07dfd13">4.9. <code>eval-lambda</code></a></li>
+<li><a href="#orgfda26b9">4.10. <code>eval-begin</code></a></li>
 </ul>
 </li>
-<li><a href="#orgf9eba68">5. 最后</a>
+<li><a href="#orgb3f452d">5. 最后</a>
 <ul>
-<li><a href="#org477b797">5.1. 几个题外话</a></li>
-<li><a href="#orge289a0c">5.2. 参考文档</a></li>
+<li><a href="#org86b02ab">5.1. 几个题外话</a></li>
+<li><a href="#orgb7db319">5.2. 参考文档</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org6ae4de4" class="outline-2">
-<h2 id="org6ae4de4"><span class="section-number-2">1</span> 什么是解释器</h2>
+<div id="outline-container-orgb6e7534" class="outline-2">
+<h2 id="orgb6e7534"><span class="section-number-2">1</span> 什么是解释器</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orgb2bd1aa" class="outline-3">
-<h3 id="orgb2bd1aa"><span class="section-number-3">1.1</span> 解释器</h3>
+<div id="outline-container-org845c3a1" class="outline-3">
+<h3 id="org845c3a1"><span class="section-number-3">1.1</span> 解释器</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li><code>同声传译</code></li>
@@ -124,8 +123,8 @@
 </div>
 </div>
 
-<div id="outline-container-org09c623b" class="outline-3">
-<h3 id="org09c623b"><span class="section-number-3">1.2</span> 代码的意图</h3>
+<div id="outline-container-org3be3290" class="outline-3">
+<h3 id="org3be3290"><span class="section-number-3">1.2</span> 代码的意图</h3>
 <div class="outline-text-3" id="text-1-2">
 <ul class="org-ul">
 <li><p>
@@ -157,12 +156,12 @@
 </div>
 </div>
 
-<div id="outline-container-orgb095049" class="outline-3">
-<h3 id="orgb095049"><span class="section-number-3">1.3</span> <code>LISP</code></h3>
+<div id="outline-container-org6994666" class="outline-3">
+<h3 id="org6994666"><span class="section-number-3">1.3</span> <code>LISP</code></h3>
 <div class="outline-text-3" id="text-1-3">
 </div>
 <ol class="org-ol">
-<li><a id="org7a91d65"></a><code>语法(S Expression)</code><br />
+<li><a id="org3c0e039"></a><code>语法(S Expression)</code><br />
 <div class="outline-text-4" id="text-1-3-1">
 <ul class="org-ul">
 <li>原子 <code>a</code>, <code>1</code>, <code>"hello world"</code></li>
@@ -170,7 +169,7 @@
 </ul>
 </div>
 </li>
-<li><a id="orgbe6c37f"></a><code>语义</code><br />
+<li><a id="org63b7f40"></a><code>语义</code><br />
 <div class="outline-text-4" id="text-1-3-2">
 <dl class="org-dl">
 <dt>原子表达式</dt><dd>即 <code>a</code>, <code>1</code> 等原子，可直接求值或上下文中查找对应的值</dd>
@@ -183,12 +182,12 @@
 </div>
 </div>
 
-<div id="outline-container-orgad4d348" class="outline-2">
-<h2 id="orgad4d348"><span class="section-number-2">2</span> 如何下手</h2>
+<div id="outline-container-org85c616e" class="outline-2">
+<h2 id="org85c616e"><span class="section-number-2">2</span> 如何下手</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org80ed558" class="outline-3">
-<h3 id="org80ed558"><span class="section-number-3">2.1</span> 步骤&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span></h3>
+<div id="outline-container-orga5bc2c9" class="outline-3">
+<h3 id="orga5bc2c9"><span class="section-number-3">2.1</span> 步骤&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span></h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 <b>Dragon book</b>, 中文名 <code>编译原理</code>
@@ -219,8 +218,8 @@
 </div>
 </div>
 
-<div id="outline-container-orgc1d7c7c" class="outline-3">
-<h3 id="orgc1d7c7c"><span class="section-number-3">2.2</span> 结束</h3>
+<div id="outline-container-org8acada1" class="outline-3">
+<h3 id="org8acada1"><span class="section-number-3">2.2</span> 结束</h3>
 <div class="outline-text-3" id="text-2-2">
 <ul class="org-ul">
 <li>&lt;+-&gt; 好，分享结束，大家可以回去看书了.</li>
@@ -231,12 +230,12 @@
 </div>
 </div>
 
-<div id="outline-container-org32384cb" class="outline-2">
-<h2 id="org32384cb"><span class="section-number-2">3</span> 半小时版本</h2>
+<div id="outline-container-orge858d7c" class="outline-2">
+<h2 id="orge858d7c"><span class="section-number-2">3</span> 半小时版本</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-orgb84a338" class="outline-3">
-<h3 id="orgb84a338"><span class="section-number-3">3.1</span> 核心逻辑</h3>
+<div id="outline-container-orgdf452d3" class="outline-3">
+<h3 id="orgdf452d3"><span class="section-number-3">3.1</span> 核心逻辑</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li>parse -&gt; (eval<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> -&gt; apply<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup>) loop&#x2026;</li>
@@ -248,8 +247,8 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orgf18d5c0" class="outline-3">
-<h3 id="orgf18d5c0"><span class="section-number-3">3.2</span> 解析(1 min)</h3>
+<div id="outline-container-orgebc98d1" class="outline-3">
+<h3 id="orgebc98d1"><span class="section-number-3">3.2</span> 解析(1 min)</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 这里我们就偷个懒，利用 <code>lisp</code> 的 <code>read-from-string</code> / <code>read</code> 方法
@@ -271,8 +270,8 @@
 </div>
 </div>
 
-<div id="outline-container-org4914d6f" class="outline-3">
-<h3 id="org4914d6f"><span class="section-number-3">3.3</span> 表达式类型</h3>
+<div id="outline-container-orgf735b3a" class="outline-3">
+<h3 id="orgf735b3a"><span class="section-number-3">3.3</span> 表达式类型</h3>
 <div class="outline-text-3" id="text-3-3">
 <ul class="org-ul">
 <li>原子
@@ -294,12 +293,12 @@
 </div>
 </div>
 
-<div id="outline-container-org7370f94" class="outline-3">
-<h3 id="org7370f94"><span class="section-number-3">3.4</span> 原子表达式</h3>
+<div id="outline-container-org68431d6" class="outline-3">
+<h3 id="org68431d6"><span class="section-number-3">3.4</span> 原子表达式</h3>
 <div class="outline-text-3" id="text-3-4">
 </div>
 <ol class="org-ol">
-<li><a id="org5526530"></a>符号<br />
+<li><a id="org75cf44b"></a>符号<br />
 <div class="outline-text-4" id="text-3-4-1">
 <blockquote>
 <p>
@@ -316,7 +315,7 @@ a ;;; =&gt; 1
 </div>
 </li>
 
-<li><a id="org36987b2"></a>常量<br />
+<li><a id="org6a310e3"></a>常量<br />
 <div class="outline-text-4" id="text-3-4-2">
 <blockquote>
 <p>
@@ -334,8 +333,8 @@ a ;;; =&gt; 1
 </ol>
 </div>
 
-<div id="outline-container-org1ab872e" class="outline-3">
-<h3 id="org1ab872e"><span class="section-number-3">3.5</span> 特殊形式 <b>if</b></h3>
+<div id="outline-container-org3375193" class="outline-3">
+<h3 id="org3375193"><span class="section-number-3">3.5</span> 特殊形式 <b>if</b></h3>
 <div class="outline-text-3" id="text-3-5">
 <div class="org-src-container">
 <pre class="src src-lisp">(if predicate consuquence alternative)
@@ -358,8 +357,8 @@ a ;;; =&gt; 1
 </div>
 </div>
 
-<div id="outline-container-org3fe317f" class="outline-3">
-<h3 id="org3fe317f"><span class="section-number-3">3.6</span> 特殊形式 <b>define</b> 以及 <b>set!</b></h3>
+<div id="outline-container-org7db72f0" class="outline-3">
+<h3 id="org7db72f0"><span class="section-number-3">3.6</span> 特殊形式 <b>define</b> 以及 <b>set!</b></h3>
 <div class="outline-text-3" id="text-3-6">
 <div class="org-src-container">
 <pre class="src src-lisp">(define variable value)
@@ -383,8 +382,8 @@ a ;;; =&gt; 1
 </div>
 </div>
 
-<div id="outline-container-orgf37c31c" class="outline-3">
-<h3 id="orgf37c31c"><span class="section-number-3">3.7</span> 特殊形式 <b>quote</b></h3>
+<div id="outline-container-org7a80fbb" class="outline-3">
+<h3 id="org7a80fbb"><span class="section-number-3">3.7</span> 特殊形式 <b>quote</b></h3>
 <div class="outline-text-3" id="text-3-7">
 <div class="org-src-container">
 <pre class="src src-lisp">(quote (a b c))
@@ -411,8 +410,8 @@ syntactic sugar: <code>'(a b c)</code>
 </div>
 </div>
 
-<div id="outline-container-org5016e90" class="outline-3">
-<h3 id="org5016e90"><span class="section-number-3">3.8</span> 特殊形式 <b>lambda</b></h3>
+<div id="outline-container-org68c55ab" class="outline-3">
+<h3 id="org68c55ab"><span class="section-number-3">3.8</span> 特殊形式 <b>lambda</b></h3>
 <div class="outline-text-3" id="text-3-8">
 <div class="org-src-container">
 <pre class="src src-lisp">(lambda (a) (+ 1 a))
@@ -435,8 +434,8 @@ syntactic sugar: <code>'(a b c)</code>
 </div>
 </div>
 
-<div id="outline-container-org588af43" class="outline-3">
-<h3 id="org588af43"><span class="section-number-3">3.9</span> 特殊形式 <b>begin</b></h3>
+<div id="outline-container-orgfe6008a" class="outline-3">
+<h3 id="orgfe6008a"><span class="section-number-3">3.9</span> 特殊形式 <b>begin</b></h3>
 <div class="outline-text-3" id="text-3-9">
 <div class="org-src-container">
 <pre class="src src-lisp">(begin
@@ -458,8 +457,8 @@ syntactic sugar: <code>'(a b c)</code>
 </div>
 </div>
 
-<div id="outline-container-org6b51463" class="outline-3">
-<h3 id="org6b51463"><span class="section-number-3">3.10</span> 函数调用</h3>
+<div id="outline-container-orgc7a7259" class="outline-3">
+<h3 id="orgc7a7259"><span class="section-number-3">3.10</span> 函数调用</h3>
 <div class="outline-text-3" id="text-3-10">
 <div class="org-src-container">
 <pre class="src src-lisp">(define plus (lambda (a) (+ 1 a)))
@@ -514,8 +513,8 @@ syntactic sugar: <code>'(a b c)</code>
 </div>
 </div>
 
-<div id="outline-container-org925f0cd" class="outline-3">
-<h3 id="org925f0cd"><span class="section-number-3">3.11</span> 求值环境/上下文</h3>
+<div id="outline-container-orgd16c10c" class="outline-3">
+<h3 id="orgd16c10c"><span class="section-number-3">3.11</span> 求值环境/上下文</h3>
 <div class="outline-text-3" id="text-3-11">
 
 <div class="figure">
@@ -526,12 +525,12 @@ syntactic sugar: <code>'(a b c)</code>
 </div>
 </div>
 
-<div id="outline-container-org4064475" class="outline-2">
-<h2 id="org4064475"><span class="section-number-2">4</span> 实现一个解释器</h2>
+<div id="outline-container-org5548ef6" class="outline-2">
+<h2 id="org5548ef6"><span class="section-number-2">4</span> 实现一个解释器</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-orgc90249f" class="outline-3">
-<h3 id="orgc90249f"><span class="section-number-3">4.1</span> 声明</h3>
+<div id="outline-container-orgb0f876f" class="outline-3">
+<h3 id="orgb0f876f"><span class="section-number-3">4.1</span> 声明</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 源代码来自 SICP 第 4 章，链接见附录。
@@ -539,8 +538,8 @@ syntactic sugar: <code>'(a b c)</code>
 </div>
 </div>
 
-<div id="outline-container-org08ac723" class="outline-3">
-<h3 id="org08ac723"><span class="section-number-3">4.2</span> <code>eval</code> (dispatch)</h3>
+<div id="outline-container-orgd8597c2" class="outline-3">
+<h3 id="orgd8597c2"><span class="section-number-3">4.2</span> <code>eval</code> (dispatch)</h3>
 <div class="outline-text-3" id="text-4-2">
 <div class="org-src-container">
 <pre class="src src-lisp">(define (eval exp env)
@@ -565,8 +564,8 @@ syntactic sugar: <code>'(a b c)</code>
 </div>
 </div>
 </div>
-<div id="outline-container-org3591469" class="outline-3">
-<h3 id="org3591469"><span class="section-number-3">4.3</span> <code>apply</code></h3>
+<div id="outline-container-org335c714" class="outline-3">
+<h3 id="org335c714"><span class="section-number-3">4.3</span> <code>apply</code></h3>
 <div class="outline-text-3" id="text-4-3">
 <div class="org-src-container">
 <pre class="src src-lisp">(define (apply procedure arguments)
@@ -586,8 +585,8 @@ syntactic sugar: <code>'(a b c)</code>
 </div>
 </div>
 </div>
-<div id="outline-container-orgcc95b7f" class="outline-3">
-<h3 id="orgcc95b7f"><span class="section-number-3">4.4</span> <code>env</code> 求值上下文</h3>
+<div id="outline-container-org9c7fcfd" class="outline-3">
+<h3 id="org9c7fcfd"><span class="section-number-3">4.4</span> <code>env</code> 求值上下文</h3>
 <div class="outline-text-3" id="text-4-4">
 <div class="org-src-container">
 <pre class="src src-lisp">(define (enclosing-environment env) (cdr env))
@@ -617,8 +616,8 @@ syntactic sugar: <code>'(a b c)</code>
 </div>
 </div>
 
-<div id="outline-container-org1e85141" class="outline-3">
-<h3 id="org1e85141"><span class="section-number-3">4.5</span> <code>eval-atom</code></h3>
+<div id="outline-container-org1ee4b7a" class="outline-3">
+<h3 id="org1ee4b7a"><span class="section-number-3">4.5</span> <code>eval-atom</code></h3>
 <div class="outline-text-3" id="text-4-5">
 <div class="org-src-container">
 <pre class="src src-lisp">(define (self-evaluating? exp)
@@ -652,8 +651,8 @@ syntactic sugar: <code>'(a b c)</code>
 </div>
 
 
-<div id="outline-container-org3cc932e" class="outline-3">
-<h3 id="org3cc932e"><span class="section-number-3">4.6</span> <code>eval-define</code> &amp; <code>eval-assign</code></h3>
+<div id="outline-container-org43820df" class="outline-3">
+<h3 id="org43820df"><span class="section-number-3">4.6</span> <code>eval-define</code> &amp; <code>eval-assign</code></h3>
 <div class="outline-text-3" id="text-4-6">
 <div class="org-src-container">
 <pre class="src src-lisp">(define (eval-assignment exp env)
@@ -688,8 +687,8 @@ syntactic sugar: <code>'(a b c)</code>
 </div>
 </div>
 
-<div id="outline-container-orgfc3424a" class="outline-3">
-<h3 id="orgfc3424a"><span class="section-number-3">4.7</span> <code>eval-if</code></h3>
+<div id="outline-container-org512a642" class="outline-3">
+<h3 id="org512a642"><span class="section-number-3">4.7</span> <code>eval-if</code></h3>
 <div class="outline-text-3" id="text-4-7">
 <div class="org-src-container">
 <pre class="src src-lisp">(define (eval-if exp env)
@@ -701,8 +700,8 @@ syntactic sugar: <code>'(a b c)</code>
 </div>
 </div>
 </div>
-<div id="outline-container-org4369386" class="outline-3">
-<h3 id="org4369386"><span class="section-number-3">4.8</span> <code>eval-quote</code></h3>
+<div id="outline-container-org34574f5" class="outline-3">
+<h3 id="org34574f5"><span class="section-number-3">4.8</span> <code>eval-quote</code></h3>
 <div class="outline-text-3" id="text-4-8">
 <div class="org-src-container">
 <pre class="src src-lisp">(define (quoted? exp)
@@ -714,8 +713,8 @@ syntactic sugar: <code>'(a b c)</code>
 </div>
 </div>
 </div>
-<div id="outline-container-org3e74b79" class="outline-3">
-<h3 id="org3e74b79"><span class="section-number-3">4.9</span> <code>eval-lambda</code></h3>
+<div id="outline-container-org07dfd13" class="outline-3">
+<h3 id="org07dfd13"><span class="section-number-3">4.9</span> <code>eval-lambda</code></h3>
 <div class="outline-text-3" id="text-4-9">
 <div class="org-src-container">
 <pre class="src src-lisp">(define (make-procedure parameters body env)
@@ -729,8 +728,8 @@ syntactic sugar: <code>'(a b c)</code>
 </div>
 </div>
 </div>
-<div id="outline-container-org5d44ea4" class="outline-3">
-<h3 id="org5d44ea4"><span class="section-number-3">4.10</span> <code>eval-begin</code></h3>
+<div id="outline-container-orgfda26b9" class="outline-3">
+<h3 id="orgfda26b9"><span class="section-number-3">4.10</span> <code>eval-begin</code></h3>
 <div class="outline-text-3" id="text-4-10">
 <div class="org-src-container">
 <pre class="src src-lisp">(define (eval-sequence exps env)
@@ -743,12 +742,12 @@ syntactic sugar: <code>'(a b c)</code>
 </div>
 </div>
 
-<div id="outline-container-orgf9eba68" class="outline-2">
-<h2 id="orgf9eba68"><span class="section-number-2">5</span> 最后</h2>
+<div id="outline-container-orgb3f452d" class="outline-2">
+<h2 id="orgb3f452d"><span class="section-number-2">5</span> 最后</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-org477b797" class="outline-3">
-<h3 id="org477b797"><span class="section-number-3">5.1</span> 几个题外话</h3>
+<div id="outline-container-org86b02ab" class="outline-3">
+<h3 id="org86b02ab"><span class="section-number-3">5.1</span> 几个题外话</h3>
 <div class="outline-text-3" id="text-5-1">
 <ul class="org-ul">
 <li>如果没有 assign, 会不会简单很多</li>
@@ -760,8 +759,8 @@ syntactic sugar: <code>'(a b c)</code>
 </div>
 </div>
 
-<div id="outline-container-orge289a0c" class="outline-3">
-<h3 id="orge289a0c"><span class="section-number-3">5.2</span> 参考文档</h3>
+<div id="outline-container-orgb7db319" class="outline-3">
+<h3 id="orgb7db319"><span class="section-number-3">5.2</span> 参考文档</h3>
 <div class="outline-text-3" id="text-5-2">
 <ul class="org-ul">
 <li><a href="http://norvig.com/lispy.html">(How to Write a (Lisp) Interpreter (in Python))</a></li>

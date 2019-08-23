@@ -32,7 +32,6 @@
                             <li class="active"><a href="/blog/">Blog</a></li>
                             <li class="active"><a href="/history/">History</a></li>
                             <li class="active"><a href="/leetcode/">Leetcode</a></li>
-                            <li class="active"><a href="/prod/">Prod</a></li>
                         <li><a href="/tags/">Tags</a></li>
                         <li><a href="/about/">About</a></li>
                         <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
@@ -52,13 +51,13 @@
 <b>首次系统的接触WEB+前端内容，好好学习一下，做一下问题的记录。</b>
 </p>
 
-<div id="outline-container-org0e30f26" class="outline-2">
-<h2 id="org0e30f26">依赖</h2>
-<div class="outline-text-2" id="text-org0e30f26">
+<div id="outline-container-org28362e4" class="outline-2">
+<h2 id="org28362e4">依赖</h2>
+<div class="outline-text-2" id="text-org28362e4">
 </div>
-<div id="outline-container-org72d760c" class="outline-3">
-<h3 id="org72d760c">assetPipeLine</h3>
-<div class="outline-text-3" id="text-org72d760c">
+<div id="outline-container-org7070704" class="outline-3">
+<h3 id="org7070704">assetPipeLine</h3>
+<div class="outline-text-3" id="text-org7070704">
 <ul class="org-ul">
 <li>js，css等文件，同时依赖多次会存在问题。具体原因还没有搞清。js的依赖全部写在了application.js中，css的依赖一样。无须在html人工导入</li>
 <li>font文件的依赖，config/application.rb中添加如下代码:</li>
@@ -85,18 +84,18 @@ scss中通过font-url使用即可。
 </div>
 </div>
 
-<div id="outline-container-orgd0f6c90" class="outline-3">
-<h3 id="orgd0f6c90">View</h3>
-<div class="outline-text-3" id="text-orgd0f6c90">
+<div id="outline-container-orgf405012" class="outline-3">
+<h3 id="orgf405012">View</h3>
+<div class="outline-text-3" id="text-orgf405012">
 <p>
 *BootStrap*果然超级好用。暂时还没有什么研究，不过拷贝过来立刻可以见到成效，感觉很好。
 </p>
 </div>
 </div>
 
-<div id="outline-container-org591822f" class="outline-3">
-<h3 id="org591822f">Route</h3>
-<div class="outline-text-3" id="text-org591822f">
+<div id="outline-container-org99ea230" class="outline-3">
+<h3 id="org99ea230">Route</h3>
+<div class="outline-text-3" id="text-org99ea230">
 <p>
 工程的路由规则完全由config/Route.rb中内容觉得。当前只是配置了映射关系，和struts的action配置感觉没什么区别。
 </p>
@@ -108,9 +107,9 @@ scss中通过font-url使用即可。
 </div>
 </div>
 
-<div id="outline-container-org34f23f4" class="outline-2">
-<h2 id="org34f23f4">AJAX</h2>
-<div class="outline-text-2" id="text-org34f23f4">
+<div id="outline-container-org3e5adac" class="outline-2">
+<h2 id="org3e5adac">AJAX</h2>
+<div class="outline-text-2" id="text-org3e5adac">
 <p>
 之所以拿出来单独说，是这个让我搞的的确很痛苦。
 </p>
@@ -120,9 +119,9 @@ scss中通过font-url使用即可。
 </p>
 </div>
 
-<div id="outline-container-org6096578" class="outline-3">
-<h3 id="org6096578">TAG</h3>
-<div class="outline-text-3" id="text-org6096578">
+<div id="outline-container-orgb6d48ce" class="outline-3">
+<h3 id="orgb6d48ce">TAG</h3>
+<div class="outline-text-3" id="text-orgb6d48ce">
 <p>
 在html.erb文件中，rails推荐的写法是使用helper提供的各种tag来进行描述。
 </p>
@@ -144,9 +143,9 @@ scss中通过font-url使用即可。
 </div>
 </div>
 
-<div id="outline-container-org03d5441" class="outline-3">
-<h3 id="org03d5441">CoffeeScript</h3>
-<div class="outline-text-3" id="text-org03d5441">
+<div id="outline-container-org9378618" class="outline-3">
+<h3 id="org9378618">CoffeeScript</h3>
+<div class="outline-text-3" id="text-org9378618">
 <p>
 Ajax回调的触发如下，在controller对应的js.coffee文件内，写下
 </p>
@@ -169,9 +168,9 @@ console.log(data);
 </div>
 </div>
 
-<div id="outline-container-org55fc66e" class="outline-2">
-<h2 id="org55fc66e">TODO</h2>
-<div class="outline-text-2" id="text-org55fc66e">
+<div id="outline-container-org32a2ea2" class="outline-2">
+<h2 id="org32a2ea2">TODO</h2>
+<div class="outline-text-2" id="text-org32a2ea2">
 <ol class="org-ol">
 <li>将AJAX的机制再好好了解一下，用Ajax在Rails上做出一个完整的Game Of Life
 网页小动画处来。</li>
