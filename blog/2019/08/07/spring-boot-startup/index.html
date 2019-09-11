@@ -13,9 +13,6 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-  <script type="text/javascript" async
-          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
-  </script>
 </head>
 
   <body class="container">
@@ -60,9 +57,9 @@
 想要调查清楚: <b>为什么会启动时打印 DEBUG 日志，稍后就按照配置的级别(INFO)进行打印.</b>
 </p>
 
-<div id="outline-container-orgc6c2a3c" class="outline-2">
-<h2 id="orgc6c2a3c">日志是怎么打印的</h2>
-<div class="outline-text-2" id="text-orgc6c2a3c">
+<div id="outline-container-org69dd45e" class="outline-2">
+<h2 id="org69dd45e">日志是怎么打印的</h2>
+<div class="outline-text-2" id="text-org69dd45e">
 <p>
 倒叙而言
 </p>
@@ -87,9 +84,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgf9f3096" class="outline-2">
-<h2 id="orgf9f3096">排查过程</h2>
-<div class="outline-text-2" id="text-orgf9f3096">
+<div id="outline-container-org9e4c0c8" class="outline-2">
+<h2 id="org9e4c0c8">排查过程</h2>
+<div class="outline-text-2" id="text-org9e4c0c8">
 <ol class="org-ol">
 <li>debug 打印的过程
 <ul class="org-ul">
@@ -111,9 +108,9 @@
 </div>
 </div>
 
-<div id="outline-container-org178272a" class="outline-2">
-<h2 id="org178272a">解决方法</h2>
-<div class="outline-text-2" id="text-org178272a">
+<div id="outline-container-org7cd0bdd" class="outline-2">
+<h2 id="org7cd0bdd">解决方法</h2>
+<div class="outline-text-2" id="text-org7cd0bdd">
 <p>
 配置 <code>bootstrap.yml</code>, 其中设置 <code>logging.path</code> 以及 <code>logging.level</code>, 即可指定 <code>bootstrap</code> 期间的 <code>logger</code> 的行为。
 </p>
@@ -121,9 +118,9 @@
 </div>
 
 
-<div id="outline-container-org31ce97e" class="outline-2">
-<h2 id="org31ce97e">感想</h2>
-<div class="outline-text-2" id="text-org31ce97e">
+<div id="outline-container-org690204d" class="outline-2">
+<h2 id="org690204d">感想</h2>
+<div class="outline-text-2" id="text-org690204d">
 <p>
 这个问题本身解决的价值和带来的经验/知识积累一般。 不过查问题挺爽, <del>逃避一下严肃的思考</del>, 另外工程的集成度真高, 这一个小问题里没追究下去的细节还有很多，程序员不容易，哈哈
 </p>
