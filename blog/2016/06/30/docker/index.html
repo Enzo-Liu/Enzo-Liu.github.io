@@ -53,9 +53,9 @@
 前段时间，公司意外断电，导致内网服务器硬盘数据损坏, 之前纯手工打造的内网环境全跪了。欲哭无泪，于是就不哭了，借这个机会体验一把 <code>docker</code>, 这里记录一下使用中遇到的一些状况。
 </p>
 
-<div id="outline-container-org9ce1848" class="outline-2">
-<h2 id="org9ce1848">环境介绍</h2>
-<div class="outline-text-2" id="text-org9ce1848">
+<div id="outline-container-orgc26f569" class="outline-2">
+<h2 id="orgc26f569">环境介绍</h2>
+<div class="outline-text-2" id="text-orgc26f569">
 <p>
 原来的内网环境中，包含了
 </p>
@@ -84,9 +84,9 @@
 </div>
 </div>
 
-<div id="outline-container-org10c30d9" class="outline-2">
-<h2 id="org10c30d9">docker搭建的过程</h2>
-<div class="outline-text-2" id="text-org10c30d9">
+<div id="outline-container-org9d44eb2" class="outline-2">
+<h2 id="org9d44eb2">docker搭建的过程</h2>
+<div class="outline-text-2" id="text-org9d44eb2">
 <ul class="org-ul">
 <li>用 <code>docker pull</code> <code>docker run</code></li>
 </ul>
@@ -136,9 +136,9 @@ services:
 </div>
 
 
-<div id="outline-container-orgc3633d6" class="outline-2">
-<h2 id="orgc3633d6">遇到的问题</h2>
-<div class="outline-text-2" id="text-orgc3633d6">
+<div id="outline-container-org1b7e991" class="outline-2">
+<h2 id="org1b7e991">遇到的问题</h2>
+<div class="outline-text-2" id="text-org1b7e991">
 <ul class="org-ul">
 <li><p>
 没有 <code>image</code> 和 <code>container</code> 的概念
@@ -185,18 +185,18 @@ services:
 </div>
 </div>
 
-<div id="outline-container-org75a298d" class="outline-2">
-<h2 id="org75a298d">题外话</h2>
-<div class="outline-text-2" id="text-org75a298d">
+<div id="outline-container-orgf60c15a" class="outline-2">
+<h2 id="orgf60c15a">题外话</h2>
+<div class="outline-text-2" id="text-orgf60c15a">
 <p>
 遇到的磁盘坏了的坑，于是搭了 <code>raid-1</code>, 脚本每天备份，备份数据文件夹以及对应的 <code>docker compose file</code> 。以后 <del>服务器跪了</del> 再重新搭建应该更快了.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org44043c5" class="outline-2">
-<h2 id="org44043c5">总结</h2>
-<div class="outline-text-2" id="text-org44043c5">
+<div id="outline-container-org5e2d2dd" class="outline-2">
+<h2 id="org5e2d2dd">总结</h2>
+<div class="outline-text-2" id="text-org5e2d2dd">
 <p>
 搭建，部署，启动 <code>docker</code> 真的都是 <code>好快</code> , <code>好快</code> , <code>好快</code>  ...
 </p>

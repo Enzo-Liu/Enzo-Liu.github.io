@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <title>用 =org mode= 写一个本地静态网站 - enzo&#39;s note book</title>
+  <meta charset="utf-8" />
+  <meta name="author" content="刘恩泽" />
+  <meta name="description" content="用 =org mode= 写一个本地静态网站" />
+  <meta name="keywords" content="emacs, org-mode" />
+
+  <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml">
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/posts.css" type="text/css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</head>
+
+  <body class="container">
+<header id="header">
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top" style="opacity: .9" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">enzo&#39;s note book</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                            <li class="active"><a href="/blog/">Blog</a></li>
+                            <li class="active"><a href="/history/">History</a></li>
+                            <li class="active"><a href="/leetcode/">Leetcode</a></li>
+                        <li><a href="/tags/">Tags</a></li>
+                        <li><a href="/about/">About</a></li>
+                        <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
+                        <li><a href="/rss.xml">RSS</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </body>
+</header>
+
+<section id="content" role="main">
+    <div id="outline-container-sec-" class="row" style="padding-top: 70px">
+        <div class="col-md-2"></div>
+            <h1>用 =org mode= 写一个本地静态网站</h1>
+            <div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org9fd1c74">1. 用途</a></li>
+<li><a href="#org6694f97">2. 步骤</a></li>
+<li><a href="#org3d18d20">3. web 服务器</a></li>
+<li><a href="#org719cb6b">4. 配置 org-mode 的 project</a>
+<ul>
+<li><a href="#org7c62dfa">4.1. 配置静态资源的发布</a></li>
+<li><a href="#org8652ed6">4.2. 配置 org 目录的发布</a></li>
+<li><a href="#orgb84220b">4.3. 配置 index 文件的发布</a></li>
+<li><a href="#orgaac06a4">4.4. 配置总项目</a></li>
+<li><a href="#org01267a6">4.5. 配置项目的样式文件</a></li>
+</ul>
+</li>
+<li><a href="#org8026873">5. 汇总配置</a></li>
+<li><a href="#org7e9c9cb">6. 发布样例</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9fd1c74" class="outline-2">
+<h2 id="org9fd1c74"><span class="section-number-2">1</span> 用途</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+工作中，文档写的很多，全部导出成 pdf 发出去，也会比较麻烦。所以萌生了本地起一个 web 服务, 直接发链接给内网同事的想法。更新起来也方便。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6694f97" class="outline-2">
+<h2 id="org6694f97"><span class="section-number-2">2</span> 步骤</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+利用 org mode 的 publish 功能，配置步骤如下: 
+</p>
+
+<ol class="org-ol">
+<li>本地起一个 web 服务器(比如 nginx)即可</li>
+<li>配置 org-mode 的发布
+<ol class="org-ol">
+<li>配置静态资源的发布</li>
+<li>配置 org 文档的发布</li>
+</ol></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org3d18d20" class="outline-2">
+<h2 id="org3d18d20"><span class="section-number-2">3</span> web 服务器</h2>
+<div class="outline-text-2" id="text-3">
+<div class="org-src-container">
+<pre class="src src-shell">brew install nginx
+</pre>
+</div>
+
+<p>
+mac 下，默认的静态目录为: <code>/usr/local/var/www</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org719cb6b" class="outline-2">
+<h2 id="org719cb6b"><span class="section-number-2">4</span> 配置 org-mode 的 project</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+修改参数: <code>org-publish-project-alist</code> 即可。
+</p>
+</div>
+
+<div id="outline-container-org7c62dfa" class="outline-3">
+<h3 id="org7c62dfa"><span class="section-number-3">4.1</span> 配置静态资源的发布</h3>
+<div class="outline-text-3" id="text-4-1">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">("org-agora-static"
+ :base-directory "~/Documents/agora/"
+ :base-extension "gz\\|eps\\|css\\|js\\|png\\|jpg\\|gif\\|mp3\\|ogg\\|swf"
+ :publishing-directory "/usr/local/var/www"
+ :recursive t
+ :publishing-function org-publish-attachment
+ )
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8652ed6" class="outline-3">
+<h3 id="org8652ed6"><span class="section-number-3">4.2</span> 配置 org 目录的发布</h3>
+<div class="outline-text-3" id="text-4-2">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">("org-agora-notes"
+ :base-directory "~/Documents/agora/"
+ :base-extension "org"
+ :publishing-directory "/usr/local/var/www"
+ :recursive t
+ :publishing-function org-html-publish-to-html
+ :headline-levels 3             ; Just the default for this project.
+ :auto-preamble t
+ :auto-sitemap t                ; Generate sitemap.org automagically...
+ :sitemap-filename "index.org"  ; ... call it sitemap.org (it's the default)...
+ :sitemap-format-entry org-sitemap-custom-entry-format
+ :html-link-home "/"
+ :sitemap-title "文档列表"         ; ... with title 'Sitemap'.
+ :section-numbers nil
+ :table-of-contents 2
+ :sitemap-filename "index.org"
+ :sitemap-sort-files anti-chronologically
+ :exclude "index.org"
+ :html-head-extra  "&lt;link rel='stylesheet' type='text/css' href='../styles/readtheorg/css/htmlize.css'/&gt;&lt;link rel='stylesheet' type='text/css' href='../styles/readtheorg/css/readtheorg.css'/&gt;"
+ )
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb84220b" class="outline-3">
+<h3 id="orgb84220b"><span class="section-number-3">4.3</span> 配置 index 文件的发布</h3>
+<div class="outline-text-3" id="text-4-3">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">("org-agora-index"
+ :base-directory "~/Documents/agora/"
+ :base-extension "org"
+ :exclude ".*"
+ :include ["index.org"]
+ :publishing-directory "/usr/local/var/www"
+ :publishing-function org-html-publish-to-html
+ :table-of-contents nil
+ :html-head-extra  "&lt;link rel='stylesheet' type='text/css' href='styles/readtheorg/css/htmlize.css'/&gt;&lt;link rel='stylesheet' type='text/css' href='styles/readtheorg/css/readtheorg.css'/&gt;"
+ )
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgaac06a4" class="outline-3">
+<h3 id="orgaac06a4"><span class="section-number-3">4.4</span> 配置总项目</h3>
+<div class="outline-text-3" id="text-4-4">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">("org-agora" :components ("org-agora-notes" "org-agora-static" "org-agora-index" ))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org01267a6" class="outline-3">
+<h3 id="org01267a6"><span class="section-number-3">4.5</span> 配置项目的样式文件</h3>
+<div class="outline-text-3" id="text-4-5">
+<p>
+拷贝 <code>https://github.com/fniessen/org-html-themes</code> 的样式文件至: <code>~/Documents/agora/</code>  （以自己的配置为准)
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8026873" class="outline-2">
+<h2 id="org8026873"><span class="section-number-2">5</span> 汇总配置</h2>
+<div class="outline-text-2" id="text-5">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(require 'ox-publish)
+(setq org-publish-project-alist
+      '(
+        ("org-agora-index"
+         :base-directory "~/Documents/agora/"
+         :base-extension "org"
+         :exclude ".*"
+         :include ["index.org"]
+         :publishing-directory "/usr/local/var/www"
+         :publishing-function org-html-publish-to-html
+         :table-of-contents nil
+         :html-head-extra  "&lt;link rel='stylesheet' type='text/css' href='styles/readtheorg/css/htmlize.css'/&gt;&lt;link rel='stylesheet' type='text/css' href='styles/readtheorg/css/readtheorg.css'/&gt;"
+         )
+        ("org-agora-notes"
+         :base-directory "~/Documents/agora/"
+         :base-extension "org"
+         :publishing-directory "/usr/local/var/www"
+         :recursive t
+         :publishing-function org-html-publish-to-html
+         :headline-levels 3             ; Just the default for this project.
+         :auto-preamble t
+         :auto-sitemap t                ; Generate sitemap.org automagically...
+         :sitemap-filename "index.org"  ; ... call it sitemap.org (it's the default)...
+         :sitemap-format-entry org-sitemap-custom-entry-format
+         :html-link-home "/"
+         :sitemap-title "文档列表"         ; ... with title 'Sitemap'.
+         :section-numbers nil
+         :table-of-contents 2
+         :sitemap-filename "index.org"
+         :sitemap-sort-files anti-chronologically
+         :exclude "index.org"
+         :html-head-extra  "&lt;link rel='stylesheet' type='text/css' href='../styles/readtheorg/css/htmlize.css'/&gt;&lt;link rel='stylesheet' type='text/css' href='../styles/readtheorg/css/readtheorg.css'/&gt;"
+         )
+        ("org-agora-static"
+         :base-directory "~/Documents/agora/"
+         :base-extension "gz\\|eps\\|css\\|js\\|png\\|jpg\\|gif\\|mp3\\|ogg\\|swf"
+         :publishing-directory "/usr/local/var/www"
+         :recursive t
+         :publishing-function org-publish-attachment
+         )
+        ("org-agora" :components ("org-agora-notes" "org-agora-static" "org-agora-index" ))
+        ))
+</pre>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-org7e9c9cb" class="outline-2">
+<h2 id="org7e9c9cb"><span class="section-number-2">6</span> 发布样例</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+图片稍后补充
+</p>
+</div>
+</div>
+
+    </div>
+</section>
+
+
+    <div class="post-meta">
+        <span title="post date" class="post-info">2019-09-11</span>
+        <span title="last modification date" class="post-info">2019-09-11</span>
+        <span title="tags" class="post-info"><a href="/tags/emacs/">emacs</a>, <a href="/tags/org-mode/">org-mode</a></span>
+        <span title="author" class="post-info">刘恩泽</span>
+    </div>
+<footer class="footer">
+    <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 26.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+    <p>
+        Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">刘恩泽</a>
+        &nbsp;&nbsp;-&nbsp;&nbsp;
+        Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+        <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+    </p>
+</footer>
+
+  </body>
+</html>
