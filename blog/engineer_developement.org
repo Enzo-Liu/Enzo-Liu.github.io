@@ -1,0 +1,133 @@
+#+TITLE: 研发自我提升
+#+AUTHOR: 刘恩泽
+#+EMAIL:  enze.liu@ipiaoniu.com
+#+DATE: 2018-08-20
+#+OPTIONS:   H:2 toc:t num:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+startup: beamer
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [presentation, bigger]
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+#+BEAMER_THEME: metropolis
+#+BIND: org-beamer-outline-frame-title "目录"
+
+* 目的
+** 目的
+- 明确研发的发展方向
+- 明确需要具备的能力
+- 针对不同的类型能力, 如何培养和发展
+- *如何自我提升*
+
+* 技术方向
+** 业务研发&架构[fn:: 一个系统, 主要就是 =对外体现=, =对内组件=, =组件间关系= . 架构，就是对这个系统的抽象描述. ]
+- 把握/分析业务流程
+- (复杂) 业务系统设计和研发
+- _业务研发的难点解决_
+- _判断业务价值_
+
+** 系统架构[fn:: 提炼出业务系统中, 与业务不太相关, 更共性的那一面. ]
+- 数据库访问组件
+- 消息队列, 服务通讯框架
+- 分布式事物
+
+** 专业方向
+- DBA
+- 运维/可靠性
+- 安全
+- 算法
+- 搜索推荐
+- 大数据
+- 研发工具
+- 性能
+
+* 能力方向
+** 通用能力
+- *做的更好/更快/更美的意识和追求*
+- 分析与拆解 _找差异_
+- 抽象 _找共性, 找模式_
+- 方法论
+  - 理解, 计划, 分解, 练习
+  - P(lan), D(o), C(heck), A(ction)
+
+** 专业能力
+- 业务能力 [fn:: 这一点在我来看更依赖通用能力和经验积累]
+  - 分析理解，拆解落实
+- 工程能力
+  - 工具, 调试, 环境, 研发流程, 测试, ...
+- 业务架构能力
+
+- 编程抽象模型/编程范式[fn::不同的看问题分析问题的角度]
+  - 过程抽象, 数据抽象, 元语言抽象, ...
+- 算法/ML/AI
+- 分布式系统
+
+* 自我提升
+** 个人学习方法
+1. 找到有兴趣的领域, 看书
+2. 练习
+   1. 业余 lisp, haskell, 2048, udp, interpeter, =project-euler= , =usaco=
+   2. 工作 各种提效相关的工具
+3. 总结 & 思考 & 分享
+4. =emacs + org-mode= 写文档
+
+** 基础的经验积累
+- 业务知识
+- 研发流程/规范
+- 对所用框架/工具的了解
+
+** 练习 && 工具化
+- 手动配置多个内容, 可否写个脚本
+- 重复的代码怎么抽象
+- 如何抽象模式类似的业务
+  - 比如第三方对接
+  - 比如多个支付渠道
+  - 比如多种订单...
+- 如何写一个 =http-server=, =tiny-spring=, =crawler=, =dns 服务器= [fn:: 再比如, =udp 协议栈=, =解释器= ...]
+
+** 系统化学习
+#+BEGIN_QUOTE
+[[http://static.icybear.net/%5BCN%5DProgrammer%20competency%20matrix.htm][程序员能力矩阵(可点击)]]
+
+- 太过系统, 可能有点多...
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+[[http://blog.knownsec.com/Knownsec_RD_Checklist/v3.0.html][知道创宇技能表(可点击)]]
+#+END_QUOTE
+
+** 基础学习
+- (*) 编程思想
+  - SICP
+  - Concepts, Techniques, and Models of Computer Programming
+
+- (*) 工程能力
+  - The Elements of Programming Style
+  - Code Complete
+  - http://www.aosabook.org/en/index.html
+
+- (*) 研发价值观
+  - The Art Of Unix Programming
+  - Python: =import this=
+  - Rework
+  - Hackers and Painters
+
+** 专题学习
+- 算法
+  - Grokking Algorithms [fn:: 推荐一本书能理解就足够了, 这个 =容易读一些= ]
+- ML/AI
+  - http://www.cs.cmu.edu/~tom/
+  - [[https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-034-artificial-intelligence-fall-2010/][MIT AI 课程(可点击)]]
+- 分布式
+  - http://www.scs.stanford.edu/17au-cs244b/
+  - https://pdos.csail.mit.edu/6.824/schedule.html
+- 编程语言
+  - 7 周 7 语言
+  - The little schemer
+  - http://cis.upenn.edu/~cis194/fall16/
+
+** 交流
+- 总结
+- 分享
+

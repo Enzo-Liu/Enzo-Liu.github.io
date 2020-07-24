@@ -1,0 +1,195 @@
+#+TITLE: 专业工程师的特质
+#+AUTHOR: 刘恩泽
+#+EMAIL:  liuenze6516@gmail.com
+#+DATE: <2019-10-09 Wed>
+#+OPTIONS:   H:2 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+startup: beamer
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [presentation, bigger]
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+#+BEAMER_THEME: metropolis
+#+BIND: org-beamer-outline-frame-title "目录"
+
+* 表现
+** 什么叫专业化  
+  - 首先，好的专业人士要在任何情况下为工作本身着想，不会因为其他事情影响该做的事情
+  - 其次，专业素养意味着遵守流程和行业规范。
+  - 再次，是否有专业素养体现在是否能把哪些不经意的事情做的比别人更好
+  - 最后，专业人士要有成体系的领域知识，而不仅仅是掌握一两项技能
+
+** 行为表现
+1. 承诺+兑现
+2. 立场
+3. 细节
+4. 追求
+
+* 复杂问题的简化
+** 解释 [fn::不是容易, 容易对于环境，人，问题领域的复杂度都有要求。简单，而不是容易]
+/而不是简单的问题复杂化/
+
+*看到规则, 看到逻辑, 看到关系和边界，看到封装和接口。而不是看到一个功能，另一个功能，100 个功能，然后相互还影响*
+
+** 案例  1
+比如商品的几个东西
+
+1. 加点扣点调价
+ 2. 价格库存管理
+ 3. 不同类型，如购票，抢票，拼团，预约券，特卖商品等
+ 4. 不同状态，在售，审核等
+
+等等特性之间, 分别是哪些业务哪些关系. 怎么能简化，而不是看着很复杂，无从下手。
+
+** 案例  2
+- 订单，看到的通用流程，生命周期。 /下单->支付->成单->采购->发货/ 。而不是看到有  7 种订单，3 种优惠，还都相互影响。
+- 优惠，看到的是 /人，优惠形式，参与资格, 适用商品/ 。而不是  3 种优惠，5 种资格，n 种商品, 15n 种场景
+   
+* 繁琐的工作工具化
+** 解释
+/不要人工维护各种工作，人不是神，记不住。让机器来。/
+
+** 实际案例  1
+前后台间的枚举值获取，或者统计库里的枚举值自动维护。
+
+#+BEGIN_QUOTE
+让代码内的  enum 都去实现一个接口（提供获取  value 和  desc 的方法），在启动时或者编译期可以扫到所有实现这个接口的类，获取到类型, value 和  desc, 和从而可以提供接口获取到代码内的枚举以及枚举对应的值和描述。
+#+END_QUOTE
+
+** 实际案例  2
+   - 打包时拉  url schema 的定义自动解析
+   - 编译期自动维护  sql 和  dao 和实体的关系
+   - pc 项目运行期自动更新模板，编译，用户  pc 前端的渲染
+   - 利用  ansible 获取指定机器的所有公网  IP
+   - *等等等等*
+   
+* 系统化解决问题的能力
+** 解释
+看到问题，看到价值，看到方案。
+*而不是看到事情.*
+
+#+BEGIN_QUOTE
+有系统化解决问题的能力
+#+END_QUOTE
+
+** 案例  1
+- (3 天前) 某个记录表上加个操作人信息
+- 某个记录表再加上一些类型，再加上一些...
+
+
+** 案例  2
+- 今天某个项目天猫价格没同步，某个原因，打个补丁
+- 明天换个项目库存没同步，打个补丁
+
+* 技术方向
+** 业务研发&架构[fn:: 一个系统, 主要就是 =对外体现=, =对内组件=, =组件间关系= . 架构，就是对这个系统的抽象描述. ]
+- 把握/分析业务流程
+- (复杂) 业务系统设计和研发
+- _业务研发的难点解决_
+- _判断业务价值_
+
+** 系统架构[fn:: 提炼出业务系统中, 与业务不太相关, 更共性的那一面. ]
+- 数据库访问组件
+- 消息队列, 服务通讯框架
+- 分布式事物
+
+** 专业方向
+- DBA
+- 运维/可靠性
+- 安全
+- 算法
+- 搜索推荐
+- 大数据
+- 研发工具
+- 性能
+
+* 能力方向
+** 通用能力
+- *做的更好/更快/更美的意识和追求*
+- 分析与拆解 _找差异_
+- 抽象 _找共性, 找模式_
+- 方法论
+  - 理解, 计划, 分解, 练习
+  - P(lan), D(o), C(heck), A(ction)
+
+** 专业能力
+- 业务能力 [fn:: 这一点在我来看更依赖通用能力和经验积累]
+  - 分析理解，拆解落实
+- 工程能力
+  - 工具, 调试, 环境, 研发流程, 测试, ...
+- 业务架构能力
+
+- 编程抽象模型/编程范式[fn::不同的看问题分析问题的角度]
+  - 过程抽象, 数据抽象, 元语言抽象, ...
+- 算法/ML/AI
+- 分布式系统
+
+* 自我提升
+** 个人学习方法
+1. 找到有兴趣的领域, 看书
+2. 练习
+   1. 业余 lisp, haskell, 2048, udp, interpeter, =project-euler= , =usaco=
+   2. 工作 各种提效相关的工具
+3. 总结 & 思考 & 分享
+4. =emacs + org-mode= 写文档
+
+** 基础的经验积累
+- 业务知识
+- 研发流程/规范
+- 对所用框架/工具的了解
+
+** 练习 && 工具化
+- 手动配置多个内容, 可否写个脚本
+- 重复的代码怎么抽象
+- 如何抽象模式类似的业务
+  - 比如第三方对接
+  - 比如多个支付渠道
+  - 比如多种订单...
+- 如何写一个 =http-server=, =tiny-spring=, =crawler=, =dns 服务器= [fn:: 再比如, =udp 协议栈=, =解释器= ...]
+
+** 系统化学习
+#+BEGIN_QUOTE
+[[http://static.icybear.net/%5BCN%5DProgrammer%20competency%20matrix.htm][程序员能力矩阵(可点击)]]
+
+- 太过系统, 可能有点多...
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+[[http://blog.knownsec.com/Knownsec_RD_Checklist/v3.0.html][知道创宇技能表(可点击)]]
+#+END_QUOTE
+
+** 基础学习
+- (*) 编程思想
+  - SICP
+  - Concepts, Techniques, and Models of Computer Programming
+
+- (*) 工程能力
+  - The Elements of Programming Style
+  - Code Complete
+  - http://www.aosabook.org/en/index.html
+
+- (*) 研发价值观
+  - The Art Of Unix Programming
+  - Python: =import this=
+  - Rework
+  - Hackers and Painters
+
+** 专题学习
+- 算法
+  - Grokking Algorithms [fn:: 推荐一本书能理解就足够了, 这个 =容易读一些= ]
+- ML/AI
+  - http://www.cs.cmu.edu/~tom/
+  - [[https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-034-artificial-intelligence-fall-2010/][MIT AI 课程(可点击)]]
+- 分布式
+  - http://www.scs.stanford.edu/17au-cs244b/
+  - https://pdos.csail.mit.edu/6.824/schedule.html
+- 编程语言
+  - 7 周 7 语言
+  - The little schemer
+  - http://cis.upenn.edu/~cis194/fall16/
+
+** 交流
+- 总结
+- 分享
+
