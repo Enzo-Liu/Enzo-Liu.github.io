@@ -53,26 +53,26 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgfc58c3a">1. 用途</a></li>
-<li><a href="#org5391ff6">2. 步骤</a></li>
-<li><a href="#org0b361bc">3. web 服务器</a></li>
-<li><a href="#org99e5944">4. 配置 org-mode 的 project</a>
+<li><a href="#org6b7b3b2">1. 用途</a></li>
+<li><a href="#org427d795">2. 步骤</a></li>
+<li><a href="#orgdf78179">3. web 服务器</a></li>
+<li><a href="#org2d011f1">4. 配置 org-mode 的 project</a>
 <ul>
-<li><a href="#orga6573be">4.1. 配置静态资源的发布</a></li>
-<li><a href="#orgfe870d1">4.2. 配置 org 目录的发布</a></li>
-<li><a href="#orgab83dbf">4.3. 配置 index 文件的发布</a></li>
-<li><a href="#orgc9f23a2">4.4. 配置总项目</a></li>
-<li><a href="#org54bc03d">4.5. 配置项目的样式文件</a></li>
+<li><a href="#orgf0af9df">4.1. 配置静态资源的发布</a></li>
+<li><a href="#orgc866188">4.2. 配置 org 目录的发布</a></li>
+<li><a href="#org98009ff">4.3. 配置 index 文件的发布</a></li>
+<li><a href="#orgc36495f">4.4. 配置总项目</a></li>
+<li><a href="#org628563d">4.5. 配置项目的样式文件</a></li>
 </ul>
 </li>
-<li><a href="#org5d16e65">5. 汇总配置</a></li>
-<li><a href="#orga1fb806">6. 发布样例</a></li>
+<li><a href="#org9d8e3e0">5. 汇总配置</a></li>
+<li><a href="#orgc49aab4">6. 发布样例</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgfc58c3a" class="outline-2">
-<h2 id="orgfc58c3a"><span class="section-number-2">1</span> 用途</h2>
+<div id="outline-container-org6b7b3b2" class="outline-2">
+<h2 id="org6b7b3b2"><span class="section-number-2">1</span> 用途</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 工作中，文档写的很多，全部导出成 pdf 发出去，也会比较麻烦。所以萌生了本地起一个 web 服务, 直接发链接给内网同事的想法。更新起来也方便。
@@ -80,8 +80,8 @@
 </div>
 </div>
 
-<div id="outline-container-org5391ff6" class="outline-2">
-<h2 id="org5391ff6"><span class="section-number-2">2</span> 步骤</h2>
+<div id="outline-container-org427d795" class="outline-2">
+<h2 id="org427d795"><span class="section-number-2">2</span> 步骤</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 利用 org mode 的 publish 功能，配置步骤如下: 
@@ -98,8 +98,8 @@
 </div>
 </div>
 
-<div id="outline-container-org0b361bc" class="outline-2">
-<h2 id="org0b361bc"><span class="section-number-2">3</span> web 服务器</h2>
+<div id="outline-container-orgdf78179" class="outline-2">
+<h2 id="orgdf78179"><span class="section-number-2">3</span> web 服务器</h2>
 <div class="outline-text-2" id="text-3">
 <div class="org-src-container">
 <pre class="src src-shell">brew install nginx
@@ -112,16 +112,16 @@ mac 下，默认的静态目录为: <code>/usr/local/var/www</code>
 </div>
 </div>
 
-<div id="outline-container-org99e5944" class="outline-2">
-<h2 id="org99e5944"><span class="section-number-2">4</span> 配置 org-mode 的 project</h2>
+<div id="outline-container-org2d011f1" class="outline-2">
+<h2 id="org2d011f1"><span class="section-number-2">4</span> 配置 org-mode 的 project</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 修改参数: <code>org-publish-project-alist</code> 即可。
 </p>
 </div>
 
-<div id="outline-container-orga6573be" class="outline-3">
-<h3 id="orga6573be"><span class="section-number-3">4.1</span> 配置静态资源的发布</h3>
+<div id="outline-container-orgf0af9df" class="outline-3">
+<h3 id="orgf0af9df"><span class="section-number-3">4.1</span> 配置静态资源的发布</h3>
 <div class="outline-text-3" id="text-4-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">("org-agora-static"
@@ -136,8 +136,8 @@ mac 下，默认的静态目录为: <code>/usr/local/var/www</code>
 </div>
 </div>
 
-<div id="outline-container-orgfe870d1" class="outline-3">
-<h3 id="orgfe870d1"><span class="section-number-3">4.2</span> 配置 org 目录的发布</h3>
+<div id="outline-container-orgc866188" class="outline-3">
+<h3 id="orgc866188"><span class="section-number-3">4.2</span> 配置 org 目录的发布</h3>
 <div class="outline-text-3" id="text-4-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">("org-agora-notes"
@@ -165,8 +165,8 @@ mac 下，默认的静态目录为: <code>/usr/local/var/www</code>
 </div>
 </div>
 
-<div id="outline-container-orgab83dbf" class="outline-3">
-<h3 id="orgab83dbf"><span class="section-number-3">4.3</span> 配置 index 文件的发布</h3>
+<div id="outline-container-org98009ff" class="outline-3">
+<h3 id="org98009ff"><span class="section-number-3">4.3</span> 配置 index 文件的发布</h3>
 <div class="outline-text-3" id="text-4-3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">("org-agora-index"
@@ -184,8 +184,8 @@ mac 下，默认的静态目录为: <code>/usr/local/var/www</code>
 </div>
 </div>
 
-<div id="outline-container-orgc9f23a2" class="outline-3">
-<h3 id="orgc9f23a2"><span class="section-number-3">4.4</span> 配置总项目</h3>
+<div id="outline-container-orgc36495f" class="outline-3">
+<h3 id="orgc36495f"><span class="section-number-3">4.4</span> 配置总项目</h3>
 <div class="outline-text-3" id="text-4-4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">("org-agora" :components ("org-agora-notes" "org-agora-static" "org-agora-index" ))
@@ -193,8 +193,8 @@ mac 下，默认的静态目录为: <code>/usr/local/var/www</code>
 </div>
 </div>
 </div>
-<div id="outline-container-org54bc03d" class="outline-3">
-<h3 id="org54bc03d"><span class="section-number-3">4.5</span> 配置项目的样式文件</h3>
+<div id="outline-container-org628563d" class="outline-3">
+<h3 id="org628563d"><span class="section-number-3">4.5</span> 配置项目的样式文件</h3>
 <div class="outline-text-3" id="text-4-5">
 <p>
 拷贝 <code>https://github.com/fniessen/org-html-themes</code> 的样式文件至: <code>~/Documents/agora/</code>  （以自己的配置为准)
@@ -203,8 +203,8 @@ mac 下，默认的静态目录为: <code>/usr/local/var/www</code>
 </div>
 </div>
 
-<div id="outline-container-org5d16e65" class="outline-2">
-<h2 id="org5d16e65"><span class="section-number-2">5</span> 汇总配置</h2>
+<div id="outline-container-org9d8e3e0" class="outline-2">
+<h2 id="org9d8e3e0"><span class="section-number-2">5</span> 汇总配置</h2>
 <div class="outline-text-2" id="text-5">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(require 'ox-publish)
@@ -256,8 +256,8 @@ mac 下，默认的静态目录为: <code>/usr/local/var/www</code>
 
 
 
-<div id="outline-container-orga1fb806" class="outline-2">
-<h2 id="orga1fb806"><span class="section-number-2">6</span> 发布样例</h2>
+<div id="outline-container-orgc49aab4" class="outline-2">
+<h2 id="orgc49aab4"><span class="section-number-2">6</span> 发布样例</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 图片稍后补充

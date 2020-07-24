@@ -51,34 +51,34 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgd66c310">1. 本文的目的</a></li>
-<li><a href="#org11c16bb">2. 背景</a></li>
-<li><a href="#org853965d">3. 设计的目的</a></li>
-<li><a href="#orgb8d8577">4. 如何设计</a>
+<li><a href="#orgf04fd0a">1. 本文的目的</a></li>
+<li><a href="#orgedd14dd">2. 背景</a></li>
+<li><a href="#org6573fdf">3. 设计的目的</a></li>
+<li><a href="#org23d8cf6">4. 如何设计</a>
 <ul>
-<li><a href="#orgb2728ca">4.1. 原始需求分析</a></li>
-<li><a href="#org30dd324">4.2. 用户场景 &amp;&amp; 场景分析</a></li>
-<li><a href="#org52f8d8e">4.3. 系统概要设计</a></li>
-<li><a href="#orgbe3f292">4.4. 模块内部设计</a></li>
-<li><a href="#orgc31ac03">4.5. 任务分解</a></li>
+<li><a href="#orgd8078ea">4.1. 原始需求分析</a></li>
+<li><a href="#org7e529da">4.2. 用户场景 &amp;&amp; 场景分析</a></li>
+<li><a href="#org40521a4">4.3. 系统概要设计</a></li>
+<li><a href="#org053cc2c">4.4. 模块内部设计</a></li>
+<li><a href="#org13df07a">4.5. 任务分解</a></li>
 </ul>
 </li>
-<li><a href="#org2460cc0">5. 案例分析</a>
+<li><a href="#orgbccf871">5. 案例分析</a>
 <ul>
-<li><a href="#orgb00702a">5.1. 票务系统设计</a></li>
-<li><a href="#orgd0e2ec8">5.2. 拼团</a>
+<li><a href="#orga470f1f">5.1. 票务系统设计</a></li>
+<li><a href="#orgb453fa9">5.2. 拼团</a>
 <ul>
-<li><a href="#orgcd1d826">5.2.1. 拼团需求分析</a></li>
-<li><a href="#org8098ce5">5.2.2. 拼团用户场景</a></li>
-<li><a href="#org492adb4">5.2.3. 拼团场景分析</a></li>
-<li><a href="#org4a35dd0">5.2.4. 拼团系统概要设计</a></li>
-<li><a href="#org755a490">5.2.5. 拼团模块内部设计</a></li>
-<li><a href="#orgc351a7c">5.2.6. 拼团任务分解</a></li>
+<li><a href="#org1f91c74">5.2.1. 拼团需求分析</a></li>
+<li><a href="#orga55881e">5.2.2. 拼团用户场景</a></li>
+<li><a href="#org5426d85">5.2.3. 拼团场景分析</a></li>
+<li><a href="#orgf3c4cf1">5.2.4. 拼团系统概要设计</a></li>
+<li><a href="#org23e6f68">5.2.5. 拼团模块内部设计</a></li>
+<li><a href="#org1bdd883">5.2.6. 拼团任务分解</a></li>
 </ul>
 </li>
-<li><a href="#orge607f38">5.3. 套票</a>
+<li><a href="#orgb3fa8ec">5.3. 套票</a>
 <ul>
-<li><a href="#org9425773">5.3.1. TODO: 补充完成设计文档</a></li>
+<li><a href="#org468d9c9">5.3.1. TODO: 补充完成设计文档</a></li>
 </ul>
 </li>
 </ul>
@@ -87,8 +87,8 @@
 </div>
 </div>
 
-<div id="outline-container-orgd66c310" class="outline-2">
-<h2 id="orgd66c310"><span class="section-number-2">1</span> 本文的目的</h2>
+<div id="outline-container-orgf04fd0a" class="outline-2">
+<h2 id="orgf04fd0a"><span class="section-number-2">1</span> 本文的目的</h2>
 <div class="outline-text-2" id="text-1">
 <ol class="org-ol">
 <li>希望能对设计过程有一个整体的概念</li>
@@ -105,8 +105,8 @@ PS:
 </div>
 </div>
 
-<div id="outline-container-org11c16bb" class="outline-2">
-<h2 id="org11c16bb"><span class="section-number-2">2</span> 背景</h2>
+<div id="outline-container-orgedd14dd" class="outline-2">
+<h2 id="orgedd14dd"><span class="section-number-2">2</span> 背景</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 现阶段，对人员的需求已经不再是能有一个简单的需求把做出来。更可能是能独立承接一个有点复杂的需求。比如拼团，比如加速包, 比如套票。有一个略微复杂的流程，有更多的场景，涉及到更多的状态和角色和交互。
@@ -136,8 +136,8 @@ PS:
 </div>
 </div>
 
-<div id="outline-container-org853965d" class="outline-2">
-<h2 id="org853965d"><span class="section-number-2">3</span> 设计的目的</h2>
+<div id="outline-container-org6573fdf" class="outline-2">
+<h2 id="org6573fdf"><span class="section-number-2">3</span> 设计的目的</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 <b>为什么要设计?</b>,
@@ -163,12 +163,12 @@ PS:
 </div>
 </div>
 
-<div id="outline-container-orgb8d8577" class="outline-2">
-<h2 id="orgb8d8577"><span class="section-number-2">4</span> 如何设计</h2>
+<div id="outline-container-org23d8cf6" class="outline-2">
+<h2 id="org23d8cf6"><span class="section-number-2">4</span> 如何设计</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-orgb2728ca" class="outline-3">
-<h3 id="orgb2728ca"><span class="section-number-3">4.1</span> 原始需求分析</h3>
+<div id="outline-container-orgd8078ea" class="outline-3">
+<h3 id="orgd8078ea"><span class="section-number-3">4.1</span> 原始需求分析</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 划重点: 不关心系统，不关心当前是什么样，不关心有哪些模块。只关心一点:  <b>系统对外体现是什么样</b>. (对外并不仅仅指对外的用户视图。只要是外部能观测到的，都是系统的对外体现)
@@ -179,13 +179,13 @@ PS:
 </p>
 
 <ul class="org-ul">
-<li>拼团案例 <a href="#orgcd1d826">5.2.1</a></li>
+<li>拼团案例 <a href="#org1f91c74">5.2.1</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org30dd324" class="outline-3">
-<h3 id="org30dd324"><span class="section-number-3">4.2</span> 用户场景 &amp;&amp; 场景分析</h3>
+<div id="outline-container-org7e529da" class="outline-3">
+<h3 id="org7e529da"><span class="section-number-3">4.2</span> 用户场景 &amp;&amp; 场景分析</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 这一步，主要目的是把对外承诺细化。看看会有哪些不同的流程, 不同的场景。
@@ -204,13 +204,13 @@ PS:
 </p>
 
 <ul class="org-ul">
-<li>拼团案例 <a href="#org8098ce5">5.2.2</a></li>
+<li>拼团案例 <a href="#orga55881e">5.2.2</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org52f8d8e" class="outline-3">
-<h3 id="org52f8d8e"><span class="section-number-3">4.3</span> 系统概要设计</h3>
+<div id="outline-container-org40521a4" class="outline-3">
+<h3 id="org40521a4"><span class="section-number-3">4.3</span> 系统概要设计</h3>
 <div class="outline-text-3" id="text-4-3">
 <p>
 在这个阶段，主要的工作是，基于上文中的具体场景，分析出需要 <b>哪些模块</b> 来承载各自的功能，如何配合。
@@ -233,43 +233,43 @@ PS: 模块的拆分是一个迭代的过程(玄学)，一般是先分，然后�
 </p>
 
 <ul class="org-ul">
-<li>拼团案例 <a href="#org4a35dd0">5.2.4</a></li>
+<li>拼团案例 <a href="#orgf3c4cf1">5.2.4</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgbe3f292" class="outline-3">
-<h3 id="orgbe3f292"><span class="section-number-3">4.4</span> 模块内部设计</h3>
+<div id="outline-container-org053cc2c" class="outline-3">
+<h3 id="org053cc2c"><span class="section-number-3">4.4</span> 模块内部设计</h3>
 <div class="outline-text-3" id="text-4-4">
 <p>
 具体方法其实类似，但是需要更多考虑一点， <b>如何用内部不可见的存储/状态，去实现外部的行为或者感知</b> 。
 </p>
 
 <ul class="org-ul">
-<li>拼团案例 <a href="#org755a490">5.2.5</a></li>
+<li>拼团案例 <a href="#org23e6f68">5.2.5</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc31ac03" class="outline-3">
-<h3 id="orgc31ac03"><span class="section-number-3">4.5</span> 任务分解</h3>
+<div id="outline-container-org13df07a" class="outline-3">
+<h3 id="org13df07a"><span class="section-number-3">4.5</span> 任务分解</h3>
 <div class="outline-text-3" id="text-4-5">
 <p>
 在这里，更多是从一个这个业务需求的负责人角度，来看，需要哪些地方有工作，哪些工作，如何分解，如何跟踪。让整体的业务需求更可控。
 </p>
 
 <ul class="org-ul">
-<li>拼团案例 <a href="#orgc351a7c">5.2.6</a></li>
+<li>拼团案例 <a href="#org1bdd883">5.2.6</a></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org2460cc0" class="outline-2">
-<h2 id="org2460cc0"><span class="section-number-2">5</span> 案例分析</h2>
+<div id="outline-container-orgbccf871" class="outline-2">
+<h2 id="orgbccf871"><span class="section-number-2">5</span> 案例分析</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-orgb00702a" class="outline-3">
-<h3 id="orgb00702a"><span class="section-number-3">5.1</span> 票务系统设计</h3>
+<div id="outline-container-orga470f1f" class="outline-3">
+<h3 id="orga470f1f"><span class="section-number-3">5.1</span> 票务系统设计</h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
 整体内容相对完善一些，供参考:
@@ -277,12 +277,12 @@ PS: 模块的拆分是一个迭代的过程(玄学)，一般是先分，然后�
 </p>
 </div>
 </div>
-<div id="outline-container-orgd0e2ec8" class="outline-3">
-<h3 id="orgd0e2ec8"><span class="section-number-3">5.2</span> 拼团</h3>
+<div id="outline-container-orgb453fa9" class="outline-3">
+<h3 id="orgb453fa9"><span class="section-number-3">5.2</span> 拼团</h3>
 <div class="outline-text-3" id="text-5-2">
 </div>
-<div id="outline-container-orgcd1d826" class="outline-4">
-<h4 id="orgcd1d826"><span class="section-number-4">5.2.1</span> 拼团需求分析</h4>
+<div id="outline-container-org1f91c74" class="outline-4">
+<h4 id="org1f91c74"><span class="section-number-4">5.2.1</span> 拼团需求分析</h4>
 <div class="outline-text-4" id="text-5-2-1">
 <ul class="org-ul">
 <li>商家能创建/参与拼团活动</li>
@@ -298,8 +298,8 @@ PS: 模块的拆分是一个迭代的过程(玄学)，一般是先分，然后�
 </div>
 
 
-<div id="outline-container-org8098ce5" class="outline-4">
-<h4 id="org8098ce5"><span class="section-number-4">5.2.2</span> 拼团用户场景</h4>
+<div id="outline-container-orga55881e" class="outline-4">
+<h4 id="orga55881e"><span class="section-number-4">5.2.2</span> 拼团用户场景</h4>
 <div class="outline-text-4" id="text-5-2-2">
 <ul class="org-ul">
 <li>商家
@@ -326,8 +326,8 @@ PS: 模块的拆分是一个迭代的过程(玄学)，一般是先分，然后�
 </div>
 </div>
 
-<div id="outline-container-org492adb4" class="outline-4">
-<h4 id="org492adb4"><span class="section-number-4">5.2.3</span> 拼团场景分析</h4>
+<div id="outline-container-org5426d85" class="outline-4">
+<h4 id="org5426d85"><span class="section-number-4">5.2.3</span> 拼团场景分析</h4>
 <div class="outline-text-4" id="text-5-2-3">
 <ul class="org-ul">
 <li><p>
@@ -353,12 +353,12 @@ PS: 模块的拆分是一个迭代的过程(玄学)，一般是先分，然后�
 </div>
 </div>
 
-<div id="outline-container-org4a35dd0" class="outline-4">
-<h4 id="org4a35dd0"><span class="section-number-4">5.2.4</span> 拼团系统概要设计</h4>
+<div id="outline-container-orgf3c4cf1" class="outline-4">
+<h4 id="orgf3c4cf1"><span class="section-number-4">5.2.4</span> 拼团系统概要设计</h4>
 <div class="outline-text-4" id="text-5-2-4">
 </div>
 <ol class="org-ol">
-<li><a id="orgfc9d4ce"></a>重点概念解释<br />
+<li><a id="orgaa4b5d9"></a>重点概念解释<br />
 <div class="outline-text-5" id="text-5-2-4-1">
 <ul class="org-ul">
 <li><p>
@@ -388,7 +388,7 @@ PS: 模块的拆分是一个迭代的过程(玄学)，一般是先分，然后�
 </div>
 </li>
 
-<li><a id="org0799d90"></a>模块划分<br />
+<li><a id="org5863419"></a>模块划分<br />
 <div class="outline-text-5" id="text-5-2-4-2">
 <ul class="org-ul">
 <li>拼团活动模块
@@ -423,12 +423,12 @@ PS: 模块的拆分是一个迭代的过程(玄学)，一般是先分，然后�
 </ol>
 </div>
 
-<div id="outline-container-org755a490" class="outline-4">
-<h4 id="org755a490"><span class="section-number-4">5.2.5</span> 拼团模块内部设计</h4>
+<div id="outline-container-org23e6f68" class="outline-4">
+<h4 id="org23e6f68"><span class="section-number-4">5.2.5</span> 拼团模块内部设计</h4>
 <div class="outline-text-4" id="text-5-2-5">
 </div>
 <ol class="org-ol">
-<li><a id="org984db18"></a>拼团活动模块<br />
+<li><a id="org2a8c822"></a>拼团活动模块<br />
 <div class="outline-text-5" id="text-5-2-5-1">
 <ol class="org-ol">
 <li>与外部模块关系
@@ -624,7 +624,7 @@ PS: 模块的拆分是一个迭代的过程(玄学)，一般是先分，然后�
 </div>
 </li>
 
-<li><a id="org5893ca8"></a>拼团模块<br />
+<li><a id="org2ef380b"></a>拼团模块<br />
 <div class="outline-text-5" id="text-5-2-5-2">
 <ol class="org-ol">
 <li>与外部模块关系
@@ -788,8 +788,8 @@ PS: 模块的拆分是一个迭代的过程(玄学)，一般是先分，然后�
 </ol>
 </div>
 
-<div id="outline-container-orgc351a7c" class="outline-4">
-<h4 id="orgc351a7c"><span class="section-number-4">5.2.6</span> 拼团任务分解</h4>
+<div id="outline-container-org1bdd883" class="outline-4">
+<h4 id="org1bdd883"><span class="section-number-4">5.2.6</span> 拼团任务分解</h4>
 <div class="outline-text-4" id="text-5-2-6">
 <ul class="org-ul">
 <li>商家后台
@@ -853,12 +853,12 @@ PS: 模块的拆分是一个迭代的过程(玄学)，一般是先分，然后�
 </div>
 </div>
 
-<div id="outline-container-orge607f38" class="outline-3">
-<h3 id="orge607f38"><span class="section-number-3">5.3</span> 套票</h3>
+<div id="outline-container-orgb3fa8ec" class="outline-3">
+<h3 id="orgb3fa8ec"><span class="section-number-3">5.3</span> 套票</h3>
 <div class="outline-text-3" id="text-5-3">
 </div>
-<div id="outline-container-org9425773" class="outline-4">
-<h4 id="org9425773"><span class="section-number-4">5.3.1</span> TODO: 补充完成设计文档</h4>
+<div id="outline-container-org468d9c9" class="outline-4">
+<h4 id="org468d9c9"><span class="section-number-4">5.3.1</span> TODO: 补充完成设计文档</h4>
 </div>
 </div>
 </div>
