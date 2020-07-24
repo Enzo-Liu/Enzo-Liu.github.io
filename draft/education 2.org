@@ -1,0 +1,49 @@
+#+TITLE:       漫谈孩子的教育
+#+AUTHOR:      enzo liu
+#+EMAIL:       liuenze6516@gmail.com
+#+DATE:        2016-07-03 Sun
+#+URI:         /blog/%y/%m/%d/for-children
+#+KEYWORDS:    education
+#+TAGS:        <TODO: insert your tags here>
+#+OPTIONS:     H:2 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:     TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+DESCRIPTION: education, expectation
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [presentation, bigger]
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+#+BEAMER_THEME: metropolis
+#+BIND: org-beamer-outline-frame-title "目录"
+
+* 总述
+
+** 现象
+
+生活中，遇到过形形色色的人，觉得，差异最大的，其实不是学历，背景之类，而是思考能力。
+
+常见行为模式就是，对自己以及要做的事情没有明确的认知，不知道目的，没有想法也没有动力，只是相对麻木的去做。
+
+*玩耍，上学，工作，退休; 出生，成家，生子，老去；生活就在这种循环中默默的过去。*
+
+** 期望
+
+对我的孩子，最不希望的就是，将来，为了上学而上学，为了工作而工作，为了成家而成家。
+
+想让他能健康快乐的长大，想让他能有自己的理想追求，有相对舒适的生活，有充实的心灵, 有一个健康的自我。
+
+*最大的期望，就是有自主思考的能力，知道自己想要什么，并努力的实施下去。*
+
+#+BEGIN_QUOTE
+而这些希望，很大程度会落实在父母的教育中。
+#+END_QUOTE
+
+* 思考能力
+
+* 审美能力
+
+* 原则
+
+** 道德感和自律
+
+** 思考能力
+
+** 审美能力

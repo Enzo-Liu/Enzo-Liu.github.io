@@ -1,0 +1,50 @@
+* DOING [1/6] SEM 投放优化
+** DONE 整理 =SEM= 方案沟通
+  CLOSED: [2017-08-23 Wed 17:47] DEADLINE: <2017-08-23 Wed>
+  [[~/work/piaoniu/documentation/sem.org][sem 方案]]
+** DOING 历史数据分析
+   DEADLINE: <2017-09-13 Wed>
+  - 演出维度, 关键词花费，以及效果.
+** DOING 自动添加推广创意
+   DEADLINE: <2017-09-08 Fri>
+** TODO 自动添加推广单元
+** TODO 自动添加推广关键词
+** TODO 长尾演出的自动出价策略
+
+* DONE [2/2] rock lititz & taittowers 研究
+  CLOSED: [2017-08-25 Fri 12:01] DEADLINE: <2017-08-25 Fri>
+- 业务范围:
+- 市场规模
+- 业务模式
+- 对行业的价值
+- 进入门槛
+- 国内的可行性
+** 结论
+   [[~/work/piaoniu/documentation/organizer_service.org][主办服务研究]]
+** DONE rock lititz
+   CLOSED: [2017-08-25 Fri 12:01]
+
+** DONE taittowers
+   CLOSED: [2017-08-25 Fri 12:01]
+
+* DOING [0/5] 天猫对接
+** DOING 天猫账号申请
+   DEADLINE: <2017-10-05 Thu>
+** TODO SDK 下载与对接
+** TODO 同步演出
+** TODO 同步库存
+** TODO 同步订单，发货
+
+* TODO [0/1] 技术分享
+** DOING 主题 & PPT
+   [[~/Documents/blog/blog/path.org][我的职业路线]]
+  DEADLINE: <2017-09-21 Thu>
+
+* DOING [2/3]日常工作
+** DONE 外部订单区分支付和出票
+   CLOSED: [2017-08-22 Tue 10:25] DEADLINE: <2017-08-22 Tue>
+** DONE 扫码枪支持平台配票
+   CLOSED: [2017-08-22 Tue 14:03] DEADLINE: <2017-08-22 Tue>
+** DOING 在线选座对接随机购买
+   DEADLINE: <2017-09-15 Fri>
+   [[~/work/piaoniu/documentation/seatToRandom.org][选座随机购买]]

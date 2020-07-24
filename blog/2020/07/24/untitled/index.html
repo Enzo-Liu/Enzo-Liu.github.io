@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <title>Untitled - enzo&#39;s note book</title>
+  <meta charset="utf-8" />
+  <meta name="author" content="enzo liu" />
+
+  <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml">
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/posts.css" type="text/css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</head>
+
+  <body class="container">
+<header id="header">
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top" style="opacity: .9" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">enzo&#39;s note book</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                            <li class="active"><a href="/blog/">Blog</a></li>
+                            <li class="active"><a href="/history/">History</a></li>
+                            <li class="active"><a href="/leetcode/">Leetcode</a></li>
+                        <li><a href="/tags/">Tags</a></li>
+                        <li><a href="/about/">About</a></li>
+                        <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
+                        <li><a href="/rss.xml">RSS</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </body>
+</header>
+
+<section id="content" role="main">
+    <div id="outline-container-sec-" class="row" style="padding-top: 70px">
+        <div class="col-md-2"></div>
+            <h1>Untitled</h1>
+            <div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org56985a6">1. 拼团</a>
+<ul>
+<li><a href="#orga637de4">1.1. 拼团需求分析</a></li>
+<li><a href="#orgaf661f2">1.2. 拼团用户场景</a></li>
+<li><a href="#org36d1b91">1.3. 拼团场景分析</a></li>
+<li><a href="#org9132a9e">1.4. 拼团系统概要设计</a>
+<ul>
+<li><a href="#org313d67b">1.4.1. 重点概念解释</a></li>
+<li><a href="#orgca3029e">1.4.2. 模块划分</a></li>
+</ul>
+</li>
+<li><a href="#org056a90f">1.5. 拼团模块内部设计</a>
+<ul>
+<li><a href="#org3f7a904">1.5.1. 拼团活动模块</a></li>
+<li><a href="#org1e97390">1.5.2. 拼团模块</a></li>
+</ul>
+</li>
+<li><a href="#org6aebcb4">1.6. 拼团任务分解</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org56985a6" class="outline-2">
+<h2 id="org56985a6"><span class="section-number-2">1</span> 拼团</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-orga637de4" class="outline-3">
+<h3 id="orga637de4"><span class="section-number-3">1.1</span> 拼团需求分析</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>商家能创建/参与拼团活动</li>
+<li>op 能审核&amp;发布该拼团活动</li>
+<li>当拼团活动发布之后，符合一定的标准，用户可以在商品详情页看到</li>
+<li>用户可以发起或者参加某个团</li>
+<li>团符合成功标准，则拼团成功。超时未符合，则拼团失败</li>
+<li>拼团成功，则用户购买成功。失败，则退款</li>
+<li>购买成功后，用户能看到订单, 能看到后续的发货流程，正常消费。</li>
+<li>如果拼团成功，但是超卖，可能也需要退款</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgaf661f2" class="outline-3">
+<h3 id="orgaf661f2"><span class="section-number-3">1.2</span> 拼团用户场景</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li>商家
+<ul class="org-ul">
+<li>创建拼团活动</li>
+<li>修改拼团活动内容</li>
+<li>查看拼团活动审核情况</li>
+</ul></li>
+<li>管理人员
+<ul class="org-ul">
+<li>审核拼团活动</li>
+<li>驳回拼团活动</li>
+</ul></li>
+<li>用户
+<ul class="org-ul">
+<li>基于项目查看拼团活动</li>
+<li>创建一个拼团</li>
+<li>参与一个拼团</li>
+<li>查看拼团进度</li>
+<li>拼团成功后查看订单，消费票券</li>
+<li>拼团失败后退款</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org36d1b91" class="outline-3">
+<h3 id="org36d1b91"><span class="section-number-3">1.3</span> 拼团场景分析</h3>
+<div class="outline-text-3" id="text-1-3">
+<ul class="org-ul">
+<li><p>
+商家创建拼团活动
+</p>
+
+
+<div class="figure">
+<p><img src="/assets/blog/2020/07/24/untitled/merchant-tuan-campaign.png" alt="/assets/blog/2020/07/24/untitled/merchant-tuan-campaign.png" />
+</p>
+</div></li>
+
+<li><p>
+用户创建拼团
+</p>
+
+
+<div class="figure">
+<p><img src="/assets/blog/2020/07/24/untitled/user-tuan.png" alt="/assets/blog/2020/07/24/untitled/user-tuan.png" />
+</p>
+</div></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9132a9e" class="outline-3">
+<h3 id="org9132a9e"><span class="section-number-3">1.4</span> 拼团系统概要设计</h3>
+<div class="outline-text-3" id="text-1-4">
+</div>
+<div id="outline-container-org313d67b" class="outline-4">
+<h4 id="org313d67b"><span class="section-number-4">1.4.1</span> 重点概念解释</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<ul class="org-ul">
+<li><p>
+拼团活动
+</p>
+
+<p>
+制作领域的概念，包含参与拼团活动的项目，场次，票档，拼团价格，结算价格，有效期，是否公开等信息
+</p></li>
+
+<li><p>
+团
+</p>
+
+<p>
+第一个拼团订单创建完成，会生成一个团。用于承载拼团动作的结果
+</p></li>
+
+<li><p>
+拼团订单
+</p>
+
+<p>
+用于承载针对某个团的参与动作，以及支付行为, 驱动后续的订单生成等
+</p></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgca3029e" class="outline-4">
+<h4 id="orgca3029e"><span class="section-number-4">1.4.2</span> 模块划分</h4>
+<div class="outline-text-4" id="text-1-4-2">
+<ul class="org-ul">
+<li>拼团活动模块
+<ul class="org-ul">
+<li>负责拼团活动的创建，审核，发布功能</li>
+<li>负责拼团活动的查询</li>
+</ul></li>
+
+<li>拼团模块
+<ul class="org-ul">
+<li>负责拼团的创建</li>
+<li>负责参团</li>
+<li>负责拼团的信息查询</li>
+<li>负责拼团状态的维护，包含拼团成功，超时失败等</li>
+<li>负责拼团成功后对应订单的创建</li>
+<li>负责可能的超卖后的退款处理</li>
+</ul></li>
+
+<li>支付模块
+<ul class="org-ul">
+<li>负责拼团订单的支付</li>
+<li>负责拼团订单的退款</li>
+</ul></li>
+
+<li>订单模块
+<ul class="org-ul">
+<li>负责拼团订单对应的商品按照指定价格和结算价进行下单</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org056a90f" class="outline-3">
+<h3 id="org056a90f"><span class="section-number-3">1.5</span> 拼团模块内部设计</h3>
+<div class="outline-text-3" id="text-1-5">
+</div>
+<div id="outline-container-org3f7a904" class="outline-4">
+<h4 id="org3f7a904"><span class="section-number-4">1.5.1</span> 拼团活动模块</h4>
+<div class="outline-text-4" id="text-1-5-1">
+<ol class="org-ol">
+<li>与外部模块关系
+<ul class="org-ul">
+<li>提供拼团的定价和结算信息给拼团模块</li>
+<li>根据项目，提供审核通过的拼团活动的详细信息，用于演出模块展示拼团活动和最低拼团价</li>
+</ul></li>
+<li>内部逻辑
+<ul class="org-ul">
+<li>同一个项目，选择不同的票档参与拼团，设置拼团价格和库存</li>
+<li>拼团活动以项目为维度，可以审核通过或者驳回</li>
+<li>可以设置开始时间和结束时间</li>
+<li>如果考虑到一定的灵活性，审核的维度可以到票档。</li>
+<li>保证最终成团的售卖数量不超过拼团活动设置的最大库存
+<ul class="org-ul">
+<li>倘若超卖，则支付成功，购买失败，做退款。产品上需有说明</li>
+<li>若拼团成功 3 单，其中 2 单有库存，一单超卖失败, 则仅退款一单</li>
+<li>可以是判断是否当前团的最后一个团员,如果是，那么提交订单时就锁定整个团的库存, 如果不是，那么提交订单时不锁定整个团的库存</li>
+</ul></li>
+</ul></li>
+<li>外部接口
+<ol class="org-ol">
+<li>创建拼团活动</li>
+<li>更新拼团活动</li>
+<li>拼团活动审核</li>
+<li>根据项目 ID，查询拼团信息(支持是否过滤 shopId)
+<ol class="org-ol">
+<li>一个商家一个项目多个票档，叫做一个拼团活动</li>
+<li>一个项目可能会有多个拼团活动，选择其中拼团价最低的有库存的票档用于展示</li>
+<li>如果有 shopId 的过滤条件，只查询指定 shopId 的拼团活动</li>
+</ol></li>
+<li>批量根据项目 ID，查询拼团信息(支持是否过滤 shopId)</li>
+<li>根据拼团活动票档 Id, 查询结算价和数量</li>
+</ol></li>
+
+<li><p>
+模型设计
+</p>
+<ul class="org-ul">
+<li>PinTuanCampaign</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">字段名</td>
+<td class="org-left">字段类型</td>
+<td class="org-left">字段含义</td>
+</tr>
+
+<tr>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+<tr>
+<td class="org-left">id</td>
+<td class="org-left">int</td>
+<td class="org-left">主键 ID</td>
+</tr>
+
+<tr>
+<td class="org-left">effectiveFrom</td>
+<td class="org-left">Date</td>
+<td class="org-left">拼团活动开始时间</td>
+</tr>
+
+<tr>
+<td class="org-left">effectiveTo</td>
+<td class="org-left">Date</td>
+<td class="org-left">拼团活动结束时间</td>
+</tr>
+
+<tr>
+<td class="org-left">status</td>
+<td class="org-left">int</td>
+<td class="org-left">拼团活动状态，已提交，已驳回, 已发布</td>
+</tr>
+
+<tr>
+<td class="org-left">isOpen</td>
+<td class="org-left">int</td>
+<td class="org-left">是否公开</td>
+</tr>
+
+<tr>
+<td class="org-left">activityId</td>
+<td class="org-left">int</td>
+<td class="org-left">演出 ID</td>
+</tr>
+</tbody>
+</table>
+
+<ul class="org-ul">
+<li>PinTuanCampaignItem</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">字段名</td>
+<td class="org-left">字段类型</td>
+<td class="org-left">字段含义</td>
+</tr>
+
+<tr>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+<tr>
+<td class="org-left">id</td>
+<td class="org-left">int</td>
+<td class="org-left">主键 ID</td>
+</tr>
+
+<tr>
+<td class="org-left">pinTuanCampaignId</td>
+<td class="org-left">int</td>
+<td class="org-left">拼团活动 ID</td>
+</tr>
+
+<tr>
+<td class="org-left">ticketCategoryId</td>
+<td class="org-left">int</td>
+<td class="org-left">票档 Id</td>
+</tr>
+
+<tr>
+<td class="org-left">activityEventId</td>
+<td class="org-left">int</td>
+<td class="org-left">场次 Id</td>
+</tr>
+
+<tr>
+<td class="org-left">salePrice</td>
+<td class="org-left">int</td>
+<td class="org-left">拼团活动售价</td>
+</tr>
+
+<tr>
+<td class="org-left">count</td>
+<td class="org-left">int</td>
+<td class="org-left">拼团活动总库存</td>
+</tr>
+
+<tr>
+<td class="org-left">status</td>
+<td class="org-left">int</td>
+<td class="org-left">票档审核状态, 未通过，已通过</td>
+</tr>
+
+<tr>
+<td class="org-left">sellStatus</td>
+<td class="org-left">int</td>
+<td class="org-left">票档售卖状态，开启，关闭</td>
+</tr>
+</tbody>
+</table></li>
+
+<li>拼团活动审核的维度
+<ol class="org-ol">
+<li>基于票档/基于项目/基于项目当前未审核通过的部分</li>
+</ol></li>
+<li>拼团活动票档的修改
+<ol class="org-ol">
+<li>一旦审批通过后，不可以修改拼团价格</li>
+<li>关闭状态下，可以调整库存</li>
+</ol></li>
+<li>拼团活动如何保证(尽量)不超卖
+<ol class="org-ol">
+<li>在参团下单前，校验一次已参团人员的库存情况，如果库存不足，则不允许新团员参团</li>
+</ol></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org1e97390" class="outline-4">
+<h4 id="org1e97390"><span class="section-number-4">1.5.2</span> 拼团模块</h4>
+<div class="outline-text-4" id="text-1-5-2">
+<ol class="org-ol">
+<li>与外部模块关系
+<ul class="org-ul">
+<li>成团后，驱动生成对应订单</li>
+<li>支付拼团</li>
+<li>拼团失败后，退款</li>
+</ul></li>
+<li>内部逻辑
+<ul class="org-ul">
+<li>创建拼团/参团订单，校验拼团商品价格</li>
+<li>支付拼团订单，创建拼团</li>
+<li>支付参团订单，参与拼团</li>
+<li>拼团超时未成功, 自动退款</li>
+<li>参团达到标准，拼团成功</li>
+<li>如果超卖，拼团订单退款</li>
+</ul></li>
+<li>外部接口
+<ol class="org-ol">
+<li>创建拼团订单(包含发起团和参与团)</li>
+<li>查看拼团订单详情</li>
+<li>查看团的详情</li>
+</ol></li>
+
+<li><p>
+模型设计
+</p>
+<ul class="org-ul">
+<li>Tuan</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">字段名</td>
+<td class="org-left">字段类型</td>
+<td class="org-left">字段含义</td>
+</tr>
+
+<tr>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+<tr>
+<td class="org-left">id</td>
+<td class="org-left">int</td>
+<td class="org-left">团 ID</td>
+</tr>
+
+<tr>
+<td class="org-left">ownerId</td>
+<td class="org-left">int</td>
+<td class="org-left">创建团的人</td>
+</tr>
+
+<tr>
+<td class="org-left">status</td>
+<td class="org-left">int</td>
+<td class="org-left">拼团状态</td>
+</tr>
+
+<tr>
+<td class="org-left">addTime</td>
+<td class="org-left">Date</td>
+<td class="org-left">团的创建时间</td>
+</tr>
+
+<tr>
+<td class="org-left">expireTime</td>
+<td class="org-left">Date</td>
+<td class="org-left">团的有效期</td>
+</tr>
+
+<tr>
+<td class="org-left">requiredNum</td>
+<td class="org-left">int</td>
+<td class="org-left">成团订单数量要求</td>
+</tr>
+</tbody>
+</table>
+
+<ul class="org-ul">
+<li>PinTuanOrder</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">字段名</td>
+<td class="org-left">字段类型</td>
+<td class="org-left">字段含义</td>
+</tr>
+
+<tr>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+<tr>
+<td class="org-left">id</td>
+<td class="org-left">int</td>
+<td class="org-left">拼团订单 ID</td>
+</tr>
+
+<tr>
+<td class="org-left">payStatus</td>
+<td class="org-left">int</td>
+<td class="org-left">支付状态, 待支付，已支付，已退款</td>
+</tr>
+
+<tr>
+<td class="org-left">tuanId</td>
+<td class="org-left">int</td>
+<td class="org-left">团的 Id</td>
+</tr>
+
+<tr>
+<td class="org-left">userId</td>
+<td class="org-left">int</td>
+<td class="org-left">拼团订单的用户</td>
+</tr>
+
+<tr>
+<td class="org-left">count</td>
+<td class="org-left">int</td>
+<td class="org-left">购买数量</td>
+</tr>
+
+<tr>
+<td class="org-left">salePrice</td>
+<td class="org-left">int</td>
+<td class="org-left">拼团价格</td>
+</tr>
+</tbody>
+</table></li>
+
+<li>TODO: 如何自动分配选座订单的座位</li>
+<li>TODO: 如何保证驱动生成订单动作的幂等</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6aebcb4" class="outline-3">
+<h3 id="org6aebcb4"><span class="section-number-3">1.6</span> 拼团任务分解</h3>
+<div class="outline-text-3" id="text-1-6">
+<ul class="org-ul">
+<li>商家后台
+<ul class="org-ul">
+<li>拼团活动列表页</li>
+<li>拼团活动详情页</li>
+<li>拼团活动列表页接口</li>
+<li>拼团活动详情页接口</li>
+</ul></li>
+<li>op 后台
+<ul class="org-ul">
+<li>拼团活动列表表</li>
+<li>拼团活动详情页</li>
+<li>拼团活动列表接口</li>
+<li>拼团活动详情接口</li>
+<li>拼团活动审核接口</li>
+<li>拼团首页运营位配置</li>
+</ul></li>
+<li>android &amp;&amp; ios
+<ul class="org-ul">
+<li>项目详情页拼团入口展示</li>
+<li>商家项目详情页拼团入口展示</li>
+<li>首页拼团运营位展示</li>
+<li>商家列表页 &amp;&amp; 列表页拼团价格展示</li>
+<li>个人中心增加拼团订单的入口</li>
+</ul></li>
+<li>m 站用户侧发起/参加拼团
+<ul class="org-ul">
+<li>项目的拼团活动入口</li>
+<li>拼团详情分享</li>
+<li>拼团详情页面(各种状态和操作参考 PRD)</li>
+<li>项目的拼团活动查询接口</li>
+<li>拼团详情接口</li>
+<li>TODO: 拼团项目的场次和票档以及库存查询接口</li>
+<li>拼团确认订单页面</li>
+<li>拼团下单接口</li>
+<li>拼团支付</li>
+<li>拼团订单详情页</li>
+<li>个人中心增加拼团订单的入口</li>
+</ul></li>
+
+<li>拼团活动服务
+<ul class="org-ul">
+<li>拼团活动创建，更新，提交，审核，发布接口</li>
+<li>拼团活动信息查询接口</li>
+</ul></li>
+<li>拼团服务
+<ul class="org-ul">
+<li>拼团创建接口</li>
+<li>拼团参加接口</li>
+<li>拼团成功创建订单</li>
+<li>拼团超时未成功自动退款</li>
+<li>拼团超卖?</li>
+</ul></li>
+<li>订单服务
+<ul class="org-ul">
+<li>TODO: 能够根据指定的商品售价创建拼团成功后的订单</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+    </div>
+</section>
+
+
+    <div class="post-meta">
+        <span title="post date" class="post-info">2020-07-24</span>
+        <span title="last modification date" class="post-info">2020-07-24</span>
+        <span title="tags" class="post-info">N/A</span>
+        <span title="author" class="post-info">enzo liu</span>
+    </div>
+<footer class="footer">
+    <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 27.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+    <p>
+        Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
+        &nbsp;&nbsp;-&nbsp;&nbsp;
+        Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+        <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+    </p>
+</footer>
+
+  </body>
+</html>

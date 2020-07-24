@@ -1,0 +1,66 @@
+#+TITLE: 研发岗位述职
+#+AUTHOR: 刘恩泽
+#+EMAIL:  liuenze6516@gmail.com
+#+DATE: 2018-05-28
+#+OPTIONS:   H:2 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+startup: beamer
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [presentation, bigger]
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+#+BEAMER_THEME: metropolis
+#+BIND: org-beamer-outline-frame-title "目录"
+
+* 研发能力
+** 通用能力
+- 问题解决 :: 4
+  - iptables, 搜索, hanlp, 相关推荐, spark, dubbo, docker, solr-cloud...
+- 学习能力 :: 3
+  - 标准: 总结提炼，帮助他人
+  - http://git.pn.com/piaoniu/piaoniu.wiki/tree/master
+  - 真实标准: 掌握新事物/概念的能力，抽象和泛化的能力
+
+** 专业能力
+- 业务开发 :: 4
+  - 商家系统, 票务系统, 分销系统, 等等
+  - 较高的研发效率, 以及系统不能做的事情较少
+- 业务需求 :: 3
+  - 主办产品没有很成功...
+- 系统架构 :: 4
+  - 知晓好的架构标准/实践
+  - 在当前的环境尽可能的选择合适的方式
+
+** 影响力
+- 知识传播 :: 3
+  - 内部总结, 团队分享, 公司分享
+- 人才培养 :: 3
+  - 人才梯队建设不足
+
+* 岗位职责
+** 岗位
+- 行业线研发 Leader
+** 职责
+#+BEGIN_QUOTE
+   为了获取更 *可靠的供应链*, 利用主办相对 *廉价的线下流量*, 我们需要深入主办日常工作流程, 能在各方面给其提供服务, 提高与主办合作的话语权。
+#+END_QUOTE
+
+- 负责带领行业线研发, 配合业务方, 达成相关目标
+  - *制定产品计划* , 负责 *推进产品推广* , 跟综后续产品的支持与优化
+  - *落实* 具体的产品研发任务, 按时按质按量完成研发工作
+  - *支持* 业务部门达成其 KPI
+
+** 职责 II
+- 根据公司发展战略, 拟定中长期研发计划, 把握研发方向
+- 指导并监督研发部门执行公司研发战略和年度研发计划
+- 控制产品开发进度, 调整计划
+- 组建优秀的产品研发团队, 审核及培训考核有关技术人员
+
+* 个人评价
+** 优势
+- 问题解决 (攻关型)
+- 分析
+- 研发落实
+
+** 劣势
+- 业务方向
+- 团队管理/激励

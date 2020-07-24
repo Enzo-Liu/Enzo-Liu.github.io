@@ -1,0 +1,48 @@
+#+TITLE:       读完 SICP, 我到底学会了啥
+#+AUTHOR:      enzo liu
+#+EMAIL:       liuenze6516@gmail.com
+#+DATE:        2017-04-18 Tue
+#+URI:         /blog/%y/%m/%d/user-classify
+#+KEYWORDS:    sicp, learning
+#+TAGS:        sicp, learning
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: what do I learn from SICP
+
+最近遇到了好几位同学找我推荐本书学习计算机。一般情况下，我就直接报 =SICP= 。
+作为一本基础入门的书，介绍了众多复杂的概念却还讲的异常简单。尤为喜爱作者公开课中最常讲的一句话 =See, it's no magic here.=
+
+真要说好在哪里的话，其实不容易。就借机罗列一下我学到的东西，觉得有价值的，可以去看看书，听听课体会一下:)
+
+*免责声明: 以下为一家之言，仅供参考。*
+
+** 理解抽象/复杂(meta-methods)
+怎么说呢，我觉得，程序本质就在于抽象, 而抽象, 又在于真实而复杂的世界不是一个正常人可以直接理解的。
+那么如何抽象呢。
+首章直接引用了 <An Essay Concerning Human Understanding>
+#+BEGIN_QUOTE
+1. Combining several simple ideas into one compound one, and thus all complex ideas are made.
+2. The second is bringing two ideas, whether simple or complex, together, and setting them by one another so as to take a view of them at once, without uniting them into one, by which it gets all its ideas of relations.
+3. The third is separating them from all other ideas that accompany them in their real existence: this is called abstraction, and thus all its general ideas are made.
+#+END_QUOTE
+翻译不好，举个例子, 如何去理解一个程序的抽象 =需要理解:=
+- 原子表达式 :: primitive expressions, which represent the simplest entities the language is concerned with,
+- 组合的方式 :: means of combination, by which compound elements are built from simpler ones, and
+- 抽象的方式 :: means of abstraction, by which compound elements can be named and manipulated as units.
+
+** 过程抽象
+*** 背景
+- 表达式
+- 命名和求值
+- 应用序和正则序
+  先求值再展开还是先展开再按需求值
+  (if true (forever) 2)
+
+*** 原子表达式
+- 基本过程
+  (define product (a b) (* a b)
+  (define a 2)
+
+** 流
+
+** 延时求值

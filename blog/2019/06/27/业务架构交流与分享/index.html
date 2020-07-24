@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <title>业务架构交流与分享 - enzo&#39;s note book</title>
+  <meta charset="utf-8" />
+  <meta name="author" content="刘恩泽" />
+
+  <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml">
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/posts.css" type="text/css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</head>
+
+  <body class="container">
+<header id="header">
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top" style="opacity: .9" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">enzo&#39;s note book</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                            <li class="active"><a href="/blog/">Blog</a></li>
+                            <li class="active"><a href="/history/">History</a></li>
+                            <li class="active"><a href="/leetcode/">Leetcode</a></li>
+                        <li><a href="/tags/">Tags</a></li>
+                        <li><a href="/about/">About</a></li>
+                        <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
+                        <li><a href="/rss.xml">RSS</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </body>
+</header>
+
+<section id="content" role="main">
+    <div id="outline-container-sec-" class="row" style="padding-top: 70px">
+        <div class="col-md-2"></div>
+            <h1>业务架构交流与分享</h1>
+            <div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org6b8744e">1. 内容简介</a>
+<ul>
+<li><a href="#orgadb63df">1.1. 个人介绍</a></li>
+<li><a href="#orga3af714">1.2. 分享目的</a></li>
+</ul>
+</li>
+<li><a href="#org2335746">2. 架构是什么</a>
+<ul>
+<li><a href="#org2736364">2.1. 官方解释(wiki &amp; book)</a></li>
+<li><a href="#org05e6d95">2.2. 架构的五个层次</a></li>
+<li><a href="#org9368d38">2.3. 常见关注点</a></li>
+</ul>
+</li>
+<li><a href="#org6ffb720">3. 票牛架构演进</a>
+<ul>
+<li><a href="#org3732f65">3.1. 主线</a></li>
+<li><a href="#orgdbc84ce">3.2. 0-1 (2 个月)</a></li>
+<li><a href="#org2438452">3.3. 配置中心</a></li>
+<li><a href="#org648d5bb">3.4. 优惠系统</a></li>
+<li><a href="#orgd5d2cd9">3.5. 支付网关 (15 年 11 月)</a></li>
+<li><a href="#orgf230530">3.6. 报表中心</a></li>
+<li><a href="#orgfc06050">3.7. 垂直分库</a></li>
+<li><a href="#orgac0dd3d">3.8. openapi (16 年底)</a></li>
+<li><a href="#org64e9b0d">3.9. 数据库迁移 RDS (17 年初)</a></li>
+<li><a href="#orgbc58517">3.10. 发布系统 (17 年下半年)</a></li>
+<li><a href="#orgd516f13">3.11. solr 迁移 solr-cloud (18 年初)</a></li>
+<li><a href="#orge778bd5">3.12. xxl-job 分布式 job 管理</a></li>
+<li><a href="#orgaceef6e">3.13. 流控</a></li>
+<li><a href="#org87d93f1">3.14. 支付中心(收银台)</a></li>
+<li><a href="#org1347a35">3.15. 订单中台(18 年中, 6 人月)</a></li>
+<li><a href="#orgf6e7b02">3.16. 业务拆分 module</a></li>
+<li><a href="#org4a1a659">3.17. 分销中台</a></li>
+<li><a href="#org62a1c77">3.18. <b>总结</b></a></li>
+</ul>
+</li>
+<li><a href="#org3516271">4. 其他案例分享</a>
+<ul>
+<li><a href="#org2e3d83d">4.1. 华为</a></li>
+<li><a href="#org3aca6bd">4.2. 点评</a></li>
+<li><a href="#orgd5e8d2e">4.3. 抖音</a></li>
+<li><a href="#org8137703">4.4. 秉坤</a></li>
+</ul>
+</li>
+<li><a href="#org6263f1f">5. 典型的架构模式</a>
+<ul>
+<li><a href="#orgb88c409">5.1. 从混沌到结构</a></li>
+<li><a href="#org16030e5">5.2. 分布式系统</a></li>
+<li><a href="#orga77d623">5.3. 交互式系统</a></li>
+<li><a href="#orgf260f5c">5.4. 适应性系统</a></li>
+</ul>
+</li>
+<li><a href="#org4183746">6. 个人观点</a>
+<ul>
+<li><a href="#org83e47c6">6.1. 我对架构的认识</a></li>
+<li><a href="#orgfdd8014">6.2. 架构解决的主要问题</a></li>
+<li><a href="#org9152346">6.3. 架构的成本和收益</a></li>
+<li><a href="#org5901ecc">6.4. 架构重点</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6b8744e" class="outline-2">
+<h2 id="org6b8744e"><span class="section-number-2">1</span> 内容简介</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-orgadb63df" class="outline-3">
+<h3 id="orgadb63df"><span class="section-number-3">1.1</span> 个人介绍</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>07~11, 南大数学本科</li>
+<li>11~13, 南京华为业软, 即时通讯软件开发</li>
+<li>13~15, 上海点评, 商家后台, 产品中心, 审核, 风控, CRM</li>
+<li>15~19, 票牛网
+<ul class="org-ul">
+<li>15~16: 全站研发</li>
+<li>16~17: 负责站内运营(商品, 会员, 活动)</li>
+<li>17~18: 负责行业系统研发</li>
+<li>18~19: 负责公司后端研发</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga3af714" class="outline-3">
+<h3 id="orga3af714"><span class="section-number-3">1.2</span> 分享目的</h3>
+<div class="outline-text-3" id="text-1-2">
+<ol class="org-ol">
+<li>探讨一下架构的目的和要解决的问题以及常见解决办法</li>
+<li>分享过去在票牛的决策和经历</li>
+<li>分享了解到的别的架构团队的关注点和工作</li>
+<li>探讨一下各自对架构的观点和体会</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2335746" class="outline-2">
+<h2 id="org2335746"><span class="section-number-2">2</span> 架构是什么</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org2736364" class="outline-3">
+<h3 id="org2736364"><span class="section-number-3">2.1</span> 官方解释(wiki &amp; book)</h3>
+<div class="outline-text-3" id="text-2-1">
+<blockquote>
+<p>
+Architecture is like teenage sex，everybody talks about it，nobody really knows what is it。
+</p>
+</blockquote>
+<ul class="org-ul">
+<li>提供一套预定义的子系统, 规定它们的职责, 并包含用于组织它们之间关系的规则和指南。</li>
+<li>描述组件, 边界以及组件与组件之间的关系</li>
+<li>最高层次的规划, 难以改变的决定</li>
+<li>有关软件整体结构与组件的抽象描述, 用于指导大型软件系统各个方面的设计</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org05e6d95" class="outline-3">
+<h3 id="org05e6d95"><span class="section-number-3">2.2</span> 架构的五个层次</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li>可用</li>
+<li>可伸缩</li>
+<li>可见</li>
+<li>可调控</li>
+<li>可适应</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9368d38" class="outline-3">
+<h3 id="org9368d38"><span class="section-number-3">2.3</span> 常见关注点</h3>
+<div class="outline-text-3" id="text-2-3">
+<ol class="org-ol">
+<li>功能</li>
+<li>性能</li>
+<li>可扩展</li>
+<li>可见性</li>
+<li>&#x2026;</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org6ffb720" class="outline-2">
+<h2 id="org6ffb720"><span class="section-number-2">3</span> 票牛架构演进</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org3732f65" class="outline-3">
+<h3 id="org3732f65"><span class="section-number-3">3.1</span> 主线</h3>
+<div class="outline-text-3" id="text-3-1">
+<ol class="org-ol">
+<li>支持和保障业务规划的完成</li>
+<li>资源有限, 如何最大化利用</li>
+<li>如何平衡当期和对未来的投资</li>
+<li>减少业务的试错成本</li>
+<li>研发效率和质量</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgdbc84ce" class="outline-3">
+<h3 id="orgdbc84ce"><span class="section-number-3">3.2</span> 0-1 (2 个月)</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li>问题
+<ul class="org-ul">
+<li>功能性, 快速, 能较低成本发展壮大</li>
+</ul></li>
+
+<li>人员
+<ul class="org-ul">
+<li>后端: 2, 前端: 2</li>
+</ul></li>
+</ul>
+
+<ul class="org-ul">
+<li>业务</li>
+</ul>
+<p>
+<a href="./images/business-v1.0.eps">./images/business-v1.0.eps</a>
+</p>
+
+<ul class="org-ul">
+<li>系统
+<ul class="org-ul">
+<li>一个代码仓库, 一个 project, 3 个 module(job, web, biz)</li>
+<li>2 台 api, 1 台 job, 1 台 ecs (op), 一台 solr+memcached</li>
+<li>2 台 ecs (数据库, 主从, 从库仅用于备份)</li>
+<li>七牛</li>
+<li>eventbus</li>
+<li>测试环境</li>
+<li>发布(ansible)  2015-10-23</li>
+<li>监控, 备份</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2438452" class="outline-3">
+<h3 id="org2438452"><span class="section-number-3">3.3</span> 配置中心</h3>
+<div class="outline-text-3" id="text-3-3">
+<ul class="org-ul">
+<li>问题
+<ul class="org-ul">
+<li>增加了 pc 和商家, 部署的机器增多</li>
+<li>业务逐渐复杂，配置项增多</li>
+<li>配置项的更新需要发布全部机器</li>
+</ul></li>
+<li>解决
+<ul class="org-ul">
+<li>zk 提供应用级别配置, 以及业务级别配置变更的通知</li>
+<li>数据库提供业务级别的配置</li>
+<li>不同环境使用不同的 zk</li>
+<li>手工提供一个简易版本的配置中心</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org648d5bb" class="outline-3">
+<h3 id="org648d5bb"><span class="section-number-3">3.4</span> 优惠系统</h3>
+<div class="outline-text-3" id="text-3-4">
+<ul class="org-ul">
+<li>问题<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>
+<ul class="org-ul">
+<li>优惠形式: 立减, 折扣, 免邮</li>
+<li>优惠对象: 人, 商品</li>
+<li>优惠门槛: 周第一单, 满两张, 满 100 元, 指定相邻座位&#x2026;</li>
+<li>时效变化: 活动有效期</li>
+<li>处于订单黄金流程中, 应用级别高</li>
+</ul></li>
+<li>解决<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup>
+<ul class="org-ul">
+<li>非结构化的规则描述</li>
+<li>内存索引</li>
+<li>活动 as 流, 和数据库监控变化进行同步</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd5d2cd9" class="outline-3">
+<h3 id="orgd5d2cd9"><span class="section-number-3">3.5</span> 支付网关 (15 年 11 月)</h3>
+<div class="outline-text-3" id="text-3-5">
+<ul class="org-ul">
+<li>问题
+<ul class="org-ul">
+<li>用户的支付渠道极其丰富(尽管支付宝微信占比 90%以上)</li>
+<li>银联, 招行一网通，招行账上生活，农行掌银, 兜里积分, 杉德支付<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup></li>
+</ul></li>
+<li>解决
+<ul class="org-ul">
+<li>提供支付网关, 统一接入规范
+<ul class="org-ul">
+<li>支付请求, 回调, 退款，查询, 对账</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf230530" class="outline-3">
+<h3 id="orgf230530"><span class="section-number-3">3.6</span> 报表中心</h3>
+<div class="outline-text-3" id="text-3-6">
+<ul class="org-ul">
+<li>问题
+<ul class="org-ul">
+<li>运营分析手动拉数据(sqlboy)</li>
+<li>拉了一次还不够, 日周月年</li>
+<li>大体一致的需要，每次参数调整都需要研发</li>
+</ul></li>
+<li>解决<sup><a id="fnr.4" class="footref" href="#fn.4">4</a></sup>
+<ul class="org-ul">
+<li>日周月年的报表自动配置生成</li>
+<li>提供 sql 的参数化能力</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgfc06050" class="outline-3">
+<h3 id="orgfc06050"><span class="section-number-3">3.7</span> 垂直分库</h3>
+<div class="outline-text-3" id="text-3-7">
+<ul class="org-ul">
+<li>问题
+<ul class="org-ul">
+<li>某次报表业务把线上库拖跪了</li>
+<li>用户推送消息过多影响下单</li>
+<li>&#x2026;</li>
+</ul></li>
+<li>解决
+<ul class="org-ul">
+<li>独立部署部分业务的数据库<sup><a id="fnr.5" class="footref" href="#fn.5">5</a></sup></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgac0dd3d" class="outline-3">
+<h3 id="orgac0dd3d"><span class="section-number-3">3.8</span> openapi (16 年底)</h3>
+<div class="outline-text-3" id="text-3-8">
+<ul class="org-ul">
+<li>问题
+<ul class="org-ul">
+<li>分销给猫眼, 需要一定的定制</li>
+<li>不希望影响站内</li>
+</ul></li>
+<li>解决<sup><a id="fnr.6" class="footref" href="#fn.6">6</a></sup>
+<ul class="org-ul">
+<li>作为和 pc, m 站同级的分销平台，建立 openapi 模块</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org64e9b0d" class="outline-3">
+<h3 id="org64e9b0d"><span class="section-number-3">3.9</span> 数据库迁移 RDS (17 年初)</h3>
+<div class="outline-text-3" id="text-3-9">
+<ul class="org-ul">
+<li>问题
+<ul class="org-ul">
+<li>周杰伦抢票，宕机一小时&#x2026;
+<ul class="org-ul">
+<li>ecs 的 io 性能</li>
+<li>mysql 的 query cache 配置</li>
+</ul></li>
+<li>无人监控&amp;维护数据库</li>
+</ul></li>
+<li>解决
+<ul class="org-ul">
+<li>迁移至 rds</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgbc58517" class="outline-3">
+<h3 id="orgbc58517"><span class="section-number-3">3.10</span> 发布系统 (17 年下半年)</h3>
+<div class="outline-text-3" id="text-3-10">
+<ul class="org-ul">
+<li>问题
+<ul class="org-ul">
+<li>业务类型变多(jar, war, node, 静态资源)</li>
+<li>上线的机器变多</li>
+<li>人员变多(后端 10, 前端 14)</li>
+<li>测试代码被带上线</li>
+</ul></li>
+<li>解决办法<sup><a id="fnr.7" class="footref" href="#fn.7">7</a></sup>
+<ul class="org-ul">
+<li>自定义的 mozart 文件(发布的规则文件, 定义生命周期)</li>
+<li>图形化的页面</li>
+<li>lightMerge(多分支)的合并测试</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd516f13" class="outline-3">
+<h3 id="orgd516f13"><span class="section-number-3">3.11</span> solr 迁移 solr-cloud (18 年初)</h3>
+<div class="outline-text-3" id="text-3-11">
+<ul class="org-ul">
+<li>问题
+<ul class="org-ul">
+<li>xx 抢票, 宕机小半天&#x2026;
+<ul class="org-ul">
+<li>solr 的 gc 配置</li>
+<li>solr 的单机瓶颈</li>
+</ul></li>
+</ul></li>
+<li>解决
+<ul class="org-ul">
+<li>简单的调优+迁移 solr-cloud, 单机 60qps -&gt; (2 台) 集群 600qps</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge778bd5" class="outline-3">
+<h3 id="orge778bd5"><span class="section-number-3">3.12</span> xxl-job 分布式 job 管理</h3>
+<div class="outline-text-3" id="text-3-12">
+<ul class="org-ul">
+<li>问题
+<ul class="org-ul">
+<li>单机情况下, 不方便扩容</li>
+<li>可见性比较差</li>
+<li>对于 job 的执行的控制不是很方便管理</li>
+</ul></li>
+<li>解决
+<ul class="org-ul">
+<li>引入 xxl-job</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgaceef6e" class="outline-3">
+<h3 id="orgaceef6e"><span class="section-number-3">3.13</span> 流控</h3>
+<div class="outline-text-3" id="text-3-13">
+<ul class="org-ul">
+<li>问题
+<ul class="org-ul">
+<li>攻击</li>
+<li>抢票时的峰值流量</li>
+</ul></li>
+<li>解决
+<ul class="org-ul">
+<li>在 nginx 前放一个 阿里云的 slb&#x2026;</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org87d93f1" class="outline-3">
+<h3 id="org87d93f1"><span class="section-number-3">3.14</span> 支付中心(收银台)</h3>
+<div class="outline-text-3" id="text-3-14">
+<ul class="org-ul">
+<li>问题
+<ul class="org-ul">
+<li>要支付的业务实体增多, 无统一的管理</li>
+</ul></li>
+<li>解决
+<ul class="org-ul">
+<li>定义支付中心, 统一接入规范</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1347a35" class="outline-3">
+<h3 id="org1347a35"><span class="section-number-3">3.15</span> 订单中台(18 年中, 6 人月)</h3>
+<div class="outline-text-3" id="text-3-15">
+<ul class="org-ul">
+<li>问题
+<ul class="org-ul">
+<li>业务模式复杂: 拼团，套票，抢票，抽奖，求票，买会员, 买优惠券&#x2026;</li>
+</ul></li>
+<li>解决
+<ul class="org-ul">
+<li>用更抽象的概念承载业务实体和流程
+<ul class="org-ul">
+<li>用户订单</li>
+<li>商品</li>
+<li>采购单</li>
+<li>发货单</li>
+</ul></li>
+<li>定义统一的控制流和生命周期</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf6e7b02" class="outline-3">
+<h3 id="orgf6e7b02"><span class="section-number-3">3.16</span> 业务拆分 module</h3>
+<div class="outline-text-3" id="text-3-16">
+<ul class="org-ul">
+<li>问题
+<ul class="org-ul">
+<li>业务边界缺乏约束</li>
+<li>相似功能放在不同的业务模块中，不易发现</li>
+<li>无法找到 owner 对某块业务负责</li>
+</ul></li>
+<li>解决
+<ul class="org-ul">
+<li>拆分出演出, 推荐, 商品, 订单, 分销, 供应链模块</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4a1a659" class="outline-3">
+<h3 id="org4a1a659"><span class="section-number-3">3.17</span> 分销中台</h3>
+<div class="outline-text-3" id="text-3-17">
+<ul class="org-ul">
+<li>问题
+<ul class="org-ul">
+<li>分销系统对于可见性要求高</li>
+<li>分销系统对于同步延时，容错处理等要求高</li>
+<li>不同平台的商品定制要求不一(价格调整，黑白名单，详情定制&#x2026;)</li>
+<li>无统一的运营维护平台</li>
+<li>无统一的机制, 导致问题要重复解决, 质量参差不齐</li>
+</ul></li>
+<li>解决
+<ul class="org-ul">
+<li>定义分销领域统一的视图和概念</li>
+<li>建立分销中台，定义和规范 h5, api 等分销的流程</li>
+<li>定义扩展点</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org62a1c77" class="outline-3">
+<h3 id="org62a1c77"><span class="section-number-3">3.18</span> <b>总结</b></h3>
+<div class="outline-text-3" id="text-3-18">
+<ul class="org-ul">
+<li>对业务发展，研发效率最有帮助的地方
+<ul class="org-ul">
+<li>业务框架(不用干活, 效率最高)</li>
+<li>可见性</li>
+<li>清晰的模块边界(关注点小, 确定, 简单)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3516271" class="outline-2">
+<h2 id="org3516271"><span class="section-number-2">4</span> 其他案例分享</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org2e3d83d" class="outline-3">
+<h3 id="org2e3d83d"><span class="section-number-3">4.1</span> 华为</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>基线与定制分离</li>
+<li>外包团队管理</li>
+<li>专门的设计文档撰写(SE)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3aca6bd" class="outline-3">
+<h3 id="org3aca6bd"><span class="section-number-3">4.2</span> 点评</h3>
+<div class="outline-text-3" id="text-4-2">
+<ul class="org-ul">
+<li>中间件
+<ul class="org-ul">
+<li>cat, pigeon, swallow</li>
+</ul></li>
+<li>业务架构
+<ul class="org-ul">
+<li>阿波罗(中后台业务架构: CRM, 商家, 结算, 产品制作, 风控, 审核, 券&#x2026;)</li>
+</ul></li>
+<li>v1 -&gt; v4</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd5e8d2e" class="outline-3">
+<h3 id="orgd5e8d2e"><span class="section-number-3">4.3</span> 抖音</h3>
+<div class="outline-text-3" id="text-4-3">
+<ul class="org-ul">
+<li>异地多活, 用户的单元化存储, 存储中间件</li>
+<li>审核系统设计</li>
+</ul>
+<blockquote>
+<p>
+musically: 
+</p>
+<ol class="org-ol">
+<li>做了一年的准备工作，老板不想做了，把公司卖了</li>
+<li>(去了抖音之后)性能现在是最容易解决的问题, 跨洲的多活很难。尤其做一套统一的模型，更难。</li>
+</ol>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-org8137703" class="outline-3">
+<h3 id="org8137703"><span class="section-number-3">4.4</span> 秉坤</h3>
+<div class="outline-text-3" id="text-4-4">
+<ul class="org-ul">
+<li>ERP 自助开发的 IDE 
+<ul class="org-ul">
+<li>输入, 输出, 管道, 过滤器</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6263f1f" class="outline-2">
+<h2 id="org6263f1f"><span class="section-number-2">5</span> 典型的架构模式<sup><a id="fnr.8" class="footref" href="#fn.8">8</a></sup></h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-orgb88c409" class="outline-3">
+<h3 id="orgb88c409"><span class="section-number-3">5.1</span> 从混沌到结构</h3>
+<div class="outline-text-3" id="text-5-1">
+<blockquote>
+<p>
+避免形成组件或者对象的海洋,将系统任务受控地分解成可协作的子任务
+</p>
+</blockquote>
+
+<ul class="org-ul">
+<li>分层架构(Layers)</li>
+<li>管道和过滤器(Pipes and Filters)</li>
+<li>黑板(Blackboard)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org16030e5" class="outline-3">
+<h3 id="org16030e5"><span class="section-number-3">5.2</span> 分布式系统</h3>
+<div class="outline-text-3" id="text-5-2">
+<ul class="org-ul">
+<li>代理者(Broker)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga77d623" class="outline-3">
+<h3 id="orga77d623"><span class="section-number-3">5.3</span> 交互式系统</h3>
+<div class="outline-text-3" id="text-5-3">
+<ul class="org-ul">
+<li>模型-视图-控制器(Model-View-Controller)</li>
+<li>表示-抽象-控制(Presentation-Abstraction-Control)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf260f5c" class="outline-3">
+<h3 id="orgf260f5c"><span class="section-number-3">5.4</span> 适应性系统</h3>
+<div class="outline-text-3" id="text-5-4">
+<ul class="org-ul">
+<li>微核 (Microkernel)</li>
+<li>映像 (Reflection)</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4183746" class="outline-2">
+<h2 id="org4183746"><span class="section-number-2">6</span> 个人观点</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-org83e47c6" class="outline-3">
+<h3 id="org83e47c6"><span class="section-number-3">6.1</span> 我对架构的认识</h3>
+<div class="outline-text-3" id="text-6-1">
+<blockquote>
+<p>
+架构: 我是谁, 我从哪里来, 我要到哪里去
+</p>
+</blockquote>
+
+<p>
+架构的价值依托于系统本身.
+</p>
+
+<ul class="org-ul">
+<li>系统能带来价值, 但是存在问题需要解决。</li>
+<li>架构就是在高层的视角下看到的问题和提供的解决方案。</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgfdd8014" class="outline-3">
+<h3 id="orgfdd8014"><span class="section-number-3">6.2</span> 架构解决的主要问题</h3>
+<div class="outline-text-3" id="text-6-2">
+<ol class="org-ol">
+<li>复杂性</li>
+<li>可扩展性, 系统的生命周期</li>
+<li>性能, 规模</li>
+<li>可行性(受限资源下)</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org9152346" class="outline-3">
+<h3 id="org9152346"><span class="section-number-3">6.3</span> 架构的成本和收益</h3>
+<div class="outline-text-3" id="text-6-3">
+<ol class="org-ol">
+<li>当期收益 &amp; 未来收益
+<ol class="org-ol">
+<li>不可行 -&gt; 可行</li>
+<li>更长的生命周期</li>
+<li>未来更低的实现成本</li>
+<li>未来更低的维护成本</li>
+<li>可控的复杂</li>
+</ol></li>
+
+<li>成本
+<ol class="org-ol">
+<li>设计理念的门槛和理解成本增加</li>
+<li>当期的实现工作/难度增加</li>
+</ol></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org5901ecc" class="outline-3">
+<h3 id="org5901ecc"><span class="section-number-3">6.4</span> 架构重点</h3>
+<div class="outline-text-3" id="text-6-4">
+<ol class="org-ol">
+<li>预见性</li>
+<li>概念的一致性, 规范的强制性</li>
+<li>权衡
+<ul class="org-ul">
+<li>成本/收益</li>
+<li>现在/将来</li>
+<li>做什么, 方案, 程度</li>
+</ul></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">优惠的优先级，共享等直接在产品上简化</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">依然是一个 jar 中, 所以每个 jvm 都会同步</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3">3</a></sup> <div class="footpara"><p class="footpara">截止目前, 27 种支付渠道</p></div></div>
+
+<div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4">4</a></sup> <div class="footpara"><p class="footpara">已于 2018 年中被 metabase 取代</p></div></div>
+
+<div class="footdef"><sup><a id="fn.5" class="footnum" href="#fnr.5">5</a></sup> <div class="footpara"><p class="footpara">未独立出单独部署的 RPC 服务, 仅做了分库</p></div></div>
+
+<div class="footdef"><sup><a id="fn.6" class="footnum" href="#fnr.6">6</a></sup> <div class="footpara"><p class="footpara">未独立部署，仅逻辑上拆分, 代码上是一个独立的 module</p></div></div>
+
+<div class="footdef"><sup><a id="fn.7" class="footnum" href="#fnr.7">7</a></sup> <div class="footpara"><p class="footpara">16 年中开始用 haskell 做的 cli 的发布系统, 教新同学依然比较难</p></div></div>
+
+<div class="footdef"><sup><a id="fn.8" class="footnum" href="#fnr.8">8</a></sup> <div class="footpara"><p class="footpara">本章内容来自 &lt;面向模式的软件体系架构&gt;</p></div></div>
+
+
+</div>
+</div>
+    </div>
+</section>
+
+
+    <div class="post-meta">
+        <span title="post date" class="post-info">2019-06-27</span>
+        <span title="last modification date" class="post-info">2020-07-24</span>
+        <span title="tags" class="post-info">N/A</span>
+        <span title="author" class="post-info">刘恩泽</span>
+    </div>
+<footer class="footer">
+    <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 27.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+    <p>
+        Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">刘恩泽</a>
+        &nbsp;&nbsp;-&nbsp;&nbsp;
+        Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+        <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+    </p>
+</footer>
+
+  </body>
+</html>

@@ -1,0 +1,10 @@
+#+TITLE:       讲讲抽象
+#+AUTHOR:      enzo liu
+#+EMAIL:       liuenze6516@gmail.com
+#+DATE:        2016-07-07 Thu
+#+URI:         /blog/%y/%m/%d/abstraction
+#+KEYWORDS:    programming
+#+TAGS:        programming
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: <TODO: insert your description here>

@@ -1,0 +1,86 @@
+#+TITLE: 项目计划书
+#+AUTHOR: 刘恩泽
+#+EMAIL:  liuenze6516@gmail.com
+#+DATE: 2017-09-22
+#+OPTIONS:   H:2 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+startup: beamer
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [presentation, bigger]
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+#+BEAMER_THEME: metropolis
+#+BIND: org-beamer-outline-frame-title "目录"
+
+* 项目概述
+** 产品概述
+1. 监管人员可以实时，准确的查看各项目的实施风险，提出修改意见，有效的进行监控和管理。
+2. 项目人员可以实施自检，查看风险评估，进行预防以及满足合规要求。
+3. 现场施工人员 xxx
+** 项目模式
+1. 一套产品
+2. 可能基于项目定制客户端
+
+** 当前市场和竞对
+1. [[http://www.kehaoinfo.com/][科皓信息]]
+2. ...
+
+** 整体计划
+- 17-10-15 :: 产品文档
+- 17-11-30 :: 设计交付 & 后台研发 & 前台无设计
+- 17-12-31 :: 简单的 dash 数据后台 & app 美观
+* 项目阶段
+** 前期 checklist
+- [ ] 产品流程梳理
+- [X] 域名
+- [ ] 企业邮箱
+- [0/4] 开发前
+  - [ ] 阿里云企业账户 & 开发服务器 & 测试数据库
+  - [ ] 七牛云存储企业服务
+  - [ ] ios 的开发者账户
+  - [ ] 短信服务
+- [0/5] 实施前
+  - [ ] https 证书
+  - [ ] andorid 各市场账户
+  - [ ] dns 配置
+  - [ ] cdn 服务
+  - [ ] 负载均衡 服务
+** 设计
+- app 前台设计
+** 研发
+- 技术方案与设计
+- app 后台开发
+- app 客户端开发
+- dash 数据后台开发
+** 实施 & 运维
+- 服务器搭建
+- 数据库搭建
+- nginx & 负载均衡
+- 数据库备份
+- 服务状态监控
+
+* 外部依赖
+** 外包
+- 找个设计团队负责设计
+- 前端页面开发
+** 外部账户
+- IOS 开发者公司账户
+- 安卓各大市场账户
+- 七牛云存储账户
+- 阿里云账户
+- dns 运营商账户
+
+** 物料/资产
+- 阿里云服务器
+- https 证书
+- 域名
+- 云存储/文件服务器
+- 代码/文档/设计
+
+** 依赖服务
+- 短信服务商
+- push 服务商
+- dns 解析服务商
+- CDN 访问服务 [fn::用于国内各网络下访问加速]
+- 负载均衡服务 [fn::用于服务器无缝升级]
