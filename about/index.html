@@ -48,31 +48,53 @@
         <div class="col-md-2"></div>
             <h1>关于我</h1>
             
-<div id="outline-container-org1d1c139" class="outline-2">
-<h2 id="org1d1c139">个人简介</h2>
-<div class="outline-text-2" id="text-org1d1c139">
+<div id="outline-container-orgacfd87b" class="outline-2">
+<h2 id="orgacfd87b">个人简介</h2>
+<div class="outline-text-2" id="text-orgacfd87b">
 <p>
-南京大学数学系本科毕业，8 年多研发相关工作经验。
+南京大学数学系本科毕业，9 年多研发相关工作经验。
 </p>
 
-
 <ul class="org-ul">
-<li>工作语言以 <code>java</code> 为主, 对常见 java 框架(<i>spring, lombok, mybatis, aop&#x2026;</i>)的机制，定制等有一定了解。 业余对 <code>functional progamming</code>, <code>interpreter</code>, <code>uml</code> , <code>emacs</code>, <code>org mode</code>, <code>projecteuler</code>, <code>haskell</code>, <code>usaco</code>, <code>common-lisp</code> 等有一定的兴趣和时间投入.</li>
-<li>当前主要优势在于复杂业务系统设计, 端到端的研发流程和工程实践能力, 以及一定的架构分析和取舍能力。 <code>从网络，路由，运维发布部署，到系统监控，日常机器维护，到 spark 离线分析等。</code></li>
-<li>对 AI, 分布式系统保持研究, 完成 <a href="https://www.seas.upenn.edu/~cis194/fall16/">cis194</a>, <code>coursera machine learning</code> 课程, <a href="https://pdos.csail.mit.edu/6.824/schedule.html">MIT 6.824</a>, <a href="https://inst.eecs.berkeley.edu/~cs188/fa18/">CS188</a>进行中。业务中应用了简单的推荐功能(<i>由于业务侧重，未持续投入优化</i>).</li>
+<li>当前主要优势在于复杂业务系统设计, 端到端的研发流程和工程实践能力, 以及一定的架构分析和取舍能力。对行业/业务的预判和分析以及系统的配合演进有一定经验.
+<ul class="org-ul">
+<li>电商系统, CRM, 销售管理, 信息流系统, 大数据存储系统等</li>
+<li>从网络, 路由, 运维发布部署, 到系统监控, 日常机器维护, 搜索推荐, 离线分析等。</li>
+</ul></li>
+<li>对大数据相关框架技术可以进行选型/维护/优化. hbase 可以进行代码级别优化. spark, hdfs 等可进行瓶颈分析. 对 druid, clickhouse, hive 等机制/优势有概念性的了解.</li>
+<li>工作语言以 <code>java</code> 为主, 对常见 java 框架(<i>spring, lombok, mybatis, aop&#x2026;</i>)的机制有一定了解, 可按需定制。</li>
+<li>对 <code>functional progamming</code>, <code>interpreter</code>, <code>uml</code> , <code>emacs</code>, <code>org mode</code>, <code>projecteuler</code>, <code>haskell</code>, <code>usaco</code>, <code>common-lisp</code> 等有一定的兴趣和时间投入.</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org83b1c46" class="outline-2">
-<h2 id="org83b1c46">工作经历</h2>
-<div class="outline-text-2" id="text-org83b1c46">
+<div id="outline-container-orgc634b51" class="outline-2">
+<h2 id="orgc634b51">工作经历</h2>
+<div class="outline-text-2" id="text-orgc634b51">
 <ul class="org-ul">
-<li><b>2019-07&#x2013;至今 : Software Develop Engineer, 数据平台, 声网(agora.io)</b>
+<li><b>2019-06&#x2013;至今 : 研发工程师, 数据平台, <a href="https://www.agora.io/">声网</a></b>
 <ul class="org-ul">
-<li><span class="underline">待续</span></li>
+<li>负责计量系统的计算，维护，优化
+<ul class="org-ul">
+<li>通过优化调度, 分布式拉取, 计算性能优化, hbase 的存储 schema(rowkey)优化等，系统容量翻倍(1T/day -&gt; 2T/day), 计算时延的可靠性由 50% -&gt; 99%</li>
+<li>通过分离基础模型与业务, 大部分新业务仅需简单配置即可完成</li>
 </ul></li>
-<li><b>2015-09&#x2013;至今 : 高级技术总监, 研发部, <a href="https://www.piaoniu.com">上海票牛网</a></b>
+<li>负责通话调查工具的数据写入系统维护，稳定性提升, 性能优化
+<ul class="org-ul">
+<li>通过 hbase patch, 设计优化等手段, 提高 hbase 稳定性. 由单月 5 次左右的人工运维操作降至 0.</li>
+<li>通过优化写入程序, 写入性能翻倍, 需要的机器数减半</li>
+<li>峰值写入量在 1200w records per second, 日增量 7T</li>
+</ul></li>
+<li>负责相关系统的知识积累与分享</li>
+</ul></li>
+</ul>
+
+<p>
+<br />
+</p>
+
+<ul class="org-ul">
+<li><b>2015-09&#x2013;2019-06 : 高级技术总监, 研发部, <a href="https://www.piaoniu.com">上海票牛网</a></b>
 <ul class="org-ul">
 <li>业务架构设计、维护以及演进, 支持业务研发
 <ul class="org-ul">
@@ -127,9 +149,9 @@
 </div>
 
 
-<div id="outline-container-org2b55af3" class="outline-2">
-<h2 id="org2b55af3">教育背景</h2>
-<div class="outline-text-2" id="text-org2b55af3">
+<div id="outline-container-orgbb8a14e" class="outline-2">
+<h2 id="orgbb8a14e">教育背景</h2>
+<div class="outline-text-2" id="text-orgbb8a14e">
 <ul class="org-ul">
 <li>2007&#x2013;2011: 本科, 数学系, 基础数学专业, 南京大学, GPA 4.1/5</li>
 </ul>

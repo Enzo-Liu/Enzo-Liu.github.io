@@ -4,8 +4,8 @@
     <title>enzo&#39;s note book</title>
     <link>http://enzo-liu.github.io</link>
     <description>M-x (sketch for random ideas)</description>
-    <pubDate>Fri, 24 Jul 2020 21:41:56 CST</pubDate>
-    <lastBuildDate>Fri, 24 Jul 2020 21:41:56 CST</lastBuildDate>
+    <pubDate>Fri, 24 Jul 2020 21:52:18 CST</pubDate>
+    <lastBuildDate>Fri, 24 Jul 2020 21:52:18 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
     <item>
@@ -19,75 +19,75 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org6b8744e">1. 内容简介</a>
+<li><a href="#org7b80cf7">1. 内容简介</a>
 <ul>
-<li><a href="#orgadb63df">1.1. 个人介绍</a></li>
-<li><a href="#orga3af714">1.2. 分享目的</a></li>
+<li><a href="#org9b248f9">1.1. 个人介绍</a></li>
+<li><a href="#orgf47d927">1.2. 分享目的</a></li>
 </ul>
 </li>
-<li><a href="#org2335746">2. 架构是什么</a>
+<li><a href="#org8e89edf">2. 架构是什么</a>
 <ul>
-<li><a href="#org2736364">2.1. 官方解释(wiki &amp; book)</a></li>
-<li><a href="#org05e6d95">2.2. 架构的五个层次</a></li>
-<li><a href="#org9368d38">2.3. 常见关注点</a></li>
+<li><a href="#orgb700031">2.1. 官方解释(wiki &amp; book)</a></li>
+<li><a href="#org6531341">2.2. 架构的五个层次</a></li>
+<li><a href="#org37ad123">2.3. 常见关注点</a></li>
 </ul>
 </li>
-<li><a href="#org6ffb720">3. 票牛架构演进</a>
+<li><a href="#orgbbedec1">3. 票牛架构演进</a>
 <ul>
-<li><a href="#org3732f65">3.1. 主线</a></li>
-<li><a href="#orgdbc84ce">3.2. 0-1 (2 个月)</a></li>
-<li><a href="#org2438452">3.3. 配置中心</a></li>
-<li><a href="#org648d5bb">3.4. 优惠系统</a></li>
-<li><a href="#orgd5d2cd9">3.5. 支付网关 (15 年 11 月)</a></li>
-<li><a href="#orgf230530">3.6. 报表中心</a></li>
-<li><a href="#orgfc06050">3.7. 垂直分库</a></li>
-<li><a href="#orgac0dd3d">3.8. openapi (16 年底)</a></li>
-<li><a href="#org64e9b0d">3.9. 数据库迁移 RDS (17 年初)</a></li>
-<li><a href="#orgbc58517">3.10. 发布系统 (17 年下半年)</a></li>
-<li><a href="#orgd516f13">3.11. solr 迁移 solr-cloud (18 年初)</a></li>
-<li><a href="#orge778bd5">3.12. xxl-job 分布式 job 管理</a></li>
-<li><a href="#orgaceef6e">3.13. 流控</a></li>
-<li><a href="#org87d93f1">3.14. 支付中心(收银台)</a></li>
-<li><a href="#org1347a35">3.15. 订单中台(18 年中, 6 人月)</a></li>
-<li><a href="#orgf6e7b02">3.16. 业务拆分 module</a></li>
-<li><a href="#org4a1a659">3.17. 分销中台</a></li>
-<li><a href="#org62a1c77">3.18. <b>总结</b></a></li>
+<li><a href="#org3b18d66">3.1. 主线</a></li>
+<li><a href="#orgd75311a">3.2. 0-1 (2 个月)</a></li>
+<li><a href="#org3fe3c8e">3.3. 配置中心</a></li>
+<li><a href="#org7067bc6">3.4. 优惠系统</a></li>
+<li><a href="#org5484c1e">3.5. 支付网关 (15 年 11 月)</a></li>
+<li><a href="#org4dd666f">3.6. 报表中心</a></li>
+<li><a href="#org54acf57">3.7. 垂直分库</a></li>
+<li><a href="#org72e48fb">3.8. openapi (16 年底)</a></li>
+<li><a href="#org8aae5d9">3.9. 数据库迁移 RDS (17 年初)</a></li>
+<li><a href="#org2163ca6">3.10. 发布系统 (17 年下半年)</a></li>
+<li><a href="#org35f8a8c">3.11. solr 迁移 solr-cloud (18 年初)</a></li>
+<li><a href="#org8cc19f6">3.12. xxl-job 分布式 job 管理</a></li>
+<li><a href="#org98bf529">3.13. 流控</a></li>
+<li><a href="#org0f19496">3.14. 支付中心(收银台)</a></li>
+<li><a href="#org1940c42">3.15. 订单中台(18 年中, 6 人月)</a></li>
+<li><a href="#orgb36a3d9">3.16. 业务拆分 module</a></li>
+<li><a href="#org5c9593a">3.17. 分销中台</a></li>
+<li><a href="#org918a77d">3.18. <b>总结</b></a></li>
 </ul>
 </li>
-<li><a href="#org3516271">4. 其他案例分享</a>
+<li><a href="#org5fee982">4. 其他案例分享</a>
 <ul>
-<li><a href="#org2e3d83d">4.1. 华为</a></li>
-<li><a href="#org3aca6bd">4.2. 点评</a></li>
-<li><a href="#orgd5e8d2e">4.3. 抖音</a></li>
-<li><a href="#org8137703">4.4. 秉坤</a></li>
+<li><a href="#orge985df6">4.1. 华为</a></li>
+<li><a href="#orgddcf4c1">4.2. 点评</a></li>
+<li><a href="#org4dfb5c3">4.3. 抖音</a></li>
+<li><a href="#orga881e1c">4.4. 秉坤</a></li>
 </ul>
 </li>
-<li><a href="#org6263f1f">5. 典型的架构模式</a>
+<li><a href="#org872e566">5. 典型的架构模式</a>
 <ul>
-<li><a href="#orgb88c409">5.1. 从混沌到结构</a></li>
-<li><a href="#org16030e5">5.2. 分布式系统</a></li>
-<li><a href="#orga77d623">5.3. 交互式系统</a></li>
-<li><a href="#orgf260f5c">5.4. 适应性系统</a></li>
+<li><a href="#org3297225">5.1. 从混沌到结构</a></li>
+<li><a href="#orge0fb7fa">5.2. 分布式系统</a></li>
+<li><a href="#orgf49b844">5.3. 交互式系统</a></li>
+<li><a href="#orge8253cf">5.4. 适应性系统</a></li>
 </ul>
 </li>
-<li><a href="#org4183746">6. 个人观点</a>
+<li><a href="#orgb299868">6. 个人观点</a>
 <ul>
-<li><a href="#org83e47c6">6.1. 我对架构的认识</a></li>
-<li><a href="#orgfdd8014">6.2. 架构解决的主要问题</a></li>
-<li><a href="#org9152346">6.3. 架构的成本和收益</a></li>
-<li><a href="#org5901ecc">6.4. 架构重点</a></li>
+<li><a href="#org642749a">6.1. 我对架构的认识</a></li>
+<li><a href="#org1c7ed7c">6.2. 架构解决的主要问题</a></li>
+<li><a href="#orgf7fc8cf">6.3. 架构的成本和收益</a></li>
+<li><a href="#org8a36d9b">6.4. 架构重点</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org6b8744e" class="outline-2">
-<h2 id="org6b8744e"><span class="section-number-2">1</span> 内容简介</h2>
+<div id="outline-container-org7b80cf7" class="outline-2">
+<h2 id="org7b80cf7"><span class="section-number-2">1</span> 内容简介</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orgadb63df" class="outline-3">
-<h3 id="orgadb63df"><span class="section-number-3">1.1</span> 个人介绍</h3>
+<div id="outline-container-org9b248f9" class="outline-3">
+<h3 id="org9b248f9"><span class="section-number-3">1.1</span> 个人介绍</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>07~11, 南大数学本科</li>
@@ -103,8 +103,8 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-orga3af714" class="outline-3">
-<h3 id="orga3af714"><span class="section-number-3">1.2</span> 分享目的</h3>
+<div id="outline-container-orgf47d927" class="outline-3">
+<h3 id="orgf47d927"><span class="section-number-3">1.2</span> 分享目的</h3>
 <div class="outline-text-3" id="text-1-2">
 <ol class="org-ol">
 <li>探讨一下架构的目的和要解决的问题以及常见解决办法</li>
@@ -116,12 +116,12 @@
 </div>
 </div>
 
-<div id="outline-container-org2335746" class="outline-2">
-<h2 id="org2335746"><span class="section-number-2">2</span> 架构是什么</h2>
+<div id="outline-container-org8e89edf" class="outline-2">
+<h2 id="org8e89edf"><span class="section-number-2">2</span> 架构是什么</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org2736364" class="outline-3">
-<h3 id="org2736364"><span class="section-number-3">2.1</span> 官方解释(wiki &amp; book)</h3>
+<div id="outline-container-orgb700031" class="outline-3">
+<h3 id="orgb700031"><span class="section-number-3">2.1</span> 官方解释(wiki &amp; book)</h3>
 <div class="outline-text-3" id="text-2-1">
 <blockquote>
 <p>
@@ -137,8 +137,8 @@ Architecture is like teenage sex，everybody talks about it，nobody really know
 </div>
 </div>
 
-<div id="outline-container-org05e6d95" class="outline-3">
-<h3 id="org05e6d95"><span class="section-number-3">2.2</span> 架构的五个层次</h3>
+<div id="outline-container-org6531341" class="outline-3">
+<h3 id="org6531341"><span class="section-number-3">2.2</span> 架构的五个层次</h3>
 <div class="outline-text-3" id="text-2-2">
 <ul class="org-ul">
 <li>可用</li>
@@ -149,8 +149,8 @@ Architecture is like teenage sex，everybody talks about it，nobody really know
 </ul>
 </div>
 </div>
-<div id="outline-container-org9368d38" class="outline-3">
-<h3 id="org9368d38"><span class="section-number-3">2.3</span> 常见关注点</h3>
+<div id="outline-container-org37ad123" class="outline-3">
+<h3 id="org37ad123"><span class="section-number-3">2.3</span> 常见关注点</h3>
 <div class="outline-text-3" id="text-2-3">
 <ol class="org-ol">
 <li>功能</li>
@@ -164,12 +164,12 @@ Architecture is like teenage sex，everybody talks about it，nobody really know
 </div>
 
 
-<div id="outline-container-org6ffb720" class="outline-2">
-<h2 id="org6ffb720"><span class="section-number-2">3</span> 票牛架构演进</h2>
+<div id="outline-container-orgbbedec1" class="outline-2">
+<h2 id="orgbbedec1"><span class="section-number-2">3</span> 票牛架构演进</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org3732f65" class="outline-3">
-<h3 id="org3732f65"><span class="section-number-3">3.1</span> 主线</h3>
+<div id="outline-container-org3b18d66" class="outline-3">
+<h3 id="org3b18d66"><span class="section-number-3">3.1</span> 主线</h3>
 <div class="outline-text-3" id="text-3-1">
 <ol class="org-ol">
 <li>支持和保障业务规划的完成</li>
@@ -180,8 +180,8 @@ Architecture is like teenage sex，everybody talks about it，nobody really know
 </ol>
 </div>
 </div>
-<div id="outline-container-orgdbc84ce" class="outline-3">
-<h3 id="orgdbc84ce"><span class="section-number-3">3.2</span> 0-1 (2 个月)</h3>
+<div id="outline-container-orgd75311a" class="outline-3">
+<h3 id="orgd75311a"><span class="section-number-3">3.2</span> 0-1 (2 个月)</h3>
 <div class="outline-text-3" id="text-3-2">
 <ul class="org-ul">
 <li>问题
@@ -218,8 +218,8 @@ Architecture is like teenage sex，everybody talks about it，nobody really know
 </div>
 </div>
 
-<div id="outline-container-org2438452" class="outline-3">
-<h3 id="org2438452"><span class="section-number-3">3.3</span> 配置中心</h3>
+<div id="outline-container-org3fe3c8e" class="outline-3">
+<h3 id="org3fe3c8e"><span class="section-number-3">3.3</span> 配置中心</h3>
 <div class="outline-text-3" id="text-3-3">
 <ul class="org-ul">
 <li>问题
@@ -239,8 +239,8 @@ Architecture is like teenage sex，everybody talks about it，nobody really know
 </div>
 </div>
 
-<div id="outline-container-org648d5bb" class="outline-3">
-<h3 id="org648d5bb"><span class="section-number-3">3.4</span> 优惠系统</h3>
+<div id="outline-container-org7067bc6" class="outline-3">
+<h3 id="org7067bc6"><span class="section-number-3">3.4</span> 优惠系统</h3>
 <div class="outline-text-3" id="text-3-4">
 <ul class="org-ul">
 <li>问题<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>
@@ -260,8 +260,8 @@ Architecture is like teenage sex，everybody talks about it，nobody really know
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd5d2cd9" class="outline-3">
-<h3 id="orgd5d2cd9"><span class="section-number-3">3.5</span> 支付网关 (15 年 11 月)</h3>
+<div id="outline-container-org5484c1e" class="outline-3">
+<h3 id="org5484c1e"><span class="section-number-3">3.5</span> 支付网关 (15 年 11 月)</h3>
 <div class="outline-text-3" id="text-3-5">
 <ul class="org-ul">
 <li>问题
@@ -280,8 +280,8 @@ Architecture is like teenage sex，everybody talks about it，nobody really know
 </div>
 </div>
 
-<div id="outline-container-orgf230530" class="outline-3">
-<h3 id="orgf230530"><span class="section-number-3">3.6</span> 报表中心</h3>
+<div id="outline-container-org4dd666f" class="outline-3">
+<h3 id="org4dd666f"><span class="section-number-3">3.6</span> 报表中心</h3>
 <div class="outline-text-3" id="text-3-6">
 <ul class="org-ul">
 <li>问题
@@ -299,8 +299,8 @@ Architecture is like teenage sex，everybody talks about it，nobody really know
 </div>
 </div>
 
-<div id="outline-container-orgfc06050" class="outline-3">
-<h3 id="orgfc06050"><span class="section-number-3">3.7</span> 垂直分库</h3>
+<div id="outline-container-org54acf57" class="outline-3">
+<h3 id="org54acf57"><span class="section-number-3">3.7</span> 垂直分库</h3>
 <div class="outline-text-3" id="text-3-7">
 <ul class="org-ul">
 <li>问题
@@ -317,8 +317,8 @@ Architecture is like teenage sex，everybody talks about it，nobody really know
 </div>
 </div>
 
-<div id="outline-container-orgac0dd3d" class="outline-3">
-<h3 id="orgac0dd3d"><span class="section-number-3">3.8</span> openapi (16 年底)</h3>
+<div id="outline-container-org72e48fb" class="outline-3">
+<h3 id="org72e48fb"><span class="section-number-3">3.8</span> openapi (16 年底)</h3>
 <div class="outline-text-3" id="text-3-8">
 <ul class="org-ul">
 <li>问题
@@ -334,8 +334,8 @@ Architecture is like teenage sex，everybody talks about it，nobody really know
 </div>
 </div>
 
-<div id="outline-container-org64e9b0d" class="outline-3">
-<h3 id="org64e9b0d"><span class="section-number-3">3.9</span> 数据库迁移 RDS (17 年初)</h3>
+<div id="outline-container-org8aae5d9" class="outline-3">
+<h3 id="org8aae5d9"><span class="section-number-3">3.9</span> 数据库迁移 RDS (17 年初)</h3>
 <div class="outline-text-3" id="text-3-9">
 <ul class="org-ul">
 <li>问题
@@ -355,8 +355,8 @@ Architecture is like teenage sex，everybody talks about it，nobody really know
 </div>
 </div>
 
-<div id="outline-container-orgbc58517" class="outline-3">
-<h3 id="orgbc58517"><span class="section-number-3">3.10</span> 发布系统 (17 年下半年)</h3>
+<div id="outline-container-org2163ca6" class="outline-3">
+<h3 id="org2163ca6"><span class="section-number-3">3.10</span> 发布系统 (17 年下半年)</h3>
 <div class="outline-text-3" id="text-3-10">
 <ul class="org-ul">
 <li>问题
@@ -376,8 +376,8 @@ Architecture is like teenage sex，everybody talks about it，nobody really know
 </div>
 </div>
 
-<div id="outline-container-orgd516f13" class="outline-3">
-<h3 id="orgd516f13"><span class="section-number-3">3.11</span> solr 迁移 solr-cloud (18 年初)</h3>
+<div id="outline-container-org35f8a8c" class="outline-3">
+<h3 id="org35f8a8c"><span class="section-number-3">3.11</span> solr 迁移 solr-cloud (18 年初)</h3>
 <div class="outline-text-3" id="text-3-11">
 <ul class="org-ul">
 <li>问题
@@ -396,8 +396,8 @@ Architecture is like teenage sex，everybody talks about it，nobody really know
 </div>
 </div>
 
-<div id="outline-container-orge778bd5" class="outline-3">
-<h3 id="orge778bd5"><span class="section-number-3">3.12</span> xxl-job 分布式 job 管理</h3>
+<div id="outline-container-org8cc19f6" class="outline-3">
+<h3 id="org8cc19f6"><span class="section-number-3">3.12</span> xxl-job 分布式 job 管理</h3>
 <div class="outline-text-3" id="text-3-12">
 <ul class="org-ul">
 <li>问题
@@ -413,8 +413,8 @@ Architecture is like teenage sex，everybody talks about it，nobody really know
 </ul>
 </div>
 </div>
-<div id="outline-container-orgaceef6e" class="outline-3">
-<h3 id="orgaceef6e"><span class="section-number-3">3.13</span> 流控</h3>
+<div id="outline-container-org98bf529" class="outline-3">
+<h3 id="org98bf529"><span class="section-number-3">3.13</span> 流控</h3>
 <div class="outline-text-3" id="text-3-13">
 <ul class="org-ul">
 <li>问题
@@ -430,8 +430,8 @@ Architecture is like teenage sex，everybody talks about it，nobody really know
 </div>
 </div>
 
-<div id="outline-container-org87d93f1" class="outline-3">
-<h3 id="org87d93f1"><span class="section-number-3">3.14</span> 支付中心(收银台)</h3>
+<div id="outline-container-org0f19496" class="outline-3">
+<h3 id="org0f19496"><span class="section-number-3">3.14</span> 支付中心(收银台)</h3>
 <div class="outline-text-3" id="text-3-14">
 <ul class="org-ul">
 <li>问题
@@ -446,8 +446,8 @@ Architecture is like teenage sex，everybody talks about it，nobody really know
 </div>
 </div>
 
-<div id="outline-container-org1347a35" class="outline-3">
-<h3 id="org1347a35"><span class="section-number-3">3.15</span> 订单中台(18 年中, 6 人月)</h3>
+<div id="outline-container-org1940c42" class="outline-3">
+<h3 id="org1940c42"><span class="section-number-3">3.15</span> 订单中台(18 年中, 6 人月)</h3>
 <div class="outline-text-3" id="text-3-15">
 <ul class="org-ul">
 <li>问题
@@ -469,8 +469,8 @@ Architecture is like teenage sex，everybody talks about it，nobody really know
 </div>
 </div>
 
-<div id="outline-container-orgf6e7b02" class="outline-3">
-<h3 id="orgf6e7b02"><span class="section-number-3">3.16</span> 业务拆分 module</h3>
+<div id="outline-container-orgb36a3d9" class="outline-3">
+<h3 id="orgb36a3d9"><span class="section-number-3">3.16</span> 业务拆分 module</h3>
 <div class="outline-text-3" id="text-3-16">
 <ul class="org-ul">
 <li>问题
@@ -487,8 +487,8 @@ Architecture is like teenage sex，everybody talks about it，nobody really know
 </div>
 </div>
 
-<div id="outline-container-org4a1a659" class="outline-3">
-<h3 id="org4a1a659"><span class="section-number-3">3.17</span> 分销中台</h3>
+<div id="outline-container-org5c9593a" class="outline-3">
+<h3 id="org5c9593a"><span class="section-number-3">3.17</span> 分销中台</h3>
 <div class="outline-text-3" id="text-3-17">
 <ul class="org-ul">
 <li>问题
@@ -509,8 +509,8 @@ Architecture is like teenage sex，everybody talks about it，nobody really know
 </div>
 </div>
 
-<div id="outline-container-org62a1c77" class="outline-3">
-<h3 id="org62a1c77"><span class="section-number-3">3.18</span> <b>总结</b></h3>
+<div id="outline-container-org918a77d" class="outline-3">
+<h3 id="org918a77d"><span class="section-number-3">3.18</span> <b>总结</b></h3>
 <div class="outline-text-3" id="text-3-18">
 <ul class="org-ul">
 <li>对业务发展，研发效率最有帮助的地方
@@ -524,12 +524,12 @@ Architecture is like teenage sex，everybody talks about it，nobody really know
 </div>
 </div>
 
-<div id="outline-container-org3516271" class="outline-2">
-<h2 id="org3516271"><span class="section-number-2">4</span> 其他案例分享</h2>
+<div id="outline-container-org5fee982" class="outline-2">
+<h2 id="org5fee982"><span class="section-number-2">4</span> 其他案例分享</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org2e3d83d" class="outline-3">
-<h3 id="org2e3d83d"><span class="section-number-3">4.1</span> 华为</h3>
+<div id="outline-container-orge985df6" class="outline-3">
+<h3 id="orge985df6"><span class="section-number-3">4.1</span> 华为</h3>
 <div class="outline-text-3" id="text-4-1">
 <ul class="org-ul">
 <li>基线与定制分离</li>
@@ -538,8 +538,8 @@ Architecture is like teenage sex，everybody talks about it，nobody really know
 </ul>
 </div>
 </div>
-<div id="outline-container-org3aca6bd" class="outline-3">
-<h3 id="org3aca6bd"><span class="section-number-3">4.2</span> 点评</h3>
+<div id="outline-container-orgddcf4c1" class="outline-3">
+<h3 id="orgddcf4c1"><span class="section-number-3">4.2</span> 点评</h3>
 <div class="outline-text-3" id="text-4-2">
 <ul class="org-ul">
 <li>中间件
@@ -554,8 +554,8 @@ Architecture is like teenage sex，everybody talks about it，nobody really know
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd5e8d2e" class="outline-3">
-<h3 id="orgd5e8d2e"><span class="section-number-3">4.3</span> 抖音</h3>
+<div id="outline-container-org4dfb5c3" class="outline-3">
+<h3 id="org4dfb5c3"><span class="section-number-3">4.3</span> 抖音</h3>
 <div class="outline-text-3" id="text-4-3">
 <ul class="org-ul">
 <li>异地多活, 用户的单元化存储, 存储中间件</li>
@@ -572,8 +572,8 @@ musically:
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org8137703" class="outline-3">
-<h3 id="org8137703"><span class="section-number-3">4.4</span> 秉坤</h3>
+<div id="outline-container-orga881e1c" class="outline-3">
+<h3 id="orga881e1c"><span class="section-number-3">4.4</span> 秉坤</h3>
 <div class="outline-text-3" id="text-4-4">
 <ul class="org-ul">
 <li>ERP 自助开发的 IDE 
@@ -585,12 +585,12 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-org6263f1f" class="outline-2">
-<h2 id="org6263f1f"><span class="section-number-2">5</span> 典型的架构模式<sup><a id="fnr.8" class="footref" href="#fn.8">8</a></sup></h2>
+<div id="outline-container-org872e566" class="outline-2">
+<h2 id="org872e566"><span class="section-number-2">5</span> 典型的架构模式<sup><a id="fnr.8" class="footref" href="#fn.8">8</a></sup></h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-orgb88c409" class="outline-3">
-<h3 id="orgb88c409"><span class="section-number-3">5.1</span> 从混沌到结构</h3>
+<div id="outline-container-org3297225" class="outline-3">
+<h3 id="org3297225"><span class="section-number-3">5.1</span> 从混沌到结构</h3>
 <div class="outline-text-3" id="text-5-1">
 <blockquote>
 <p>
@@ -605,16 +605,16 @@ musically:
 </ul>
 </div>
 </div>
-<div id="outline-container-org16030e5" class="outline-3">
-<h3 id="org16030e5"><span class="section-number-3">5.2</span> 分布式系统</h3>
+<div id="outline-container-orge0fb7fa" class="outline-3">
+<h3 id="orge0fb7fa"><span class="section-number-3">5.2</span> 分布式系统</h3>
 <div class="outline-text-3" id="text-5-2">
 <ul class="org-ul">
 <li>代理者(Broker)</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orga77d623" class="outline-3">
-<h3 id="orga77d623"><span class="section-number-3">5.3</span> 交互式系统</h3>
+<div id="outline-container-orgf49b844" class="outline-3">
+<h3 id="orgf49b844"><span class="section-number-3">5.3</span> 交互式系统</h3>
 <div class="outline-text-3" id="text-5-3">
 <ul class="org-ul">
 <li>模型-视图-控制器(Model-View-Controller)</li>
@@ -622,8 +622,8 @@ musically:
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf260f5c" class="outline-3">
-<h3 id="orgf260f5c"><span class="section-number-3">5.4</span> 适应性系统</h3>
+<div id="outline-container-orge8253cf" class="outline-3">
+<h3 id="orge8253cf"><span class="section-number-3">5.4</span> 适应性系统</h3>
 <div class="outline-text-3" id="text-5-4">
 <ul class="org-ul">
 <li>微核 (Microkernel)</li>
@@ -633,12 +633,12 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-org4183746" class="outline-2">
-<h2 id="org4183746"><span class="section-number-2">6</span> 个人观点</h2>
+<div id="outline-container-orgb299868" class="outline-2">
+<h2 id="orgb299868"><span class="section-number-2">6</span> 个人观点</h2>
 <div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-org83e47c6" class="outline-3">
-<h3 id="org83e47c6"><span class="section-number-3">6.1</span> 我对架构的认识</h3>
+<div id="outline-container-org642749a" class="outline-3">
+<h3 id="org642749a"><span class="section-number-3">6.1</span> 我对架构的认识</h3>
 <div class="outline-text-3" id="text-6-1">
 <blockquote>
 <p>
@@ -657,8 +657,8 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-orgfdd8014" class="outline-3">
-<h3 id="orgfdd8014"><span class="section-number-3">6.2</span> 架构解决的主要问题</h3>
+<div id="outline-container-org1c7ed7c" class="outline-3">
+<h3 id="org1c7ed7c"><span class="section-number-3">6.2</span> 架构解决的主要问题</h3>
 <div class="outline-text-3" id="text-6-2">
 <ol class="org-ol">
 <li>复杂性</li>
@@ -669,8 +669,8 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-org9152346" class="outline-3">
-<h3 id="org9152346"><span class="section-number-3">6.3</span> 架构的成本和收益</h3>
+<div id="outline-container-orgf7fc8cf" class="outline-3">
+<h3 id="orgf7fc8cf"><span class="section-number-3">6.3</span> 架构的成本和收益</h3>
 <div class="outline-text-3" id="text-6-3">
 <ol class="org-ol">
 <li>当期收益 &amp; 未来收益
@@ -691,8 +691,8 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-org5901ecc" class="outline-3">
-<h3 id="org5901ecc"><span class="section-number-3">6.4</span> 架构重点</h3>
+<div id="outline-container-org8a36d9b" class="outline-3">
+<h3 id="org8a36d9b"><span class="section-number-3">6.4</span> 架构重点</h3>
 <div class="outline-text-3" id="text-6-4">
 <ol class="org-ol">
 <li>预见性</li>
@@ -747,45 +747,45 @@ musically:
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org96ecabd">1. 目的</a>
+<li><a href="#org38d6021">1. 目的</a>
 <ul>
-<li><a href="#org3fc2e29">1.1. 目的</a></li>
+<li><a href="#orgc1e12c8">1.1. 目的</a></li>
 </ul>
 </li>
-<li><a href="#org73c5b06">2. 技术方向</a>
+<li><a href="#org7fec73b">2. 技术方向</a>
 <ul>
-<li><a href="#org9ea2f24">2.1. 业务研发&amp;架构</a></li>
-<li><a href="#orgd0d0390">2.2. 系统架构</a></li>
-<li><a href="#orgb7bb835">2.3. 专业方向</a></li>
+<li><a href="#org956bdcd">2.1. 业务研发&amp;架构</a></li>
+<li><a href="#orgb489301">2.2. 系统架构</a></li>
+<li><a href="#org6769cc2">2.3. 专业方向</a></li>
 </ul>
 </li>
-<li><a href="#org7f9aacb">3. 能力方向</a>
+<li><a href="#orgb34ae49">3. 能力方向</a>
 <ul>
-<li><a href="#orgfb1d907">3.1. 通用能力</a></li>
-<li><a href="#orgc3b8cc3">3.2. 专业能力</a></li>
+<li><a href="#org9dc0564">3.1. 通用能力</a></li>
+<li><a href="#org0c1787f">3.2. 专业能力</a></li>
 </ul>
 </li>
-<li><a href="#org82979f4">4. 自我提升</a>
+<li><a href="#org3a854a4">4. 自我提升</a>
 <ul>
-<li><a href="#org7249bb5">4.1. 个人学习方法</a></li>
-<li><a href="#org7273fb1">4.2. 基础的经验积累</a></li>
-<li><a href="#org18e6556">4.3. 练习 &amp;&amp; 工具化</a></li>
-<li><a href="#org2f48fff">4.4. 系统化学习</a></li>
-<li><a href="#orgcde15c4">4.5. 基础学习</a></li>
-<li><a href="#org31232ed">4.6. 专题学习</a></li>
-<li><a href="#orgcd9d4e0">4.7. 交流</a></li>
+<li><a href="#org9197cf6">4.1. 个人学习方法</a></li>
+<li><a href="#orgcd637fc">4.2. 基础的经验积累</a></li>
+<li><a href="#org7a1a56b">4.3. 练习 &amp;&amp; 工具化</a></li>
+<li><a href="#orgcbc0c2c">4.4. 系统化学习</a></li>
+<li><a href="#org49dc27c">4.5. 基础学习</a></li>
+<li><a href="#org0f7b154">4.6. 专题学习</a></li>
+<li><a href="#org7cfb3d3">4.7. 交流</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org96ecabd" class="outline-2">
-<h2 id="org96ecabd"><span class="section-number-2">1</span> 目的</h2>
+<div id="outline-container-org38d6021" class="outline-2">
+<h2 id="org38d6021"><span class="section-number-2">1</span> 目的</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org3fc2e29" class="outline-3">
-<h3 id="org3fc2e29"><span class="section-number-3">1.1</span> 目的</h3>
+<div id="outline-container-orgc1e12c8" class="outline-3">
+<h3 id="orgc1e12c8"><span class="section-number-3">1.1</span> 目的</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>明确研发的发展方向</li>
@@ -797,12 +797,12 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-org73c5b06" class="outline-2">
-<h2 id="org73c5b06"><span class="section-number-2">2</span> 技术方向</h2>
+<div id="outline-container-org7fec73b" class="outline-2">
+<h2 id="org7fec73b"><span class="section-number-2">2</span> 技术方向</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org9ea2f24" class="outline-3">
-<h3 id="org9ea2f24"><span class="section-number-3">2.1</span> 业务研发&amp;架构<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup></h3>
+<div id="outline-container-org956bdcd" class="outline-3">
+<h3 id="org956bdcd"><span class="section-number-3">2.1</span> 业务研发&amp;架构<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup></h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>把握/分析业务流程</li>
@@ -813,8 +813,8 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-orgd0d0390" class="outline-3">
-<h3 id="orgd0d0390"><span class="section-number-3">2.2</span> 系统架构<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup></h3>
+<div id="outline-container-orgb489301" class="outline-3">
+<h3 id="orgb489301"><span class="section-number-3">2.2</span> 系统架构<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup></h3>
 <div class="outline-text-3" id="text-2-2">
 <ul class="org-ul">
 <li>数据库访问组件</li>
@@ -824,8 +824,8 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-orgb7bb835" class="outline-3">
-<h3 id="orgb7bb835"><span class="section-number-3">2.3</span> 专业方向</h3>
+<div id="outline-container-org6769cc2" class="outline-3">
+<h3 id="org6769cc2"><span class="section-number-3">2.3</span> 专业方向</h3>
 <div class="outline-text-3" id="text-2-3">
 <ul class="org-ul">
 <li>DBA</li>
@@ -841,12 +841,12 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-org7f9aacb" class="outline-2">
-<h2 id="org7f9aacb"><span class="section-number-2">3</span> 能力方向</h2>
+<div id="outline-container-orgb34ae49" class="outline-2">
+<h2 id="orgb34ae49"><span class="section-number-2">3</span> 能力方向</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-orgfb1d907" class="outline-3">
-<h3 id="orgfb1d907"><span class="section-number-3">3.1</span> 通用能力</h3>
+<div id="outline-container-org9dc0564" class="outline-3">
+<h3 id="org9dc0564"><span class="section-number-3">3.1</span> 通用能力</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li><b>做的更好/更快/更美的意识和追求</b></li>
@@ -861,8 +861,8 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-orgc3b8cc3" class="outline-3">
-<h3 id="orgc3b8cc3"><span class="section-number-3">3.2</span> 专业能力</h3>
+<div id="outline-container-org0c1787f" class="outline-3">
+<h3 id="org0c1787f"><span class="section-number-3">3.2</span> 专业能力</h3>
 <div class="outline-text-3" id="text-3-2">
 <ul class="org-ul">
 <li>业务能力 <sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup>
@@ -886,12 +886,12 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-org82979f4" class="outline-2">
-<h2 id="org82979f4"><span class="section-number-2">4</span> 自我提升</h2>
+<div id="outline-container-org3a854a4" class="outline-2">
+<h2 id="org3a854a4"><span class="section-number-2">4</span> 自我提升</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org7249bb5" class="outline-3">
-<h3 id="org7249bb5"><span class="section-number-3">4.1</span> 个人学习方法</h3>
+<div id="outline-container-org9197cf6" class="outline-3">
+<h3 id="org9197cf6"><span class="section-number-3">4.1</span> 个人学习方法</h3>
 <div class="outline-text-3" id="text-4-1">
 <ol class="org-ol">
 <li>找到有兴趣的领域, 看书</li>
@@ -906,8 +906,8 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-org7273fb1" class="outline-3">
-<h3 id="org7273fb1"><span class="section-number-3">4.2</span> 基础的经验积累</h3>
+<div id="outline-container-orgcd637fc" class="outline-3">
+<h3 id="orgcd637fc"><span class="section-number-3">4.2</span> 基础的经验积累</h3>
 <div class="outline-text-3" id="text-4-2">
 <ul class="org-ul">
 <li>业务知识</li>
@@ -917,8 +917,8 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-org18e6556" class="outline-3">
-<h3 id="org18e6556"><span class="section-number-3">4.3</span> 练习 &amp;&amp; 工具化</h3>
+<div id="outline-container-org7a1a56b" class="outline-3">
+<h3 id="org7a1a56b"><span class="section-number-3">4.3</span> 练习 &amp;&amp; 工具化</h3>
 <div class="outline-text-3" id="text-4-3">
 <ul class="org-ul">
 <li>手动配置多个内容, 可否写个脚本</li>
@@ -934,8 +934,8 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-org2f48fff" class="outline-3">
-<h3 id="org2f48fff"><span class="section-number-3">4.4</span> 系统化学习</h3>
+<div id="outline-container-orgcbc0c2c" class="outline-3">
+<h3 id="orgcbc0c2c"><span class="section-number-3">4.4</span> 系统化学习</h3>
 <div class="outline-text-3" id="text-4-4">
 <blockquote>
 <p>
@@ -955,8 +955,8 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-orgcde15c4" class="outline-3">
-<h3 id="orgcde15c4"><span class="section-number-3">4.5</span> 基础学习</h3>
+<div id="outline-container-org49dc27c" class="outline-3">
+<h3 id="org49dc27c"><span class="section-number-3">4.5</span> 基础学习</h3>
 <div class="outline-text-3" id="text-4-5">
 <ul class="org-ul">
 <li>(*) 编程思想
@@ -983,8 +983,8 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-org31232ed" class="outline-3">
-<h3 id="org31232ed"><span class="section-number-3">4.6</span> 专题学习</h3>
+<div id="outline-container-org0f7b154" class="outline-3">
+<h3 id="org0f7b154"><span class="section-number-3">4.6</span> 专题学习</h3>
 <div class="outline-text-3" id="text-4-6">
 <ul class="org-ul">
 <li>算法
@@ -1011,8 +1011,8 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-orgcd9d4e0" class="outline-3">
-<h3 id="orgcd9d4e0"><span class="section-number-3">4.7</span> 交流</h3>
+<div id="outline-container-org7cfb3d3" class="outline-3">
+<h3 id="org7cfb3d3"><span class="section-number-3">4.7</span> 交流</h3>
 <div class="outline-text-3" id="text-4-7">
 <ul class="org-ul">
 <li>总结</li>
@@ -1057,67 +1057,67 @@ musically:
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org070201e">1. 表现</a>
+<li><a href="#orgc70b83c">1. 表现</a>
 <ul>
-<li><a href="#org1fe0abd">1.1. 什么叫专业化</a></li>
-<li><a href="#org538e1df">1.2. 行为表现</a></li>
+<li><a href="#org8961fe1">1.1. 什么叫专业化</a></li>
+<li><a href="#org991a440">1.2. 行为表现</a></li>
 </ul>
 </li>
-<li><a href="#org685daa6">2. 复杂问题的简化</a>
+<li><a href="#org5dc468f">2. 复杂问题的简化</a>
 <ul>
-<li><a href="#org5e60ed5">2.1. 解释 </a></li>
-<li><a href="#orge01f882">2.2. 案例  1</a></li>
-<li><a href="#org960b5e3">2.3. 案例  2</a></li>
+<li><a href="#orgdcf463e">2.1. 解释 </a></li>
+<li><a href="#org0230c6e">2.2. 案例  1</a></li>
+<li><a href="#org2d5c76e">2.3. 案例  2</a></li>
 </ul>
 </li>
-<li><a href="#org70c80a1">3. 繁琐的工作工具化</a>
+<li><a href="#orgcd21da7">3. 繁琐的工作工具化</a>
 <ul>
-<li><a href="#orged79038">3.1. 解释</a></li>
-<li><a href="#orgfa4eb13">3.2. 实际案例  1</a></li>
-<li><a href="#orgf184f77">3.3. 实际案例  2</a></li>
+<li><a href="#orgbabec18">3.1. 解释</a></li>
+<li><a href="#orga79c923">3.2. 实际案例  1</a></li>
+<li><a href="#orgeee12c9">3.3. 实际案例  2</a></li>
 </ul>
 </li>
-<li><a href="#org74eebd8">4. 系统化解决问题的能力</a>
+<li><a href="#org2a1dd92">4. 系统化解决问题的能力</a>
 <ul>
-<li><a href="#org75492d9">4.1. 解释</a></li>
-<li><a href="#orgcca9c4a">4.2. 案例  1</a></li>
-<li><a href="#org5eb49ef">4.3. 案例  2</a></li>
+<li><a href="#org9b4175b">4.1. 解释</a></li>
+<li><a href="#orgb28661a">4.2. 案例  1</a></li>
+<li><a href="#org443340c">4.3. 案例  2</a></li>
 </ul>
 </li>
-<li><a href="#org1df00fa">5. 技术方向</a>
+<li><a href="#org349e0d8">5. 技术方向</a>
 <ul>
-<li><a href="#org59655ff">5.1. 业务研发&amp;架构</a></li>
-<li><a href="#orgf0221db">5.2. 系统架构</a></li>
-<li><a href="#orgfaa8e3d">5.3. 专业方向</a></li>
+<li><a href="#org1310fd8">5.1. 业务研发&amp;架构</a></li>
+<li><a href="#org60729c7">5.2. 系统架构</a></li>
+<li><a href="#org237ccd7">5.3. 专业方向</a></li>
 </ul>
 </li>
-<li><a href="#org35d2d09">6. 能力方向</a>
+<li><a href="#org9746feb">6. 能力方向</a>
 <ul>
-<li><a href="#org7d13837">6.1. 通用能力</a></li>
-<li><a href="#org68c604c">6.2. 专业能力</a></li>
+<li><a href="#orgb964941">6.1. 通用能力</a></li>
+<li><a href="#org111f385">6.2. 专业能力</a></li>
 </ul>
 </li>
-<li><a href="#org09b306b">7. 自我提升</a>
+<li><a href="#org9d0dbdd">7. 自我提升</a>
 <ul>
-<li><a href="#org79be6f9">7.1. 个人学习方法</a></li>
-<li><a href="#org5972db6">7.2. 基础的经验积累</a></li>
-<li><a href="#org36bad14">7.3. 练习 &amp;&amp; 工具化</a></li>
-<li><a href="#org6d62146">7.4. 系统化学习</a></li>
-<li><a href="#org015cadf">7.5. 基础学习</a></li>
-<li><a href="#org7c6be63">7.6. 专题学习</a></li>
-<li><a href="#org77158c0">7.7. 交流</a></li>
+<li><a href="#org226d79b">7.1. 个人学习方法</a></li>
+<li><a href="#org9056dd0">7.2. 基础的经验积累</a></li>
+<li><a href="#orgc26500d">7.3. 练习 &amp;&amp; 工具化</a></li>
+<li><a href="#org8378241">7.4. 系统化学习</a></li>
+<li><a href="#org7e90f2f">7.5. 基础学习</a></li>
+<li><a href="#orgf6eb3fe">7.6. 专题学习</a></li>
+<li><a href="#orgbebd516">7.7. 交流</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org070201e" class="outline-2">
-<h2 id="org070201e"><span class="section-number-2">1</span> 表现</h2>
+<div id="outline-container-orgc70b83c" class="outline-2">
+<h2 id="orgc70b83c"><span class="section-number-2">1</span> 表现</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org1fe0abd" class="outline-3">
-<h3 id="org1fe0abd"><span class="section-number-3">1.1</span> 什么叫专业化</h3>
+<div id="outline-container-org8961fe1" class="outline-3">
+<h3 id="org8961fe1"><span class="section-number-3">1.1</span> 什么叫专业化</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>首先，好的专业人士要在任何情况下为工作本身着想，不会因为其他事情影响该做的事情</li>
@@ -1128,8 +1128,8 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-org538e1df" class="outline-3">
-<h3 id="org538e1df"><span class="section-number-3">1.2</span> 行为表现</h3>
+<div id="outline-container-org991a440" class="outline-3">
+<h3 id="org991a440"><span class="section-number-3">1.2</span> 行为表现</h3>
 <div class="outline-text-3" id="text-1-2">
 <ol class="org-ol">
 <li>承诺+兑现</li>
@@ -1141,12 +1141,12 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-org685daa6" class="outline-2">
-<h2 id="org685daa6"><span class="section-number-2">2</span> 复杂问题的简化</h2>
+<div id="outline-container-org5dc468f" class="outline-2">
+<h2 id="org5dc468f"><span class="section-number-2">2</span> 复杂问题的简化</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org5e60ed5" class="outline-3">
-<h3 id="org5e60ed5"><span class="section-number-3">2.1</span> 解释 <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup></h3>
+<div id="outline-container-orgdcf463e" class="outline-3">
+<h3 id="orgdcf463e"><span class="section-number-3">2.1</span> 解释 <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup></h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 <i>而不是简单的问题复杂化</i>
@@ -1158,8 +1158,8 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-orge01f882" class="outline-3">
-<h3 id="orge01f882"><span class="section-number-3">2.2</span> 案例  1</h3>
+<div id="outline-container-org0230c6e" class="outline-3">
+<h3 id="org0230c6e"><span class="section-number-3">2.2</span> 案例  1</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 比如商品的几个东西
@@ -1180,8 +1180,8 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-org960b5e3" class="outline-3">
-<h3 id="org960b5e3"><span class="section-number-3">2.3</span> 案例  2</h3>
+<div id="outline-container-org2d5c76e" class="outline-3">
+<h3 id="org2d5c76e"><span class="section-number-3">2.3</span> 案例  2</h3>
 <div class="outline-text-3" id="text-2-3">
 <ul class="org-ul">
 <li>订单，看到的通用流程，生命周期。 <i>下单-&gt;支付-&gt;成单-&gt;采购-&gt;发货</i> 。而不是看到有  7 种订单，3 种优惠，还都相互影响。</li>
@@ -1191,12 +1191,12 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-org70c80a1" class="outline-2">
-<h2 id="org70c80a1"><span class="section-number-2">3</span> 繁琐的工作工具化</h2>
+<div id="outline-container-orgcd21da7" class="outline-2">
+<h2 id="orgcd21da7"><span class="section-number-2">3</span> 繁琐的工作工具化</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-orged79038" class="outline-3">
-<h3 id="orged79038"><span class="section-number-3">3.1</span> 解释</h3>
+<div id="outline-container-orgbabec18" class="outline-3">
+<h3 id="orgbabec18"><span class="section-number-3">3.1</span> 解释</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 <i>不要人工维护各种工作，人不是神，记不住。让机器来。</i>
@@ -1204,8 +1204,8 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-orgfa4eb13" class="outline-3">
-<h3 id="orgfa4eb13"><span class="section-number-3">3.2</span> 实际案例  1</h3>
+<div id="outline-container-orga79c923" class="outline-3">
+<h3 id="orga79c923"><span class="section-number-3">3.2</span> 实际案例  1</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 前后台间的枚举值获取，或者统计库里的枚举值自动维护。
@@ -1219,8 +1219,8 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-orgf184f77" class="outline-3">
-<h3 id="orgf184f77"><span class="section-number-3">3.3</span> 实际案例  2</h3>
+<div id="outline-container-orgeee12c9" class="outline-3">
+<h3 id="orgeee12c9"><span class="section-number-3">3.3</span> 实际案例  2</h3>
 <div class="outline-text-3" id="text-3-3">
 <ul class="org-ul">
 <li>打包时拉  url schema 的定义自动解析</li>
@@ -1233,12 +1233,12 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-org74eebd8" class="outline-2">
-<h2 id="org74eebd8"><span class="section-number-2">4</span> 系统化解决问题的能力</h2>
+<div id="outline-container-org2a1dd92" class="outline-2">
+<h2 id="org2a1dd92"><span class="section-number-2">4</span> 系统化解决问题的能力</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org75492d9" class="outline-3">
-<h3 id="org75492d9"><span class="section-number-3">4.1</span> 解释</h3>
+<div id="outline-container-org9b4175b" class="outline-3">
+<h3 id="org9b4175b"><span class="section-number-3">4.1</span> 解释</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 看到问题，看到价值，看到方案。
@@ -1253,8 +1253,8 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-orgcca9c4a" class="outline-3">
-<h3 id="orgcca9c4a"><span class="section-number-3">4.2</span> 案例  1</h3>
+<div id="outline-container-orgb28661a" class="outline-3">
+<h3 id="orgb28661a"><span class="section-number-3">4.2</span> 案例  1</h3>
 <div class="outline-text-3" id="text-4-2">
 <ul class="org-ul">
 <li>(3 天前) 某个记录表上加个操作人信息</li>
@@ -1264,8 +1264,8 @@ musically:
 </div>
 
 
-<div id="outline-container-org5eb49ef" class="outline-3">
-<h3 id="org5eb49ef"><span class="section-number-3">4.3</span> 案例  2</h3>
+<div id="outline-container-org443340c" class="outline-3">
+<h3 id="org443340c"><span class="section-number-3">4.3</span> 案例  2</h3>
 <div class="outline-text-3" id="text-4-3">
 <ul class="org-ul">
 <li>今天某个项目天猫价格没同步，某个原因，打个补丁</li>
@@ -1275,12 +1275,12 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-org1df00fa" class="outline-2">
-<h2 id="org1df00fa"><span class="section-number-2">5</span> 技术方向</h2>
+<div id="outline-container-org349e0d8" class="outline-2">
+<h2 id="org349e0d8"><span class="section-number-2">5</span> 技术方向</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-org59655ff" class="outline-3">
-<h3 id="org59655ff"><span class="section-number-3">5.1</span> 业务研发&amp;架构<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup></h3>
+<div id="outline-container-org1310fd8" class="outline-3">
+<h3 id="org1310fd8"><span class="section-number-3">5.1</span> 业务研发&amp;架构<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup></h3>
 <div class="outline-text-3" id="text-5-1">
 <ul class="org-ul">
 <li>把握/分析业务流程</li>
@@ -1291,8 +1291,8 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-orgf0221db" class="outline-3">
-<h3 id="orgf0221db"><span class="section-number-3">5.2</span> 系统架构<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup></h3>
+<div id="outline-container-org60729c7" class="outline-3">
+<h3 id="org60729c7"><span class="section-number-3">5.2</span> 系统架构<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup></h3>
 <div class="outline-text-3" id="text-5-2">
 <ul class="org-ul">
 <li>数据库访问组件</li>
@@ -1302,8 +1302,8 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-orgfaa8e3d" class="outline-3">
-<h3 id="orgfaa8e3d"><span class="section-number-3">5.3</span> 专业方向</h3>
+<div id="outline-container-org237ccd7" class="outline-3">
+<h3 id="org237ccd7"><span class="section-number-3">5.3</span> 专业方向</h3>
 <div class="outline-text-3" id="text-5-3">
 <ul class="org-ul">
 <li>DBA</li>
@@ -1319,12 +1319,12 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-org35d2d09" class="outline-2">
-<h2 id="org35d2d09"><span class="section-number-2">6</span> 能力方向</h2>
+<div id="outline-container-org9746feb" class="outline-2">
+<h2 id="org9746feb"><span class="section-number-2">6</span> 能力方向</h2>
 <div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-org7d13837" class="outline-3">
-<h3 id="org7d13837"><span class="section-number-3">6.1</span> 通用能力</h3>
+<div id="outline-container-orgb964941" class="outline-3">
+<h3 id="orgb964941"><span class="section-number-3">6.1</span> 通用能力</h3>
 <div class="outline-text-3" id="text-6-1">
 <ul class="org-ul">
 <li><b>做的更好/更快/更美的意识和追求</b></li>
@@ -1339,8 +1339,8 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-org68c604c" class="outline-3">
-<h3 id="org68c604c"><span class="section-number-3">6.2</span> 专业能力</h3>
+<div id="outline-container-org111f385" class="outline-3">
+<h3 id="org111f385"><span class="section-number-3">6.2</span> 专业能力</h3>
 <div class="outline-text-3" id="text-6-2">
 <ul class="org-ul">
 <li>业务能力 <sup><a id="fnr.4" class="footref" href="#fn.4">4</a></sup>
@@ -1364,12 +1364,12 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-org09b306b" class="outline-2">
-<h2 id="org09b306b"><span class="section-number-2">7</span> 自我提升</h2>
+<div id="outline-container-org9d0dbdd" class="outline-2">
+<h2 id="org9d0dbdd"><span class="section-number-2">7</span> 自我提升</h2>
 <div class="outline-text-2" id="text-7">
 </div>
-<div id="outline-container-org79be6f9" class="outline-3">
-<h3 id="org79be6f9"><span class="section-number-3">7.1</span> 个人学习方法</h3>
+<div id="outline-container-org226d79b" class="outline-3">
+<h3 id="org226d79b"><span class="section-number-3">7.1</span> 个人学习方法</h3>
 <div class="outline-text-3" id="text-7-1">
 <ol class="org-ol">
 <li>找到有兴趣的领域, 看书</li>
@@ -1384,8 +1384,8 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-org5972db6" class="outline-3">
-<h3 id="org5972db6"><span class="section-number-3">7.2</span> 基础的经验积累</h3>
+<div id="outline-container-org9056dd0" class="outline-3">
+<h3 id="org9056dd0"><span class="section-number-3">7.2</span> 基础的经验积累</h3>
 <div class="outline-text-3" id="text-7-2">
 <ul class="org-ul">
 <li>业务知识</li>
@@ -1395,8 +1395,8 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-org36bad14" class="outline-3">
-<h3 id="org36bad14"><span class="section-number-3">7.3</span> 练习 &amp;&amp; 工具化</h3>
+<div id="outline-container-orgc26500d" class="outline-3">
+<h3 id="orgc26500d"><span class="section-number-3">7.3</span> 练习 &amp;&amp; 工具化</h3>
 <div class="outline-text-3" id="text-7-3">
 <ul class="org-ul">
 <li>手动配置多个内容, 可否写个脚本</li>
@@ -1412,8 +1412,8 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-org6d62146" class="outline-3">
-<h3 id="org6d62146"><span class="section-number-3">7.4</span> 系统化学习</h3>
+<div id="outline-container-org8378241" class="outline-3">
+<h3 id="org8378241"><span class="section-number-3">7.4</span> 系统化学习</h3>
 <div class="outline-text-3" id="text-7-4">
 <blockquote>
 <p>
@@ -1433,8 +1433,8 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-org015cadf" class="outline-3">
-<h3 id="org015cadf"><span class="section-number-3">7.5</span> 基础学习</h3>
+<div id="outline-container-org7e90f2f" class="outline-3">
+<h3 id="org7e90f2f"><span class="section-number-3">7.5</span> 基础学习</h3>
 <div class="outline-text-3" id="text-7-5">
 <ul class="org-ul">
 <li>(*) 编程思想
@@ -1461,8 +1461,8 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-org7c6be63" class="outline-3">
-<h3 id="org7c6be63"><span class="section-number-3">7.6</span> 专题学习</h3>
+<div id="outline-container-orgf6eb3fe" class="outline-3">
+<h3 id="orgf6eb3fe"><span class="section-number-3">7.6</span> 专题学习</h3>
 <div class="outline-text-3" id="text-7-6">
 <ul class="org-ul">
 <li>算法
@@ -1489,8 +1489,8 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-org77158c0" class="outline-3">
-<h3 id="org77158c0"><span class="section-number-3">7.7</span> 交流</h3>
+<div id="outline-container-orgbebd516" class="outline-3">
+<h3 id="orgbebd516"><span class="section-number-3">7.7</span> 交流</h3>
 <div class="outline-text-3" id="text-7-7">
 <ul class="org-ul">
 <li>总结</li>
@@ -1537,43 +1537,43 @@ musically:
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org046d3a9">1. 议程与目的</a>
+<li><a href="#org1a9e730">1. 议程与目的</a>
 <ul>
-<li><a href="#org58af7d0">1.1. 分享目的</a></li>
+<li><a href="#org1a1a8dd">1.1. 分享目的</a></li>
 </ul>
 </li>
-<li><a href="#orge47576b">2. Hbase 的演进</a>
+<li><a href="#orgf154574">2. Hbase 的演进</a>
 <ul>
-<li><a href="#org9fe563b">2.1. BigTable</a></li>
-<li><a href="#orgd926d36">2.2. 为什么需要</a></li>
-<li><a href="#orgc09ed03">2.3. 主要的门槛</a></li>
+<li><a href="#org998c2a7">2.1. BigTable</a></li>
+<li><a href="#orgdddfa01">2.2. 为什么需要</a></li>
+<li><a href="#org94fd35b">2.3. 主要的门槛</a></li>
 </ul>
 </li>
-<li><a href="#org2c805b0">3. hbase 的设计</a>
+<li><a href="#org0179016">3. hbase 的设计</a>
 <ul>
-<li><a href="#org57fccb8">3.1. 索引与检索 I</a></li>
-<li><a href="#org03d66f7">3.2. 索引与检索 II</a></li>
-<li><a href="#orgee985f3">3.3. 索引与检索 III</a></li>
-<li><a href="#org307f581">3.4. 大数据(partition/sharding) I</a></li>
-<li><a href="#org3776450">3.5. 大数据(partition/sharding) II</a></li>
-<li><a href="#orge0c3267">3.6. 强一致性</a></li>
-<li><a href="#org65c8f15">3.7. 故障转移</a></li>
-<li><a href="#orgbd1c88d">3.8. 横向扩容/自动伸缩/load balancing</a></li>
-<li><a href="#org5e94ee3">3.9. compact</a></li>
-<li><a href="#org1671b32">3.10. row level acid I</a></li>
-<li><a href="#orga22c781">3.11. row level acid II</a></li>
+<li><a href="#org0877e9d">3.1. 索引与检索 I</a></li>
+<li><a href="#org0bbb61e">3.2. 索引与检索 II</a></li>
+<li><a href="#org2ff06da">3.3. 索引与检索 III</a></li>
+<li><a href="#orgcfadb69">3.4. 大数据(partition/sharding) I</a></li>
+<li><a href="#orgb838813">3.5. 大数据(partition/sharding) II</a></li>
+<li><a href="#org2c54f86">3.6. 强一致性</a></li>
+<li><a href="#org31d27be">3.7. 故障转移</a></li>
+<li><a href="#org8c7adaa">3.8. 横向扩容/自动伸缩/load balancing</a></li>
+<li><a href="#org1a6c7a3">3.9. compact</a></li>
+<li><a href="#org8cc7b35">3.10. row level acid I</a></li>
+<li><a href="#org24c84af">3.11. row level acid II</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org046d3a9" class="outline-2">
-<h2 id="org046d3a9"><span class="section-number-2">1</span> 议程与目的</h2>
+<div id="outline-container-org1a9e730" class="outline-2">
+<h2 id="org1a9e730"><span class="section-number-2">1</span> 议程与目的</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org58af7d0" class="outline-3">
-<h3 id="org58af7d0"><span class="section-number-3">1.1</span> 分享目的</h3>
+<div id="outline-container-org1a1a8dd" class="outline-3">
+<h3 id="org1a1a8dd"><span class="section-number-3">1.1</span> 分享目的</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>以系统的视角，推测 hbase 的设计决策</li>
@@ -1584,12 +1584,12 @@ musically:
 </div>
 </div>
 
-<div id="outline-container-orge47576b" class="outline-2">
-<h2 id="orge47576b"><span class="section-number-2">2</span> Hbase 的演进</h2>
+<div id="outline-container-orgf154574" class="outline-2">
+<h2 id="orgf154574"><span class="section-number-2">2</span> Hbase 的演进</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org9fe563b" class="outline-3">
-<h3 id="org9fe563b"><span class="section-number-3">2.1</span> BigTable</h3>
+<div id="outline-container-org998c2a7" class="outline-3">
+<h3 id="org998c2a7"><span class="section-number-3">2.1</span> BigTable</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 Bigtable, a <b>distributed system</b> for <b>storing structured data</b> at Google. Bigtable clusters have been in production use since April 2005, and we spent roughly seven person-years on design and implementation before that date.
@@ -1601,8 +1601,8 @@ Our users like the <b>performance</b> and <b>high availability</b> provided by t
 </div>
 </div>
 
-<div id="outline-container-orgd926d36" class="outline-3">
-<h3 id="orgd926d36"><span class="section-number-3">2.2</span> 为什么需要</h3>
+<div id="outline-container-orgdddfa01" class="outline-3">
+<h3 id="orgdddfa01"><span class="section-number-3">2.2</span> 为什么需要</h3>
 <div class="outline-text-3" id="text-2-2">
 <blockquote>
 <p>
@@ -1626,8 +1626,8 @@ Our users like the <b>performance</b> and <b>high availability</b> provided by t
 </div>
 </div>
 
-<div id="outline-container-orgc09ed03" class="outline-3">
-<h3 id="orgc09ed03"><span class="section-number-3">2.3</span> 主要的门槛</h3>
+<div id="outline-container-org94fd35b" class="outline-3">
+<h3 id="org94fd35b"><span class="section-number-3">2.3</span> 主要的门槛</h3>
 <div class="outline-text-3" id="text-2-3">
 <blockquote>
 <p>
@@ -1645,16 +1645,16 @@ Our users like the <b>performance</b> and <b>high availability</b> provided by t
 </div>
 
 
-<div id="outline-container-org2c805b0" class="outline-2">
-<h2 id="org2c805b0"><span class="section-number-2">3</span> hbase 的设计</h2>
+<div id="outline-container-org0179016" class="outline-2">
+<h2 id="org0179016"><span class="section-number-2">3</span> hbase 的设计</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org57fccb8" class="outline-3">
-<h3 id="org57fccb8"><span class="section-number-3">3.1</span> 索引与检索 I</h3>
+<div id="outline-container-org0877e9d" class="outline-3">
+<h3 id="org0877e9d"><span class="section-number-3">3.1</span> 索引与检索 I</h3>
 <div class="outline-text-3" id="text-3-1">
 </div>
 <ol class="org-ol">
-<li><a id="org4b51c00"></a>基于排序<br />
+<li><a id="org6c1a9a6"></a>基于排序<br />
 <div class="outline-text-4" id="text-3-1-1">
 <ul class="org-ul">
 <li>B+ tree (mysql)
@@ -1679,12 +1679,12 @@ Our users like the <b>performance</b> and <b>high availability</b> provided by t
 </ol>
 </div>
 
-<div id="outline-container-org03d66f7" class="outline-3">
-<h3 id="org03d66f7"><span class="section-number-3">3.2</span> 索引与检索 II</h3>
+<div id="outline-container-org0bbb61e" class="outline-3">
+<h3 id="org0bbb61e"><span class="section-number-3">3.2</span> 索引与检索 II</h3>
 <div class="outline-text-3" id="text-3-2">
 </div>
 <ol class="org-ol">
-<li><a id="orgcbf4caa"></a>基于 Hash<br />
+<li><a id="org7ff02d7"></a>基于 Hash<br />
 <div class="outline-text-4" id="text-3-2-1">
 <ul class="org-ul">
 <li>Hash
@@ -1699,12 +1699,12 @@ Our users like the <b>performance</b> and <b>high availability</b> provided by t
 </div>
 
 
-<div id="outline-container-orgee985f3" class="outline-3">
-<h3 id="orgee985f3"><span class="section-number-3">3.3</span> 索引与检索 III</h3>
+<div id="outline-container-org2ff06da" class="outline-3">
+<h3 id="org2ff06da"><span class="section-number-3">3.3</span> 索引与检索 III</h3>
 <div class="outline-text-3" id="text-3-3">
 </div>
 <ol class="org-ol">
-<li><a id="org21c9621"></a>物理存储<br />
+<li><a id="orgeb222cf"></a>物理存储<br />
 <div class="outline-text-4" id="text-3-3-1">
 <ul class="org-ul">
 <li>HRegion 1 - * HStore (ColumnFamily)</li>
@@ -1719,8 +1719,8 @@ Our users like the <b>performance</b> and <b>high availability</b> provided by t
 </ol>
 </div>
 
-<div id="outline-container-org307f581" class="outline-3">
-<h3 id="org307f581"><span class="section-number-3">3.4</span> 大数据(partition/sharding) I</h3>
+<div id="outline-container-orgcfadb69" class="outline-3">
+<h3 id="orgcfadb69"><span class="section-number-3">3.4</span> 大数据(partition/sharding) I</h3>
 <div class="outline-text-3" id="text-3-4">
 <ul class="org-ul">
 <li>row &lt;-&gt; node
@@ -1753,8 +1753,8 @@ Our users like the <b>performance</b> and <b>high availability</b> provided by t
 </div>
 </div>
 
-<div id="outline-container-org3776450" class="outline-3">
-<h3 id="org3776450"><span class="section-number-3">3.5</span> 大数据(partition/sharding) II</h3>
+<div id="outline-container-orgb838813" class="outline-3">
+<h3 id="orgb838813"><span class="section-number-3">3.5</span> 大数据(partition/sharding) II</h3>
 <div class="outline-text-3" id="text-3-5">
 <ul class="org-ul">
 <li>range partition
@@ -1766,8 +1766,8 @@ Our users like the <b>performance</b> and <b>high availability</b> provided by t
 </div>
 </div>
 
-<div id="outline-container-orge0c3267" class="outline-3">
-<h3 id="orge0c3267"><span class="section-number-3">3.6</span> 强一致性</h3>
+<div id="outline-container-org2c54f86" class="outline-3">
+<h3 id="org2c54f86"><span class="section-number-3">3.6</span> 强一致性</h3>
 <div class="outline-text-3" id="text-3-6">
 <ul class="org-ul">
 <li>single writer
@@ -1782,8 +1782,8 @@ Our users like the <b>performance</b> and <b>high availability</b> provided by t
 </div>
 </div>
 
-<div id="outline-container-org65c8f15" class="outline-3">
-<h3 id="org65c8f15"><span class="section-number-3">3.7</span> 故障转移</h3>
+<div id="outline-container-org31d27be" class="outline-3">
+<h3 id="org31d27be"><span class="section-number-3">3.7</span> 故障转移</h3>
 <div class="outline-text-3" id="text-3-7">
 <ul class="org-ul">
 <li>range 为管理的逻辑单元/存储的物理单元</li>
@@ -1799,8 +1799,8 @@ Our users like the <b>performance</b> and <b>high availability</b> provided by t
 </ul>
 </div>
 </div>
-<div id="outline-container-orgbd1c88d" class="outline-3">
-<h3 id="orgbd1c88d"><span class="section-number-3">3.8</span> 横向扩容/自动伸缩/load balancing</h3>
+<div id="outline-container-org8c7adaa" class="outline-3">
+<h3 id="org8c7adaa"><span class="section-number-3">3.8</span> 横向扩容/自动伸缩/load balancing</h3>
 <div class="outline-text-3" id="text-3-8">
 <ul class="org-ul">
 <li>split, 增加逻辑管理单元(Region)</li>
@@ -1809,8 +1809,8 @@ Our users like the <b>performance</b> and <b>high availability</b> provided by t
 </div>
 </div>
 
-<div id="outline-container-org5e94ee3" class="outline-3">
-<h3 id="org5e94ee3"><span class="section-number-3">3.9</span> compact</h3>
+<div id="outline-container-org1a6c7a3" class="outline-3">
+<h3 id="org1a6c7a3"><span class="section-number-3">3.9</span> compact</h3>
 <div class="outline-text-3" id="text-3-9">
 <ul class="org-ul">
 <li>LSM Tree
@@ -1834,8 +1834,8 @@ Our users like the <b>performance</b> and <b>high availability</b> provided by t
 </div>
 </div>
 
-<div id="outline-container-org1671b32" class="outline-3">
-<h3 id="org1671b32"><span class="section-number-3">3.10</span> row level acid I</h3>
+<div id="outline-container-org8cc7b35" class="outline-3">
+<h3 id="org8cc7b35"><span class="section-number-3">3.10</span> row level acid I</h3>
 <div class="outline-text-3" id="text-3-10">
 <ul class="org-ul">
 <li>write write synchronization
@@ -1846,8 +1846,8 @@ Our users like the <b>performance</b> and <b>high availability</b> provided by t
 </ul>
 </div>
 </div>
-<div id="outline-container-orga22c781" class="outline-3">
-<h3 id="orga22c781"><span class="section-number-3">3.11</span> row level acid II</h3>
+<div id="outline-container-org24c84af" class="outline-3">
+<h3 id="org24c84af"><span class="section-number-3">3.11</span> row level acid II</h3>
 <div class="outline-text-3" id="text-3-11">
 <ul class="org-ul">
 <li>read write synchronization
@@ -1902,34 +1902,34 @@ Our users like the <b>performance</b> and <b>high availability</b> provided by t
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org90fbfe1">1. 本文的目的</a></li>
-<li><a href="#org20ad8b0">2. 背景</a></li>
-<li><a href="#org97a69f3">3. 设计的目的</a></li>
-<li><a href="#org3b32392">4. 如何设计</a>
+<li><a href="#orgd66c310">1. 本文的目的</a></li>
+<li><a href="#org11c16bb">2. 背景</a></li>
+<li><a href="#org853965d">3. 设计的目的</a></li>
+<li><a href="#orgb8d8577">4. 如何设计</a>
 <ul>
-<li><a href="#orgd270741">4.1. 原始需求分析</a></li>
-<li><a href="#org55f6370">4.2. 用户场景 &amp;&amp; 场景分析</a></li>
-<li><a href="#org5e84f2a">4.3. 系统概要设计</a></li>
-<li><a href="#org673d307">4.4. 模块内部设计</a></li>
-<li><a href="#orgd11161f">4.5. 任务分解</a></li>
+<li><a href="#orgb2728ca">4.1. 原始需求分析</a></li>
+<li><a href="#org30dd324">4.2. 用户场景 &amp;&amp; 场景分析</a></li>
+<li><a href="#org52f8d8e">4.3. 系统概要设计</a></li>
+<li><a href="#orgbe3f292">4.4. 模块内部设计</a></li>
+<li><a href="#orgc31ac03">4.5. 任务分解</a></li>
 </ul>
 </li>
-<li><a href="#org216f806">5. 案例分析</a>
+<li><a href="#org2460cc0">5. 案例分析</a>
 <ul>
-<li><a href="#orgffe731b">5.1. 票务系统设计</a></li>
-<li><a href="#org6b8c9eb">5.2. 拼团</a>
+<li><a href="#orgb00702a">5.1. 票务系统设计</a></li>
+<li><a href="#orgd0e2ec8">5.2. 拼团</a>
 <ul>
-<li><a href="#org82f64de">5.2.1. 拼团需求分析</a></li>
-<li><a href="#org92f4ad9">5.2.2. 拼团用户场景</a></li>
-<li><a href="#org2cea901">5.2.3. 拼团场景分析</a></li>
-<li><a href="#orgbab4501">5.2.4. 拼团系统概要设计</a></li>
-<li><a href="#org84779b8">5.2.5. 拼团模块内部设计</a></li>
-<li><a href="#orgdfb01dc">5.2.6. 拼团任务分解</a></li>
+<li><a href="#orgcd1d826">5.2.1. 拼团需求分析</a></li>
+<li><a href="#org8098ce5">5.2.2. 拼团用户场景</a></li>
+<li><a href="#org492adb4">5.2.3. 拼团场景分析</a></li>
+<li><a href="#org4a35dd0">5.2.4. 拼团系统概要设计</a></li>
+<li><a href="#org755a490">5.2.5. 拼团模块内部设计</a></li>
+<li><a href="#orgc351a7c">5.2.6. 拼团任务分解</a></li>
 </ul>
 </li>
-<li><a href="#orge99faf1">5.3. 套票</a>
+<li><a href="#orge607f38">5.3. 套票</a>
 <ul>
-<li><a href="#orgaf114e6">5.3.1. TODO: 补充完成设计文档</a></li>
+<li><a href="#org9425773">5.3.1. TODO: 补充完成设计文档</a></li>
 </ul>
 </li>
 </ul>
@@ -1938,8 +1938,8 @@ Our users like the <b>performance</b> and <b>high availability</b> provided by t
 </div>
 </div>
 
-<div id="outline-container-org90fbfe1" class="outline-2">
-<h2 id="org90fbfe1"><span class="section-number-2">1</span> 本文的目的</h2>
+<div id="outline-container-orgd66c310" class="outline-2">
+<h2 id="orgd66c310"><span class="section-number-2">1</span> 本文的目的</h2>
 <div class="outline-text-2" id="text-1">
 <ol class="org-ol">
 <li>希望能对设计过程有一个整体的概念</li>
@@ -1956,8 +1956,8 @@ PS:
 </div>
 </div>
 
-<div id="outline-container-org20ad8b0" class="outline-2">
-<h2 id="org20ad8b0"><span class="section-number-2">2</span> 背景</h2>
+<div id="outline-container-org11c16bb" class="outline-2">
+<h2 id="org11c16bb"><span class="section-number-2">2</span> 背景</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 现阶段，对人员的需求已经不再是能有一个简单的需求把做出来。更可能是能独立承接一个有点复杂的需求。比如拼团，比如加速包, 比如套票。有一个略微复杂的流程，有更多的场景，涉及到更多的状态和角色和交互。
@@ -1987,8 +1987,8 @@ PS:
 </div>
 </div>
 
-<div id="outline-container-org97a69f3" class="outline-2">
-<h2 id="org97a69f3"><span class="section-number-2">3</span> 设计的目的</h2>
+<div id="outline-container-org853965d" class="outline-2">
+<h2 id="org853965d"><span class="section-number-2">3</span> 设计的目的</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 <b>为什么要设计?</b>,
@@ -2014,12 +2014,12 @@ PS:
 </div>
 </div>
 
-<div id="outline-container-org3b32392" class="outline-2">
-<h2 id="org3b32392"><span class="section-number-2">4</span> 如何设计</h2>
+<div id="outline-container-orgb8d8577" class="outline-2">
+<h2 id="orgb8d8577"><span class="section-number-2">4</span> 如何设计</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-orgd270741" class="outline-3">
-<h3 id="orgd270741"><span class="section-number-3">4.1</span> 原始需求分析</h3>
+<div id="outline-container-orgb2728ca" class="outline-3">
+<h3 id="orgb2728ca"><span class="section-number-3">4.1</span> 原始需求分析</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 划重点: 不关心系统，不关心当前是什么样，不关心有哪些模块。只关心一点:  <b>系统对外体现是什么样</b>. (对外并不仅仅指对外的用户视图。只要是外部能观测到的，都是系统的对外体现)
@@ -2030,13 +2030,13 @@ PS:
 </p>
 
 <ul class="org-ul">
-<li>拼团案例 <a href="#org82f64de">5.2.1</a></li>
+<li>拼团案例 <a href="#orgcd1d826">5.2.1</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org55f6370" class="outline-3">
-<h3 id="org55f6370"><span class="section-number-3">4.2</span> 用户场景 &amp;&amp; 场景分析</h3>
+<div id="outline-container-org30dd324" class="outline-3">
+<h3 id="org30dd324"><span class="section-number-3">4.2</span> 用户场景 &amp;&amp; 场景分析</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 这一步，主要目的是把对外承诺细化。看看会有哪些不同的流程, 不同的场景。
@@ -2055,13 +2055,13 @@ PS:
 </p>
 
 <ul class="org-ul">
-<li>拼团案例 <a href="#org92f4ad9">5.2.2</a></li>
+<li>拼团案例 <a href="#org8098ce5">5.2.2</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org5e84f2a" class="outline-3">
-<h3 id="org5e84f2a"><span class="section-number-3">4.3</span> 系统概要设计</h3>
+<div id="outline-container-org52f8d8e" class="outline-3">
+<h3 id="org52f8d8e"><span class="section-number-3">4.3</span> 系统概要设计</h3>
 <div class="outline-text-3" id="text-4-3">
 <p>
 在这个阶段，主要的工作是，基于上文中的具体场景，分析出需要 <b>哪些模块</b> 来承载各自的功能，如何配合。
@@ -2084,43 +2084,43 @@ PS: 模块的拆分是一个迭代的过程(玄学)，一般是先分，然后�
 </p>
 
 <ul class="org-ul">
-<li>拼团案例 <a href="#orgbab4501">5.2.4</a></li>
+<li>拼团案例 <a href="#org4a35dd0">5.2.4</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org673d307" class="outline-3">
-<h3 id="org673d307"><span class="section-number-3">4.4</span> 模块内部设计</h3>
+<div id="outline-container-orgbe3f292" class="outline-3">
+<h3 id="orgbe3f292"><span class="section-number-3">4.4</span> 模块内部设计</h3>
 <div class="outline-text-3" id="text-4-4">
 <p>
 具体方法其实类似，但是需要更多考虑一点， <b>如何用内部不可见的存储/状态，去实现外部的行为或者感知</b> 。
 </p>
 
 <ul class="org-ul">
-<li>拼团案例 <a href="#org84779b8">5.2.5</a></li>
+<li>拼团案例 <a href="#org755a490">5.2.5</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd11161f" class="outline-3">
-<h3 id="orgd11161f"><span class="section-number-3">4.5</span> 任务分解</h3>
+<div id="outline-container-orgc31ac03" class="outline-3">
+<h3 id="orgc31ac03"><span class="section-number-3">4.5</span> 任务分解</h3>
 <div class="outline-text-3" id="text-4-5">
 <p>
 在这里，更多是从一个这个业务需求的负责人角度，来看，需要哪些地方有工作，哪些工作，如何分解，如何跟踪。让整体的业务需求更可控。
 </p>
 
 <ul class="org-ul">
-<li>拼团案例 <a href="#orgdfb01dc">5.2.6</a></li>
+<li>拼团案例 <a href="#orgc351a7c">5.2.6</a></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org216f806" class="outline-2">
-<h2 id="org216f806"><span class="section-number-2">5</span> 案例分析</h2>
+<div id="outline-container-org2460cc0" class="outline-2">
+<h2 id="org2460cc0"><span class="section-number-2">5</span> 案例分析</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-orgffe731b" class="outline-3">
-<h3 id="orgffe731b"><span class="section-number-3">5.1</span> 票务系统设计</h3>
+<div id="outline-container-orgb00702a" class="outline-3">
+<h3 id="orgb00702a"><span class="section-number-3">5.1</span> 票务系统设计</h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
 整体内容相对完善一些，供参考:
@@ -2128,14 +2128,12 @@ PS: 模块的拆分是一个迭代的过程(玄学)，一般是先分，然后�
 </p>
 </div>
 </div>
-
-
-<div id="outline-container-org6b8c9eb" class="outline-3">
-<h3 id="org6b8c9eb"><span class="section-number-3">5.2</span> 拼团</h3>
+<div id="outline-container-orgd0e2ec8" class="outline-3">
+<h3 id="orgd0e2ec8"><span class="section-number-3">5.2</span> 拼团</h3>
 <div class="outline-text-3" id="text-5-2">
 </div>
-<div id="outline-container-org82f64de" class="outline-4">
-<h4 id="org82f64de"><span class="section-number-4">5.2.1</span> 拼团需求分析</h4>
+<div id="outline-container-orgcd1d826" class="outline-4">
+<h4 id="orgcd1d826"><span class="section-number-4">5.2.1</span> 拼团需求分析</h4>
 <div class="outline-text-4" id="text-5-2-1">
 <ul class="org-ul">
 <li>商家能创建/参与拼团活动</li>
@@ -2151,8 +2149,8 @@ PS: 模块的拆分是一个迭代的过程(玄学)，一般是先分，然后�
 </div>
 
 
-<div id="outline-container-org92f4ad9" class="outline-4">
-<h4 id="org92f4ad9"><span class="section-number-4">5.2.2</span> 拼团用户场景</h4>
+<div id="outline-container-org8098ce5" class="outline-4">
+<h4 id="org8098ce5"><span class="section-number-4">5.2.2</span> 拼团用户场景</h4>
 <div class="outline-text-4" id="text-5-2-2">
 <ul class="org-ul">
 <li>商家
@@ -2179,8 +2177,8 @@ PS: 模块的拆分是一个迭代的过程(玄学)，一般是先分，然后�
 </div>
 </div>
 
-<div id="outline-container-org2cea901" class="outline-4">
-<h4 id="org2cea901"><span class="section-number-4">5.2.3</span> 拼团场景分析</h4>
+<div id="outline-container-org492adb4" class="outline-4">
+<h4 id="org492adb4"><span class="section-number-4">5.2.3</span> 拼团场景分析</h4>
 <div class="outline-text-4" id="text-5-2-3">
 <ul class="org-ul">
 <li><p>
@@ -2206,12 +2204,12 @@ PS: 模块的拆分是一个迭代的过程(玄学)，一般是先分，然后�
 </div>
 </div>
 
-<div id="outline-container-orgbab4501" class="outline-4">
-<h4 id="orgbab4501"><span class="section-number-4">5.2.4</span> 拼团系统概要设计</h4>
+<div id="outline-container-org4a35dd0" class="outline-4">
+<h4 id="org4a35dd0"><span class="section-number-4">5.2.4</span> 拼团系统概要设计</h4>
 <div class="outline-text-4" id="text-5-2-4">
 </div>
 <ol class="org-ol">
-<li><a id="org64bdd81"></a>重点概念解释<br />
+<li><a id="orgfc9d4ce"></a>重点概念解释<br />
 <div class="outline-text-5" id="text-5-2-4-1">
 <ul class="org-ul">
 <li><p>
@@ -2241,7 +2239,7 @@ PS: 模块的拆分是一个迭代的过程(玄学)，一般是先分，然后�
 </div>
 </li>
 
-<li><a id="org71e41ca"></a>模块划分<br />
+<li><a id="org0799d90"></a>模块划分<br />
 <div class="outline-text-5" id="text-5-2-4-2">
 <ul class="org-ul">
 <li>拼团活动模块
@@ -2276,12 +2274,12 @@ PS: 模块的拆分是一个迭代的过程(玄学)，一般是先分，然后�
 </ol>
 </div>
 
-<div id="outline-container-org84779b8" class="outline-4">
-<h4 id="org84779b8"><span class="section-number-4">5.2.5</span> 拼团模块内部设计</h4>
+<div id="outline-container-org755a490" class="outline-4">
+<h4 id="org755a490"><span class="section-number-4">5.2.5</span> 拼团模块内部设计</h4>
 <div class="outline-text-4" id="text-5-2-5">
 </div>
 <ol class="org-ol">
-<li><a id="orgd585f87"></a>拼团活动模块<br />
+<li><a id="org984db18"></a>拼团活动模块<br />
 <div class="outline-text-5" id="text-5-2-5-1">
 <ol class="org-ol">
 <li>与外部模块关系
@@ -2477,7 +2475,7 @@ PS: 模块的拆分是一个迭代的过程(玄学)，一般是先分，然后�
 </div>
 </li>
 
-<li><a id="org80ef695"></a>拼团模块<br />
+<li><a id="org5893ca8"></a>拼团模块<br />
 <div class="outline-text-5" id="text-5-2-5-2">
 <ol class="org-ol">
 <li>与外部模块关系
@@ -2641,8 +2639,8 @@ PS: 模块的拆分是一个迭代的过程(玄学)，一般是先分，然后�
 </ol>
 </div>
 
-<div id="outline-container-orgdfb01dc" class="outline-4">
-<h4 id="orgdfb01dc"><span class="section-number-4">5.2.6</span> 拼团任务分解</h4>
+<div id="outline-container-orgc351a7c" class="outline-4">
+<h4 id="orgc351a7c"><span class="section-number-4">5.2.6</span> 拼团任务分解</h4>
 <div class="outline-text-4" id="text-5-2-6">
 <ul class="org-ul">
 <li>商家后台
@@ -2706,12 +2704,12 @@ PS: 模块的拆分是一个迭代的过程(玄学)，一般是先分，然后�
 </div>
 </div>
 
-<div id="outline-container-orge99faf1" class="outline-3">
-<h3 id="orge99faf1"><span class="section-number-3">5.3</span> 套票</h3>
+<div id="outline-container-orge607f38" class="outline-3">
+<h3 id="orge607f38"><span class="section-number-3">5.3</span> 套票</h3>
 <div class="outline-text-3" id="text-5-3">
 </div>
-<div id="outline-container-orgaf114e6" class="outline-4">
-<h4 id="orgaf114e6"><span class="section-number-4">5.3.1</span> TODO: 补充完成设计文档</h4>
+<div id="outline-container-org9425773" class="outline-4">
+<h4 id="org9425773"><span class="section-number-4">5.3.1</span> TODO: 补充完成设计文档</h4>
 </div>
 </div>
 </div>
@@ -2723,45 +2721,45 @@ PS: 模块的拆分是一个迭代的过程(玄学)，一般是先分，然后�
       <guid>http://enzo-liu.github.io/blog/2018/06/04/如何设计一个业务系统/</guid>
     </item>
     <item>
-      <title>Untitled</title>
-      <link>http://enzo-liu.github.io/blog/2020/07/24/untitled/</link>
+      <title>案例: 拼团系统设计</title>
+      <link>http://enzo-liu.github.io/blog/2018/08/20/案例-拼团系统设计/</link>
       <description><![CDATA[<section id="content" role="main">
     <div id="outline-container-sec-" class="row" style="padding-top: 70px">
         <div class="col-md-2"></div>
-            <h1>Untitled</h1>
+            <h1>案例: 拼团系统设计</h1>
             <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org56985a6">1. 拼团</a>
+<li><a href="#org53ad330">1. 拼团</a>
 <ul>
-<li><a href="#orga637de4">1.1. 拼团需求分析</a></li>
-<li><a href="#orgaf661f2">1.2. 拼团用户场景</a></li>
-<li><a href="#org36d1b91">1.3. 拼团场景分析</a></li>
-<li><a href="#org9132a9e">1.4. 拼团系统概要设计</a>
+<li><a href="#orgfcfc6ca">1.1. 拼团需求分析</a></li>
+<li><a href="#org48d4578">1.2. 拼团用户场景</a></li>
+<li><a href="#orgcd10da5">1.3. 拼团场景分析</a></li>
+<li><a href="#org252dff1">1.4. 拼团系统概要设计</a>
 <ul>
-<li><a href="#org313d67b">1.4.1. 重点概念解释</a></li>
-<li><a href="#orgca3029e">1.4.2. 模块划分</a></li>
+<li><a href="#org3d3cd79">1.4.1. 重点概念解释</a></li>
+<li><a href="#orgf785969">1.4.2. 模块划分</a></li>
 </ul>
 </li>
-<li><a href="#org056a90f">1.5. 拼团模块内部设计</a>
+<li><a href="#org8a9d723">1.5. 拼团模块内部设计</a>
 <ul>
-<li><a href="#org3f7a904">1.5.1. 拼团活动模块</a></li>
-<li><a href="#org1e97390">1.5.2. 拼团模块</a></li>
+<li><a href="#orgebf5943">1.5.1. 拼团活动模块</a></li>
+<li><a href="#orgd92dcdd">1.5.2. 拼团模块</a></li>
 </ul>
 </li>
-<li><a href="#org6aebcb4">1.6. 拼团任务分解</a></li>
+<li><a href="#org8776d93">1.6. 拼团任务分解</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org56985a6" class="outline-2">
-<h2 id="org56985a6"><span class="section-number-2">1</span> 拼团</h2>
+<div id="outline-container-org53ad330" class="outline-2">
+<h2 id="org53ad330"><span class="section-number-2">1</span> 拼团</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orga637de4" class="outline-3">
-<h3 id="orga637de4"><span class="section-number-3">1.1</span> 拼团需求分析</h3>
+<div id="outline-container-orgfcfc6ca" class="outline-3">
+<h3 id="orgfcfc6ca"><span class="section-number-3">1.1</span> 拼团需求分析</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>商家能创建/参与拼团活动</li>
@@ -2777,8 +2775,8 @@ PS: 模块的拆分是一个迭代的过程(玄学)，一般是先分，然后�
 </div>
 
 
-<div id="outline-container-orgaf661f2" class="outline-3">
-<h3 id="orgaf661f2"><span class="section-number-3">1.2</span> 拼团用户场景</h3>
+<div id="outline-container-org48d4578" class="outline-3">
+<h3 id="org48d4578"><span class="section-number-3">1.2</span> 拼团用户场景</h3>
 <div class="outline-text-3" id="text-1-2">
 <ul class="org-ul">
 <li>商家
@@ -2805,8 +2803,8 @@ PS: 模块的拆分是一个迭代的过程(玄学)，一般是先分，然后�
 </div>
 </div>
 
-<div id="outline-container-org36d1b91" class="outline-3">
-<h3 id="org36d1b91"><span class="section-number-3">1.3</span> 拼团场景分析</h3>
+<div id="outline-container-orgcd10da5" class="outline-3">
+<h3 id="orgcd10da5"><span class="section-number-3">1.3</span> 拼团场景分析</h3>
 <div class="outline-text-3" id="text-1-3">
 <ul class="org-ul">
 <li><p>
@@ -2815,7 +2813,7 @@ PS: 模块的拆分是一个迭代的过程(玄学)，一般是先分，然后�
 
 
 <div class="figure">
-<p><img src="/assets/blog/2020/07/24/untitled/merchant-tuan-campaign.png" alt="/assets/blog/2020/07/24/untitled/merchant-tuan-campaign.png" />
+<p><img src="/assets/blog/2018/08/20/案例-拼团系统设计/merchant-tuan-campaign.png" alt="/assets/blog/2018/08/20/案例-拼团系统设计/merchant-tuan-campaign.png" />
 </p>
 </div></li>
 
@@ -2825,19 +2823,19 @@ PS: 模块的拆分是一个迭代的过程(玄学)，一般是先分，然后�
 
 
 <div class="figure">
-<p><img src="/assets/blog/2020/07/24/untitled/user-tuan.png" alt="/assets/blog/2020/07/24/untitled/user-tuan.png" />
+<p><img src="/assets/blog/2018/08/20/案例-拼团系统设计/user-tuan.png" alt="/assets/blog/2018/08/20/案例-拼团系统设计/user-tuan.png" />
 </p>
 </div></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org9132a9e" class="outline-3">
-<h3 id="org9132a9e"><span class="section-number-3">1.4</span> 拼团系统概要设计</h3>
+<div id="outline-container-org252dff1" class="outline-3">
+<h3 id="org252dff1"><span class="section-number-3">1.4</span> 拼团系统概要设计</h3>
 <div class="outline-text-3" id="text-1-4">
 </div>
-<div id="outline-container-org313d67b" class="outline-4">
-<h4 id="org313d67b"><span class="section-number-4">1.4.1</span> 重点概念解释</h4>
+<div id="outline-container-org3d3cd79" class="outline-4">
+<h4 id="org3d3cd79"><span class="section-number-4">1.4.1</span> 重点概念解释</h4>
 <div class="outline-text-4" id="text-1-4-1">
 <ul class="org-ul">
 <li><p>
@@ -2867,8 +2865,8 @@ PS: 模块的拆分是一个迭代的过程(玄学)，一般是先分，然后�
 </div>
 </div>
 
-<div id="outline-container-orgca3029e" class="outline-4">
-<h4 id="orgca3029e"><span class="section-number-4">1.4.2</span> 模块划分</h4>
+<div id="outline-container-orgf785969" class="outline-4">
+<h4 id="orgf785969"><span class="section-number-4">1.4.2</span> 模块划分</h4>
 <div class="outline-text-4" id="text-1-4-2">
 <ul class="org-ul">
 <li>拼团活动模块
@@ -2902,12 +2900,12 @@ PS: 模块的拆分是一个迭代的过程(玄学)，一般是先分，然后�
 </div>
 </div>
 
-<div id="outline-container-org056a90f" class="outline-3">
-<h3 id="org056a90f"><span class="section-number-3">1.5</span> 拼团模块内部设计</h3>
+<div id="outline-container-org8a9d723" class="outline-3">
+<h3 id="org8a9d723"><span class="section-number-3">1.5</span> 拼团模块内部设计</h3>
 <div class="outline-text-3" id="text-1-5">
 </div>
-<div id="outline-container-org3f7a904" class="outline-4">
-<h4 id="org3f7a904"><span class="section-number-4">1.5.1</span> 拼团活动模块</h4>
+<div id="outline-container-orgebf5943" class="outline-4">
+<h4 id="orgebf5943"><span class="section-number-4">1.5.1</span> 拼团活动模块</h4>
 <div class="outline-text-4" id="text-1-5-1">
 <ol class="org-ol">
 <li>与外部模块关系
@@ -3103,8 +3101,8 @@ PS: 模块的拆分是一个迭代的过程(玄学)，一般是先分，然后�
 </div>
 </div>
 
-<div id="outline-container-org1e97390" class="outline-4">
-<h4 id="org1e97390"><span class="section-number-4">1.5.2</span> 拼团模块</h4>
+<div id="outline-container-orgd92dcdd" class="outline-4">
+<h4 id="orgd92dcdd"><span class="section-number-4">1.5.2</span> 拼团模块</h4>
 <div class="outline-text-4" id="text-1-5-2">
 <ol class="org-ol">
 <li>与外部模块关系
@@ -3267,8 +3265,8 @@ PS: 模块的拆分是一个迭代的过程(玄学)，一般是先分，然后�
 </div>
 </div>
 
-<div id="outline-container-org6aebcb4" class="outline-3">
-<h3 id="org6aebcb4"><span class="section-number-3">1.6</span> 拼团任务分解</h3>
+<div id="outline-container-org8776d93" class="outline-3">
+<h3 id="org8776d93"><span class="section-number-3">1.6</span> 拼团任务分解</h3>
 <div class="outline-text-3" id="text-1-6">
 <ul class="org-ul">
 <li>商家后台
@@ -3336,7 +3334,7 @@ PS: 模块的拆分是一个迭代的过程(玄学)，一般是先分，然后�
 </section>
 ]]></description>
       <pubDate>2020-07-24</pubDate>
-      <guid>http://enzo-liu.github.io/blog/2020/07/24/untitled/</guid>
+      <guid>http://enzo-liu.github.io/blog/2018/08/20/案例-拼团系统设计/</guid>
     </item>
     <item>
       <title>个人对汇报与同步的观点</title>
@@ -3349,25 +3347,25 @@ PS: 模块的拆分是一个迭代的过程(玄学)，一般是先分，然后�
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org5eb082a">1. 场景分析</a>
+<li><a href="#orgf08b3be">1. 场景分析</a>
 <ul>
-<li><a href="#orgf6299da">1.1. 同步类型</a></li>
-<li><a href="#org426e610">1.2. 汇报类型</a></li>
+<li><a href="#org135c541">1.1. 同步类型</a></li>
+<li><a href="#orgc028356">1.2. 汇报类型</a></li>
 </ul>
 </li>
-<li><a href="#org25fdc67">2. 个人倾向</a></li>
-<li><a href="#org6b91f93">3. 部分思考</a></li>
-<li><a href="#orgf90ee9e">4. 部分案例</a></li>
+<li><a href="#org90b9df4">2. 个人倾向</a></li>
+<li><a href="#org8d39318">3. 部分思考</a></li>
+<li><a href="#org04da6e5">4. 部分案例</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org5eb082a" class="outline-2">
-<h2 id="org5eb082a"><span class="section-number-2">1</span> 场景分析</h2>
+<div id="outline-container-orgf08b3be" class="outline-2">
+<h2 id="orgf08b3be"><span class="section-number-2">1</span> 场景分析</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orgf6299da" class="outline-3">
-<h3 id="orgf6299da"><span class="section-number-3">1.1</span> 同步类型</h3>
+<div id="outline-container-org135c541" class="outline-3">
+<h3 id="org135c541"><span class="section-number-3">1.1</span> 同步类型</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>结果同步
@@ -3395,8 +3393,8 @@ PS: 模块的拆分是一个迭代的过程(玄学)，一般是先分，然后�
 </div>
 </div>
 
-<div id="outline-container-org426e610" class="outline-3">
-<h3 id="org426e610"><span class="section-number-3">1.2</span> 汇报类型</h3>
+<div id="outline-container-orgc028356" class="outline-3">
+<h3 id="orgc028356"><span class="section-number-3">1.2</span> 汇报类型</h3>
 <div class="outline-text-3" id="text-1-2">
 <ul class="org-ul">
 <li>业务汇报
@@ -3419,8 +3417,8 @@ PS: 模块的拆分是一个迭代的过程(玄学)，一般是先分，然后�
 </div>
 </div>
 
-<div id="outline-container-org25fdc67" class="outline-2">
-<h2 id="org25fdc67"><span class="section-number-2">2</span> 个人倾向</h2>
+<div id="outline-container-org90b9df4" class="outline-2">
+<h2 id="org90b9df4"><span class="section-number-2">2</span> 个人倾向</h2>
 <div class="outline-text-2" id="text-2">
 <ol class="org-ol">
 <li>无论什么汇报，带上结果
@@ -3452,8 +3450,8 @@ PS: 模块的拆分是一个迭代的过程(玄学)，一般是先分，然后�
 </div>
 </div>
 
-<div id="outline-container-org6b91f93" class="outline-2">
-<h2 id="org6b91f93"><span class="section-number-2">3</span> 部分思考</h2>
+<div id="outline-container-org8d39318" class="outline-2">
+<h2 id="org8d39318"><span class="section-number-2">3</span> 部分思考</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>结果为主的视角下，为什么需要不断同步资源/工作内容
@@ -3491,8 +3489,8 @@ PS: 模块的拆分是一个迭代的过程(玄学)，一般是先分，然后�
 </div>
 </div>
 
-<div id="outline-container-orgf90ee9e" class="outline-2">
-<h2 id="orgf90ee9e"><span class="section-number-2">4</span> 部分案例</h2>
+<div id="outline-container-org04da6e5" class="outline-2">
+<h2 id="org04da6e5"><span class="section-number-2">4</span> 部分案例</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 TODO: 待补充&#x2026;
