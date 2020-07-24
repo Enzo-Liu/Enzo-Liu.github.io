@@ -1,0 +1,151 @@
+#+TITLE: 浅述Hbase的设计与实现
+#+Date: <2020-05-25 Mon>
+#+Options: ^:nil
+#+OPTIONS:   H:2 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+startup: beamer
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [presentation, bigger]
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+#+BEAMER_THEME: metropolis
+#+BIND: org-beamer-outline-frame-title "目录"
+
+* 议程与目的
+
+** 分享目的
+   
+- 以系统的视角，推测 hbase 的设计决策
+- 全局对 hbase 的特性有一定的了解
+- 不深入具体特性的实现
+
+* Hbase 的演进
+** BigTable
+   
+Bigtable, a *distributed system* for *storing structured data* at Google. Bigtable clusters have been in production use since April 2005, and we spent roughly seven person-years on design and implementation before that date.
+
+Our users like the *performance* and *high availability* provided by the Bigtable implementation, and that they can *scale the capacity of their clusters by simply adding more machines* to the system as their resource demands change over time.
+
+** 为什么需要
+#+BEGIN_QUOTE
+可自动伸缩的，分布式的，简易版本的 mysql
+#+END_QUOTE
+
+- 类比于文件系统与数据库
+  - 提供快速的记录检索能力
+  - (小)记录级别的索引对于文件系统压力过大, 不符合块存储的读写设计
+- 类比于文件系统(ext3, ext4...)与 hdfs
+  - 数据量大, 单机无法存储/处理(或成本过高)
+  - 机器多, 易故障
+- 强一致性
+  
+** 主要的门槛
+#+BEGIN_QUOTE
+性能, 横向扩展能力
+#+END_QUOTE
+
+- 大数据量下的快速的记录级别检索能力
+- 大数据量下的持续的读写性能(写多读少)
+- 故障转移与恢复
+
+
+* hbase 的设计
+
+** 索引与检索 I
+*** 基于排序
+- B+ tree (mysql)
+  1. 可靠性保证, 读写直接发生在文件系统
+  2. 读写均保持较高的性能
+     1. 检索读的 io 次数 (多叉，降低树高度)
+     2. 扫描读的 RangeQuery (叶子节点的链表结构)
+     3. 随机写入, 依赖磁盘的 iops
+
+- *LSM tree (hbase)*
+  1. 更高效的写入 (delayed batch write)
+  2. 略低效的读取 (multi tree merge)
+
+** 索引与检索 II
+*** 基于 Hash 
+- Hash
+  - 范围/排序的读性能差
+  - O(1) 的读写
+
+
+** 索引与检索 III
+*** 物理存储
+- HRegion 1 - * HStore (ColumnFamily)
+- HStore 1 - * HFile
+- HStore 1 - 1 MemStore
+- HFile = IndexBlock + DataBlock
+- get in HFile = binary search IndexBlock + traverse DataBlock
+- get in MemStore = get in ConcurrentSkipListMap
+  
+** 大数据(partition/sharding) I
+- row <-> node
+  - 路由信息太大
+ 
+- hash partition (cassandra)
+  - 故障情况下的迁移/恢复
+    - 会产生 rehash / hash <-> node 关系的变化
+  - 扩容缩容
+    - 类似故障情况
+  - 一致性 hash 
+    - 需维护逻辑上的桶和物理上的 server 的映射关系
+    - 算法决定[fn::也需要同步比如节点数，序号等信息，或者基于约定提前分配]/mapping 信息决定(存储)
+      - mapping: node <-> virtual node
+      - 本质上也是 range-partition
+  - 对区间扫描支持差
+
+** 大数据(partition/sharding) II
+- range partition
+  - 路由信息较小, partition(range) <-> nodes
+  - 对区间扫描支持较好
+  
+** 强一致性
+- single writer
+  - 简单
+- multiple writer
+  - 参考 zk, paxos/raft, etcd
+  
+** 故障转移
+- range 为管理的逻辑单元/存储的物理单元
+- 物理存储利用 hdfs 的高可用
+- 仅需移动管理单元
+  - wal log
+  - replay memstore change
+    - *定期 flush memstore, 控制故障恢复时间*
+** 横向扩容/自动伸缩/load balancing
+- split, 增加逻辑管理单元(Region)
+- move, 将 Region 移动至新增服务器
+   
+** compact
+- LSM Tree
+  - 分级存储, memory as buffer to delay flush to disk
+  - 每个文件为有序存储, 读需要做多路查找合并
+  - 为提高读性能, 需要 compact
+- compact 的两种思路
+  - flush 时, 直接读已刷写的磁盘文件，归并排序成一个大文件
+    - 写放大
+  - flush 后, 基于文件决定如何合并
+    - 可控一些的写放大
+    
+** row level acid I
+- write write synchronization
+  - single writer (JVM/RS)
+  - rowlock
+** row level acid II
+- read write synchronization
+  - single writer (JVM/RS)
+  - read-your-own-writes consistency[fn:: 读到自己的写; 不读到未提交的写; 读数据的一致性]
+  - mvcc/rowlock
+    - mvcc 
+      - read point = largest write point where all early point commits
+      - reader get current read point, ignore all writes after
+      - writer _commits_ when done write
+      - writer only _finish_ *when all early writer commits*
+        - read point >= this write number
+        - ensure next read will read this write
+    - rowlock: reader and writer compete for rowlock
+      
+
