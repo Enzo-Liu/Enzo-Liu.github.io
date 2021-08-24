@@ -48,9 +48,9 @@
         <div class="col-md-2"></div>
             <h1>&lt;改变未来的算法&gt; 笔记</h1>
             
-<div id="outline-container-org5e8955d" class="outline-2">
-<h2 id="org5e8955d">搜索引擎</h2>
-<div class="outline-text-2" id="text-org5e8955d">
+<div id="outline-container-org10dce96" class="outline-2">
+<h2 id="org10dce96">搜索引擎</h2>
+<div class="outline-text-2" id="text-org10dce96">
 <blockquote>
 <p>
 简要的说，一次搜索包含了: 匹配，排名。
@@ -58,9 +58,9 @@
 </blockquote>
 </div>
 
-<div id="outline-container-org4cd015f" class="outline-3">
-<h3 id="org4cd015f">匹配</h3>
-<div class="outline-text-3" id="text-org4cd015f">
+<div id="outline-container-orga49f612" class="outline-3">
+<h3 id="orga49f612">匹配</h3>
+<div class="outline-text-3" id="text-orga49f612">
 <p>
 这里的主要概念就是索引。（想象一下字典） 首先需要知道词出现在哪里
 </p>
@@ -88,13 +88,13 @@
 </div>
 </div>
 
-<div id="outline-container-orgfab2f90" class="outline-2">
-<h2 id="orgfab2f90">PageRank</h2>
-<div class="outline-text-2" id="text-orgfab2f90">
+<div id="outline-container-orgfcc4126" class="outline-2">
+<h2 id="orgfcc4126">PageRank</h2>
+<div class="outline-text-2" id="text-orgfcc4126">
 </div>
-<div id="outline-container-org67b1aeb" class="outline-3">
-<h3 id="org67b1aeb">排名</h3>
-<div class="outline-text-3" id="text-org67b1aeb">
+<div id="outline-container-org6c9ecf2" class="outline-3">
+<h3 id="org6c9ecf2">排名</h3>
+<div class="outline-text-3" id="text-org6c9ecf2">
 <p>
 匹配完成后，还有一个重要的事情就是排名，找到最接近查找的内容。但是同样一个词，计算机如何去理解什么是最接近的?
 可选的办法就是：*权重，计分*
@@ -137,9 +137,9 @@
 </div>
 </div>
 
-<div id="outline-container-org7b7bc8f" class="outline-2">
-<h2 id="org7b7bc8f">公钥加密</h2>
-<div class="outline-text-2" id="text-org7b7bc8f">
+<div id="outline-container-orgcd8a831" class="outline-2">
+<h2 id="orgcd8a831">公钥加密</h2>
+<div class="outline-text-2" id="text-orgcd8a831">
 <p>
 当信息交换双方协商好一种加密密钥（类似加密字典）,简单的加密也就可以进行了。下面探讨的主要是，如何公共的协商出一种密钥。
 </p>
@@ -154,7 +154,7 @@
 </p>
 </blockquote>
 
-<pre class="example">
+<pre class="example" id="orgb3a030f">
 3 mod 11 = 3; 5 mod 11 = 5; (3*5) mod 11 = (3 mod 11) * 5 = (5 mod 11) * 3 = 4
 </pre>
 
@@ -178,9 +178,9 @@ p * p1 = r1; p * p2 = r2; key = r1 * p2 = r2 * p1
 </div>
 </div>
 
-<div id="outline-container-orgd683e9b" class="outline-2">
-<h2 id="orgd683e9b">纠错码</h2>
-<div class="outline-text-2" id="text-orgd683e9b">
+<div id="outline-container-org1380390" class="outline-2">
+<h2 id="org1380390">纠错码</h2>
+<div class="outline-text-2" id="text-org1380390">
 <p>
 本质而言，我理解，就是冗余信息进行容错。
 </p>
@@ -193,9 +193,9 @@ p * p1 = r1; p * p2 = r2; key = r1 * p2 = r2 * p1
 </div>
 </div>
 
-<div id="outline-container-org6c9311f" class="outline-2">
-<h2 id="org6c9311f">图形识别</h2>
-<div class="outline-text-2" id="text-org6c9311f">
+<div id="outline-container-org9fe3b9c" class="outline-2">
+<h2 id="org9fe3b9c">图形识别</h2>
+<div class="outline-text-2" id="text-org9fe3b9c">
 <p>
 主要模式就是 1. 训练 2. 分类
 </p>
@@ -211,17 +211,17 @@ p * p1 = r1; p * p2 = r2; key = r1 * p2 = r2 * p1
 </div>
 </div>
 
-<div id="outline-container-org6c6724c" class="outline-2">
-<h2 id="org6c6724c">数据压缩</h2>
-<div class="outline-text-2" id="text-org6c6724c">
+<div id="outline-container-orga97c3f4" class="outline-2">
+<h2 id="orga97c3f4">数据压缩</h2>
+<div class="outline-text-2" id="text-orga97c3f4">
 <p>
 本质上就是查找重复模式
 </p>
 </div>
 
-<div id="outline-container-orgdf47bc4" class="outline-3">
-<h3 id="orgdf47bc4">无损压缩</h3>
-<div class="outline-text-3" id="text-orgdf47bc4">
+<div id="outline-container-orgc989a9d" class="outline-3">
+<h3 id="orgc989a9d">无损压缩</h3>
+<div class="outline-text-3" id="text-orgc989a9d">
 <ol class="org-ol">
 <li>同前</li>
 <li>根据词频进行更短符号</li>
@@ -230,9 +230,9 @@ p * p1 = r1; p * p2 = r2; key = r1 * p2 = r2 * p1
 </div>
 </div>
 
-<div id="outline-container-orge73431d" class="outline-3">
-<h3 id="orge73431d">有损压缩</h3>
-<div class="outline-text-3" id="text-orge73431d">
+<div id="outline-container-org08eff21" class="outline-3">
+<h3 id="org08eff21">有损压缩</h3>
+<div class="outline-text-3" id="text-org08eff21">
 <ol class="org-ol">
 <li>图片（隔行列删除像素信息）</li>
 <li>JPEG（像素块内寻找模式-比如分成8*8的块状信息体）</li>
@@ -241,9 +241,9 @@ p * p1 = r1; p * p2 = r2; key = r1 * p2 = r2 * p1
 </div>
 </div>
 
-<div id="outline-container-org6a506a0" class="outline-2">
-<h2 id="org6a506a0">数据库</h2>
-<div class="outline-text-2" id="text-org6a506a0">
+<div id="outline-container-orgf62942e" class="outline-2">
+<h2 id="orgf62942e">数据库</h2>
+<div class="outline-text-2" id="text-orgf62942e">
 <ol class="org-ol">
 <li>事物 作为待办事项，写redo-log，保证操作幂等。</li>
 <li>复制提交</li>
@@ -254,18 +254,18 @@ p * p1 = r1; p * p2 = r2; key = r1 * p2 = r2 * p1
 </div>
 </div>
 
-<div id="outline-container-org8a01c39" class="outline-2">
-<h2 id="org8a01c39">数字签名</h2>
-<div class="outline-text-2" id="text-org8a01c39">
+<div id="outline-container-org6ff5e8b" class="outline-2">
+<h2 id="org6ff5e8b">数字签名</h2>
+<div class="outline-text-2" id="text-org6ff5e8b">
 <p>
 TODO 再仔细看一看
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgdc0b0f4" class="outline-2">
-<h2 id="orgdc0b0f4">不可判定问题</h2>
-<div class="outline-text-2" id="text-orgdc0b0f4">
+<div id="outline-container-org4949d6b" class="outline-2">
+<h2 id="org4949d6b">不可判定问题</h2>
+<div class="outline-text-2" id="text-org4949d6b">
 <p>
 构造冲突的命题
 </p>
@@ -278,7 +278,7 @@ TODO 再仔细看一看
 canCrash&#x2014;&gt;canCrashWired&#x2014;&gt;crashOnSelf&#x2014;&gt;antiCrashOnSelf
 </p>
 
-<pre class="example">
+<pre class="example" id="org89e0199">
 |          | canCrash | canCrashWired | crashOnSelf | antiCrashOnSelf |
 |----------+----------+---------------+-------------+-----------------|
 | 输入条件 | 程序     | 程序          | 自身        | 自身            |
@@ -300,7 +300,7 @@ canCrash&#x2014;&gt;canCrashWired&#x2014;&gt;crashOnSelf&#x2014;&gt;antiCrashOnS
         <span title="author" class="post-info">enzo liu</span>
     </div>
 <footer class="footer">
-    <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 27.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+    <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 28.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
     <p>
         Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
         &nbsp;&nbsp;-&nbsp;&nbsp;

@@ -1,0 +1,24 @@
+#+TITLE:       金融行业的思考
+#+AUTHOR:      enzo liu
+#+EMAIL:       liuenze6516@gmail.com
+#+DATE:        2020-11-03 TUE
+#+URI:         /blog/%y/%m/%d/finance
+#+KEYWORDS:    finance
+#+TAGS:        finance
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: <TODO: insert your description here>
+
+1. 金融的本质是资源配置，风险管理是手段
+   1. 借贷关系是在时间尺度上的资源配置
+2. 提供的服务是最优的资源配置, 在达成资源配置的基础上, 获得服务费用
+   1. 比如风投机构 (?)
+3. 最优的资源配置是一个很空的描述，无法预知未来就无法判断
+   1. 从而通过资产抵押，信用分等作为指标进行衡量
+   2. 这部分指标体现的更多的是对风险的控制 (亦即 wrost case ? )
+   3. 从这个视角来看，不论是当铺（抵押贷款）还是信用贷, 都不够理想
+4. 是否有其他更好的关于 "最优的资源配置" 的选择标准
+   1. 不可能 (?)
+   2. 比如风投对行业/机构的判断
+   3. 是否有通用一些的判断的可能
+   4. 如果有，是不是直接借钱去投就可以了...

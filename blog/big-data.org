@@ -1,0 +1,12 @@
+#+TITLE:       大数据开发工程师在做什么
+#+AUTHOR:      enzo liu
+#+EMAIL:       liuenze6516@gmail.com
+#+DATE:        2020-11-02 Mon
+#+URI:         /blog/%y/%m/%d/大数据开发工程师在做什么
+#+KEYWORDS:    big data, spark, calcite, engineer
+#+TAGS:        big data, spark, calcite, engineer
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: big data
+
+* 知识服务
