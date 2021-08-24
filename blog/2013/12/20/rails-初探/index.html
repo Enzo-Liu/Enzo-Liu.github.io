@@ -51,13 +51,13 @@
 <b>首次系统的接触WEB+前端内容，好好学习一下，做一下问题的记录。</b>
 </p>
 
-<div id="outline-container-orgee8566b" class="outline-2">
-<h2 id="orgee8566b">依赖</h2>
-<div class="outline-text-2" id="text-orgee8566b">
+<div id="outline-container-org84fd8f6" class="outline-2">
+<h2 id="org84fd8f6">依赖</h2>
+<div class="outline-text-2" id="text-org84fd8f6">
 </div>
-<div id="outline-container-orgf900a38" class="outline-3">
-<h3 id="orgf900a38">assetPipeLine</h3>
-<div class="outline-text-3" id="text-orgf900a38">
+<div id="outline-container-orgf9dcf59" class="outline-3">
+<h3 id="orgf9dcf59">assetPipeLine</h3>
+<div class="outline-text-3" id="text-orgf9dcf59">
 <ul class="org-ul">
 <li>js，css等文件，同时依赖多次会存在问题。具体原因还没有搞清。js的依赖全部写在了application.js中，css的依赖一样。无须在html人工导入</li>
 <li>font文件的依赖，config/application.rb中添加如下代码:</li>
@@ -84,18 +84,18 @@ scss中通过font-url使用即可。
 </div>
 </div>
 
-<div id="outline-container-org0b29030" class="outline-3">
-<h3 id="org0b29030">View</h3>
-<div class="outline-text-3" id="text-org0b29030">
+<div id="outline-container-orgcec0cf3" class="outline-3">
+<h3 id="orgcec0cf3">View</h3>
+<div class="outline-text-3" id="text-orgcec0cf3">
 <p>
 *BootStrap*果然超级好用。暂时还没有什么研究，不过拷贝过来立刻可以见到成效，感觉很好。
 </p>
 </div>
 </div>
 
-<div id="outline-container-org4f88b12" class="outline-3">
-<h3 id="org4f88b12">Route</h3>
-<div class="outline-text-3" id="text-org4f88b12">
+<div id="outline-container-org750e25e" class="outline-3">
+<h3 id="org750e25e">Route</h3>
+<div class="outline-text-3" id="text-org750e25e">
 <p>
 工程的路由规则完全由config/Route.rb中内容觉得。当前只是配置了映射关系，和struts的action配置感觉没什么区别。
 </p>
@@ -107,9 +107,9 @@ scss中通过font-url使用即可。
 </div>
 </div>
 
-<div id="outline-container-org63ffd89" class="outline-2">
-<h2 id="org63ffd89">AJAX</h2>
-<div class="outline-text-2" id="text-org63ffd89">
+<div id="outline-container-orga1f3a7b" class="outline-2">
+<h2 id="orga1f3a7b">AJAX</h2>
+<div class="outline-text-2" id="text-orga1f3a7b">
 <p>
 之所以拿出来单独说，是这个让我搞的的确很痛苦。
 </p>
@@ -119,9 +119,9 @@ scss中通过font-url使用即可。
 </p>
 </div>
 
-<div id="outline-container-org5fe1b48" class="outline-3">
-<h3 id="org5fe1b48">TAG</h3>
-<div class="outline-text-3" id="text-org5fe1b48">
+<div id="outline-container-org0a4931f" class="outline-3">
+<h3 id="org0a4931f">TAG</h3>
+<div class="outline-text-3" id="text-org0a4931f">
 <p>
 在html.erb文件中，rails推荐的写法是使用helper提供的各种tag来进行描述。
 </p>
@@ -130,7 +130,7 @@ scss中通过font-url使用即可。
 想要触发ajax请求很容易，只需要正确的用对tag就可以了。比如：
 </p>
 
-<pre class="example" id="org3fd34e6">
+<pre class="example" id="org27aa809">
 &lt;%= form_tag("/welcome/test.json",:id =&gt; "viper", remote: true)  do%&gt;
 &lt;%= text_area_tag 'str', @res%&gt;
 &lt;%= submit_tag 'Save' %&gt;
@@ -143,14 +143,14 @@ scss中通过font-url使用即可。
 </div>
 </div>
 
-<div id="outline-container-org8433231" class="outline-3">
-<h3 id="org8433231">CoffeeScript</h3>
-<div class="outline-text-3" id="text-org8433231">
+<div id="outline-container-org6bca385" class="outline-3">
+<h3 id="org6bca385">CoffeeScript</h3>
+<div class="outline-text-3" id="text-org6bca385">
 <p>
 Ajax回调的触发如下，在controller对应的js.coffee文件内，写下
 </p>
 
-<pre class="example" id="org79b8876">
+<pre class="example" id="org4a2be58">
 $(document).ready -&gt;
 $("#viper").on "ajax:success", (e, data, status, xhr) -&gt;
 console.log($("#users").toArray());
@@ -168,9 +168,9 @@ console.log(data);
 </div>
 </div>
 
-<div id="outline-container-org9974ff8" class="outline-2">
-<h2 id="org9974ff8">TODO</h2>
-<div class="outline-text-2" id="text-org9974ff8">
+<div id="outline-container-orgfcbdf5b" class="outline-2">
+<h2 id="orgfcbdf5b">TODO</h2>
+<div class="outline-text-2" id="text-orgfcbdf5b">
 <ol class="org-ol">
 <li>将AJAX的机制再好好了解一下，用Ajax在Rails上做出一个完整的Game Of Life
 网页小动画处来。</li>

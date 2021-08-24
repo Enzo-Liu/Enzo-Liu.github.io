@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <title>spark 部分细节分享 - enzo&#39;s note book</title>
+  <meta charset="utf-8" />
+  <meta name="author" content="enzo liu" />
+  <meta name="description" content="spark" />
+  <meta name="keywords" content="spark" />
+
+  <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml">
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/posts.css" type="text/css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</head>
+
+  <body class="container">
+<header id="header">
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top" style="opacity: .9" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">enzo&#39;s note book</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                            <li class="active"><a href="/blog/">Blog</a></li>
+                            <li class="active"><a href="/history/">History</a></li>
+                            <li class="active"><a href="/leetcode/">Leetcode</a></li>
+                        <li><a href="/tags/">Tags</a></li>
+                        <li><a href="/about/">About</a></li>
+                        <li><a href="https://github.com/Enzo-Liu">GitHub</a></li>
+                        <li><a href="/rss.xml">RSS</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </body>
+</header>
+
+<section id="content" role="main">
+    <div id="outline-container-sec-" class="row" style="padding-top: 70px">
+        <div class="col-md-2"></div>
+            <h1>spark 部分细节分享</h1>
+            
+<div id="outline-container-org8e30f92" class="outline-2">
+<h2 id="org8e30f92">背景</h2>
+<div class="outline-text-2" id="text-org8e30f92">
+<p>
+在日常工作中，会频繁涉及到一些问题, 比如:
+</p>
+
+<ul class="org-ul">
+<li>为什么 group by 用了 SortAggregate, 而不是 HashAggregate</li>
+<li>为什么 某些场景用 DataSet 会比 RDD 快这么多</li>
+<li>为什么有些 udf 会被执行多次，有些又不会</li>
+<li>watermark 和 trigger 对延迟的影响</li>
+</ul>
+
+<p>
+在尝试理解并回答这些问题的过程中，需要对 spark 有一定的了解。 本文旨在提供一个针对 spark 的工程视角，去 top 解释 spark 这样的并行计算框架的实现，从而针对上述问题可以有一个快速的认识。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfbe88d9" class="outline-2">
+<h2 id="orgfbe88d9">spark 是什么</h2>
+<div class="outline-text-2" id="text-orgfbe88d9">
+<p>
+spark 是一个并行计算框架<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>, 提供一系列算子描述计算意图，并自动转换为并行计算，负责其执行效率，可靠性，容错等。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2d9682c" class="outline-2">
+<h2 id="org2d9682c">问题领域</h2>
+<div class="outline-text-2" id="text-org2d9682c">
+</div>
+<div id="outline-container-org01a7341" class="outline-3">
+<h3 id="org01a7341">并行计算</h3>
+<div class="outline-text-3" id="text-org01a7341">
+<ul class="org-ul">
+<li>什么场景需要并行计算
+<ol class="org-ol">
+<li>数据量大, 单机内存无法计算</li>
+<li>计算量大, 利用多机/多核性能</li>
+</ol></li>
+
+<li>为什么需要框架
+<ol class="org-ol">
+<li>重复问题的统一处理
+<ol class="org-ol">
+<li>容错</li>
+<li>调度</li>
+<li>io, rpc</li>
+</ol></li>
+<li>常见问题的最佳实践</li>
+</ol></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org400cf8a" class="outline-3">
+<h3 id="org400cf8a">主要解决的计算问题</h3>
+<div class="outline-text-3" id="text-org400cf8a">
+<ol class="org-ol">
+<li>transform (map, filter, ...)
+<ul class="org-ul">
+<li>Data[a] -&gt; Data[b]</li>
+</ul></li>
+<li>join
+<ul class="org-ul">
+<li>(Data[a], Data[b]) -&gt; Data[(a,b)]</li>
+</ul></li>
+<li>aggregate
+<ul class="org-ul">
+<li>Data[(k,a)] -&gt; Agg (List[a] -&gt; b) -&gt; Data[(k, b)]</li>
+</ul></li>
+<li>sort
+<ul class="org-ul">
+<li>Data[a] -&gt; SortedData[a]</li>
+</ul></li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org38f5413" class="outline-2">
+<h2 id="org38f5413">实现方式</h2>
+<div class="outline-text-2" id="text-org38f5413">
+</div>
+<div id="outline-container-orgbe73d85" class="outline-3">
+<h3 id="orgbe73d85">将常见计算问题翻译成 transform, join, agg, sort 等问题</h3>
+<div class="outline-text-3" id="text-orgbe73d85">
+<ul class="org-ul">
+<li>select count(1) from a
+<ul class="org-ul">
+<li>transform a -&gt; 1</li>
+<li>aggregate by sum</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org22d6985" class="outline-3">
+<h3 id="org22d6985">实现 transform</h3>
+</div>
+
+<div id="outline-container-orgd06e8f7" class="outline-3">
+<h3 id="orgd06e8f7">实现 join</h3>
+<div class="outline-text-3" id="text-orgd06e8f7">
+</div>
+<div id="outline-container-org17ff367" class="outline-4">
+<h4 id="org17ff367">目的/场景</h4>
+<div class="outline-text-4" id="text-org17ff367">
+<p>
+TODO
+</p>
+</div>
+</div>
+
+<div id="outline-container-org81563b3" class="outline-4">
+<h4 id="org81563b3">实现方式</h4>
+<div class="outline-text-4" id="text-org81563b3">
+<ul class="org-ul">
+<li>HashJoin
+<ul class="org-ul">
+<li>多表保证同一个 key 映射到一个分区</li>
+</ul></li>
+<li>SortMergeJoin</li>
+<li>BroadcaseJoin
+<ul class="org-ul">
+<li>大小表 join</li>
+<li>小表广播到大表内存，直接 hashmap 查询</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org715dc25" class="outline-3">
+<h3 id="org715dc25">实现 aggregate</h3>
+<div class="outline-text-3" id="text-org715dc25">
+</div>
+<div id="outline-container-orgfc330ab" class="outline-4">
+<h4 id="orgfc330ab">目的/场景</h4>
+<div class="outline-text-4" id="text-orgfc330ab">
+<ol class="org-ol">
+<li>将数据按照某些 key 聚合，将聚合后的值执行某种计算获得结果</li>
+<li>主要工作: 如何保证同一个 key 的数据最终都能聚合到一起进行计算</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org49a1775" class="outline-4">
+<h4 id="org49a1775">解决思路</h4>
+<div class="outline-text-4" id="text-org49a1775">
+<ol class="org-ol">
+<li>将相同 key 放入一个分区
+<ol class="org-ol">
+<li>partition 的常见方式: hash, range, 对应的 agg 即为 HashAgg/SortAgg</li>
+<li>range 的分区需要对值域有一定了解, spark 通过 sample 去做</li>
+<li>对于 count(distinct(some value)), 可以认为是 group by some value, 亦即保证同一个 value 在同一个分区，然后去重(aggregate 操作), 然后转换为了 count 操作</li>
+</ol></li>
+<li>将同一个 key 对应的结果进行计算</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgd097c5e" class="outline-4">
+<h4 id="orgd097c5e">实现方式</h4>
+<div class="outline-text-4" id="text-orgd097c5e">
+<ol class="org-ol">
+<li>Hash aggregate</li>
+<li>Sort aggregate</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdf7a618" class="outline-3">
+<h3 id="orgdf7a618">实现 sort</h3>
+</div>
+
+
+
+<div id="outline-container-org6fa2557" class="outline-3">
+<h3 id="org6fa2557">工程考虑</h3>
+<div class="outline-text-3" id="text-org6fa2557">
+<ul class="org-ul">
+<li>hash 与 sort 对比
+<ul class="org-ul">
+<li>内存
+<ul class="org-ul">
+<li>hash 需要内存足够保留待计算分区的全量状态</li>
+<li>sort 可以仅使用常量内存
+<ul class="org-ul">
+<li>排序过程可以利用磁盘，通过 merge sort 保证只使用指定内存</li>
+<li>可以通过保证相关计算相邻，减少内存状态(淘汰已计算完成的状态)</li>
+</ul></li>
+</ul></li>
+<li>io
+<ul class="org-ul">
+<li>不利用外存的情况下
+<ul class="org-ul">
+<li>hash / sort 只需读取一次</li>
+</ul></li>
+<li>内存不够的情况下
+<ul class="org-ul">
+<li>hash 会失败</li>
+<li>sort 会多次读取磁盘 (和排序的 segments 个数相关)</li>
+</ul></li>
+</ul></li>
+<li>计算效率
+<ul class="org-ul">
+<li>hash O(n)</li>
+<li>sort O(nlogn)</li>
+<li>与分区的大小强相关，比如分区个数为 p 的情况下
+<ul class="org-ul">
+<li>hash p * O(n/p) 大约 O(n)</li>
+<li>sort p * O(n/p * log(n/p))  大约 O(n * log(n/p))
+<ul class="org-ul">
+<li>p 越大, 基于 sort 的整体开销越小</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>内存与计算
+<ul class="org-ul">
+<li>问题
+<ul class="org-ul">
+<li>常见对象在 java 堆上占用的内存较大, 影响 gc</li>
+<li>shuffle/sort 读写盘 均需要一次序列化/反序列化</li>
+</ul></li>
+<li>project tungen
+<ul class="org-ul">
+<li>UnsafeRow
+<ul class="org-ul">
+<li>直接基于 byte[] 进行排序, mutable 的修改操作等</li>
+<li>自定义结构 memory foot 较小
+<ul class="org-ul">
+<li>无需存储对象指针</li>
+<li>string 的编码不使用 utf16</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>重复表达式
+<ul class="org-ul">
+<li>CommonExprElimination</li>
+</ul></li>
+<li>sql 优化(较复杂)
+<ul class="org-ul">
+<li>大小表 join</li>
+<li>filter 下推</li>
+<li>constant folding</li>
+<li><span class="underline">可以参考常见的编译器优化以及数据库优化技术</span></li>
+</ul></li>
+<li>数据量太大
+<ul class="org-ul">
+<li>重分区</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org88b5c69" class="outline-2">
+<h2 id="org88b5c69">案例分享</h2>
+<div class="outline-text-2" id="text-org88b5c69">
+</div>
+<div id="outline-container-org06d05e0" class="outline-3">
+<h3 id="org06d05e0">实时计算的多次反序列化</h3>
+<div class="outline-text-3" id="text-org06d05e0">
+<ul class="org-ul">
+<li>projectExec 在 codegen 时未做 common expr elimination
+<ul class="org-ul">
+<li>选择解释执行时支持</li>
+<li>算是个小 bug</li>
+</ul></li>
+<li>filter 下推后与 project 阶段, udf 不会共享
+<ul class="org-ul">
+<li>未进行 wholeStage 的表达式优化 (?)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgab7c23d" class="outline-3">
+<h3 id="orgab7c23d">离线计算的 SortAggregate</h3>
+<div class="outline-text-3" id="text-orgab7c23d">
+<ul class="org-ul">
+<li>aggregate 的执行使用 hash, sort
+<ul class="org-ul">
+<li>hashAggregate 的实现基于 UnsafeRow(无需反序列化，计算状态变更通过 变更 row 中的部分 byte 实现(以及 agg 的状态使用 unsaferow 表示时需要 mutable)</li>
+<li>自行实现的 udaf 的 bufferSchema 不支持 mutable</li>
+<li>从而选择了 failback 到 SortAggregate</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2ee3f27" class="outline-3">
+<h3 id="org2ee3f27">RDD 比 DataSet 慢</h3>
+<div class="outline-text-3" id="text-org2ee3f27">
+<ul class="org-ul">
+<li>因为 exchange/shuffle 过程中，reducer 需要反序列化数据，存储在内存. 反序列化的开销和 gc 压力综合导致的时长</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org92b0ee2" class="outline-3">
+<h3 id="org92b0ee2">实时计算的计算效率不高</h3>
+<div class="outline-text-3" id="text-org92b0ee2">
+<ul class="org-ul">
+<li>transform 过程中，行级别依赖 rpc</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org56bd6ee" class="outline-2">
+<h2 id="org56bd6ee">参考文档</h2>
+<div class="outline-text-2" id="text-org56bd6ee">
+<ul class="org-ul">
+<li><a href="https://www.waitingforcode.com/apache-spark-sql/aggregations-execution-apache-spark-sql/read">https://www.waitingforcode.com/apache-spark-sql/aggregations-execution-apache-spark-sql/read</a></li>
+<li>spark source code: org.apache.sql.execution
+<ul class="org-ul">
+<li>重点关注包的结构即可</li>
+</ul></li>
+<li><a href="https://databricks.com/blog/2015/04/28/project-tungsten-bringing-spark-closer-to-bare-metal.html">https://databricks.com/blog/2015/04/28/project-tungsten-bringing-spark-closer-to-bare-metal.html</a></li>
+</ul>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">当然, spark 也是一个解释器/编译器</p></div></div>
+
+
+</div>
+</div>
+    </div>
+</section>
+
+
+    <div class="post-meta">
+        <span title="post date" class="post-info">2021-08-24</span>
+        <span title="last modification date" class="post-info">2021-08-24</span>
+        <span title="tags" class="post-info"><a href="/tags/spark/">spark</a></span>
+        <span title="author" class="post-info">enzo liu</span>
+    </div>
+<footer class="footer">
+    <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 28.x (<a href="http://orgmode.org">Org mode</a> 9.x)</p>
+    <p>
+        Copyright &copy; 2012 - <span id="footerYear"></span> <a href="mailto:liuenze6516 &lt;at&gt; gmail &lt;dot&gt; com">enzo liu</a>
+        &nbsp;&nbsp;-&nbsp;&nbsp;
+        Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+        <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+    </p>
+</footer>
+
+  </body>
+</html>

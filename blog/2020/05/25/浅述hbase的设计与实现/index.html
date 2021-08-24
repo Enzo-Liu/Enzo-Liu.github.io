@@ -51,43 +51,43 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgf4189e4">1. 议程与目的</a>
+<li><a href="#org3cf42c2">1. 议程与目的</a>
 <ul>
-<li><a href="#orge3b943b">1.1. 分享目的</a></li>
+<li><a href="#org83ca821">1.1. 分享目的</a></li>
 </ul>
 </li>
-<li><a href="#org396907b">2. Hbase 的演进</a>
+<li><a href="#org1512028">2. Hbase 的演进</a>
 <ul>
-<li><a href="#org1fe4760">2.1. BigTable</a></li>
-<li><a href="#orgddc5238">2.2. 为什么需要</a></li>
-<li><a href="#org50c1f31">2.3. 主要的门槛</a></li>
+<li><a href="#org36f9551">2.1. BigTable</a></li>
+<li><a href="#orgddba4bb">2.2. 为什么需要</a></li>
+<li><a href="#org13fe9b7">2.3. 主要的门槛</a></li>
 </ul>
 </li>
-<li><a href="#org7fedf33">3. hbase 的设计</a>
+<li><a href="#orgc707616">3. hbase 的设计</a>
 <ul>
-<li><a href="#org7113f16">3.1. 索引与检索 I</a></li>
-<li><a href="#orgc8ebbf8">3.2. 索引与检索 II</a></li>
-<li><a href="#orgb8c30e5">3.3. 索引与检索 III</a></li>
-<li><a href="#org150a507">3.4. 大数据(partition/sharding) I</a></li>
-<li><a href="#org59ee664">3.5. 大数据(partition/sharding) II</a></li>
-<li><a href="#org5597d60">3.6. 强一致性</a></li>
-<li><a href="#orge7e8fae">3.7. 故障转移</a></li>
-<li><a href="#org525537e">3.8. 横向扩容/自动伸缩/load balancing</a></li>
-<li><a href="#orgf86c07f">3.9. compact</a></li>
-<li><a href="#org880e228">3.10. row level acid I</a></li>
-<li><a href="#orgab2dc2a">3.11. row level acid II</a></li>
+<li><a href="#org28b1c89">3.1. 索引与检索 I</a></li>
+<li><a href="#org81689b2">3.2. 索引与检索 II</a></li>
+<li><a href="#org3ca517e">3.3. 索引与检索 III</a></li>
+<li><a href="#org7f7745b">3.4. 大数据(partition/sharding) I</a></li>
+<li><a href="#org14fb806">3.5. 大数据(partition/sharding) II</a></li>
+<li><a href="#orgeb82c55">3.6. 强一致性</a></li>
+<li><a href="#org0a9023f">3.7. 故障转移</a></li>
+<li><a href="#orgb2f4801">3.8. 横向扩容/自动伸缩/load balancing</a></li>
+<li><a href="#org7c2af66">3.9. compact</a></li>
+<li><a href="#org613ee65">3.10. row level acid I</a></li>
+<li><a href="#org0eaeedd">3.11. row level acid II</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgf4189e4" class="outline-2">
-<h2 id="orgf4189e4"><span class="section-number-2">1.</span> 议程与目的</h2>
+<div id="outline-container-org3cf42c2" class="outline-2">
+<h2 id="org3cf42c2"><span class="section-number-2">1.</span> 议程与目的</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orge3b943b" class="outline-3">
-<h3 id="orge3b943b"><span class="section-number-3">1.1.</span> 分享目的</h3>
+<div id="outline-container-org83ca821" class="outline-3">
+<h3 id="org83ca821"><span class="section-number-3">1.1.</span> 分享目的</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>以系统的视角，推测 hbase 的设计决策</li>
@@ -98,12 +98,12 @@
 </div>
 </div>
 
-<div id="outline-container-org396907b" class="outline-2">
-<h2 id="org396907b"><span class="section-number-2">2.</span> Hbase 的演进</h2>
+<div id="outline-container-org1512028" class="outline-2">
+<h2 id="org1512028"><span class="section-number-2">2.</span> Hbase 的演进</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org1fe4760" class="outline-3">
-<h3 id="org1fe4760"><span class="section-number-3">2.1.</span> BigTable</h3>
+<div id="outline-container-org36f9551" class="outline-3">
+<h3 id="org36f9551"><span class="section-number-3">2.1.</span> BigTable</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 Bigtable, a <b>distributed system</b> for <b>storing structured data</b> at Google. Bigtable clusters have been in production use since April 2005, and we spent roughly seven person-years on design and implementation before that date.
@@ -115,8 +115,8 @@ Our users like the <b>performance</b> and <b>high availability</b> provided by t
 </div>
 </div>
 
-<div id="outline-container-orgddc5238" class="outline-3">
-<h3 id="orgddc5238"><span class="section-number-3">2.2.</span> 为什么需要</h3>
+<div id="outline-container-orgddba4bb" class="outline-3">
+<h3 id="orgddba4bb"><span class="section-number-3">2.2.</span> 为什么需要</h3>
 <div class="outline-text-3" id="text-2-2">
 <blockquote>
 <p>
@@ -140,8 +140,8 @@ Our users like the <b>performance</b> and <b>high availability</b> provided by t
 </div>
 </div>
 
-<div id="outline-container-org50c1f31" class="outline-3">
-<h3 id="org50c1f31"><span class="section-number-3">2.3.</span> 主要的门槛</h3>
+<div id="outline-container-org13fe9b7" class="outline-3">
+<h3 id="org13fe9b7"><span class="section-number-3">2.3.</span> 主要的门槛</h3>
 <div class="outline-text-3" id="text-2-3">
 <blockquote>
 <p>
@@ -159,16 +159,16 @@ Our users like the <b>performance</b> and <b>high availability</b> provided by t
 </div>
 
 
-<div id="outline-container-org7fedf33" class="outline-2">
-<h2 id="org7fedf33"><span class="section-number-2">3.</span> hbase 的设计</h2>
+<div id="outline-container-orgc707616" class="outline-2">
+<h2 id="orgc707616"><span class="section-number-2">3.</span> hbase 的设计</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org7113f16" class="outline-3">
-<h3 id="org7113f16"><span class="section-number-3">3.1.</span> 索引与检索 I</h3>
+<div id="outline-container-org28b1c89" class="outline-3">
+<h3 id="org28b1c89"><span class="section-number-3">3.1.</span> 索引与检索 I</h3>
 <div class="outline-text-3" id="text-3-1">
 </div>
 <ol class="org-ol">
-<li><a id="org385d0ad"></a>基于排序<br />
+<li><a id="orgdba50f0"></a>基于排序<br />
 <div class="outline-text-4" id="text-3-1-1">
 <ul class="org-ul">
 <li>B+ tree (mysql)
@@ -193,12 +193,12 @@ Our users like the <b>performance</b> and <b>high availability</b> provided by t
 </ol>
 </div>
 
-<div id="outline-container-orgc8ebbf8" class="outline-3">
-<h3 id="orgc8ebbf8"><span class="section-number-3">3.2.</span> 索引与检索 II</h3>
+<div id="outline-container-org81689b2" class="outline-3">
+<h3 id="org81689b2"><span class="section-number-3">3.2.</span> 索引与检索 II</h3>
 <div class="outline-text-3" id="text-3-2">
 </div>
 <ol class="org-ol">
-<li><a id="org99a85b4"></a>基于 Hash<br />
+<li><a id="orgd6bd43b"></a>基于 Hash<br />
 <div class="outline-text-4" id="text-3-2-1">
 <ul class="org-ul">
 <li>Hash
@@ -213,12 +213,12 @@ Our users like the <b>performance</b> and <b>high availability</b> provided by t
 </div>
 
 
-<div id="outline-container-orgb8c30e5" class="outline-3">
-<h3 id="orgb8c30e5"><span class="section-number-3">3.3.</span> 索引与检索 III</h3>
+<div id="outline-container-org3ca517e" class="outline-3">
+<h3 id="org3ca517e"><span class="section-number-3">3.3.</span> 索引与检索 III</h3>
 <div class="outline-text-3" id="text-3-3">
 </div>
 <ol class="org-ol">
-<li><a id="orge3ceb19"></a>物理存储<br />
+<li><a id="orgae20eac"></a>物理存储<br />
 <div class="outline-text-4" id="text-3-3-1">
 <ul class="org-ul">
 <li>HRegion 1 - * HStore (ColumnFamily)</li>
@@ -233,8 +233,8 @@ Our users like the <b>performance</b> and <b>high availability</b> provided by t
 </ol>
 </div>
 
-<div id="outline-container-org150a507" class="outline-3">
-<h3 id="org150a507"><span class="section-number-3">3.4.</span> 大数据(partition/sharding) I</h3>
+<div id="outline-container-org7f7745b" class="outline-3">
+<h3 id="org7f7745b"><span class="section-number-3">3.4.</span> 大数据(partition/sharding) I</h3>
 <div class="outline-text-3" id="text-3-4">
 <ul class="org-ul">
 <li>row &lt;-&gt; node
@@ -267,8 +267,8 @@ Our users like the <b>performance</b> and <b>high availability</b> provided by t
 </div>
 </div>
 
-<div id="outline-container-org59ee664" class="outline-3">
-<h3 id="org59ee664"><span class="section-number-3">3.5.</span> 大数据(partition/sharding) II</h3>
+<div id="outline-container-org14fb806" class="outline-3">
+<h3 id="org14fb806"><span class="section-number-3">3.5.</span> 大数据(partition/sharding) II</h3>
 <div class="outline-text-3" id="text-3-5">
 <ul class="org-ul">
 <li>range partition
@@ -280,8 +280,8 @@ Our users like the <b>performance</b> and <b>high availability</b> provided by t
 </div>
 </div>
 
-<div id="outline-container-org5597d60" class="outline-3">
-<h3 id="org5597d60"><span class="section-number-3">3.6.</span> 强一致性</h3>
+<div id="outline-container-orgeb82c55" class="outline-3">
+<h3 id="orgeb82c55"><span class="section-number-3">3.6.</span> 强一致性</h3>
 <div class="outline-text-3" id="text-3-6">
 <ul class="org-ul">
 <li>single writer
@@ -296,8 +296,8 @@ Our users like the <b>performance</b> and <b>high availability</b> provided by t
 </div>
 </div>
 
-<div id="outline-container-orge7e8fae" class="outline-3">
-<h3 id="orge7e8fae"><span class="section-number-3">3.7.</span> 故障转移</h3>
+<div id="outline-container-org0a9023f" class="outline-3">
+<h3 id="org0a9023f"><span class="section-number-3">3.7.</span> 故障转移</h3>
 <div class="outline-text-3" id="text-3-7">
 <ul class="org-ul">
 <li>range 为管理的逻辑单元/存储的物理单元</li>
@@ -313,8 +313,8 @@ Our users like the <b>performance</b> and <b>high availability</b> provided by t
 </ul>
 </div>
 </div>
-<div id="outline-container-org525537e" class="outline-3">
-<h3 id="org525537e"><span class="section-number-3">3.8.</span> 横向扩容/自动伸缩/load balancing</h3>
+<div id="outline-container-orgb2f4801" class="outline-3">
+<h3 id="orgb2f4801"><span class="section-number-3">3.8.</span> 横向扩容/自动伸缩/load balancing</h3>
 <div class="outline-text-3" id="text-3-8">
 <ul class="org-ul">
 <li>split, 增加逻辑管理单元(Region)</li>
@@ -323,8 +323,8 @@ Our users like the <b>performance</b> and <b>high availability</b> provided by t
 </div>
 </div>
 
-<div id="outline-container-orgf86c07f" class="outline-3">
-<h3 id="orgf86c07f"><span class="section-number-3">3.9.</span> compact</h3>
+<div id="outline-container-org7c2af66" class="outline-3">
+<h3 id="org7c2af66"><span class="section-number-3">3.9.</span> compact</h3>
 <div class="outline-text-3" id="text-3-9">
 <ul class="org-ul">
 <li>LSM Tree
@@ -348,8 +348,8 @@ Our users like the <b>performance</b> and <b>high availability</b> provided by t
 </div>
 </div>
 
-<div id="outline-container-org880e228" class="outline-3">
-<h3 id="org880e228"><span class="section-number-3">3.10.</span> row level acid I</h3>
+<div id="outline-container-org613ee65" class="outline-3">
+<h3 id="org613ee65"><span class="section-number-3">3.10.</span> row level acid I</h3>
 <div class="outline-text-3" id="text-3-10">
 <ul class="org-ul">
 <li>write write synchronization
@@ -360,8 +360,8 @@ Our users like the <b>performance</b> and <b>high availability</b> provided by t
 </ul>
 </div>
 </div>
-<div id="outline-container-orgab2dc2a" class="outline-3">
-<h3 id="orgab2dc2a"><span class="section-number-3">3.11.</span> row level acid II</h3>
+<div id="outline-container-org0eaeedd" class="outline-3">
+<h3 id="org0eaeedd"><span class="section-number-3">3.11.</span> row level acid II</h3>
 <div class="outline-text-3" id="text-3-11">
 <ul class="org-ul">
 <li>read write synchronization
