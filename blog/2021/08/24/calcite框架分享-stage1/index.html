@@ -50,9 +50,9 @@
         <div class="col-md-2"></div>
             <h1>Calcite框架分享-stage1</h1>
             
-<div id="outline-container-orgf4544e3" class="outline-2">
-<h2 id="orgf4544e3">目的</h2>
-<div class="outline-text-2" id="text-orgf4544e3">
+<div id="outline-container-orgdb993b2" class="outline-2">
+<h2 id="orgdb993b2">目的</h2>
+<div class="outline-text-2" id="text-orgdb993b2">
 <ol class="org-ol">
 <li>宏观上了解 Calcite 主要在做什么</li>
 <li>对 Calcite 常见的概念有一定了解</li>
@@ -61,9 +61,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgfa3e76b" class="outline-2">
-<h2 id="orgfa3e76b">Calcite 在做什么</h2>
-<div class="outline-text-2" id="text-orgfa3e76b">
+<div id="outline-container-orgd802a0d" class="outline-2">
+<h2 id="orgd802a0d">Calcite 在做什么</h2>
+<div class="outline-text-2" id="text-orgd802a0d">
 <p>
 常见的应用场景:
 </p>
@@ -121,17 +121,17 @@
 </div>
 </div>
 
-<div id="outline-container-org12d652d" class="outline-2">
-<h2 id="org12d652d">Calcite 怎么做的</h2>
-<div class="outline-text-2" id="text-org12d652d">
+<div id="outline-container-org502ec30" class="outline-2">
+<h2 id="org502ec30">Calcite 怎么做的</h2>
+<div class="outline-text-2" id="text-org502ec30">
 </div>
-<div id="outline-container-orga67beb5" class="outline-3">
-<h3 id="orga67beb5">sql 解析</h3>
-<div class="outline-text-3" id="text-orga67beb5">
+<div id="outline-container-org5cc61d6" class="outline-3">
+<h3 id="org5cc61d6">sql 解析</h3>
+<div class="outline-text-3" id="text-org5cc61d6">
 </div>
-<div id="outline-container-org182d5d0" class="outline-4">
-<h4 id="org182d5d0">基本功能</h4>
-<div class="outline-text-4" id="text-org182d5d0">
+<div id="outline-container-org9f7bf99" class="outline-4">
+<h4 id="org9f7bf99">基本功能</h4>
+<div class="outline-text-4" id="text-org9f7bf99">
 <p>
 利用 javacc 实现。
 </p>
@@ -200,9 +200,9 @@ token: [a~z|A~Z]+ [0~9|a~z|A~Z]*
 </div>
 </div>
 
-<div id="outline-container-orgd677e3a" class="outline-4">
-<h4 id="orgd677e3a">多方言的支持</h4>
-<div class="outline-text-4" id="text-orgd677e3a">
+<div id="outline-container-org6df5383" class="outline-4">
+<h4 id="org6df5383">多方言的支持</h4>
+<div class="outline-text-4" id="text-org6df5383">
 <ol class="org-ol">
 <li>利用 <code>freemarker</code> 支持(生成新的 <code>parser.jj</code> 文件)
 <ol class="org-ol">
@@ -223,9 +223,9 @@ token: [a~z|A~Z]+ [0~9|a~z|A~Z]*
 </div>
 
 
-<div id="outline-container-org2c4dc75" class="outline-3">
-<h3 id="org2c4dc75">sql 生成</h3>
-<div class="outline-text-3" id="text-org2c4dc75">
+<div id="outline-container-org2f0defe" class="outline-3">
+<h3 id="org2f0defe">sql 生成</h3>
+<div class="outline-text-3" id="text-org2f0defe">
 <p>
 本质上是 unparse 的过程。在解析完成后, <code>Calcite</code> 会生成 <code>SqlNode</code>, 如上述例子所展示, 本质上就是一颗树.
 </p>
@@ -307,9 +307,9 @@ token: [a~z|A~Z]+ [0~9|a~z|A~Z]*
 </div>
 </div>
 
-<div id="outline-container-org84c7049" class="outline-3">
-<h3 id="org84c7049">sql -&gt; rel (转换为关系表达式)</h3>
-<div class="outline-text-3" id="text-org84c7049">
+<div id="outline-container-org8e567be" class="outline-3">
+<h3 id="org8e567be">sql -&gt; rel (转换为关系表达式)</h3>
+<div class="outline-text-3" id="text-org8e567be">
 <p>
 和 <code>unparse</code> 的过程非常类似。同样看一段 <code>SqlSelect -&gt; RelNode</code> 的过程
 </p>
@@ -417,9 +417,9 @@ private void convertIdentifier(Blackboard bb, SqlIdentifier id,
 </div>
 </div>
 
-<div id="outline-container-org24f3739" class="outline-3">
-<h3 id="org24f3739">rel -&gt; rel (optimize)</h3>
-<div class="outline-text-3" id="text-org24f3739">
+<div id="outline-container-orgb486745" class="outline-3">
+<h3 id="orgb486745">rel -&gt; rel (optimize)</h3>
+<div class="outline-text-3" id="text-orgb486745">
 <p>
 这一部分为 calcite 中最为核心的逻辑，共可以分成以下几部分探讨:
 </p>
@@ -438,9 +438,9 @@ private void convertIdentifier(Blackboard bb, SqlIdentifier id,
 </p>
 </div>
 </div>
-<div id="outline-container-org0384ab5" class="outline-3">
-<h3 id="org0384ab5">rel -&gt; sql</h3>
-<div class="outline-text-3" id="text-org0384ab5">
+<div id="outline-container-orgea4b453" class="outline-3">
+<h3 id="orgea4b453">rel -&gt; sql</h3>
+<div class="outline-text-3" id="text-orgea4b453">
 <p>
 具体代码和 unparse, sql -&gt; rel 等，结构上如出一辙。可参考: <code>RelToSqlConverter</code> 中的 <code>visit(Project e)</code>, <code>visit(Aggregate e)</code> 等等。
 </p>
@@ -482,13 +482,13 @@ relNode
 </div>
 
 
-<div id="outline-container-orgd0dcc87" class="outline-2">
-<h2 id="orgd0dcc87">优化器详细分析</h2>
-<div class="outline-text-2" id="text-orgd0dcc87">
+<div id="outline-container-orgee635f1" class="outline-2">
+<h2 id="orgee635f1">优化器详细分析</h2>
+<div class="outline-text-2" id="text-orgee635f1">
 </div>
-<div id="outline-container-org436db0b" class="outline-3">
-<h3 id="org436db0b">等价表达式生成 (Rule)</h3>
-<div class="outline-text-3" id="text-org436db0b">
+<div id="outline-container-org6de8eab" class="outline-3">
+<h3 id="org6de8eab">等价表达式生成 (Rule)</h3>
+<div class="outline-text-3" id="text-org6de8eab">
 <p>
 这部分的逻辑是: 先粗粒度匹配, 匹配上了之后执行具体的 <code>onMatch()</code> .
 </p>
@@ -557,9 +557,9 @@ default Config withOperandFor(Class&lt;? extends Filter&gt; filterClass,
 </p>
 </div>
 
-<div id="outline-container-org9d227d7" class="outline-4">
-<h4 id="org9d227d7">案例 1: ProjectMergeRule</h4>
-<div class="outline-text-4" id="text-org9d227d7">
+<div id="outline-container-org56d2851" class="outline-4">
+<h4 id="org56d2851">案例 1: ProjectMergeRule</h4>
+<div class="outline-text-4" id="text-org56d2851">
 <ol class="org-ol">
 <li>如果这颗子树是 <code>Project(top) &lt;- Project(bottom)</code> 这种形状, 则进入 <code>onMatch</code></li>
 <li>将 top 的表达式列表中对 bottom 的引用，替换为对 bottom 的 input 的引用，生成新的表达式列表</li>
@@ -605,10 +605,10 @@ default Config withOperandFor(Class&lt;? extends Filter&gt; filterClass,
 </div>
 </div>
 </div>
-<div id="outline-container-org598c631" class="outline-4">
-<h4 id="org598c631">案例 2: FilterAggregateTransposeRule</h4>
-<div class="outline-text-4" id="text-org598c631">
-<div class="formal" id="org7965f35">
+<div id="outline-container-org0262389" class="outline-4">
+<h4 id="org0262389">案例 2: FilterAggregateTransposeRule</h4>
+<div class="outline-text-4" id="text-org0262389">
+<div class="formal" id="orgdef282a">
 <p>
 这个规则将 filter 下推到 aggregate 之前。
 </p>
@@ -694,9 +694,9 @@ private static boolean canPush(Aggregate aggregate, ImmutableBitSet rCols) {
 </div>
 </div>
 
-<div id="outline-container-org980a149" class="outline-3">
-<h3 id="org980a149">等价图生成</h3>
-<div class="outline-text-3" id="text-org980a149">
+<div id="outline-container-org182fb1e" class="outline-3">
+<h3 id="org182fb1e">等价图生成</h3>
+<div class="outline-text-3" id="text-org182fb1e">
 <p>
 先看一个例子:
 </p>
@@ -704,7 +704,7 @@ private static boolean canPush(Aggregate aggregate, ImmutableBitSet rCols) {
 <li><p>
 树
 </p>
-<pre class="example" id="orgd5e7769">
+<pre class="example" id="orga05cdc9">
 LogicalAggregate(group=[{0, 1, 2, 3, 4}], NASA2usage=[SUM($5)], NASA2videousage=[SUM($6)], NASA2audiousage=[SUM($7)], alltotalusage=[SUM($8)], allaudioUsage=[SUM($9)], allvideoUsage=[SUM($10)])
   LogicalProject(date=[$0], vid=[$1], projectName=[$14], companyid=[$15], companyname=[$16], totalusage=[$5], videousage=[$6], audio_usage=[$7], audio_video=[$10], audio=[$11], video=[$12])
     LogicalJoin(condition=[=($1, $13)], joinType=[left])
@@ -723,7 +723,7 @@ LogicalAggregate(group=[{0, 1, 2, 3, 4}], NASA2usage=[SUM($5)], NASA2videousage=
 <li><p>
 图
 </p>
-<pre class="example" id="org086095d">
+<pre class="example" id="org04534df">
 Breadth-first from root:  {
     rel#57:HepRelVertex(rel#56:LogicalAggregate.(input=HepRelVertex#55,group={0, 1, 2, 3, 4},NASA2usage=SUM($5),NASA2videousage=SUM($6),NASA2audiousage=SUM($7),alltotalusage=SUM($8),allaudioUsage=SUM($9),allvideoUsage=SUM($10))) = rel#56:LogicalAggregate.(input=HepRelVertex#55,group={0, 1, 2, 3, 4},NASA2usage=SUM($5),NASA2videousage=SUM($6),NASA2audiousage=SUM($7),alltotalusage=SUM($8),allaudioUsage=SUM($9),allvideoUsage=SUM($10)), rowcount=1.585, cumulative cost=457.1676257395745
     rel#55:HepRelVertex(rel#54:LogicalProject.(input=HepRelVertex#53,inputs=0..1,exprs=[$14, $15, $16, $5, $6, $7, $10, $11, $12])) = rel#54:LogicalProject.(input=HepRelVertex#53,inputs=0..1,exprs=[$14, $15, $16, $5, $6, $7, $10, $11, $12]), rowcount=15.85, cumulative cost=454.27500028610234
@@ -748,9 +748,9 @@ Breadth-first from root:  {
 </div>
 </div>
 
-<div id="outline-container-org0848f13" class="outline-3">
-<h3 id="org0848f13">Planner</h3>
-<div class="outline-text-3" id="text-org0848f13">
+<div id="outline-container-org6cce6d9" class="outline-3">
+<h3 id="org6cce6d9">Planner</h3>
+<div class="outline-text-3" id="text-org6cce6d9">
 <p>
 在 calcite 中, planner 负责规则的协调/迭代, 树的等价生成，树的选择等。
 </p>
@@ -770,9 +770,9 @@ Breadth-first from root:  {
 </div>
 </div>
 
-<div id="outline-container-orgde06026" class="outline-3">
-<h3 id="orgde06026">Hep Planner</h3>
-<div class="outline-text-3" id="text-orgde06026">
+<div id="outline-container-org6509fca" class="outline-3">
+<h3 id="org6509fca">Hep Planner</h3>
+<div class="outline-text-3" id="text-org6509fca">
 <ol class="org-ol">
 <li>Hep 的生成规则相对简单, 遍历所有节点, 与所有规则</li>
 <li>规则匹配完成后, 生成新表达式则加入图中, 并移除旧表达式, 重新执行 1
@@ -784,7 +784,7 @@ Breadth-first from root:  {
 <li>最终由根节点遍历，即可获取最终生成的 Plan</li>
 </ol>
 
-<div class="formal" id="org92bb445">
+<div class="formal" id="org91ee839">
 <p>
 note:
 </p>
@@ -798,9 +798,9 @@ note:
 </div>
 </div>
 
-<div id="outline-container-orgb560a90" class="outline-3">
-<h3 id="orgb560a90">Volcano Planner</h3>
-<div class="outline-text-3" id="text-orgb560a90">
+<div id="outline-container-org5f32dd4" class="outline-3">
+<h3 id="org5f32dd4">Volcano Planner</h3>
+<div class="outline-text-3" id="text-org5f32dd4">
 <ol class="org-ol">
 <li>任何关系表达式，会将其所有节点进行规则匹配，将匹配完成的规则放入待执行队列.
 <ul class="org-ul">
@@ -865,7 +865,7 @@ note:
 <ul class="org-ul">
 <li>关系表达式</li>
 </ul>
-<pre class="example" id="orgbd0e452">
+<pre class="example" id="org6724397">
 LogicalAggregate(subset=[rel#27:RelSubset#3.ENUMERABLE.[]], group=[{0, 1, 2, 3, 4}], totalusage=[SUM($5)], videousage=[SUM($6)], audio_usage=[SUM($7)]): rowcount = 1.0, cumulative cost = {1.4125001430511475 rows, 0.0 cpu, 0.0 io}, id = 25
   LogicalProject(subset=[rel#24:RelSubset#2.NONE.[]], date=[$0], vid=[$2], domain=[$3], os=[$4], ver=[$5], audio_video=[$6], video=[$8], audio=[$7]): rowcount = 1.0, cumulative cost = {1.0 rows, 8.0 cpu, 0.0 io}, id = 23
     LogicalFilter(subset=[rel#22:RelSubset#1.NONE.[]], condition=[AND(=($1, '(product_line,product_type,vid,domain,os,ver)'), OR(=($5, '3.0.0.11'), =($5, '3,0,0,16'), =($5, '3.0.0.17'), =($5, '3.0.0.19'), =($5, '3.0.0.18'), =($5, '3.0.20.20'), =($5, '3.0.20.21')), &gt;=($0, '2020-08-01'))]): rowcount = 1.0, cumulative cost = {1.0 rows, 1.0 cpu, 0.0 io}, id = 21
@@ -876,7 +876,7 @@ LogicalAggregate(subset=[rel#27:RelSubset#3.ENUMERABLE.[]], group=[{0, 1, 2, 3, 
 <li>初始图</li>
 </ul>
 
-<div id="org5e58e11" class="figure">
+<div id="org1e47a93" class="figure">
 <p><img src="/assets/blog/2021/08/24/calcite框架分享-stage1/vocalno_init_graf.png" alt="vocalno_init_graf.png" />
 </p>
 </div>
@@ -885,7 +885,7 @@ LogicalAggregate(subset=[rel#27:RelSubset#3.ENUMERABLE.[]], group=[{0, 1, 2, 3, 
 <li>完成图</li>
 </ul>
 
-<div id="orgc5bd406" class="figure">
+<div id="org1eaea39" class="figure">
 <p><img src="/assets/blog/2021/08/24/calcite框架分享-stage1/vocalno_finish_graf.png" alt="vocalno_finish_graf.png" />
 </p>
 </div>
@@ -894,16 +894,16 @@ LogicalAggregate(subset=[rel#27:RelSubset#3.ENUMERABLE.[]], group=[{0, 1, 2, 3, 
 </div>
 
 
-<div id="outline-container-orgd1b82c3" class="outline-2">
-<h2 id="orgd1b82c3">部分应用场景</h2>
-<div class="outline-text-2" id="text-orgd1b82c3">
+<div id="outline-container-orgf86f718" class="outline-2">
+<h2 id="orgf86f718">部分应用场景</h2>
+<div class="outline-text-2" id="text-orgf86f718">
 </div>
-<div id="outline-container-orga3ebc0e" class="outline-3">
-<h3 id="orga3ebc0e">遍历 <code>RelNode</code> 获取 TableRef</h3>
+<div id="outline-container-orgee56370" class="outline-3">
+<h3 id="orgee56370">遍历 <code>RelNode</code> 获取 TableRef</h3>
 </div>
-<div id="outline-container-org9fe45f8" class="outline-3">
-<h3 id="org9fe45f8">遍历 <code>SqlNode</code> 查询相关的 <code>TableRef</code></h3>
-<div class="outline-text-3" id="text-org9fe45f8">
+<div id="outline-container-org0e83443" class="outline-3">
+<h3 id="org0e83443">遍历 <code>SqlNode</code> 查询相关的 <code>TableRef</code></h3>
+<div class="outline-text-3" id="text-org0e83443">
 <div class="org-src-container">
 <pre class="src src-java">/**
  * find all databases from sql node.
@@ -943,9 +943,9 @@ public static List&lt;String&gt; findDatabases(SqlNode sqlNode) {
 </div>
 </div>
 </div>
-<div id="outline-container-org776d108" class="outline-3">
-<h3 id="org776d108">解决 quote 的中文乱码(输出时 unicode 编码)问题</h3>
-<div class="outline-text-3" id="text-org776d108">
+<div id="outline-container-orgb0bbdaa" class="outline-3">
+<h3 id="orgb0bbdaa">解决 quote 的中文乱码(输出时 unicode 编码)问题</h3>
+<div class="outline-text-3" id="text-orgb0bbdaa">
 <div class="org-src-container">
 <pre class="src src-java">public void quoteStringLiteral(StringBuilder buf, @Nullable String charsetName,
       String val) {
@@ -975,11 +975,11 @@ public static List&lt;String&gt; findDatabases(SqlNode sqlNode) {
 </div>
 </div>
 
-<div id="outline-container-org0b6b580" class="outline-3">
-<h3 id="org0b6b580">物化视图改写</h3>
+<div id="outline-container-org32bcc5d" class="outline-3">
+<h3 id="org32bcc5d">物化视图改写</h3>
 </div>
-<div id="outline-container-org64e9f09" class="outline-3">
-<h3 id="org64e9f09">调整 Parser 增加 ShowTables (SqlNode)</h3>
+<div id="outline-container-org37b6eb1" class="outline-3">
+<h3 id="org37b6eb1">调整 Parser 增加 ShowTables (SqlNode)</h3>
 </div>
 </div>
 <div id="footnotes">
