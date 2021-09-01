@@ -1,0 +1,20 @@
+#+TITLE:       query-engine-resources
+#+AUTHOR:      enzo liu
+#+EMAIL:       liuenze6516@gmail.com
+#+DATE:        2021-09-01 Wed
+#+URI:         /blog/%y/%m/%d/query-engine-resources
+#+KEYWORDS:    <TODO: insert your keywords here>
+#+TAGS:        <TODO: insert your tags here>
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: <TODO: insert your description here>
+
+Various articles on query planning and execution that look interesting. I have not read them all.
+
+- Volcano-An Extensible and Parallel Query Evaluation System
+https://www.pgcon.org/2016/schedule/attachments/425_PGCon-Lessons-in-Building-Distributed-Query-Planner.pdf
+https://github.com/uwescience/raco
+https://spark.apache.org/docs/latest/submitting-applications.html
+https://www.sciencedirect.com/science/article/pii/S1877050915013575
+http://optique-project.eu/wp-content/uploads/2014/11/D7.2.pdf
+https://blogs.msdn.microsoft.com/craigfr/2006/09/20/hash-aggregate/
